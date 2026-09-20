@@ -4,28 +4,1088 @@
 
 <head>
 
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Website</title>
+  <title>BuildMate — Find the Right Freelancer</title>
 
-    <style>
+  <style>
 
-        * {
+    * {
 
-            box-sizing: border-box;
+      box-sizing: border-box;
 
-            margin: 0;
+      margin: 0;
 
-            padding: 0;
+      padding: 0;
 
-        }
+    }
 
-        body {
+    body {
 
-            font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
 
-            background: #f8f9fb;
+      background: #f8fafc;
 
-            color: #333;
+      color: #172033;
+
+      line-height: 1.6;
+
+    }
+
+    a {
+
+      text-decoration: none;
+
+      color: inherit;
+
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+
+      width: 100%;
+
+      background: #ffffff;
+
+      border-bottom: 1px solid #e5e7eb;
+
+      padding: 18px 7%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 100;
+
+    }
+
+    .logo {
+
+      font-size: 25px;
+
+      font-weight: 800;
+
+      color: #4f46e5;
+
+    }
+
+    .logo span {
+
+      color: #111827;
+
+    }
+
+    .nav-links {
+
+      display: flex;
+
+      gap: 28px;
+
+      align-items: center;
+
+      font-size: 15px;
+
+      color: #4b5563;
+
+    }
+
+    .nav-links a:hover {
+
+      color: #4f46e5;
+
+    }
+
+    .nav-buttons {
+
+      display: flex;
+
+      gap: 10px;
+
+    }
+
+    .btn {
+
+      padding: 11px 20px;
+
+      border-radius: 10px;
+
+      border: none;
+
+      cursor: pointer;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+    }
+
+    .btn-login {
+
+      background: transparent;
+
+      color: #374151;
+
+    }
+
+    .btn-primary {
+
+      background: #4f46e5;
+
+      color: white;
+
+    }
+
+    .btn-primary:hover {
+
+      background: #4338ca;
+
+    }
+
+    /* HERO */
+
+    .hero {
+
+      min-height: 650px;
+
+      padding: 90px 7%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 60px;
+
+      background: linear-gradient(135deg, #eef2ff, #ffffff);
+
+    }
+
+    .hero-content {
+
+      max-width: 650px;
+
+    }
+
+    .badge {
+
+      display: inline-block;
+
+      background: #e0e7ff;
+
+      color: #4338ca;
+
+      padding: 7px 13px;
+
+      border-radius: 20px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      margin-bottom: 20px;
+
+    }
+
+    .hero h1 {
+
+      font-size: clamp(42px, 6vw, 70px);
+
+      line-height: 1.05;
+
+      margin-bottom: 25px;
+
+      letter-spacing: -2px;
+
+    }
+
+    .hero h1 span {
+
+      color: #4f46e5;
+
+    }
+
+    .hero p {
+
+      font-size: 19px;
+
+      color: #64748b;
+
+      max-width: 580px;
+
+      margin-bottom: 32px;
+
+    }
+
+    .hero-buttons {
+
+      display: flex;
+
+      gap: 14px;
+
+      flex-wrap: wrap;
+
+    }
+
+    .hero-btn {
+
+      padding: 15px 25px;
+
+      border-radius: 12px;
+
+      font-weight: 700;
+
+      font-size: 15px;
+
+      display: inline-block;
+
+    }
+
+    .hero-btn-primary {
+
+      background: #4f46e5;
+
+      color: white;
+
+    }
+
+    .hero-btn-secondary {
+
+      background: white;
+
+      color: #374151;
+
+      border: 1px solid #d1d5db;
+
+    }
+
+    /* HERO CARD */
+
+    .hero-card {
+
+      width: 360px;
+
+      min-width: 300px;
+
+      background: white;
+
+      border-radius: 24px;
+
+      padding: 30px;
+
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+
+    }
+
+    .hero-card-icon {
+
+      width: 65px;
+
+      height: 65px;
+
+      border-radius: 18px;
+
+      background: #eef2ff;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 32px;
+
+      margin-bottom: 20px;
+
+    }
+
+    .hero-card h3 {
+
+      font-size: 22px;
+
+      margin-bottom: 10px;
+
+    }
+
+    .hero-card p {
+
+      font-size: 14px;
+
+      margin-bottom: 20px;
+
+    }
+
+    .mini-project {
+
+      padding: 15px;
+
+      background: #f8fafc;
+
+      border-radius: 12px;
+
+      margin-top: 10px;
+
+    }
+
+    .mini-project strong {
+
+      display: block;
+
+      margin-bottom: 4px;
+
+    }
+
+    .mini-project small {
+
+      color: #64748b;
+
+    }
+
+    /* FEATURES */
+
+    .section {
+
+      padding: 90px 7%;
+
+    }
+
+    .section-header {
+
+      text-align: center;
+
+      max-width: 700px;
+
+      margin: 0 auto 50px;
+
+    }
+
+    .section-header h2 {
+
+      font-size: 38px;
+
+      margin-bottom: 15px;
+
+    }
+
+    .section-header p {
+
+      color: #64748b;
+
+      font-size: 17px;
+
+    }
+
+    .features {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 25px;
+
+    }
+
+    .feature-card {
+
+      background: white;
+
+      padding: 30px;
+
+      border-radius: 18px;
+
+      border: 1px solid #e5e7eb;
+
+      transition: 0.2s;
+
+    }
+
+    .feature-card:hover {
+
+      transform: translateY(-5px);
+
+      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+
+    }
+
+    .feature-icon {
+
+      font-size: 30px;
+
+      margin-bottom: 18px;
+
+    }
+
+    .feature-card h3 {
+
+      margin-bottom: 10px;
+
+      font-size: 20px;
+
+    }
+
+    .feature-card p {
+
+      color: #64748b;
+
+      font-size: 15px;
+
+    }
+
+    /* HOW IT WORKS */
+
+    .how-section {
+
+      background: #111827;
+
+      color: white;
+
+    }
+
+    .how-section .section-header p {
+
+      color: #9ca3af;
+
+    }
+
+    .steps {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 25px;
+
+    }
+
+    .step {
+
+      padding: 30px;
+
+      background: #1f2937;
+
+      border-radius: 18px;
+
+    }
+
+    .step-number {
+
+      width: 42px;
+
+      height: 42px;
+
+      background: #4f46e5;
+
+      border-radius: 50%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-weight: 800;
+
+      margin-bottom: 20px;
+
+    }
+
+    .step h3 {
+
+      margin-bottom: 10px;
+
+    }
+
+    .step p {
+
+      color: #9ca3af;
+
+      font-size: 15px;
+
+    }
+
+    /* CTA */
+
+    .cta {
+
+      padding: 90px 7%;
+
+      text-align: center;
+
+      background: #eef2ff;
+
+    }
+
+    .cta h2 {
+
+      font-size: 40px;
+
+      margin-bottom: 15px;
+
+    }
+
+    .cta p {
+
+      color: #64748b;
+
+      margin-bottom: 28px;
+
+    }
+
+    /* FOOTER */
+
+    footer {
+
+      background: #ffffff;
+
+      border-top: 1px solid #e5e7eb;
+
+      padding: 30px 7%;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 20px;
+
+    }
+
+    footer p {
+
+      color: #64748b;
+
+      font-size: 14px;
+
+    }
+
+    .footer-logo {
+
+      font-weight: 800;
+
+      color: #4f46e5;
+
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+
+        display: none;
+
+      }
+
+      .hero {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding-top: 60px;
+
+      }
+
+      .hero p {
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+      }
+
+      .hero-buttons {
+
+        justify-content: center;
+
+      }
+
+      .hero-card {
+
+        width: 100%;
+
+        max-width: 380px;
+
+      }
+
+      .features,
+
+      .steps {
+
+        grid-template-columns: 1fr;
+
+      }
+
+      .section-header h2 {
+
+        font-size: 32px;
+
+      }
+
+      footer {
+
+        flex-direction: column;
+
+        text-align: center;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav class="navbar">
+
+    <div class="logo">
+
+      Build<span>Mate</span>
+
+    </div>
+
+    <div class="nav-links">
+
+      <a href="#features">Features</a>
+
+      <a href="#how">How It Works</a>
+
+      <a href="#about">About</a>
+
+    </div>
+
+    <div class="nav-buttons">
+
+      <button class="btn btn-login">Log In</button>
+
+      <button class="btn btn-primary">Get Started</button>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="badge">
+
+        ✨ Build. Connect. Grow.
+
+      </div>
+
+      <h1>
+
+        Find the right people to
+
+        <span>build your project.</span>
+
+      </h1>
+
+      <p>
+
+        BuildMate connects clients with talented freelancers
+
+        to turn ideas into real websites, apps, and digital projects.
+
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#" class="hero-btn hero-btn-primary">
+
+          Start a Project →
+
+        </a>
+
+        <a href="#" class="hero-btn hero-btn-secondary">
+
+          Find Freelancers
+
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="hero-card">
+
+      <div class="hero-card-icon">
+
+        💻
+
+      </div>
+
+      <h3>
+
+        Build your next project
+
+      </h3>
+
+      <p>
+
+        Post your project and connect with freelancers
+
+        who have the skills you need.
+
+      </p>
+
+      <div class="mini-project">
+
+        <strong>Website Design</strong>
+
+        <small>Find a designer for your new website</small>
+
+      </div>
+
+      <div class="mini-project">
+
+        <strong>Mobile App</strong>
+
+        <small>Build your next mobile application</small>
+
+      </div>
+
+      <div class="mini-project">
+
+        <strong>Development</strong>
+
+        <small>Find developers for your project</small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+
+  <section class="section" id="features">
+
+    <div class="section-header">
+
+      <h2>
+
+        Everything you need
+
+      </h2>
+
+      <p>
+
+        A simple platform for clients and freelancers
+
+        to work together.
+
+      </p>
+
+    </div>
+
+    <div class="features">
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+
+          📁
+
+        </div>
+
+        <h3>
+
+          Create Projects
+
+        </h3>
+
+        <p>
+
+          Clients can create projects,
+
+          describe their needs and find the right freelancer.
+
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+
+          👨‍💻
+
+        </div>
+
+        <h3>
+
+          Find Freelancers
+
+        </h3>
+
+        <p>
+
+          Discover freelancers with different
+
+          skills and experience.
+
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+
+          💬
+
+        </div>
+
+        <h3>
+
+          Real-Time Chat
+
+        </h3>
+
+        <p>
+
+          Communicate directly with clients
+
+          and freelancers throughout the project.
+
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+
+          ⭐
+
+        </div>
+
+        <h3>
+
+          Reviews
+
+        </h3>
+
+        <p>
+
+          Build trust through reviews and
+
+          ratings after completing projects.
+
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+
+          🔔
+
+        </div>
+
+        <h3>
+
+          Notifications
+
+        </h3>
+
+        <p>
+
+          Stay updated about applications,
+
+          messages and project activity.
+
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+
+          🔐
+
+        </div>
+
+        <h3>
+
+          Secure Accounts
+
+        </h3>
+
+        <p>
+
+          User accounts and permissions will
+
+          be connected to secure authentication.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- HOW IT WORKS -->
+
+  <section class="section how-section" id="how">
+
+    <div class="section-header">
+
+      <h2>
+
+        How BuildMate Works
+
+      </h2>
+
+      <p>
+
+        Simple steps to connect clients and freelancers.
+
+      </p>
+
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+
+        <div class="step-number">
+
+          1
+
+        </div>
+
+        <h3>
+
+          Create an Account
+
+        </h3>
+
+        <p>
+
+          Sign up as a client or freelancer
+
+          and create your profile.
+
+        </p>
+
+      </div>
+
+      <div class="step">
+
+        <div class="step-number">
+
+          2
+
+        </div>
+
+        <h3>
+
+          Connect
+
+        </h3>
+
+        <p>
+
+          Clients post projects and freelancers
+
+          can submit applications.
+
+        </p>
+
+      </div>
+
+      <div class="step">
+
+        <div class="step-number">
+
+          3
+
+        </div>
+
+        <h3>
+
+          Work Together
+
+        </h3>
+
+        <p>
+
+          Chat, manage the project and complete
+
+          the work together.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta" id="about">
+
+    <h2>
+
+      Ready to build something?
+
+    </h2>
+
+    <p>
+
+      Join BuildMate and turn your ideas into real projects.
+
+    </p>
+
+    <a href="#" class="hero-btn hero-btn-primary">
+
+      Get Started →
+
+    </a>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-logo">
+
+      BuildMate
+
+    </div>
+
+    <p>
+
+      © 2026 BuildMate. All rights reserved.
+
+    </p>
+
+  </footer>
+
+</body>
+
+</html>
