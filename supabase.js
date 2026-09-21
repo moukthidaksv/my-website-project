@@ -21,11 +21,21 @@ async function testDatabase() {
     .limit(1);
 
   if (error) {
-    console.error("Database test failed:", error);
+    document.body.insertAdjacentHTML(
+      "beforeend",
+      "<p style='color:red;text-align:center;font-weight:bold;'>❌ Database error: " +
+      error.message +
+      "</p>"
+    );
     return;
   }
 
-  console.log("Database test successful:", data);
+  document.body.insertAdjacentHTML(
+    "beforeend",
+    "<p style='color:blue;text-align:center;font-weight:bold;'>📦 Database: " +
+    data[0].message +
+    "</p>"
+  );
 }
 
 testDatabase();
