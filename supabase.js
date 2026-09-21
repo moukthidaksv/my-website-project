@@ -10,3 +10,7 @@ const supabaseClient = window.supabase.createClient(
 );
 
 console.log("BuildMate: Supabase client initialized.");
+document.body.insertAdjacentHTML(
+  "beforeend",
+  "<p style='color:green;text-align:center;font-weight:bold;'>✅ Supabase connected!</p>"
+);
