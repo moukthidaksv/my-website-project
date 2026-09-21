@@ -79,3 +79,8 @@ async function testDatabase() {
 }
 
 testDatabase();
+
+document.body.insertAdjacentHTML(
+  "beforeend",
+  "<p style='color:purple;text-align:center;font-weight:bold;'>🧪 Database test started</p>"
+);
