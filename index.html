@@ -1,1333 +1,889 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>BuildMate — Find the Right Freelancer</title>
 
   <style>
-
     * {
-
       box-sizing: border-box;
-
       margin: 0;
-
       padding: 0;
-
     }
 
     body {
-
       font-family: Arial, Helvetica, sans-serif;
-
-      background: #f7f8fc;
-
+      background: #f7f9fc;
       color: #1f2937;
-
       line-height: 1.6;
-
     }
 
-    a {
-
-      text-decoration: none;
-
-      color: inherit;
-
+    button,
+    input,
+    textarea,
+    select {
+      font-family: inherit;
     }
 
     button {
-
       cursor: pointer;
-
-      font-family: inherit;
-
     }
 
     /* =========================
-
        NAVBAR
-
     ========================= */
 
     nav {
-
-      width: 100%;
-
-      background: #ffffff;
-
+      background: white;
       border-bottom: 1px solid #e5e7eb;
-
-      position: sticky;
-
-      top: 0;
-
-      z-index: 100;
-
-    }
-
-    .nav-container {
-
-      max-width: 1150px;
-
-      margin: auto;
-
-      padding: 16px 20px;
-
+      padding: 16px 6%;
       display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .logo {
-
       font-size: 24px;
-
       font-weight: bold;
-
       color: #2563eb;
-
     }
 
     .nav-links {
-
       display: flex;
-
       align-items: center;
-
-      gap: 20px;
-
+      gap: 24px;
     }
 
     .nav-links a {
-
-      color: #4b5563;
-
-      font-size: 15px;
-
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
     }
 
     .nav-links a:hover {
-
       color: #2563eb;
-
     }
 
     .nav-button {
-
       border: none;
-
-      background: transparent;
-
-      color: #2563eb;
-
-      font-weight: 600;
-
-      padding: 9px 14px;
-
+      background: #2563eb;
+      color: white;
+      padding: 10px 18px;
       border-radius: 8px;
-
+      font-weight: bold;
     }
 
     .nav-button:hover {
-
-      background: #eff6ff;
-
-    }
-
-    .primary-button {
-
-      background: #2563eb;
-
-      color: white;
-
-      border: none;
-
-      padding: 11px 18px;
-
-      border-radius: 8px;
-
-      font-weight: 600;
-
-    }
-
-    .primary-button:hover {
-
       background: #1d4ed8;
-
-    }
-
-    .primary-button:disabled {
-
-      opacity: 0.6;
-
-      cursor: not-allowed;
-
     }
 
     .user-menu {
-
-      display: none;
-
+      display: flex;
       align-items: center;
-
-      gap: 8px;
-
+      gap: 12px;
     }
 
     .user-name {
+      font-weight: bold;
+      color: #374151;
+    }
 
-      font-weight: 600;
+    .logout-button {
+      border: 1px solid #d1d5db;
+      background: white;
+      color: #374151;
+      padding: 8px 14px;
+      border-radius: 8px;
+    }
 
-      color: #111827;
-
-      margin-right: 5px;
-
+    .logout-button:hover {
+      background: #f3f4f6;
     }
 
     /* =========================
-
        HERO
-
     ========================= */
 
     .hero {
-
-      max-width: 1150px;
-
-      margin: auto;
-
-      padding: 90px 20px;
-
+      padding: 90px 6%;
       text-align: center;
-
+      background: linear-gradient(135deg, #eff6ff, #ffffff);
     }
 
     .hero h1 {
-
-      font-size: 52px;
-
-      line-height: 1.15;
-
-      margin-bottom: 20px;
-
+      font-size: 48px;
+      max-width: 800px;
+      margin: auto;
       color: #111827;
-
-    }
-
-    .hero h1 span {
-
-      color: #2563eb;
-
     }
 
     .hero p {
-
-      max-width: 700px;
-
-      margin: auto;
-
+      max-width: 650px;
+      margin: 20px auto;
       color: #6b7280;
-
       font-size: 18px;
-
     }
 
     .hero-buttons {
-
       margin-top: 30px;
-
       display: flex;
-
       justify-content: center;
-
-      gap: 12px;
-
+      gap: 14px;
       flex-wrap: wrap;
+    }
 
+    .primary-button {
+      border: none;
+      background: #2563eb;
+      color: white;
+      padding: 13px 24px;
+      border-radius: 9px;
+      font-weight: bold;
+    }
+
+    .primary-button:hover {
+      background: #1d4ed8;
     }
 
     .secondary-button {
-
+      border: 1px solid #d1d5db;
       background: white;
-
-      color: #2563eb;
-
-      border: 1px solid #2563eb;
-
-      padding: 11px 18px;
-
-      border-radius: 8px;
-
-      font-weight: 600;
-
+      color: #374151;
+      padding: 13px 24px;
+      border-radius: 9px;
+      font-weight: bold;
     }
 
     .secondary-button:hover {
-
-      background: #eff6ff;
-
+      background: #f3f4f6;
     }
 
     /* =========================
-
-       SECTIONS
-
+       GENERAL SECTIONS
     ========================= */
 
     section {
-
-      max-width: 1150px;
-
-      margin: auto;
-
-      padding: 70px 20px;
-
+      padding: 75px 6%;
     }
 
     .section-title {
-
       text-align: center;
-
-      font-size: 34px;
-
-      margin-bottom: 12px;
-
-      color: #111827;
-
+      margin-bottom: 45px;
     }
 
-    .section-description {
+    .section-title h2 {
+      font-size: 32px;
+      color: #111827;
+    }
 
-      text-align: center;
-
-      max-width: 650px;
-
-      margin: 0 auto 40px;
-
+    .section-title p {
+      margin-top: 8px;
       color: #6b7280;
-
     }
 
     /* =========================
-
        FEATURES
-
     ========================= */
 
     .features {
-
       display: grid;
-
       grid-template-columns: repeat(3, 1fr);
-
-      gap: 20px;
-
+      gap: 24px;
     }
 
     .feature-card {
-
       background: white;
-
       padding: 30px;
-
       border-radius: 14px;
-
       border: 1px solid #e5e7eb;
-
       text-align: center;
-
     }
 
-    .feature-card .icon {
-
-      font-size: 38px;
-
+    .feature-icon {
+      font-size: 35px;
       margin-bottom: 15px;
-
     }
 
     .feature-card h3 {
-
       margin-bottom: 10px;
-
-      color: #111827;
-
     }
 
     .feature-card p {
-
       color: #6b7280;
-
-      font-size: 15px;
-
+      font-size: 14px;
     }
 
     /* =========================
-
-       FIND FREELANCERS
-
+       FREELANCERS
     ========================= */
 
-    .freelancer-grid {
-
+    #freelancerList {
       display: grid;
-
       grid-template-columns: repeat(3, 1fr);
-
-      gap: 20px;
-
+      gap: 24px;
+      max-width: 1200px;
+      margin: auto;
     }
 
     .freelancer-card {
-
       background: white;
-
       border: 1px solid #e5e7eb;
-
-      border-radius: 14px;
-
-      padding: 25px;
-
-      transition: 0.2s;
-
+      border-radius: 16px;
+      padding: 24px;
+      transition: 0.2s ease;
     }
 
     .freelancer-card:hover {
-
-      transform: translateY(-3px);
-
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     }
 
     .freelancer-avatar {
-
-      width: 55px;
-
-      height: 55px;
-
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
-
-      background: #eff6ff;
-
-      color: #2563eb;
-
+      background: #2563eb;
+      color: white;
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
-      font-size: 22px;
-
+      font-size: 27px;
       font-weight: bold;
-
-      margin-bottom: 15px;
-
+      margin-bottom: 16px;
     }
 
     .freelancer-card h3 {
-
-      color: #111827;
-
-      margin-bottom: 4px;
-
       font-size: 20px;
-
+      margin-bottom: 4px;
     }
 
     .freelancer-role {
-
       color: #2563eb;
-
-      font-size: 14px;
-
-      font-weight: 600;
-
+      font-size: 13px;
+      font-weight: bold;
       margin-bottom: 12px;
-
     }
 
     .freelancer-bio {
-
       color: #6b7280;
-
       font-size: 14px;
-
       margin-bottom: 15px;
-
       min-height: 45px;
-
     }
 
-    .skills-list {
-
+    .skills {
       display: flex;
-
       flex-wrap: wrap;
-
-      gap: 6px;
-
-      margin-bottom: 20px;
-
+      gap: 7px;
+      margin-bottom: 18px;
     }
 
     .skill-tag {
-
-      background: #f3f4f6;
-
-      color: #374151;
-
+      background: #eff6ff;
+      color: #2563eb;
       padding: 5px 9px;
-
-      border-radius: 6px;
-
+      border-radius: 20px;
       font-size: 12px;
-
     }
 
     .view-profile-button {
-
       width: 100%;
-
-      padding: 10px;
-
-      background: white;
-
-      color: #2563eb;
-
-      border: 1px solid #2563eb;
-
+      border: none;
+      background: #111827;
+      color: white;
+      padding: 11px;
       border-radius: 8px;
-
-      font-weight: 600;
-
+      font-weight: bold;
     }
 
     .view-profile-button:hover {
-
-      background: #eff6ff;
-
+      background: #374151;
     }
 
-    .loading-text,
-
-    .empty-text {
-
+    .empty-message {
       grid-column: 1 / -1;
-
       text-align: center;
-
       color: #6b7280;
-
-      padding: 30px;
-
+      padding: 40px;
     }
 
     /* =========================
-
        HOW IT WORKS
-
     ========================= */
 
     .steps {
-
       display: grid;
-
       grid-template-columns: repeat(3, 1fr);
-
-      gap: 20px;
-
+      gap: 24px;
+      max-width: 1000px;
+      margin: auto;
     }
 
     .step {
-
+      text-align: center;
       background: white;
-
       border: 1px solid #e5e7eb;
-
       border-radius: 14px;
-
       padding: 30px;
-
     }
 
     .step-number {
-
-      width: 40px;
-
-      height: 40px;
-
+      width: 45px;
+      height: 45px;
+      margin: 0 auto 15px;
       background: #2563eb;
-
       color: white;
-
       border-radius: 50%;
-
       display: flex;
-
-      justify-content: center;
-
       align-items: center;
-
+      justify-content: center;
       font-weight: bold;
-
-      margin-bottom: 15px;
-
-    }
-
-    .step h3 {
-
-      margin-bottom: 8px;
-
-    }
-
-    .step p {
-
-      color: #6b7280;
-
     }
 
     /* =========================
-
        ABOUT
-
     ========================= */
 
-    .about-box {
-
-      background: white;
-
-      border: 1px solid #e5e7eb;
-
-      border-radius: 14px;
-
-      padding: 40px;
-
+    .about {
+      max-width: 850px;
+      margin: auto;
       text-align: center;
-
     }
 
-    .about-box p {
-
-      max-width: 750px;
-
-      margin: auto;
-
+    .about p {
       color: #6b7280;
-
+      font-size: 16px;
     }
 
     /* =========================
-
        CTA
-
     ========================= */
 
     .cta {
-
+      background: #111827;
+      color: white;
       text-align: center;
-
-      background: #eff6ff;
-
-      border-radius: 18px;
-
-      margin-bottom: 60px;
-
     }
 
     .cta h2 {
-
-      font-size: 34px;
-
-      margin-bottom: 15px;
-
+      font-size: 32px;
+      margin-bottom: 12px;
     }
 
     .cta p {
-
-      color: #6b7280;
-
+      color: #d1d5db;
       margin-bottom: 25px;
-
     }
 
     /* =========================
-
        FOOTER
-
     ========================= */
 
     footer {
-
-      background: #111827;
-
-      color: white;
-
+      background: white;
+      border-top: 1px solid #e5e7eb;
+      padding: 25px 6%;
       text-align: center;
-
-      padding: 30px 20px;
-
-    }
-
-    footer p {
-
-      color: #9ca3af;
-
-      font-size: 14px;
-
+      color: #6b7280;
+      font-size: 13px;
     }
 
     /* =========================
-
-       MODALS
-
+       MODAL GENERAL
     ========================= */
 
     .modal {
-
       display: none;
-
       position: fixed;
-
       inset: 0;
-
-      background: rgba(0, 0, 0, 0.55);
-
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(5px);
       z-index: 1000;
-
-      justify-content: center;
-
       align-items: center;
-
+      justify-content: center;
       padding: 20px;
-
     }
 
     .modal-content {
-
       background: white;
-
       width: 100%;
-
       max-width: 480px;
-
-      border-radius: 16px;
-
-      padding: 30px;
-
-      position: relative;
-
       max-height: 90vh;
-
       overflow-y: auto;
-
-    }
-
-    .modal-content h2 {
-
-      margin-bottom: 8px;
-
-      color: #111827;
-
-    }
-
-    .modal-description {
-
-      color: #6b7280;
-
-      margin-bottom: 22px;
-
-      font-size: 14px;
-
+      border-radius: 18px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
     }
 
     .close-button {
-
       position: absolute;
-
-      right: 18px;
-
       top: 15px;
-
-      background: none;
-
+      right: 18px;
       border: none;
-
-      font-size: 25px;
-
+      background: transparent;
+      font-size: 26px;
       color: #6b7280;
+    }
 
+    .close-button:hover {
+      color: #111827;
+    }
+
+    .modal-title {
+      margin-bottom: 20px;
+      font-size: 25px;
     }
 
     .form-group {
-
       margin-bottom: 16px;
-
     }
 
     .form-group label {
-
       display: block;
-
-      font-weight: 600;
-
       margin-bottom: 6px;
-
       font-size: 14px;
-
+      font-weight: bold;
     }
 
     .form-group input,
-
     .form-group textarea,
-
     .form-group select {
-
       width: 100%;
-
-      padding: 11px 12px;
-
       border: 1px solid #d1d5db;
-
       border-radius: 8px;
-
-      font-family: inherit;
-
-      font-size: 15px;
-
+      padding: 11px;
+      outline: none;
     }
 
     .form-group textarea {
-
       min-height: 100px;
-
       resize: vertical;
-
     }
 
     .form-group input:focus,
-
     .form-group textarea:focus,
-
     .form-group select:focus {
-
-      outline: none;
-
       border-color: #2563eb;
-
     }
 
-    .full-button {
-
+    .modal-button {
       width: 100%;
-
-      margin-top: 5px;
-
-    }
-
-    .switch-auth {
-
-      text-align: center;
-
-      margin-top: 18px;
-
-      color: #6b7280;
-
-      font-size: 14px;
-
-    }
-
-    .switch-auth button {
-
       border: none;
-
-      background: none;
-
-      color: #2563eb;
-
-      font-weight: 600;
-
-    }
-
-    .message {
-
-      margin-top: 14px;
-
-      padding: 10px;
-
+      background: #2563eb;
+      color: white;
+      padding: 12px;
       border-radius: 8px;
+      font-weight: bold;
+      margin-top: 8px;
+    }
 
-      display: none;
+    .modal-button:hover {
+      background: #1d4ed8;
+    }
 
+    .switch-text {
+      text-align: center;
+      margin-top: 15px;
+      color: #6b7280;
       font-size: 14px;
-
     }
 
-    .message.success {
-
-      display: block;
-
-      background: #ecfdf5;
-
-      color: #047857;
-
+    .switch-text button {
+      border: none;
+      background: none;
+      color: #2563eb;
+      font-weight: bold;
     }
 
-    .message.error {
-
-      display: block;
-
-      background: #fef2f2;
-
-      color: #b91c1c;
-
-    }
-
-    .profile-email,
-
-    .profile-role {
-
-      background: #f3f4f6;
-
+    .message-text {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 14px;
     }
 
     /* =========================
-
-       MOBILE
-
+       FREELANCER DETAIL MODAL
     ========================= */
 
-    @media (max-width: 800px) {
+    .freelancer-detail-content {
+      max-width: 700px;
+      padding: 0;
+      overflow: hidden;
+    }
 
-      .nav-links {
+    .detail-header {
+      background: linear-gradient(135deg, #eff6ff, #ffffff);
+      padding: 40px 35px 30px;
+      text-align: center;
+      position: relative;
+      border-bottom: 1px solid #e5e7eb;
+    }
 
-        display: none;
+    .detail-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      font-weight: bold;
+      margin: 0 auto 16px;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+    }
 
+    .detail-name {
+      font-size: 30px;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .detail-role {
+      color: #2563eb;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .detail-body {
+      padding: 30px 35px 35px;
+    }
+
+    .detail-section {
+      margin-bottom: 25px;
+    }
+
+    .detail-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .detail-section h4 {
+      font-size: 16px;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .detail-bio {
+      color: #6b7280;
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    .detail-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .detail-skill {
+      background: #eff6ff;
+      color: #2563eb;
+      padding: 7px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .detail-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .detail-message-button,
+    .detail-hire-button {
+      padding: 13px;
+      border-radius: 9px;
+      font-weight: bold;
+      border: none;
+    }
+
+    .detail-message-button {
+      background: #2563eb;
+      color: white;
+    }
+
+    .detail-message-button:hover {
+      background: #1d4ed8;
+    }
+
+    .detail-hire-button {
+      background: #111827;
+      color: white;
+    }
+
+    .detail-hire-button:hover {
+      background: #374151;
+    }
+
+    .detail-action-message {
+      margin-top: 15px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+      display: none;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+      .features,
+      .steps,
+      #freelancerList {
+        grid-template-columns: 1fr 1fr;
       }
 
       .hero h1 {
-
         font-size: 38px;
+      }
+    }
 
+    @media (max-width: 650px) {
+      nav {
+        padding: 14px 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 65px 5%;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 55px 5%;
       }
 
       .features,
-
       .steps,
-
-      .freelancer-grid {
-
+      #freelancerList {
         grid-template-columns: 1fr;
-
       }
 
-      .user-menu {
-
-        gap: 3px;
-
+      .detail-header {
+        padding: 35px 22px 25px;
       }
 
-      .user-name {
-
-        max-width: 100px;
-
-        overflow: hidden;
-
-        text-overflow: ellipsis;
-
-        white-space: nowrap;
-
+      .detail-body {
+        padding: 25px 22px 30px;
       }
 
+      .detail-name {
+        font-size: 25px;
+      }
+
+      .detail-actions {
+        grid-template-columns: 1fr;
+      }
     }
-
   </style>
-
 </head>
 
 <body>
 
   <!-- =========================
-
        NAVBAR
-
   ========================= -->
 
   <nav>
+    <div class="logo">BuildMate</div>
 
-    <div class="nav-container">
-
-      <div class="logo">
-
-        BuildMate
-
-      </div>
-
-      <div class="nav-links">
-
-        <a href="#features">
-
-          Features
-
-        </a>
-
-        <a href="#freelancers">
-
-          Freelancers
-
-        </a>
-
-        <a href="#how-it-works">
-
-          How It Works
-
-        </a>
-
-        <a href="#about">
-
-          About
-
-        </a>
-
-      </div>
-
-      <!-- LOGGED OUT -->
-
-      <div id="loggedOutMenu">
-
-        <button
-
-          class="nav-button"
-
-          id="loginBtn"
-
-        >
-
-          Log In
-
-        </button>
-
-        <button
-
-          class="primary-button"
-
-          id="signupBtn"
-
-        >
-
-          Get Started
-
-        </button>
-
-      </div>
-
-      <!-- LOGGED IN -->
-
-      <div
-
-        class="user-menu"
-
-        id="userMenu"
-
-      >
-
-        <span
-
-          class="user-name"
-
-          id="userName"
-
-        >
-
-          User
-
-        </span>
-
-        <button
-
-          class="nav-button"
-
-          id="profileBtn"
-
-        >
-
-          Profile
-
-        </button>
-
-        <button
-
-          class="nav-button"
-
-          id="logoutBtn"
-
-        >
-
-          Logout
-
-        </button>
-
-      </div>
-
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#freelancers">Freelancers</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#about">About</a>
     </div>
 
+    <div id="loggedOutMenu">
+      <button class="nav-button" onclick="openAuth('login')">
+        Log In
+      </button>
+
+      <button
+        class="nav-button"
+        onclick="openAuth('signup')"
+        style="margin-left: 6px;"
+      >
+        Get Started
+      </button>
+    </div>
+
+    <div
+      id="loggedInMenu"
+      class="user-menu"
+      style="display: none;"
+    >
+      <span id="navUserName" class="user-name"></span>
+
+      <button
+        class="logout-button"
+        onclick="openProfile()"
+      >
+        Profile
+      </button>
+
+      <button
+        class="logout-button"
+        onclick="logout()"
+      >
+        Logout
+      </button>
+    </div>
   </nav>
 
+
   <!-- =========================
-
        HERO
-
   ========================= -->
 
-  <div class="hero">
-
-    <h1>
-
-      Find the Right
-
-      <span>Freelancer</span>
-
-      for Your Project
-
-    </h1>
+  <section class="hero">
+    <h1>Find the Right Freelancer for Your Project</h1>
 
     <p>
-
-      BuildMate connects clients with talented freelancers
-
-      to help turn ideas into real projects.
-
+      BuildMate helps clients connect with talented freelancers
+      and turn ideas into real projects.
     </p>
 
     <div class="hero-buttons">
-
       <button
-
         class="primary-button"
-
-        id="heroStartBtn"
-
+        onclick="openAuth('signup')"
       >
-
         Get Started
-
       </button>
 
       <button
-
         class="secondary-button"
-
-        id="heroFreelancerBtn"
-
+        onclick="document.getElementById('freelancers').scrollIntoView({behavior:'smooth'})"
       >
-
         Explore Freelancers
-
       </button>
-
     </div>
+  </section>
 
-  </div>
 
   <!-- =========================
-
        FEATURES
-
   ========================= -->
 
   <section id="features">
 
-    <h2 class="section-title">
-
-      Why BuildMate?
-
-    </h2>
-
-    <p class="section-description">
-
-      A simple platform designed to make finding and working
-
-      with freelancers easier.
-
-    </p>
+    <div class="section-title">
+      <h2>Why BuildMate?</h2>
+      <p>Everything you need to start building your project.</p>
+    </div>
 
     <div class="features">
 
       <div class="feature-card">
+        <div class="feature-icon">👨‍💻</div>
 
-        <div class="icon">
-
-          🔎
-
-        </div>
-
-        <h3>
-
-          Find Talent
-
-        </h3>
+        <h3>Find Talent</h3>
 
         <p>
+          Discover freelancers with different skills
+          and experience.
+        </p>
+      </div>
 
-          Discover freelancers with skills that match
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
 
+        <h3>Easy Communication</h3>
+
+        <p>
+          Connect with freelancers and discuss
           your project requirements.
-
         </p>
-
       </div>
 
       <div class="feature-card">
+        <div class="feature-icon">🚀</div>
 
-        <div class="icon">
-
-          💬
-
-        </div>
-
-        <h3>
-
-          Easy Communication
-
-        </h3>
+        <h3>Build Projects</h3>
 
         <p>
-
-          Communicate clearly with freelancers about
-
-          your project and requirements.
-
+          Turn your ideas into real projects
+          with the right people.
         </p>
-
-      </div>
-
-      <div class="feature-card">
-
-        <div class="icon">
-
-          🚀
-
-        </div>
-
-        <h3>
-
-          Build Projects
-
-        </h3>
-
-        <p>
-
-          Turn your ideas into real projects with
-
-          talented people around the world.
-
-        </p>
-
       </div>
 
     </div>
 
   </section>
 
+
   <!-- =========================
-
-       FIND FREELANCERS
-
+       FREELANCERS
   ========================= -->
 
   <section id="freelancers">
 
-    <h2 class="section-title">
+    <div class="section-title">
+      <h2>Find Freelancers</h2>
 
-      Find Freelancers
-
-    </h2>
-
-    <p class="section-description">
-
-      Discover talented freelancers and find the right skills
-
-      for your project.
-
-    </p>
-
-    <div
-
-      id="freelancerList"
-
-      class="freelancer-grid"
-
-    >
-
-      <p
-
-        id="freelancerLoading"
-
-        class="loading-text"
-
-      >
-
-        Loading freelancers...
-
+      <p>
+        Explore freelancers registered on BuildMate.
       </p>
+    </div>
+
+    <div id="freelancerList">
+
+      <div class="empty-message">
+        Loading freelancers...
+      </div>
 
     </div>
 
   </section>
 
+
   <!-- =========================
-
        HOW IT WORKS
-
   ========================= -->
 
   <section id="how-it-works">
 
-    <h2 class="section-title">
+    <div class="section-title">
+      <h2>How It Works</h2>
 
-      How BuildMate Works
-
-    </h2>
-
-    <p class="section-description">
-
-      Start your journey in just a few simple steps.
-
-    </p>
+      <p>
+        Start your project in three simple steps.
+      </p>
+    </div>
 
     <div class="steps">
 
       <div class="step">
 
         <div class="step-number">
-
           1
-
         </div>
 
-        <h3>
-
-          Create Your Profile
-
-        </h3>
+        <h3>Create an Account</h3>
 
         <p>
-
-          Tell the BuildMate community about yourself,
-
-          your skills and what you can offer.
-
+          Sign up as a client or freelancer.
         </p>
 
       </div>
@@ -1335,23 +891,13 @@
       <div class="step">
 
         <div class="step-number">
-
           2
-
         </div>
 
-        <h3>
-
-          Find Opportunities
-
-        </h3>
+        <h3>Find the Right Person</h3>
 
         <p>
-
-          Find projects and people that match
-
-          your goals and skills.
-
+          Browse freelancer profiles and skills.
         </p>
 
       </div>
@@ -1359,23 +905,13 @@
       <div class="step">
 
         <div class="step-number">
-
           3
-
         </div>
 
-        <h3>
-
-          Build Together
-
-        </h3>
+        <h3>Build Your Project</h3>
 
         <p>
-
-          Work together and turn ideas into
-
-          successful projects.
-
+          Connect and start working together.
         </p>
 
       </div>
@@ -1384,284 +920,186 @@
 
   </section>
 
+
   <!-- =========================
-
        ABOUT
-
   ========================= -->
 
   <section id="about">
 
-    <h2 class="section-title">
+    <div class="section-title">
+      <h2>About BuildMate</h2>
+    </div>
 
-      About BuildMate
-
-    </h2>
-
-    <div class="about-box">
+    <div class="about">
 
       <p>
-
-        BuildMate is designed to make freelance collaboration
-
-        simpler. Whether you are looking for someone to help
-
-        with a project or you want to offer your skills,
-
-        BuildMate gives you a place to connect.
-
+        BuildMate is a platform designed to help clients
+        and freelancers connect, communicate, and build
+        meaningful projects together.
       </p>
 
     </div>
 
   </section>
 
+
   <!-- =========================
-
        CTA
-
   ========================= -->
 
-  <section>
+  <section class="cta">
 
-    <div class="cta">
+    <h2>Ready to Build Something?</h2>
 
-      <h2>
+    <p>
+      Join BuildMate and start your journey today.
+    </p>
 
-        Ready to Build Something?
-
-      </h2>
-
-      <p>
-
-        Create your BuildMate account and start building
-
-        your profile.
-
-      </p>
-
-      <button
-
-        class="primary-button"
-
-        id="ctaSignupBtn"
-
-      >
-
-        Create Account
-
-      </button>
-
-    </div>
+    <button
+      class="primary-button"
+      onclick="openAuth('signup')"
+    >
+      Create Account
+    </button>
 
   </section>
 
+
   <!-- =========================
-
        FOOTER
-
   ========================= -->
 
   <footer>
-
-    <p>
-
-      © 2026 BuildMate. All rights reserved.
-
-    </p>
-
+    © 2026 BuildMate. All rights reserved.
   </footer>
 
+
   <!-- =========================
-
        AUTH MODAL
-
   ========================= -->
 
   <div
-
-    class="modal"
-
     id="authModal"
-
+    class="modal"
   >
 
     <div class="modal-content">
 
       <button
-
         class="close-button"
-
-        id="closeAuthBtn"
-
+        onclick="closeAuth()"
       >
-
         ×
-
       </button>
 
-      <h2 id="authTitle">
-
+      <h2
+        id="authTitle"
+        class="modal-title"
+      >
         Log In
-
       </h2>
 
-      <p
 
-        class="modal-description"
-
-        id="authDescription"
-
+      <div
+        id="signupFields"
+        style="display: none;"
       >
 
-        Log in to your BuildMate account.
+        <div class="form-group">
 
-      </p>
-
-      <form id="authForm">
-
-        <div
-
-          class="form-group"
-
-          id="nameGroup"
-
-          style="display:none;"
-
-        >
-
-          <label for="name">
-
+          <label>
             Name
-
           </label>
 
           <input
-
+            id="signupName"
             type="text"
-
-            id="name"
-
             placeholder="Your name"
-
           >
 
         </div>
 
-        <div
 
-          class="form-group"
+        <div class="form-group">
 
-          id="roleGroup"
-
-          style="display:none;"
-
-        >
-
-          <label for="role">
-
-            Role
-
+          <label>
+            Account Type
           </label>
 
-          <select id="role">
+          <select id="signupRole">
 
             <option value="client">
-
               Client
-
             </option>
 
             <option value="freelancer">
-
               Freelancer
-
             </option>
 
           </select>
 
         </div>
 
-        <div class="form-group">
+      </div>
 
-          <label for="email">
 
-            Email
+      <div class="form-group">
 
-          </label>
+        <label>
+          Email
+        </label>
 
-          <input
-
-            type="email"
-
-            id="email"
-
-            placeholder="you@example.com"
-
-            required
-
-          >
-
-        </div>
-
-        <div class="form-group">
-
-          <label for="password">
-
-            Password
-
-          </label>
-
-          <input
-
-            type="password"
-
-            id="password"
-
-            placeholder="Your password"
-
-            required
-
-          >
-
-        </div>
-
-        <button
-
-          type="submit"
-
-          class="primary-button full-button"
-
-          id="authSubmitBtn"
-
+        <input
+          id="authEmail"
+          type="email"
+          placeholder="you@example.com"
         >
 
-          Log In
+      </div>
 
-        </button>
 
-      </form>
+      <div class="form-group">
+
+        <label>
+          Password
+        </label>
+
+        <input
+          id="authPassword"
+          type="password"
+          placeholder="Password"
+        >
+
+      </div>
+
+
+      <button
+        id="authSubmitButton"
+        class="modal-button"
+        onclick="submitAuth()"
+      >
+        Log In
+      </button>
+
 
       <div
-
-        class="message"
-
         id="authMessage"
-
+        class="message-text"
       ></div>
 
-      <div class="switch-auth">
+
+      <div class="switch-text">
 
         <span id="switchText">
-
           Don't have an account?
-
         </span>
 
-        <button id="switchAuthBtn">
-
-          Get Started
-
+        <button
+          id="switchButton"
+          onclick="toggleAuthMode()"
+        >
+          Sign Up
         </button>
 
       </div>
@@ -1670,1698 +1108,1213 @@
 
   </div>
 
+
   <!-- =========================
-
        PROFILE MODAL
-
   ========================= -->
 
   <div
-
-    class="modal"
-
     id="profileModal"
-
+    class="modal"
   >
 
     <div class="modal-content">
 
       <button
-
         class="close-button"
-
-        id="closeProfileBtn"
-
+        onclick="closeProfile()"
       >
-
         ×
-
       </button>
 
-      <h2>
-
+      <h2 class="modal-title">
         My Profile
-
       </h2>
 
-      <p class="modal-description">
-
-        Update your BuildMate profile.
-
-      </p>
 
       <div class="form-group">
 
-        <label for="profileName">
-
+        <label>
           Name
-
         </label>
 
         <input
-
-          type="text"
-
           id="profileName"
-
-          placeholder="Your name"
-
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label for="profileEmail">
-
-          Email
-
-        </label>
-
-        <input
-
-          type="email"
-
-          id="profileEmail"
-
-          class="profile-email"
-
-          readonly
-
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label for="profileRole">
-
-          Role
-
-        </label>
-
-        <input
-
           type="text"
-
-          id="profileRole"
-
-          class="profile-role"
-
-          readonly
-
         >
 
       </div>
 
+
       <div class="form-group">
 
-        <label for="profileBio">
+        <label>
+          Email
+        </label>
 
+        <input
+          id="profileEmail"
+          type="email"
+          readonly
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Role
+        </label>
+
+        <input
+          id="profileRole"
+          type="text"
+          readonly
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
           Bio
-
         </label>
 
         <textarea
-
           id="profileBio"
-
           placeholder="Tell people about yourself..."
-
         ></textarea>
 
       </div>
+
 
       <div class="form-group">
 
-        <label for="profileSkills">
-
+        <label>
           Skills
-
         </label>
 
-        <textarea
-
+        <input
           id="profileSkills"
-
-          placeholder="Example: Web Design, HTML, CSS, JavaScript"
-
-        ></textarea>
+          type="text"
+          placeholder="Example: Web Design, HTML, CSS"
+        >
 
       </div>
+
 
       <button
-
-        class="primary-button full-button"
-
-        id="saveProfileBtn"
-
+        class="modal-button"
+        onclick="saveProfile()"
       >
-
         Save Profile
-
       </button>
 
+
       <div
-
-        class="message"
-
         id="profileMessage"
-
+        class="message-text"
       ></div>
 
     </div>
 
   </div>
 
+
   <!-- =========================
+       FREELANCER DETAIL MODAL
+  ========================= -->
 
+  <div
+    id="freelancerDetailModal"
+    class="modal"
+  >
+
+    <div class="modal-content freelancer-detail-content">
+
+      <div class="detail-header">
+
+        <button
+          class="close-button"
+          onclick="closeFreelancerProfile()"
+        >
+          ×
+        </button>
+
+        <div
+          id="detailAvatar"
+          class="detail-avatar"
+        >
+          ?
+        </div>
+
+        <h2
+          id="detailName"
+          class="detail-name"
+        >
+          Freelancer
+        </h2>
+
+        <div
+          id="detailRole"
+          class="detail-role"
+        >
+          Freelancer
+        </div>
+
+      </div>
+
+
+      <div class="detail-body">
+
+        <div class="detail-section">
+
+          <h4>
+            About
+          </h4>
+
+          <div
+            id="detailBio"
+            class="detail-bio"
+          >
+            No bio added yet.
+          </div>
+
+        </div>
+
+
+        <div class="detail-section">
+
+          <h4>
+            Skills
+          </h4>
+
+          <div
+            id="detailSkills"
+            class="detail-skills"
+          >
+          </div>
+
+        </div>
+
+
+        <div class="detail-actions">
+
+          <button
+            class="detail-message-button"
+            onclick="handleFreelancerMessage()"
+          >
+            💬 Message
+          </button>
+
+          <button
+            class="detail-hire-button"
+            onclick="handleFreelancerHire()"
+          >
+            🤝 Hire
+          </button>
+
+        </div>
+
+
+        <div
+          id="detailActionMessage"
+          class="detail-action-message"
+        ></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
        SUPABASE
-
   ========================= -->
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script src="supabase.js"></script>
 
-  <!-- =========================
-
-       APP SCRIPT
-
-  ========================= -->
 
   <script>
 
+    /* =========================
+       GLOBAL VARIABLES
+    ========================= */
+
     let currentUser = null;
+    let currentAuthMode = "login";
+    let selectedFreelancer = null;
+
 
     /* =========================
-
-       ELEMENTS
-
+       ESCAPE HTML
     ========================= */
-
-    const loggedOutMenu =
-
-      document.getElementById("loggedOutMenu");
-
-    const userMenu =
-
-      document.getElementById("userMenu");
-
-    const userName =
-
-      document.getElementById("userName");
-
-    const loginBtn =
-
-      document.getElementById("loginBtn");
-
-    const signupBtn =
-
-      document.getElementById("signupBtn");
-
-    const profileBtn =
-
-      document.getElementById("profileBtn");
-
-    const logoutBtn =
-
-      document.getElementById("logoutBtn");
-
-    const authModal =
-
-      document.getElementById("authModal");
-
-    const closeAuthBtn =
-
-      document.getElementById("closeAuthBtn");
-
-    const authForm =
-
-      document.getElementById("authForm");
-
-    const authTitle =
-
-      document.getElementById("authTitle");
-
-    const authDescription =
-
-      document.getElementById("authDescription");
-
-    const authSubmitBtn =
-
-      document.getElementById("authSubmitBtn");
-
-    const switchAuthBtn =
-
-      document.getElementById("switchAuthBtn");
-
-    const switchText =
-
-      document.getElementById("switchText");
-
-    const nameGroup =
-
-      document.getElementById("nameGroup");
-
-    const roleGroup =
-
-      document.getElementById("roleGroup");
-
-    const nameInput =
-
-      document.getElementById("name");
-
-    const roleInput =
-
-      document.getElementById("role");
-
-    const emailInput =
-
-      document.getElementById("email");
-
-    const passwordInput =
-
-      document.getElementById("password");
-
-    const authMessage =
-
-      document.getElementById("authMessage");
-
-    const profileModal =
-
-      document.getElementById("profileModal");
-
-    const closeProfileBtn =
-
-      document.getElementById("closeProfileBtn");
-
-    const profileName =
-
-      document.getElementById("profileName");
-
-    const profileEmail =
-
-      document.getElementById("profileEmail");
-
-    const profileRole =
-
-      document.getElementById("profileRole");
-
-    const profileBio =
-
-      document.getElementById("profileBio");
-
-    const profileSkills =
-
-      document.getElementById("profileSkills");
-
-    const saveProfileBtn =
-
-      document.getElementById("saveProfileBtn");
-
-    const profileMessage =
-
-      document.getElementById("profileMessage");
-
-    const freelancerList =
-
-      document.getElementById("freelancerList");
-
-    let authMode = "login";
-
-    /* =========================
-
-       UI
-
-    ========================= */
-
-    function showLoggedOut() {
-
-      loggedOutMenu.style.display = "block";
-
-      userMenu.style.display = "none";
-
-      currentUser = null;
-
-    }
-
-    function showLoggedIn(user) {
-
-      loggedOutMenu.style.display = "none";
-
-      userMenu.style.display = "flex";
-
-      currentUser = user;
-
-      const fallbackName =
-
-        user.email
-
-          ? user.email.split("@")[0]
-
-          : "User";
-
-      userName.textContent =
-
-        user.user_metadata?.name ||
-
-        fallbackName;
-
-    }
-
-    /* =========================
-
-       AUTH MODAL
-
-    ========================= */
-
-    function openLogin() {
-
-      authMode = "login";
-
-      authTitle.textContent =
-
-        "Log In";
-
-      authDescription.textContent =
-
-        "Log in to your BuildMate account.";
-
-      authSubmitBtn.textContent =
-
-        "Log In";
-
-      switchText.textContent =
-
-        "Don't have an account?";
-
-      switchAuthBtn.textContent =
-
-        "Get Started";
-
-      nameGroup.style.display =
-
-        "none";
-
-      roleGroup.style.display =
-
-        "none";
-
-      clearAuthMessage();
-
-      authModal.style.display =
-
-        "flex";
-
-    }
-
-    function openSignup() {
-
-      authMode = "signup";
-
-      authTitle.textContent =
-
-        "Create Your Account";
-
-      authDescription.textContent =
-
-        "Create a BuildMate account.";
-
-      authSubmitBtn.textContent =
-
-        "Create Account";
-
-      switchText.textContent =
-
-        "Already have an account?";
-
-      switchAuthBtn.textContent =
-
-        "Log In";
-
-      nameGroup.style.display =
-
-        "block";
-
-      roleGroup.style.display =
-
-        "block";
-
-      clearAuthMessage();
-
-      authModal.style.display =
-
-        "flex";
-
-    }
-
-    function closeAuth() {
-
-      authModal.style.display =
-
-        "none";
-
-      authForm.reset();
-
-      clearAuthMessage();
-
-    }
-
-    function clearAuthMessage() {
-
-      authMessage.textContent = "";
-
-      authMessage.className =
-
-        "message";
-
-    }
-
-    function showAuthMessage(
-
-      message,
-
-      type
-
-    ) {
-
-      authMessage.textContent =
-
-        message;
-
-      authMessage.className =
-
-        "message " + type;
-
-    }
-
-    /* =========================
-
-       LOGIN / SIGNUP
-
-    ========================= */
-
-    authForm.addEventListener(
-
-      "submit",
-
-      async function(event) {
-
-        event.preventDefault();
-
-        clearAuthMessage();
-
-        const email =
-
-          emailInput.value.trim();
-
-        const password =
-
-          passwordInput.value;
-
-        if (!email || !password) {
-
-          showAuthMessage(
-
-            "Please enter your email and password.",
-
-            "error"
-
-          );
-
-          return;
-
-        }
-
-        authSubmitBtn.disabled =
-
-          true;
-
-        try {
-
-          if (authMode === "signup") {
-
-            const name =
-
-              nameInput.value.trim();
-
-            const role =
-
-              roleInput.value;
-
-            if (!name) {
-
-              showAuthMessage(
-
-                "Please enter your name.",
-
-                "error"
-
-              );
-
-              authSubmitBtn.disabled =
-
-                false;
-
-              return;
-
-            }
-
-            const {
-
-              data,
-
-              error
-
-            } =
-
-              await supabaseClient.auth.signUp({
-
-                email: email,
-
-                password: password,
-
-                options: {
-
-                  data: {
-
-                    name: name,
-
-                    role: role
-
-                  }
-
-                }
-
-              });
-
-            if (error) {
-
-              throw error;
-
-            }
-
-            if (!data.session) {
-
-              showAuthMessage(
-
-                "Account created. Please check your email to confirm your account, then log in.",
-
-                "success"
-
-              );
-
-            } else {
-
-              showAuthMessage(
-
-                "Account created successfully!",
-
-                "success"
-
-              );
-
-              setTimeout(
-
-                closeAuth,
-
-                1000
-
-              );
-
-            }
-
-          } else {
-
-            const {
-
-              data,
-
-              error
-
-            } =
-
-              await supabaseClient.auth.signInWithPassword({
-
-                email: email,
-
-                password: password
-
-              });
-
-            if (error) {
-
-              throw error;
-
-            }
-
-            showAuthMessage(
-
-              "Login successful!",
-
-              "success"
-
-            );
-
-            setTimeout(
-
-              closeAuth,
-
-              700
-
-            );
-
-          }
-
-        } catch (error) {
-
-          console.error(error);
-
-          showAuthMessage(
-
-            error.message ||
-
-            "Something went wrong.",
-
-            "error"
-
-          );
-
-        } finally {
-
-          authSubmitBtn.disabled =
-
-            false;
-
-        }
-
-      }
-
-    );
-
-    /* =========================
-
-       PROFILE
-
-    ========================= */
-
-    async function openProfile() {
-
-      profileMessage.textContent =
-
-        "";
-
-      profileMessage.className =
-
-        "message";
-
-      profileModal.style.display =
-
-        "flex";
-
-      try {
-
-        const {
-
-          data: {
-
-            user
-
-          },
-
-          error: userError
-
-        } =
-
-          await supabaseClient.auth.getUser();
-
-        if (userError) {
-
-          throw userError;
-
-        }
-
-        if (!user) {
-
-          profileModal.style.display =
-
-            "none";
-
-          openLogin();
-
-          return;
-
-        }
-
-        currentUser =
-
-          user;
-
-        profileEmail.value =
-
-          user.email || "";
-
-        const {
-
-          data,
-
-          error
-
-        } =
-
-          await supabaseClient
-
-            .from("profiles")
-
-            .select(
-
-              "name, role, bio, skills"
-
-            )
-
-            .eq(
-
-              "id",
-
-              user.id
-
-            )
-
-            .maybeSingle();
-
-        if (error) {
-
-          throw error;
-
-        }
-
-        if (data) {
-
-          profileName.value =
-
-            data.name || "";
-
-          profileRole.value =
-
-            data.role || "";
-
-          profileBio.value =
-
-            data.bio || "";
-
-          profileSkills.value =
-
-            data.skills || "";
-
-          userName.textContent =
-
-            data.name ||
-
-            user.user_metadata?.name ||
-
-            user.email.split("@")[0];
-
-        } else {
-
-          profileName.value =
-
-            user.user_metadata?.name || "";
-
-          profileRole.value =
-
-            user.user_metadata?.role || "";
-
-          profileBio.value =
-
-            "";
-
-          profileSkills.value =
-
-            "";
-
-        }
-
-      } catch (error) {
-
-        console.error(error);
-
-        showProfileMessage(
-
-          "Could not load your profile: " +
-
-          error.message,
-
-          "error"
-
-        );
-
-      }
-
-    }
-
-    async function saveProfile() {
-
-      if (!currentUser) {
-
-        showProfileMessage(
-
-          "Please log in first.",
-
-          "error"
-
-        );
-
-        return;
-
-      }
-
-      const name =
-
-        profileName.value.trim();
-
-      const bio =
-
-        profileBio.value.trim();
-
-      const skills =
-
-        profileSkills.value.trim();
-
-      if (!name) {
-
-        showProfileMessage(
-
-          "Name cannot be empty.",
-
-          "error"
-
-        );
-
-        return;
-
-      }
-
-      saveProfileBtn.disabled =
-
-        true;
-
-      saveProfileBtn.textContent =
-
-        "Saving...";
-
-      try {
-
-        const {
-
-          error
-
-        } =
-
-          await supabaseClient
-
-            .from("profiles")
-
-            .update({
-
-              name: name,
-
-              bio: bio,
-
-              skills: skills
-
-            })
-
-            .eq(
-
-              "id",
-
-              currentUser.id
-
-            );
-
-        if (error) {
-
-          throw error;
-
-        }
-
-        userName.textContent =
-
-          name;
-
-        showProfileMessage(
-
-          "Profile saved successfully!",
-
-          "success"
-
-        );
-
-        /*
-
-          Refresh freelancer list
-
-          so updated profile information
-
-          appears immediately.
-
-        */
-
-        loadFreelancers();
-
-      } catch (error) {
-
-        console.error(error);
-
-        showProfileMessage(
-
-          "Could not save profile: " +
-
-          error.message,
-
-          "error"
-
-        );
-
-      } finally {
-
-        saveProfileBtn.disabled =
-
-          false;
-
-        saveProfileBtn.textContent =
-
-          "Save Profile";
-
-      }
-
-    }
-
-    function showProfileMessage(
-
-      message,
-
-      type
-
-    ) {
-
-      profileMessage.textContent =
-
-        message;
-
-      profileMessage.className =
-
-        "message " + type;
-
-    }
-
-    /* =========================
-
-       FIND FREELANCERS
-
-    ========================= */
-
-    async function loadFreelancers() {
-
-      freelancerList.innerHTML = `
-
-        <p class="loading-text">
-
-          Loading freelancers...
-
-        </p>
-
-      `;
-
-      try {
-
-        const {
-
-          data,
-
-          error
-
-        } =
-
-          await supabaseClient
-
-            .from("profiles")
-
-            .select(
-
-              "id, name, role, bio, skills"
-
-            )
-
-            .eq(
-
-              "role",
-
-              "freelancer"
-
-            )
-
-            .order(
-
-              "name",
-
-              {
-
-                ascending: true
-
-              }
-
-            );
-
-        if (error) {
-
-          throw error;
-
-        }
-
-        if (!data || data.length === 0) {
-
-          freelancerList.innerHTML = `
-
-            <p class="empty-text">
-
-              No freelancers found yet.
-
-            </p>
-
-          `;
-
-          return;
-
-        }
-
-        freelancerList.innerHTML = "";
-
-        data.forEach(
-
-          function(profile) {
-
-            const card =
-
-              document.createElement("div");
-
-            card.className =
-
-              "freelancer-card";
-
-            const name =
-
-              profile.name ||
-
-              "Unnamed Freelancer";
-
-            const firstLetter =
-
-              name
-
-                .charAt(0)
-
-                .toUpperCase();
-
-            const bio =
-
-              profile.bio ||
-
-              "This freelancer has not added a bio yet.";
-
-            const skillsText =
-
-              profile.skills ||
-
-              "";
-
-            const skills =
-
-              skillsText
-
-                .split(",")
-
-                .map(
-
-                  skill => skill.trim()
-
-                )
-
-                .filter(
-
-                  skill => skill.length > 0
-
-                );
-
-            let skillsHTML = "";
-
-            if (skills.length > 0) {
-
-              skillsHTML =
-
-                skills
-
-                  .map(
-
-                    skill =>
-
-                      `<span class="skill-tag">${escapeHTML(skill)}</span>`
-
-                  )
-
-                  .join("");
-
-            } else {
-
-              skillsHTML = `
-
-                <span class="skill-tag">
-
-                  No skills added
-
-                </span>
-
-              `;
-
-            }
-
-            card.innerHTML = `
-
-              <div class="freelancer-avatar">
-
-                ${escapeHTML(firstLetter)}
-
-              </div>
-
-              <h3>
-
-                ${escapeHTML(name)}
-
-              </h3>
-
-              <div class="freelancer-role">
-
-                Freelancer
-
-              </div>
-
-              <p class="freelancer-bio">
-
-                ${escapeHTML(bio)}
-
-              </p>
-
-              <div class="skills-list">
-
-                ${skillsHTML}
-
-              </div>
-
-              <button
-
-                class="view-profile-button"
-
-                data-id="${escapeHTML(profile.id)}"
-
-              >
-
-                View Profile
-
-              </button>
-
-            `;
-
-            freelancerList.appendChild(
-
-              card
-
-            );
-
-          }
-
-        );
-
-        document
-
-          .querySelectorAll(".view-profile-button")
-
-          .forEach(
-
-            function(button) {
-
-              button.addEventListener(
-
-                "click",
-
-                function() {
-
-                  const id =
-
-                    button.dataset.id;
-
-                  showFreelancerProfile(
-
-                    id,
-
-                    data
-
-                  );
-
-                }
-
-              );
-
-            }
-
-          );
-
-      } catch (error) {
-
-        console.error(error);
-
-        freelancerList.innerHTML = `
-
-          <p class="empty-text">
-
-            Could not load freelancers.
-
-            Please try again later.
-
-          </p>
-
-        `;
-
-      }
-
-    }
-
-    /*
-
-      Small security helper:
-
-      prevents profile text from being
-
-      interpreted as HTML.
-
-    */
 
     function escapeHTML(value) {
 
+      if (value === null || value === undefined) {
+        return "";
+      }
+
       return String(value)
-
-        .replace(
-
-          /&/g,
-
-          "&amp;"
-
-        )
-
-        .replace(
-
-          /</g,
-
-          "&lt;"
-
-        )
-
-        .replace(
-
-          />/g,
-
-          "&gt;"
-
-        )
-
-        .replace(
-
-          /"/g,
-
-          "&quot;"
-
-        )
-
-        .replace(
-
-          /'/g,
-
-          "&#039;"
-
-        );
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
     }
 
-    function showFreelancerProfile(
-
-      id,
-
-      profiles
-
-    ) {
-
-      const profile =
-
-        profiles.find(
-
-          item => item.id === id
-
-        );
-
-      if (!profile) {
-
-        return;
-
-      }
-
-      const skills =
-
-        profile.skills ||
-
-        "No skills added yet.";
-
-      alert(
-
-        "Name: " +
-
-        (profile.name || "Unnamed") +
-
-        "\n\n" +
-
-        "Role: Freelancer" +
-
-        "\n\n" +
-
-        "Bio: " +
-
-        (profile.bio || "No bio added yet.") +
-
-        "\n\n" +
-
-        "Skills: " +
-
-        skills
-
-      );
-
-    }
 
     /* =========================
-
-       LOGOUT
-
+       AUTH MODAL
     ========================= */
 
-    async function logout() {
+    function openAuth(mode) {
 
-      const {
+      currentAuthMode = mode;
 
-        error
+      document.getElementById("authModal").style.display = "flex";
 
-      } =
+      document.getElementById("authMessage").textContent = "";
 
-        await supabaseClient.auth.signOut();
+      if (mode === "signup") {
 
-      if (error) {
+        document.getElementById("authTitle").textContent =
+          "Create Account";
 
-        alert(
+        document.getElementById("signupFields").style.display =
+          "block";
 
-          "Logout failed: " +
+        document.getElementById("authSubmitButton").textContent =
+          "Sign Up";
 
-          error.message
+        document.getElementById("switchText").textContent =
+          "Already have an account?";
 
-        );
+        document.getElementById("switchButton").textContent =
+          "Log In";
 
-        return;
+      } else {
 
-      }
+        document.getElementById("authTitle").textContent =
+          "Log In";
 
-      showLoggedOut();
-
-    }
-
-    /* =========================
-
-       EVENTS
-
-    ========================= */
-
-    loginBtn.addEventListener(
-
-      "click",
-
-      openLogin
-
-    );
-
-    signupBtn.addEventListener(
-
-      "click",
-
-      openSignup
-
-    );
-
-    profileBtn.addEventListener(
-
-      "click",
-
-      openProfile
-
-    );
-
-    logoutBtn.addEventListener(
-
-      "click",
-
-      logout
-
-    );
-
-    document
-
-      .getElementById("heroStartBtn")
-
-      .addEventListener(
-
-        "click",
-
-        openSignup
-
-      );
-
-    document
-
-      .getElementById("ctaSignupBtn")
-
-      .addEventListener(
-
-        "click",
-
-        openSignup
-
-      );
-
-    document
-
-      .getElementById("heroFreelancerBtn")
-
-      .addEventListener(
-
-        "click",
-
-        function() {
-
-          document
-
-            .getElementById("freelancers")
-
-            .scrollIntoView({
-
-              behavior: "smooth"
-
-            });
-
-        }
-
-      );
-
-    switchAuthBtn.addEventListener(
-
-      "click",
-
-      function() {
-
-        if (authMode === "login") {
-
-          openSignup();
-
-        } else {
-
-          openLogin();
-
-        }
-
-      }
-
-    );
-
-    closeAuthBtn.addEventListener(
-
-      "click",
-
-      closeAuth
-
-    );
-
-    closeProfileBtn.addEventListener(
-
-      "click",
-
-      function() {
-
-        profileModal.style.display =
-
+        document.getElementById("signupFields").style.display =
           "none";
 
+        document.getElementById("authSubmitButton").textContent =
+          "Log In";
+
+        document.getElementById("switchText").textContent =
+          "Don't have an account?";
+
+        document.getElementById("switchButton").textContent =
+          "Sign Up";
+
       }
 
-    );
+    }
 
-    saveProfileBtn.addEventListener(
 
-      "click",
+    function closeAuth() {
 
-      saveProfile
+      document.getElementById("authModal").style.display =
+        "none";
 
-    );
+    }
 
-    window.addEventListener(
 
-      "click",
+    function toggleAuthMode() {
 
-      function(event) {
+      if (currentAuthMode === "login") {
 
-        if (
+        openAuth("signup");
 
-          event.target ===
+      } else {
 
-          authModal
+        openAuth("login");
 
-        ) {
+      }
+
+    }
+
+
+    /* =========================
+       SUBMIT AUTH
+    ========================= */
+
+    async function submitAuth() {
+
+      const email =
+        document.getElementById("authEmail").value.trim();
+
+      const password =
+        document.getElementById("authPassword").value;
+
+      const message =
+        document.getElementById("authMessage");
+
+
+      message.textContent = "";
+
+
+      if (!email || !password) {
+
+        message.textContent =
+          "Please enter your email and password.";
+
+        return;
+
+      }
+
+
+      if (currentAuthMode === "signup") {
+
+        const name =
+          document.getElementById("signupName").value.trim();
+
+        const role =
+          document.getElementById("signupRole").value;
+
+
+        if (!name) {
+
+          message.textContent =
+            "Please enter your name.";
+
+          return;
+
+        }
+
+
+        const {
+          data,
+          error
+        } = await supabaseClient.auth.signUp({
+
+          email: email,
+
+          password: password,
+
+          options: {
+
+            data: {
+              name: name,
+              role: role
+            }
+
+          }
+
+        });
+
+
+        if (error) {
+
+          message.textContent =
+            error.message;
+
+          return;
+
+        }
+
+
+        if (data.user) {
+
+          message.textContent =
+            "Account created successfully. Please check your email if confirmation is required.";
+
+        }
+
+      } else {
+
+        const {
+          data,
+          error
+        } = await supabaseClient.auth.signInWithPassword({
+
+          email: email,
+
+          password: password
+
+        });
+
+
+        if (error) {
+
+          message.textContent =
+            error.message;
+
+          return;
+
+        }
+
+
+        if (data.user) {
 
           closeAuth();
 
-        }
-
-        if (
-
-          event.target ===
-
-          profileModal
-
-        ) {
-
-          profileModal.style.display =
-
-            "none";
+          await checkUser();
 
         }
 
       }
 
-    );
+    }
+
 
     /* =========================
-
-       CHECK CURRENT SESSION
-
+       CHECK USER
     ========================= */
 
     async function checkUser() {
 
       const {
-
         data,
-
         error
+      } = await supabaseClient.auth.getSession();
 
-      } =
-
-        await supabaseClient.auth.getSession();
 
       if (error) {
 
         console.error(error);
 
-        showLoggedOut();
-
         return;
 
       }
 
-      if (data.session) {
 
-        showLoggedIn(
+      currentUser =
+        data.session
+          ? data.session.user
+          : null;
 
-          data.session.user
 
-        );
+      updateNavigation();
+
+    }
+
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    function updateNavigation() {
+
+      const loggedOutMenu =
+        document.getElementById("loggedOutMenu");
+
+      const loggedInMenu =
+        document.getElementById("loggedInMenu");
+
+      const navUserName =
+        document.getElementById("navUserName");
+
+
+      if (currentUser) {
+
+        loggedOutMenu.style.display =
+          "none";
+
+        loggedInMenu.style.display =
+          "flex";
+
+
+        const name =
+          currentUser.user_metadata?.name ||
+          currentUser.email ||
+          "User";
+
+
+        navUserName.textContent =
+          name;
 
       } else {
 
-        showLoggedOut();
+        loggedOutMenu.style.display =
+          "block";
+
+        loggedInMenu.style.display =
+          "none";
 
       }
 
     }
 
+
     /* =========================
-
-       AUTH STATE CHANGE
-
+       LOGOUT
     ========================= */
 
-    supabaseClient.auth.onAuthStateChange(
+    async function logout() {
 
-      function(
+      await supabaseClient.auth.signOut();
 
-        event,
+      currentUser = null;
 
-        session
+      updateNavigation();
 
-      ) {
+    }
 
-        if (session) {
 
-          showLoggedIn(
+    /* =========================
+       LOAD FREELANCERS
+    ========================= */
 
-            session.user
+    async function loadFreelancers() {
 
+      const container =
+        document.getElementById("freelancerList");
+
+
+      container.innerHTML =
+        '<div class="empty-message">Loading freelancers...</div>';
+
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+
+        .from("profiles")
+
+        .select(
+          "id, name, role, bio, skills"
+        )
+
+        .eq(
+          "role",
+          "freelancer"
+        )
+
+        .order(
+          "name",
+          {
+            ascending: true
+          }
+        );
+
+
+      if (error) {
+
+        console.error(error);
+
+        container.innerHTML =
+          '<div class="empty-message">Could not load freelancers. Please try again later.</div>';
+
+        return;
+
+      }
+
+
+      if (!data || data.length === 0) {
+
+        container.innerHTML =
+          '<div class="empty-message">No freelancers found yet.</div>';
+
+        return;
+
+      }
+
+
+      container.innerHTML = "";
+
+
+      data.forEach(profile => {
+
+        const card =
+          document.createElement("div");
+
+        card.className =
+          "freelancer-card";
+
+
+        const name =
+          profile.name ||
+          "Unnamed Freelancer";
+
+
+        const initial =
+          name.charAt(0).toUpperCase();
+
+
+        const bio =
+          profile.bio ||
+          "No bio added yet.";
+
+
+        let skillsHTML =
+          "";
+
+
+        if (profile.skills) {
+
+          const skills =
+            profile.skills
+              .split(",")
+              .map(skill => skill.trim())
+              .filter(skill => skill);
+
+
+          skillsHTML =
+            skills.map(skill => {
+
+              return `
+                <span class="skill-tag">
+                  ${escapeHTML(skill)}
+                </span>
+              `;
+
+            }).join("");
+
+        }
+
+
+        if (!skillsHTML) {
+
+          skillsHTML =
+            '<span class="skill-tag">No skills added</span>';
+
+        }
+
+
+        card.innerHTML = `
+
+          <div class="freelancer-avatar">
+            ${escapeHTML(initial)}
+          </div>
+
+          <h3>
+            ${escapeHTML(name)}
+          </h3>
+
+          <div class="freelancer-role">
+            Freelancer
+          </div>
+
+          <div class="freelancer-bio">
+            ${escapeHTML(bio)}
+          </div>
+
+          <div class="skills">
+            ${skillsHTML}
+          </div>
+
+          <button
+            class="view-profile-button"
+          >
+            View Profile
+          </button>
+
+        `;
+
+
+        const button =
+          card.querySelector(
+            ".view-profile-button"
           );
 
-        } else {
 
-          showLoggedOut();
+        button.addEventListener(
+          "click",
+          function() {
+
+            showFreelancerProfile(
+              profile
+            );
+
+          }
+        );
+
+
+        container.appendChild(card);
+
+      });
+
+    }
+
+
+    /* =========================
+       FREELANCER DETAIL
+    ========================= */
+
+    function showFreelancerProfile(profile) {
+
+      if (!profile) {
+        return;
+      }
+
+
+      selectedFreelancer =
+        profile;
+
+
+      const name =
+        profile.name ||
+        "Unnamed Freelancer";
+
+
+      const initial =
+        name.charAt(0).toUpperCase();
+
+
+      document.getElementById(
+        "detailAvatar"
+      ).textContent =
+        initial;
+
+
+      document.getElementById(
+        "detailName"
+      ).textContent =
+        name;
+
+
+      document.getElementById(
+        "detailRole"
+      ).textContent =
+        "Freelancer";
+
+
+      document.getElementById(
+        "detailBio"
+      ).textContent =
+        profile.bio ||
+        "No bio added yet.";
+
+
+      const skillsContainer =
+        document.getElementById(
+          "detailSkills"
+        );
+
+
+      skillsContainer.innerHTML =
+        "";
+
+
+      if (profile.skills) {
+
+        const skills =
+          profile.skills
+            .split(",")
+            .map(skill => skill.trim())
+            .filter(skill => skill);
+
+
+        skills.forEach(skill => {
+
+          const tag =
+            document.createElement("span");
+
+          tag.className =
+            "detail-skill";
+
+          tag.textContent =
+            skill;
+
+          skillsContainer.appendChild(tag);
+
+        });
+
+      }
+
+
+      if (
+        skillsContainer.children.length === 0
+      ) {
+
+        const tag =
+          document.createElement("span");
+
+        tag.className =
+          "detail-skill";
+
+        tag.textContent =
+          "No skills added yet";
+
+        skillsContainer.appendChild(tag);
+
+      }
+
+
+      document.getElementById(
+        "detailActionMessage"
+      ).style.display =
+        "none";
+
+
+      document.getElementById(
+        "detailActionMessage"
+      ).textContent =
+        "";
+
+
+      document.getElementById(
+        "freelancerDetailModal"
+      ).style.display =
+        "flex";
+
+    }
+
+
+    function closeFreelancerProfile() {
+
+      document.getElementById(
+        "freelancerDetailModal"
+      ).style.display =
+        "none";
+
+
+      selectedFreelancer =
+        null;
+
+    }
+
+
+    /* =========================
+       MESSAGE BUTTON
+    ========================= */
+
+    function handleFreelancerMessage() {
+
+      const message =
+        document.getElementById(
+          "detailActionMessage"
+        );
+
+
+      message.style.display =
+        "block";
+
+
+      if (!currentUser) {
+
+        message.textContent =
+          "Please log in first. The messaging system will be connected next.";
+
+        return;
+
+      }
+
+
+      message.textContent =
+        "Messaging is not connected yet. We will build the real messaging system next.";
+
+    }
+
+
+    /* =========================
+       HIRE BUTTON
+    ========================= */
+
+    function handleFreelancerHire() {
+
+      const message =
+        document.getElementById(
+          "detailActionMessage"
+        );
+
+
+      message.style.display =
+        "block";
+
+
+      if (!currentUser) {
+
+        message.textContent =
+          "Please log in first. The hiring system will be connected next.";
+
+        return;
+
+      }
+
+
+      message.textContent =
+        "The hiring workflow is not connected yet. We will build the real project and application system next.";
+
+    }
+
+
+    /* =========================
+       PROFILE
+    ========================= */
+
+    async function openProfile() {
+
+      if (!currentUser) {
+        return;
+      }
+
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+
+        .from("profiles")
+
+        .select(
+          "id, name, role, bio, skills"
+        )
+
+        .eq(
+          "id",
+          currentUser.id
+        )
+
+        .maybeSingle();
+
+
+      if (error) {
+
+        console.error(error);
+
+        return;
+
+      }
+
+
+      if (!data) {
+
+        return;
+
+      }
+
+
+      document.getElementById(
+        "profileName"
+      ).value =
+        data.name || "";
+
+
+      document.getElementById(
+        "profileEmail"
+      ).value =
+        currentUser.email || "";
+
+
+      document.getElementById(
+        "profileRole"
+      ).value =
+        data.role || "";
+
+
+      document.getElementById(
+        "profileBio"
+      ).value =
+        data.bio || "";
+
+
+      document.getElementById(
+        "profileSkills"
+      ).value =
+        data.skills || "";
+
+
+      document.getElementById(
+        "profileMessage"
+      ).textContent =
+        "";
+
+
+      document.getElementById(
+        "profileModal"
+      ).style.display =
+        "flex";
+
+    }
+
+
+    function closeProfile() {
+
+      document.getElementById(
+        "profileModal"
+      ).style.display =
+        "none";
+
+    }
+
+
+    /* =========================
+       SAVE PROFILE
+    ========================= */
+
+    async function saveProfile() {
+
+      if (!currentUser) {
+        return;
+      }
+
+
+      const name =
+        document.getElementById(
+          "profileName"
+        ).value.trim();
+
+
+      const bio =
+        document.getElementById(
+          "profileBio"
+        ).value.trim();
+
+
+      const skills =
+        document.getElementById(
+          "profileSkills"
+        ).value.trim();
+
+
+      const message =
+        document.getElementById(
+          "profileMessage"
+        );
+
+
+      message.textContent =
+        "Saving...";
+
+
+      const {
+        error
+      } = await supabaseClient
+
+        .from("profiles")
+
+        .update({
+
+          name: name,
+
+          bio: bio,
+
+          skills: skills
+
+        })
+
+        .eq(
+          "id",
+          currentUser.id
+        );
+
+
+      if (error) {
+
+        console.error(error);
+
+        message.textContent =
+          error.message;
+
+        return;
+
+      }
+
+
+      message.textContent =
+        "Profile saved successfully.";
+
+
+      document.getElementById(
+        "navUserName"
+      ).textContent =
+        name ||
+        currentUser.email ||
+        "User";
+
+
+      await loadFreelancers();
+
+    }
+
+
+    /* =========================
+       CLOSE MODALS WHEN CLICKING
+       OUTSIDE
+    ========================= */
+
+    window.addEventListener(
+      "click",
+      function(event) {
+
+        const authModal =
+          document.getElementById(
+            "authModal"
+          );
+
+        const profileModal =
+          document.getElementById(
+            "profileModal"
+          );
+
+        const detailModal =
+          document.getElementById(
+            "freelancerDetailModal"
+          );
+
+
+        if (event.target === authModal) {
+
+          closeAuth();
+
+        }
+
+
+        if (event.target === profileModal) {
+
+          closeProfile();
+
+        }
+
+
+        if (event.target === detailModal) {
+
+          closeFreelancerProfile();
 
         }
 
       }
-
     );
 
+
     /* =========================
-
-       START
-
+       AUTH STATE LISTENER
     ========================= */
 
-    checkUser();
+    supabaseClient.auth.onAuthStateChange(
+      function(event, session) {
 
-    loadFreelancers();
+        currentUser =
+          session
+            ? session.user
+            : null;
+
+
+        updateNavigation();
+
+      }
+    );
+
+
+    /* =========================
+       INITIALIZE
+    ========================= */
+
+    async function initializeApp() {
+
+      await checkUser();
+
+      await loadFreelancers();
+
+    }
+
+
+    initializeApp();
 
   </script>
 
 </body>
-
 </html>
