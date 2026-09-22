@@ -42,7 +42,11 @@
 
     }
 
-    /* NAVBAR */
+    /* =========================
+
+       NAVBAR
+
+    ========================= */
 
     .navbar {
 
@@ -150,7 +154,11 @@
 
     }
 
-    /* HERO */
+    /* =========================
+
+       HERO
+
+    ========================= */
 
     .hero {
 
@@ -248,6 +256,10 @@
 
       display: inline-block;
 
+      cursor: pointer;
+
+      border: none;
+
     }
 
     .hero-btn-primary {
@@ -255,6 +267,12 @@
       background: #4f46e5;
 
       color: white;
+
+    }
+
+    .hero-btn-primary:hover {
+
+      background: #4338ca;
 
     }
 
@@ -268,7 +286,17 @@
 
     }
 
-    /* HERO CARD */
+    .hero-btn-secondary:hover {
+
+      background: #f8fafc;
+
+    }
+
+    /* =========================
+
+       HERO CARD
+
+    ========================= */
 
     .hero-card {
 
@@ -350,7 +378,11 @@
 
     }
 
-    /* FEATURES */
+    /* =========================
+
+       FEATURES
+
+    ========================= */
 
     .section {
 
@@ -440,7 +472,11 @@
 
     }
 
-    /* HOW IT WORKS */
+    /* =========================
+
+       HOW IT WORKS
+
+    ========================= */
 
     .how-section {
 
@@ -512,7 +548,11 @@
 
     }
 
-    /* CTA */
+    /* =========================
+
+       CTA
+
+    ========================= */
 
     .cta {
 
@@ -540,7 +580,11 @@
 
     }
 
-    /* FOOTER */
+    /* =========================
+
+       FOOTER
+
+    ========================= */
 
     footer {
 
@@ -576,7 +620,169 @@
 
     }
 
-    /* MOBILE */
+    /* =========================
+
+       AUTH MODAL
+
+    ========================= */
+
+    .auth-modal {
+
+      display: none;
+
+      position: fixed;
+
+      inset: 0;
+
+      background: rgba(0, 0, 0, 0.55);
+
+      z-index: 1000;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+
+    }
+
+    .auth-box {
+
+      background: white;
+
+      width: 100%;
+
+      max-width: 420px;
+
+      padding: 30px;
+
+      border-radius: 20px;
+
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+
+    }
+
+    .auth-box h2 {
+
+      margin-bottom: 8px;
+
+      text-align: center;
+
+      font-size: 25px;
+
+    }
+
+    .auth-subtitle {
+
+      text-align: center;
+
+      color: #64748b;
+
+      font-size: 14px;
+
+      margin-bottom: 22px;
+
+    }
+
+    .auth-input,
+
+    .auth-select {
+
+      width: 100%;
+
+      padding: 13px;
+
+      margin-bottom: 12px;
+
+      border: 1px solid #d1d5db;
+
+      border-radius: 10px;
+
+      font-size: 15px;
+
+      outline: none;
+
+    }
+
+    .auth-input:focus,
+
+    .auth-select:focus {
+
+      border-color: #4f46e5;
+
+    }
+
+    .auth-submit {
+
+      width: 100%;
+
+      margin-top: 5px;
+
+    }
+
+    .auth-message {
+
+      margin-top: 15px;
+
+      text-align: center;
+
+      font-size: 14px;
+
+      min-height: 20px;
+
+    }
+
+    .auth-switch {
+
+      margin-top: 18px;
+
+      text-align: center;
+
+      font-size: 14px;
+
+      color: #64748b;
+
+    }
+
+    .auth-link {
+
+      border: none;
+
+      background: none;
+
+      color: #4f46e5;
+
+      cursor: pointer;
+
+      font-weight: 700;
+
+      font-size: 14px;
+
+    }
+
+    .auth-close {
+
+      display: block;
+
+      margin: 15px auto 0;
+
+      border: none;
+
+      background: none;
+
+      color: #64748b;
+
+      cursor: pointer;
+
+      font-size: 14px;
+
+    }
+
+    /* =========================
+
+       MOBILE
+
+    ========================= */
 
     @media (max-width: 850px) {
 
@@ -648,7 +854,11 @@
 
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- =========================
+
+       NAVIGATION
+
+  ========================= -->
 
   <nav class="navbar">
 
@@ -660,25 +870,61 @@
 
     <div class="nav-links">
 
-      <a href="#features">Features</a>
+      <a href="#features">
 
-      <a href="#how">How It Works</a>
+        Features
 
-      <a href="#about">About</a>
+      </a>
+
+      <a href="#how">
+
+        How It Works
+
+      </a>
+
+      <a href="#about">
+
+        About
+
+      </a>
 
     </div>
 
     <div class="nav-buttons">
 
-      <button class="btn btn-login">Log In</button>
+      <button
 
-      <button class="btn btn-primary">Get Started</button>
+        id="loginBtn"
+
+        class="btn btn-login"
+
+        type="button">
+
+        Log In
+
+      </button>
+
+      <button
+
+        id="signupBtn"
+
+        class="btn btn-primary"
+
+        type="button">
+
+        Get Started
+
+      </button>
 
     </div>
 
   </nav>
 
-  <!-- HERO -->
+  <!-- =========================
+
+       HERO
+
+  ========================= -->
 
   <section class="hero">
 
@@ -694,7 +940,11 @@
 
         Find the right people to
 
-        <span>build your project.</span>
+        <span>
+
+          build your project.
+
+        </span>
 
       </h1>
 
@@ -708,17 +958,29 @@
 
       <div class="hero-buttons">
 
-        <a href="#" class="hero-btn hero-btn-primary">
+        <button
+
+          id="startProjectBtn"
+
+          class="hero-btn hero-btn-primary"
+
+          type="button">
 
           Start a Project →
 
-        </a>
+        </button>
 
-        <a href="#" class="hero-btn hero-btn-secondary">
+        <button
+
+          id="findFreelancersBtn"
+
+          class="hero-btn hero-btn-secondary"
+
+          type="button">
 
           Find Freelancers
 
-        </a>
+        </button>
 
       </div>
 
@@ -748,25 +1010,49 @@
 
       <div class="mini-project">
 
-        <strong>Website Design</strong>
+        <strong>
 
-        <small>Find a designer for your new website</small>
+          Website Design
+
+        </strong>
+
+        <small>
+
+          Find a designer for your new website
+
+        </small>
 
       </div>
 
       <div class="mini-project">
 
-        <strong>Mobile App</strong>
+        <strong>
 
-        <small>Build your next mobile application</small>
+          Mobile App
+
+        </strong>
+
+        <small>
+
+          Build your next mobile application
+
+        </small>
 
       </div>
 
       <div class="mini-project">
 
-        <strong>Development</strong>
+        <strong>
 
-        <small>Find developers for your project</small>
+          Development
+
+        </strong>
+
+        <small>
+
+          Find developers for your project
+
+        </small>
 
       </div>
 
@@ -774,9 +1060,17 @@
 
   </section>
 
-  <!-- FEATURES -->
+  <!-- =========================
 
-  <section class="section" id="features">
+       FEATURES
+
+  ========================= -->
+
+  <section
+
+    class="section"
+
+    id="features">
 
     <div class="section-header">
 
@@ -946,9 +1240,17 @@
 
   </section>
 
-  <!-- HOW IT WORKS -->
+  <!-- =========================
 
-  <section class="section how-section" id="how">
+       HOW IT WORKS
+
+  ========================= -->
+
+  <section
+
+    class="section how-section"
+
+    id="how">
 
     <div class="section-header">
 
@@ -1044,9 +1346,17 @@
 
   </section>
 
-  <!-- CTA -->
+  <!-- =========================
 
-  <section class="cta" id="about">
+       CTA
+
+  ========================= -->
+
+  <section
+
+    class="cta"
+
+    id="about">
 
     <h2>
 
@@ -1060,15 +1370,181 @@
 
     </p>
 
-    <a href="#" class="hero-btn hero-btn-primary">
+    <button
+
+      id="ctaSignupBtn"
+
+      class="hero-btn hero-btn-primary"
+
+      type="button">
 
       Get Started →
 
-    </a>
+    </button>
 
   </section>
 
-  <!-- FOOTER -->
+  <!-- =========================
+
+       AUTH MODAL
+
+  ========================= -->
+
+  <div
+
+    id="authModal"
+
+    class="auth-modal">
+
+    <div class="auth-box">
+
+      <h2 id="authTitle">
+
+        Login to BuildMate
+
+      </h2>
+
+      <p class="auth-subtitle">
+
+        Connect with clients and freelancers.
+
+      </p>
+
+      <!-- SIGN UP FIELDS -->
+
+      <div
+
+        id="signupFields"
+
+        style="display: none;">
+
+        <input
+
+          id="authName"
+
+          class="auth-input"
+
+          type="text"
+
+          placeholder="Full Name">
+
+        <select
+
+          id="authRole"
+
+          class="auth-select">
+
+          <option value="client">
+
+            Client
+
+          </option>
+
+          <option value="freelancer">
+
+            Freelancer
+
+          </option>
+
+        </select>
+
+      </div>
+
+      <!-- EMAIL -->
+
+      <input
+
+        id="authEmail"
+
+        class="auth-input"
+
+        type="email"
+
+        placeholder="Email">
+
+      <!-- PASSWORD -->
+
+      <input
+
+        id="authPassword"
+
+        class="auth-input"
+
+        type="password"
+
+        placeholder="Password">
+
+      <!-- SUBMIT -->
+
+      <button
+
+        id="authSubmit"
+
+        class="btn btn-primary auth-submit"
+
+        type="button">
+
+        Login
+
+      </button>
+
+      <!-- MESSAGE -->
+
+      <p
+
+        id="authMessage"
+
+        class="auth-message">
+
+      </p>
+
+      <!-- SWITCH -->
+
+      <div class="auth-switch">
+
+        <span id="authSwitchText">
+
+          Don't have an account?
+
+        </span>
+
+        <button
+
+          id="switchAuth"
+
+          class="auth-link"
+
+          type="button">
+
+          Create an account
+
+        </button>
+
+      </div>
+
+      <!-- CLOSE -->
+
+      <button
+
+        id="closeAuth"
+
+        class="auth-close"
+
+        type="button">
+
+        Close
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- =========================
+
+       FOOTER
+
+  ========================= -->
 
   <footer>
 
@@ -1086,9 +1562,536 @@
 
   </footer>
 
+  <!-- =========================
+
+       SUPABASE
+
+  ========================= -->
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script src="supabase.js"></script>
+  <script src="supabase.js"></script>
+
+  <!-- =========================
+
+       AUTH JAVASCRIPT
+
+  ========================= -->
+
+  <script>
+
+    const authModal =
+
+      document.getElementById("authModal");
+
+    const loginBtn =
+
+      document.getElementById("loginBtn");
+
+    const signupBtn =
+
+      document.getElementById("signupBtn");
+
+    const ctaSignupBtn =
+
+      document.getElementById("ctaSignupBtn");
+
+    const startProjectBtn =
+
+      document.getElementById("startProjectBtn");
+
+    const findFreelancersBtn =
+
+      document.getElementById("findFreelancersBtn");
+
+    const closeAuth =
+
+      document.getElementById("closeAuth");
+
+    const switchAuth =
+
+      document.getElementById("switchAuth");
+
+    const authSubmit =
+
+      document.getElementById("authSubmit");
+
+    const authTitle =
+
+      document.getElementById("authTitle");
+
+    const authSwitchText =
+
+      document.getElementById("authSwitchText");
+
+    const signupFields =
+
+      document.getElementById("signupFields");
+
+    const authMessage =
+
+      document.getElementById("authMessage");
+
+    let authMode = "login";
+
+    /* =========================
+
+       OPEN LOGIN
+
+    ========================= */
+
+    function openLogin() {
+
+      authMode = "login";
+
+      authModal.style.display = "flex";
+
+      authTitle.textContent =
+
+        "Login to BuildMate";
+
+      authSubmit.textContent =
+
+        "Login";
+
+      authSwitchText.textContent =
+
+        "Don't have an account?";
+
+      switchAuth.textContent =
+
+        "Create an account";
+
+      signupFields.style.display =
+
+        "none";
+
+      authMessage.textContent =
+
+        "";
+
+    }
+
+    /* =========================
+
+       OPEN SIGN UP
+
+    ========================= */
+
+    function openSignup() {
+
+      authMode = "signup";
+
+      authModal.style.display =
+
+        "flex";
+
+      authTitle.textContent =
+
+        "Create your BuildMate account";
+
+      authSubmit.textContent =
+
+        "Create Account";
+
+      authSwitchText.textContent =
+
+        "Already have an account?";
+
+      switchAuth.textContent =
+
+        "Login";
+
+      signupFields.style.display =
+
+        "block";
+
+      authMessage.textContent =
+
+        "";
+
+    }
+
+    /* =========================
+
+       CLOSE MODAL
+
+    ========================= */
+
+    function closeModal() {
+
+      authModal.style.display =
+
+        "none";
+
+      authMessage.textContent =
+
+        "";
+
+    }
+
+    /* =========================
+
+       BUTTON EVENTS
+
+    ========================= */
+
+    loginBtn.addEventListener(
+
+      "click",
+
+      openLogin
+
+    );
+
+    signupBtn.addEventListener(
+
+      "click",
+
+      openSignup
+
+    );
+
+    ctaSignupBtn.addEventListener(
+
+      "click",
+
+      openSignup
+
+    );
+
+    startProjectBtn.addEventListener(
+
+      "click",
+
+      openSignup
+
+    );
+
+    findFreelancersBtn.addEventListener(
+
+      "click",
+
+      openSignup
+
+    );
+
+    closeAuth.addEventListener(
+
+      "click",
+
+      closeModal
+
+    );
+
+    switchAuth.addEventListener(
+
+      "click",
+
+      function() {
+
+        if (authMode === "login") {
+
+          openSignup();
+
+        } else {
+
+          openLogin();
+
+        }
+
+      }
+
+    );
+
+    /* =========================
+
+       CLOSE OUTSIDE MODAL
+
+    ========================= */
+
+    authModal.addEventListener(
+
+      "click",
+
+      function(event) {
+
+        if (event.target === authModal) {
+
+          closeModal();
+
+        }
+
+      }
+
+    );
+
+    /* =========================
+
+       LOGIN / SIGN UP
+
+    ========================= */
+
+    authSubmit.addEventListener(
+
+      "click",
+
+      async function() {
+
+        const email =
+
+          document
+
+            .getElementById("authEmail")
+
+            .value
+
+            .trim();
+
+        const password =
+
+          document
+
+            .getElementById("authPassword")
+
+            .value;
+
+        const name =
+
+          document
+
+            .getElementById("authName")
+
+            .value
+
+            .trim();
+
+        const role =
+
+          document
+
+            .getElementById("authRole")
+
+            .value;
+
+        authMessage.style.color =
+
+          "#64748b";
+
+        /* CHECK EMAIL AND PASSWORD */
+
+        if (!email || !password) {
+
+          authMessage.textContent =
+
+            "Please enter your email and password.";
+
+          authMessage.style.color =
+
+            "#dc2626";
+
+          return;
+
+        }
+
+        /* CHECK NAME */
+
+        if (authMode === "signup" && !name) {
+
+          authMessage.textContent =
+
+            "Please enter your name.";
+
+          authMessage.style.color =
+
+            "#dc2626";
+
+          return;
+
+        }
+
+        authSubmit.disabled =
+
+          true;
+
+        authSubmit.textContent =
+
+          "Please wait...";
+
+        try {
+
+          /* =========================
+
+             SIGN UP
+
+          ========================= */
+
+          if (authMode === "signup") {
+
+            const result =
+
+              await supabaseClient.auth.signUp({
+
+                email: email,
+
+                password: password,
+
+                options: {
+
+                  data: {
+
+                    name: name,
+
+                    role: role
+
+                  }
+
+                }
+
+              });
+
+            if (result.error) {
+
+              throw result.error;
+
+            }
+
+            authMessage.style.color =
+
+              "#16a34a";
+
+            authMessage.textContent =
+
+              "Account created. Please check your email if confirmation is required.";
+
+            console.log(
+
+              "Signup result:",
+
+              result.data
+
+            );
+
+          }
+
+          /* =========================
+
+             LOGIN
+
+          ========================= */
+
+          else {
+
+            const result =
+
+              await supabaseClient.auth.signInWithPassword({
+
+                email: email,
+
+                password: password
+
+              });
+
+            if (result.error) {
+
+              throw result.error;
+
+            }
+
+            authMessage.style.color =
+
+              "#16a34a";
+
+            authMessage.textContent =
+
+              "Login successful!";
+
+            console.log(
+
+              "Login result:",
+
+              result.data
+
+            );
+
+            setTimeout(
+
+              function() {
+
+                closeModal();
+
+              },
+
+              1000
+
+            );
+
+          }
+
+        }
+
+        /* =========================
+
+           ERROR
+
+        ========================= */
+
+        catch (error) {
+
+          authMessage.style.color =
+
+            "#dc2626";
+
+          authMessage.textContent =
+
+            error.message;
+
+          console.error(error);
+
+        }
+
+        authSubmit.disabled =
+
+          false;
+
+        authSubmit.textContent =
+
+          authMode === "login"
+
+            ? "Login"
+
+            : "Create Account";
+
+      }
+
+    );
+
+    /* =========================
+
+       AUTH STATE
+
+    ========================= */
+
+    supabaseClient.auth.onAuthStateChange(
+
+      function(event, session) {
+
+        console.log(
+
+          "Auth event:",
+
+          event,
+
+          session
+
+        );
+
+      }
+
+    );
+
+  </script>
+
 </body>
 
 </html>
