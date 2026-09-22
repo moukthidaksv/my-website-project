@@ -1,733 +1,1667 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>BuildMate — Find the Right Freelancer</title>
 
   <style>
+
     * {
+
       box-sizing: border-box;
+
       margin: 0;
+
       padding: 0;
+
     }
 
     body {
+
       font-family: Arial, Helvetica, sans-serif;
+
       background: #f7f8fc;
+
       color: #1f2937;
+
       line-height: 1.6;
+
     }
 
     a {
+
       text-decoration: none;
+
       color: inherit;
+
     }
 
     button {
+
       cursor: pointer;
+
       font-family: inherit;
+
     }
 
-    /* NAVBAR */
+    /* =========================
+
+       NAVBAR
+
+    ========================= */
+
     nav {
+
       width: 100%;
+
       background: #ffffff;
+
       border-bottom: 1px solid #e5e7eb;
+
       position: sticky;
+
       top: 0;
+
       z-index: 100;
+
     }
 
     .nav-container {
+
       max-width: 1150px;
+
       margin: auto;
+
       padding: 16px 20px;
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
     }
 
     .logo {
+
       font-size: 24px;
+
       font-weight: bold;
+
       color: #2563eb;
+
     }
 
     .nav-links {
+
       display: flex;
+
       align-items: center;
+
       gap: 20px;
+
     }
 
     .nav-links a {
+
       color: #4b5563;
+
       font-size: 15px;
+
     }
 
     .nav-links a:hover {
+
       color: #2563eb;
+
     }
 
     .nav-button {
+
       border: none;
+
       background: transparent;
+
       color: #2563eb;
+
       font-weight: 600;
+
       padding: 9px 14px;
+
       border-radius: 8px;
+
     }
 
     .nav-button:hover {
+
       background: #eff6ff;
+
     }
 
     .primary-button {
+
       background: #2563eb;
+
       color: white;
+
       border: none;
+
       padding: 11px 18px;
+
       border-radius: 8px;
+
       font-weight: 600;
+
     }
 
     .primary-button:hover {
+
       background: #1d4ed8;
+
+    }
+
+    .primary-button:disabled {
+
+      opacity: 0.6;
+
+      cursor: not-allowed;
+
     }
 
     .user-menu {
+
       display: none;
+
       align-items: center;
+
       gap: 8px;
+
     }
 
     .user-name {
+
       font-weight: 600;
+
       color: #111827;
+
       margin-right: 5px;
+
     }
 
-    /* HERO */
+    /* =========================
+
+       HERO
+
+    ========================= */
+
     .hero {
+
       max-width: 1150px;
+
       margin: auto;
+
       padding: 90px 20px;
+
       text-align: center;
+
     }
 
     .hero h1 {
+
       font-size: 52px;
+
       line-height: 1.15;
+
       margin-bottom: 20px;
+
       color: #111827;
+
     }
 
     .hero h1 span {
+
       color: #2563eb;
+
     }
 
     .hero p {
+
       max-width: 700px;
+
       margin: auto;
+
       color: #6b7280;
+
       font-size: 18px;
+
     }
 
     .hero-buttons {
+
       margin-top: 30px;
+
       display: flex;
+
       justify-content: center;
+
       gap: 12px;
+
       flex-wrap: wrap;
+
     }
 
     .secondary-button {
+
       background: white;
+
       color: #2563eb;
+
       border: 1px solid #2563eb;
+
       padding: 11px 18px;
+
       border-radius: 8px;
+
       font-weight: 600;
+
     }
 
     .secondary-button:hover {
+
       background: #eff6ff;
+
     }
 
-    /* SECTIONS */
+    /* =========================
+
+       SECTIONS
+
+    ========================= */
+
     section {
+
       max-width: 1150px;
+
       margin: auto;
+
       padding: 70px 20px;
+
     }
 
     .section-title {
+
       text-align: center;
+
       font-size: 34px;
+
       margin-bottom: 12px;
+
       color: #111827;
+
     }
 
     .section-description {
+
       text-align: center;
+
       max-width: 650px;
+
       margin: 0 auto 40px;
+
       color: #6b7280;
+
     }
 
-    /* FEATURES */
+    /* =========================
+
+       FEATURES
+
+    ========================= */
+
     .features {
+
       display: grid;
+
       grid-template-columns: repeat(3, 1fr);
+
       gap: 20px;
+
     }
 
     .feature-card {
+
       background: white;
+
       padding: 30px;
+
       border-radius: 14px;
+
       border: 1px solid #e5e7eb;
+
       text-align: center;
+
     }
 
     .feature-card .icon {
+
       font-size: 38px;
+
       margin-bottom: 15px;
+
     }
 
     .feature-card h3 {
+
       margin-bottom: 10px;
+
       color: #111827;
+
     }
 
     .feature-card p {
+
       color: #6b7280;
+
       font-size: 15px;
+
     }
 
-    /* HOW IT WORKS */
-    .steps {
+    /* =========================
+
+       FIND FREELANCERS
+
+    ========================= */
+
+    .freelancer-grid {
+
       display: grid;
+
       grid-template-columns: repeat(3, 1fr);
+
       gap: 20px;
+
+    }
+
+    .freelancer-card {
+
+      background: white;
+
+      border: 1px solid #e5e7eb;
+
+      border-radius: 14px;
+
+      padding: 25px;
+
+      transition: 0.2s;
+
+    }
+
+    .freelancer-card:hover {
+
+      transform: translateY(-3px);
+
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+
+    }
+
+    .freelancer-avatar {
+
+      width: 55px;
+
+      height: 55px;
+
+      border-radius: 50%;
+
+      background: #eff6ff;
+
+      color: #2563eb;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 22px;
+
+      font-weight: bold;
+
+      margin-bottom: 15px;
+
+    }
+
+    .freelancer-card h3 {
+
+      color: #111827;
+
+      margin-bottom: 4px;
+
+      font-size: 20px;
+
+    }
+
+    .freelancer-role {
+
+      color: #2563eb;
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+      margin-bottom: 12px;
+
+    }
+
+    .freelancer-bio {
+
+      color: #6b7280;
+
+      font-size: 14px;
+
+      margin-bottom: 15px;
+
+      min-height: 45px;
+
+    }
+
+    .skills-list {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 6px;
+
+      margin-bottom: 20px;
+
+    }
+
+    .skill-tag {
+
+      background: #f3f4f6;
+
+      color: #374151;
+
+      padding: 5px 9px;
+
+      border-radius: 6px;
+
+      font-size: 12px;
+
+    }
+
+    .view-profile-button {
+
+      width: 100%;
+
+      padding: 10px;
+
+      background: white;
+
+      color: #2563eb;
+
+      border: 1px solid #2563eb;
+
+      border-radius: 8px;
+
+      font-weight: 600;
+
+    }
+
+    .view-profile-button:hover {
+
+      background: #eff6ff;
+
+    }
+
+    .loading-text,
+
+    .empty-text {
+
+      grid-column: 1 / -1;
+
+      text-align: center;
+
+      color: #6b7280;
+
+      padding: 30px;
+
+    }
+
+    /* =========================
+
+       HOW IT WORKS
+
+    ========================= */
+
+    .steps {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+
     }
 
     .step {
+
       background: white;
+
       border: 1px solid #e5e7eb;
+
       border-radius: 14px;
+
       padding: 30px;
+
     }
 
     .step-number {
+
       width: 40px;
+
       height: 40px;
+
       background: #2563eb;
+
       color: white;
+
       border-radius: 50%;
+
       display: flex;
+
       justify-content: center;
+
       align-items: center;
+
       font-weight: bold;
+
       margin-bottom: 15px;
+
     }
 
     .step h3 {
+
       margin-bottom: 8px;
+
     }
 
     .step p {
+
       color: #6b7280;
+
     }
 
-    /* ABOUT */
+    /* =========================
+
+       ABOUT
+
+    ========================= */
+
     .about-box {
+
       background: white;
+
       border: 1px solid #e5e7eb;
+
       border-radius: 14px;
+
       padding: 40px;
+
       text-align: center;
+
     }
 
     .about-box p {
+
       max-width: 750px;
+
       margin: auto;
+
       color: #6b7280;
+
     }
 
-    /* CTA */
+    /* =========================
+
+       CTA
+
+    ========================= */
+
     .cta {
+
       text-align: center;
+
       background: #eff6ff;
+
       border-radius: 18px;
+
       margin-bottom: 60px;
+
     }
 
     .cta h2 {
+
       font-size: 34px;
+
       margin-bottom: 15px;
+
     }
 
     .cta p {
+
       color: #6b7280;
+
       margin-bottom: 25px;
+
     }
 
-    /* FOOTER */
+    /* =========================
+
+       FOOTER
+
+    ========================= */
+
     footer {
+
       background: #111827;
+
       color: white;
+
       text-align: center;
+
       padding: 30px 20px;
+
     }
 
     footer p {
+
       color: #9ca3af;
+
       font-size: 14px;
+
     }
 
-    /* MODALS */
+    /* =========================
+
+       MODALS
+
+    ========================= */
+
     .modal {
+
       display: none;
+
       position: fixed;
+
       inset: 0;
+
       background: rgba(0, 0, 0, 0.55);
+
       z-index: 1000;
+
       justify-content: center;
+
       align-items: center;
+
       padding: 20px;
+
     }
 
     .modal-content {
+
       background: white;
+
       width: 100%;
+
       max-width: 480px;
+
       border-radius: 16px;
+
       padding: 30px;
+
       position: relative;
+
       max-height: 90vh;
+
       overflow-y: auto;
+
     }
 
     .modal-content h2 {
+
       margin-bottom: 8px;
+
       color: #111827;
+
     }
 
     .modal-description {
+
       color: #6b7280;
+
       margin-bottom: 22px;
+
       font-size: 14px;
+
     }
 
     .close-button {
+
       position: absolute;
+
       right: 18px;
+
       top: 15px;
+
       background: none;
+
       border: none;
+
       font-size: 25px;
+
       color: #6b7280;
+
     }
 
     .form-group {
+
       margin-bottom: 16px;
+
     }
 
     .form-group label {
+
       display: block;
+
       font-weight: 600;
+
       margin-bottom: 6px;
+
       font-size: 14px;
+
     }
 
     .form-group input,
+
     .form-group textarea,
+
     .form-group select {
+
       width: 100%;
+
       padding: 11px 12px;
+
       border: 1px solid #d1d5db;
+
       border-radius: 8px;
+
       font-family: inherit;
+
       font-size: 15px;
+
     }
 
     .form-group textarea {
+
       min-height: 100px;
+
       resize: vertical;
+
     }
 
     .form-group input:focus,
+
     .form-group textarea:focus,
+
     .form-group select:focus {
+
       outline: none;
+
       border-color: #2563eb;
+
     }
 
     .full-button {
+
       width: 100%;
+
       margin-top: 5px;
+
     }
 
     .switch-auth {
+
       text-align: center;
+
       margin-top: 18px;
+
       color: #6b7280;
+
       font-size: 14px;
+
     }
 
     .switch-auth button {
+
       border: none;
+
       background: none;
+
       color: #2563eb;
+
       font-weight: 600;
+
     }
 
     .message {
+
       margin-top: 14px;
+
       padding: 10px;
+
       border-radius: 8px;
+
       display: none;
+
       font-size: 14px;
+
     }
 
     .message.success {
+
       display: block;
+
       background: #ecfdf5;
+
       color: #047857;
+
     }
 
     .message.error {
+
       display: block;
+
       background: #fef2f2;
+
       color: #b91c1c;
+
     }
 
-    .profile-email {
-      background: #f3f4f6;
-    }
+    .profile-email,
 
     .profile-role {
+
       background: #f3f4f6;
+
     }
 
+    /* =========================
+
+       MOBILE
+
+    ========================= */
+
     @media (max-width: 800px) {
+
       .nav-links {
+
         display: none;
+
       }
 
       .hero h1 {
+
         font-size: 38px;
+
       }
 
       .features,
-      .steps {
+
+      .steps,
+
+      .freelancer-grid {
+
         grid-template-columns: 1fr;
+
       }
 
       .user-menu {
+
         gap: 3px;
+
       }
 
       .user-name {
+
         max-width: 100px;
+
         overflow: hidden;
+
         text-overflow: ellipsis;
+
         white-space: nowrap;
+
       }
+
     }
+
   </style>
+
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+  <!-- =========================
+
+       NAVBAR
+
+  ========================= -->
+
   <nav>
+
     <div class="nav-container">
 
-      <div class="logo">BuildMate</div>
+      <div class="logo">
+
+        BuildMate
+
+      </div>
 
       <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#about">About</a>
+
+        <a href="#features">
+
+          Features
+
+        </a>
+
+        <a href="#freelancers">
+
+          Freelancers
+
+        </a>
+
+        <a href="#how-it-works">
+
+          How It Works
+
+        </a>
+
+        <a href="#about">
+
+          About
+
+        </a>
+
       </div>
 
       <!-- LOGGED OUT -->
+
       <div id="loggedOutMenu">
-        <button class="nav-button" id="loginBtn">Log In</button>
-        <button class="primary-button" id="signupBtn">Get Started</button>
+
+        <button
+
+          class="nav-button"
+
+          id="loginBtn"
+
+        >
+
+          Log In
+
+        </button>
+
+        <button
+
+          class="primary-button"
+
+          id="signupBtn"
+
+        >
+
+          Get Started
+
+        </button>
+
       </div>
 
       <!-- LOGGED IN -->
-      <div class="user-menu" id="userMenu">
-        <span class="user-name" id="userName">User</span>
-        <button class="nav-button" id="profileBtn">Profile</button>
-        <button class="nav-button" id="logoutBtn">Logout</button>
+
+      <div
+
+        class="user-menu"
+
+        id="userMenu"
+
+      >
+
+        <span
+
+          class="user-name"
+
+          id="userName"
+
+        >
+
+          User
+
+        </span>
+
+        <button
+
+          class="nav-button"
+
+          id="profileBtn"
+
+        >
+
+          Profile
+
+        </button>
+
+        <button
+
+          class="nav-button"
+
+          id="logoutBtn"
+
+        >
+
+          Logout
+
+        </button>
+
       </div>
 
     </div>
+
   </nav>
 
+  <!-- =========================
 
-  <!-- HERO -->
+       HERO
+
+  ========================= -->
+
   <div class="hero">
 
     <h1>
+
       Find the Right
+
       <span>Freelancer</span>
+
       for Your Project
+
     </h1>
 
     <p>
+
       BuildMate connects clients with talented freelancers
+
       to help turn ideas into real projects.
+
     </p>
 
     <div class="hero-buttons">
-      <button class="primary-button" id="heroStartBtn">
+
+      <button
+
+        class="primary-button"
+
+        id="heroStartBtn"
+
+      >
+
         Get Started
+
       </button>
 
-      <button class="secondary-button" id="heroFreelancerBtn">
-        Explore Features
+      <button
+
+        class="secondary-button"
+
+        id="heroFreelancerBtn"
+
+      >
+
+        Explore Freelancers
+
       </button>
+
     </div>
 
   </div>
 
+  <!-- =========================
 
-  <!-- FEATURES -->
+       FEATURES
+
+  ========================= -->
+
   <section id="features">
 
     <h2 class="section-title">
+
       Why BuildMate?
+
     </h2>
 
     <p class="section-description">
+
       A simple platform designed to make finding and working
+
       with freelancers easier.
+
     </p>
 
     <div class="features">
 
       <div class="feature-card">
-        <div class="icon">🔎</div>
-        <h3>Find Talent</h3>
+
+        <div class="icon">
+
+          🔎
+
+        </div>
+
+        <h3>
+
+          Find Talent
+
+        </h3>
+
         <p>
+
           Discover freelancers with skills that match
+
           your project requirements.
+
         </p>
+
       </div>
 
       <div class="feature-card">
-        <div class="icon">💬</div>
-        <h3>Easy Communication</h3>
+
+        <div class="icon">
+
+          💬
+
+        </div>
+
+        <h3>
+
+          Easy Communication
+
+        </h3>
+
         <p>
+
           Communicate clearly with freelancers about
+
           your project and requirements.
+
         </p>
+
       </div>
 
       <div class="feature-card">
-        <div class="icon">🚀</div>
-        <h3>Build Projects</h3>
+
+        <div class="icon">
+
+          🚀
+
+        </div>
+
+        <h3>
+
+          Build Projects
+
+        </h3>
+
         <p>
+
           Turn your ideas into real projects with
+
           talented people around the world.
+
         </p>
+
       </div>
 
     </div>
 
   </section>
 
+  <!-- =========================
 
-  <!-- HOW IT WORKS -->
-  <section id="how-it-works">
+       FIND FREELANCERS
+
+  ========================= -->
+
+  <section id="freelancers">
 
     <h2 class="section-title">
-      How BuildMate Works
+
+      Find Freelancers
+
     </h2>
 
     <p class="section-description">
+
+      Discover talented freelancers and find the right skills
+
+      for your project.
+
+    </p>
+
+    <div
+
+      id="freelancerList"
+
+      class="freelancer-grid"
+
+    >
+
+      <p
+
+        id="freelancerLoading"
+
+        class="loading-text"
+
+      >
+
+        Loading freelancers...
+
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+
+       HOW IT WORKS
+
+  ========================= -->
+
+  <section id="how-it-works">
+
+    <h2 class="section-title">
+
+      How BuildMate Works
+
+    </h2>
+
+    <p class="section-description">
+
       Start your journey in just a few simple steps.
+
     </p>
 
     <div class="steps">
 
       <div class="step">
-        <div class="step-number">1</div>
-        <h3>Create Your Profile</h3>
+
+        <div class="step-number">
+
+          1
+
+        </div>
+
+        <h3>
+
+          Create Your Profile
+
+        </h3>
+
         <p>
+
           Tell the BuildMate community about yourself,
+
           your skills and what you can offer.
+
         </p>
+
       </div>
 
       <div class="step">
-        <div class="step-number">2</div>
-        <h3>Find Opportunities</h3>
+
+        <div class="step-number">
+
+          2
+
+        </div>
+
+        <h3>
+
+          Find Opportunities
+
+        </h3>
+
         <p>
+
           Find projects and people that match
+
           your goals and skills.
+
         </p>
+
       </div>
 
       <div class="step">
-        <div class="step-number">3</div>
-        <h3>Build Together</h3>
+
+        <div class="step-number">
+
+          3
+
+        </div>
+
+        <h3>
+
+          Build Together
+
+        </h3>
+
         <p>
+
           Work together and turn ideas into
+
           successful projects.
+
         </p>
+
       </div>
 
     </div>
 
   </section>
 
+  <!-- =========================
 
-  <!-- ABOUT -->
+       ABOUT
+
+  ========================= -->
+
   <section id="about">
 
     <h2 class="section-title">
+
       About BuildMate
+
     </h2>
 
     <div class="about-box">
 
       <p>
+
         BuildMate is designed to make freelance collaboration
+
         simpler. Whether you are looking for someone to help
+
         with a project or you want to offer your skills,
+
         BuildMate gives you a place to connect.
+
       </p>
 
     </div>
 
   </section>
 
+  <!-- =========================
 
-  <!-- CTA -->
+       CTA
+
+  ========================= -->
+
   <section>
 
     <div class="cta">
 
       <h2>
+
         Ready to Build Something?
+
       </h2>
 
       <p>
+
         Create your BuildMate account and start building
+
         your profile.
+
       </p>
 
-      <button class="primary-button" id="ctaSignupBtn">
+      <button
+
+        class="primary-button"
+
+        id="ctaSignupBtn"
+
+      >
+
         Create Account
+
       </button>
 
     </div>
 
   </section>
 
+  <!-- =========================
 
-  <!-- FOOTER -->
+       FOOTER
+
+  ========================= -->
+
   <footer>
+
     <p>
+
       © 2026 BuildMate. All rights reserved.
+
     </p>
+
   </footer>
 
+  <!-- =========================
 
-  <!-- AUTH MODAL -->
-  <div class="modal" id="authModal">
+       AUTH MODAL
+
+  ========================= -->
+
+  <div
+
+    class="modal"
+
+    id="authModal"
+
+  >
 
     <div class="modal-content">
 
-      <button class="close-button" id="closeAuthBtn">
+      <button
+
+        class="close-button"
+
+        id="closeAuthBtn"
+
+      >
+
         ×
+
       </button>
 
       <h2 id="authTitle">
+
         Log In
+
       </h2>
 
-      <p class="modal-description" id="authDescription">
+      <p
+
+        class="modal-description"
+
+        id="authDescription"
+
+      >
+
         Log in to your BuildMate account.
+
       </p>
 
       <form id="authForm">
 
-        <div class="form-group" id="nameGroup" style="display:none;">
-          <label for="name">Name</label>
+        <div
+
+          class="form-group"
+
+          id="nameGroup"
+
+          style="display:none;"
+
+        >
+
+          <label for="name">
+
+            Name
+
+          </label>
+
           <input
+
             type="text"
+
             id="name"
+
             placeholder="Your name"
+
           >
+
         </div>
 
-        <div class="form-group" id="roleGroup" style="display:none;">
-          <label for="role">Role</label>
+        <div
+
+          class="form-group"
+
+          id="roleGroup"
+
+          style="display:none;"
+
+        >
+
+          <label for="role">
+
+            Role
+
+          </label>
 
           <select id="role">
+
             <option value="client">
+
               Client
+
             </option>
 
             <option value="freelancer">
+
               Freelancer
+
             </option>
+
           </select>
+
         </div>
 
         <div class="form-group">
-          <label for="email">Email</label>
+
+          <label for="email">
+
+            Email
+
+          </label>
 
           <input
+
             type="email"
+
             id="email"
+
             placeholder="you@example.com"
+
             required
+
           >
+
         </div>
 
         <div class="form-group">
-          <label for="password">Password</label>
+
+          <label for="password">
+
+            Password
+
+          </label>
 
           <input
+
             type="password"
+
             id="password"
+
             placeholder="Your password"
+
             required
+
           >
+
         </div>
 
         <button
+
           type="submit"
+
           class="primary-button full-button"
+
           id="authSubmitBtn"
+
         >
+
           Log In
+
         </button>
 
       </form>
 
       <div
+
         class="message"
+
         id="authMessage"
+
       ></div>
 
       <div class="switch-auth">
 
         <span id="switchText">
+
           Don't have an account?
+
         </span>
 
         <button id="switchAuthBtn">
+
           Get Started
+
         </button>
 
       </div>
@@ -736,235 +1670,331 @@
 
   </div>
 
+  <!-- =========================
 
-  <!-- PROFILE MODAL -->
-  <div class="modal" id="profileModal">
+       PROFILE MODAL
+
+  ========================= -->
+
+  <div
+
+    class="modal"
+
+    id="profileModal"
+
+  >
 
     <div class="modal-content">
 
-      <button class="close-button" id="closeProfileBtn">
+      <button
+
+        class="close-button"
+
+        id="closeProfileBtn"
+
+      >
+
         ×
+
       </button>
 
       <h2>
+
         My Profile
+
       </h2>
 
       <p class="modal-description">
+
         Update your BuildMate profile.
+
       </p>
 
       <div class="form-group">
 
         <label for="profileName">
+
           Name
+
         </label>
 
         <input
+
           type="text"
+
           id="profileName"
+
           placeholder="Your name"
+
         >
 
       </div>
-
 
       <div class="form-group">
 
         <label for="profileEmail">
+
           Email
+
         </label>
 
         <input
+
           type="email"
+
           id="profileEmail"
+
           class="profile-email"
+
           readonly
+
         >
 
       </div>
-
 
       <div class="form-group">
 
         <label for="profileRole">
+
           Role
+
         </label>
 
         <input
+
           type="text"
+
           id="profileRole"
+
           class="profile-role"
+
           readonly
+
         >
 
       </div>
 
-
       <div class="form-group">
 
         <label for="profileBio">
+
           Bio
+
         </label>
 
         <textarea
+
           id="profileBio"
+
           placeholder="Tell people about yourself..."
+
         ></textarea>
 
       </div>
-
 
       <div class="form-group">
 
         <label for="profileSkills">
+
           Skills
+
         </label>
 
         <textarea
+
           id="profileSkills"
+
           placeholder="Example: Web Design, HTML, CSS, JavaScript"
+
         ></textarea>
 
       </div>
 
-
       <button
+
         class="primary-button full-button"
+
         id="saveProfileBtn"
+
       >
+
         Save Profile
+
       </button>
 
-
       <div
+
         class="message"
+
         id="profileMessage"
+
       ></div>
 
     </div>
 
   </div>
 
+  <!-- =========================
 
-  <!-- SUPABASE -->
+       SUPABASE
+
+  ========================= -->
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script src="supabase.js"></script>
 
+  <!-- =========================
 
-  <!-- APP SCRIPT -->
+       APP SCRIPT
+
+  ========================= -->
+
   <script>
 
     let currentUser = null;
 
+    /* =========================
 
-    /* ---------------------------
        ELEMENTS
-    --------------------------- */
+
+    ========================= */
 
     const loggedOutMenu =
+
       document.getElementById("loggedOutMenu");
 
     const userMenu =
+
       document.getElementById("userMenu");
 
     const userName =
+
       document.getElementById("userName");
 
     const loginBtn =
+
       document.getElementById("loginBtn");
 
     const signupBtn =
+
       document.getElementById("signupBtn");
 
     const profileBtn =
+
       document.getElementById("profileBtn");
 
     const logoutBtn =
+
       document.getElementById("logoutBtn");
 
-
     const authModal =
+
       document.getElementById("authModal");
 
     const closeAuthBtn =
+
       document.getElementById("closeAuthBtn");
 
     const authForm =
+
       document.getElementById("authForm");
 
     const authTitle =
+
       document.getElementById("authTitle");
 
     const authDescription =
+
       document.getElementById("authDescription");
 
     const authSubmitBtn =
+
       document.getElementById("authSubmitBtn");
 
     const switchAuthBtn =
+
       document.getElementById("switchAuthBtn");
 
     const switchText =
+
       document.getElementById("switchText");
 
     const nameGroup =
+
       document.getElementById("nameGroup");
 
     const roleGroup =
+
       document.getElementById("roleGroup");
 
     const nameInput =
+
       document.getElementById("name");
 
     const roleInput =
+
       document.getElementById("role");
 
     const emailInput =
+
       document.getElementById("email");
 
     const passwordInput =
+
       document.getElementById("password");
 
     const authMessage =
+
       document.getElementById("authMessage");
 
-
     const profileModal =
+
       document.getElementById("profileModal");
 
     const closeProfileBtn =
+
       document.getElementById("closeProfileBtn");
 
     const profileName =
+
       document.getElementById("profileName");
 
     const profileEmail =
+
       document.getElementById("profileEmail");
 
     const profileRole =
+
       document.getElementById("profileRole");
 
     const profileBio =
+
       document.getElementById("profileBio");
 
     const profileSkills =
+
       document.getElementById("profileSkills");
 
     const saveProfileBtn =
+
       document.getElementById("saveProfileBtn");
 
     const profileMessage =
+
       document.getElementById("profileMessage");
 
+    const freelancerList =
+
+      document.getElementById("freelancerList");
 
     let authMode = "login";
 
+    /* =========================
 
-    /* ---------------------------
        UI
-    --------------------------- */
+
+    ========================= */
 
     function showLoggedOut() {
 
@@ -973,8 +2003,8 @@
       userMenu.style.display = "none";
 
       currentUser = null;
-    }
 
+    }
 
     function showLoggedIn(user) {
 
@@ -985,123 +2015,157 @@
       currentUser = user;
 
       const fallbackName =
+
         user.email
+
           ? user.email.split("@")[0]
+
           : "User";
 
       userName.textContent =
+
         user.user_metadata?.name ||
+
         fallbackName;
+
     }
 
+    /* =========================
 
-    /* ---------------------------
        AUTH MODAL
-    --------------------------- */
+
+    ========================= */
 
     function openLogin() {
 
       authMode = "login";
 
       authTitle.textContent =
+
         "Log In";
 
       authDescription.textContent =
+
         "Log in to your BuildMate account.";
 
       authSubmitBtn.textContent =
+
         "Log In";
 
       switchText.textContent =
+
         "Don't have an account?";
 
       switchAuthBtn.textContent =
+
         "Get Started";
 
       nameGroup.style.display =
+
         "none";
 
       roleGroup.style.display =
+
         "none";
 
       clearAuthMessage();
 
       authModal.style.display =
-        "flex";
-    }
 
+        "flex";
+
+    }
 
     function openSignup() {
 
       authMode = "signup";
 
       authTitle.textContent =
+
         "Create Your Account";
 
       authDescription.textContent =
+
         "Create a BuildMate account.";
 
       authSubmitBtn.textContent =
+
         "Create Account";
 
       switchText.textContent =
+
         "Already have an account?";
 
       switchAuthBtn.textContent =
+
         "Log In";
 
       nameGroup.style.display =
+
         "block";
 
       roleGroup.style.display =
+
         "block";
 
       clearAuthMessage();
 
       authModal.style.display =
-        "flex";
-    }
 
+        "flex";
+
+    }
 
     function closeAuth() {
 
       authModal.style.display =
+
         "none";
 
       authForm.reset();
 
       clearAuthMessage();
-    }
 
+    }
 
     function clearAuthMessage() {
 
       authMessage.textContent = "";
 
       authMessage.className =
+
         "message";
+
     }
 
-
     function showAuthMessage(
+
       message,
+
       type
+
     ) {
 
       authMessage.textContent =
+
         message;
 
       authMessage.className =
+
         "message " + type;
+
     }
 
+    /* =========================
 
-    /* ---------------------------
        LOGIN / SIGNUP
-    --------------------------- */
+
+    ========================= */
 
     authForm.addEventListener(
+
       "submit",
+
       async function(event) {
 
         event.preventDefault();
@@ -1109,53 +2173,69 @@
         clearAuthMessage();
 
         const email =
+
           emailInput.value.trim();
 
         const password =
+
           passwordInput.value;
 
         if (!email || !password) {
 
           showAuthMessage(
+
             "Please enter your email and password.",
+
             "error"
+
           );
 
           return;
+
         }
 
+        authSubmitBtn.disabled =
 
-        authSubmitBtn.disabled = true;
-
+          true;
 
         try {
 
           if (authMode === "signup") {
 
             const name =
+
               nameInput.value.trim();
 
             const role =
-              roleInput.value;
 
+              roleInput.value;
 
             if (!name) {
 
               showAuthMessage(
+
                 "Please enter your name.",
+
                 "error"
+
               );
 
-              authSubmitBtn.disabled = false;
+              authSubmitBtn.disabled =
+
+                false;
 
               return;
+
             }
 
-
             const {
+
               data,
+
               error
+
             } =
+
               await supabaseClient.auth.signUp({
 
                 email: email,
@@ -1176,40 +2256,52 @@
 
               });
 
-
             if (error) {
-              throw error;
-            }
 
+              throw error;
+
+            }
 
             if (!data.session) {
 
               showAuthMessage(
+
                 "Account created. Please check your email to confirm your account, then log in.",
+
                 "success"
+
               );
 
             } else {
 
               showAuthMessage(
+
                 "Account created successfully!",
+
                 "success"
+
               );
 
               setTimeout(
+
                 closeAuth,
+
                 1000
+
               );
 
             }
 
-
           } else {
 
             const {
+
               data,
+
               error
+
             } =
+
               await supabaseClient.auth.signInWithPassword({
 
                 email: email,
@@ -1218,212 +2310,278 @@
 
               });
 
-
             if (error) {
+
               throw error;
+
             }
 
-
             showAuthMessage(
+
               "Login successful!",
+
               "success"
+
             );
 
-
             setTimeout(
+
               closeAuth,
+
               700
+
             );
 
           }
-
 
         } catch (error) {
 
           console.error(error);
 
           showAuthMessage(
+
             error.message ||
+
             "Something went wrong.",
+
             "error"
+
           );
 
         } finally {
 
-          authSubmitBtn.disabled = false;
+          authSubmitBtn.disabled =
+
+            false;
 
         }
 
       }
+
     );
 
+    /* =========================
 
-    /* ---------------------------
        PROFILE
-    --------------------------- */
+
+    ========================= */
 
     async function openProfile() {
 
-      profileMessage.textContent = "";
+      profileMessage.textContent =
+
+        "";
 
       profileMessage.className =
+
         "message";
 
       profileModal.style.display =
-        "flex";
 
+        "flex";
 
       try {
 
         const {
+
           data: {
+
             user
+
           },
+
           error: userError
+
         } =
+
           await supabaseClient.auth.getUser();
 
-
         if (userError) {
-          throw userError;
-        }
 
+          throw userError;
+
+        }
 
         if (!user) {
 
           profileModal.style.display =
+
             "none";
 
           openLogin();
 
           return;
+
         }
 
+        currentUser =
 
-        currentUser = user;
-
+          user;
 
         profileEmail.value =
+
           user.email || "";
 
-
         const {
+
           data,
+
           error
+
         } =
+
           await supabaseClient
+
             .from("profiles")
+
             .select(
+
               "name, role, bio, skills"
+
             )
+
             .eq(
+
               "id",
+
               user.id
+
             )
+
             .maybeSingle();
 
-
         if (error) {
-          throw error;
-        }
 
+          throw error;
+
+        }
 
         if (data) {
 
           profileName.value =
+
             data.name || "";
 
           profileRole.value =
+
             data.role || "";
 
           profileBio.value =
+
             data.bio || "";
 
           profileSkills.value =
+
             data.skills || "";
 
           userName.textContent =
+
             data.name ||
+
             user.user_metadata?.name ||
+
             user.email.split("@")[0];
 
         } else {
 
           profileName.value =
+
             user.user_metadata?.name || "";
 
           profileRole.value =
+
             user.user_metadata?.role || "";
 
-          profileBio.value = "";
+          profileBio.value =
 
-          profileSkills.value = "";
+            "";
+
+          profileSkills.value =
+
+            "";
+
         }
-
 
       } catch (error) {
 
         console.error(error);
 
         showProfileMessage(
+
           "Could not load your profile: " +
+
           error.message,
+
           "error"
+
         );
 
       }
 
     }
 
-
     async function saveProfile() {
 
       if (!currentUser) {
 
         showProfileMessage(
+
           "Please log in first.",
+
           "error"
+
         );
 
         return;
+
       }
 
-
       const name =
+
         profileName.value.trim();
 
       const bio =
+
         profileBio.value.trim();
 
       const skills =
-        profileSkills.value.trim();
 
+        profileSkills.value.trim();
 
       if (!name) {
 
         showProfileMessage(
+
           "Name cannot be empty.",
+
           "error"
+
         );
 
         return;
+
       }
 
-
       saveProfileBtn.disabled =
+
         true;
 
       saveProfileBtn.textContent =
-        "Saving...";
 
+        "Saving...";
 
       try {
 
         const {
+
           error
+
         } =
+
           await supabaseClient
+
             .from("profiles")
+
             .update({
 
               name: name,
@@ -1433,149 +2591,605 @@
               skills: skills
 
             })
+
             .eq(
+
               "id",
+
               currentUser.id
+
             );
 
-
         if (error) {
+
           throw error;
+
         }
 
-
         userName.textContent =
+
           name;
 
-
         showProfileMessage(
+
           "Profile saved successfully!",
+
           "success"
+
         );
 
+        /*
+
+          Refresh freelancer list
+
+          so updated profile information
+
+          appears immediately.
+
+        */
+
+        loadFreelancers();
 
       } catch (error) {
 
         console.error(error);
 
         showProfileMessage(
+
           "Could not save profile: " +
+
           error.message,
+
           "error"
+
         );
 
       } finally {
 
         saveProfileBtn.disabled =
+
           false;
 
         saveProfileBtn.textContent =
+
           "Save Profile";
 
       }
 
     }
 
-
     function showProfileMessage(
+
       message,
+
       type
+
     ) {
 
       profileMessage.textContent =
+
         message;
 
       profileMessage.className =
+
         "message " + type;
+
     }
 
+    /* =========================
 
-    /* ---------------------------
+       FIND FREELANCERS
+
+    ========================= */
+
+    async function loadFreelancers() {
+
+      freelancerList.innerHTML = `
+
+        <p class="loading-text">
+
+          Loading freelancers...
+
+        </p>
+
+      `;
+
+      try {
+
+        const {
+
+          data,
+
+          error
+
+        } =
+
+          await supabaseClient
+
+            .from("profiles")
+
+            .select(
+
+              "id, name, role, bio, skills"
+
+            )
+
+            .eq(
+
+              "role",
+
+              "freelancer"
+
+            )
+
+            .order(
+
+              "name",
+
+              {
+
+                ascending: true
+
+              }
+
+            );
+
+        if (error) {
+
+          throw error;
+
+        }
+
+        if (!data || data.length === 0) {
+
+          freelancerList.innerHTML = `
+
+            <p class="empty-text">
+
+              No freelancers found yet.
+
+            </p>
+
+          `;
+
+          return;
+
+        }
+
+        freelancerList.innerHTML = "";
+
+        data.forEach(
+
+          function(profile) {
+
+            const card =
+
+              document.createElement("div");
+
+            card.className =
+
+              "freelancer-card";
+
+            const name =
+
+              profile.name ||
+
+              "Unnamed Freelancer";
+
+            const firstLetter =
+
+              name
+
+                .charAt(0)
+
+                .toUpperCase();
+
+            const bio =
+
+              profile.bio ||
+
+              "This freelancer has not added a bio yet.";
+
+            const skillsText =
+
+              profile.skills ||
+
+              "";
+
+            const skills =
+
+              skillsText
+
+                .split(",")
+
+                .map(
+
+                  skill => skill.trim()
+
+                )
+
+                .filter(
+
+                  skill => skill.length > 0
+
+                );
+
+            let skillsHTML = "";
+
+            if (skills.length > 0) {
+
+              skillsHTML =
+
+                skills
+
+                  .map(
+
+                    skill =>
+
+                      `<span class="skill-tag">${escapeHTML(skill)}</span>`
+
+                  )
+
+                  .join("");
+
+            } else {
+
+              skillsHTML = `
+
+                <span class="skill-tag">
+
+                  No skills added
+
+                </span>
+
+              `;
+
+            }
+
+            card.innerHTML = `
+
+              <div class="freelancer-avatar">
+
+                ${escapeHTML(firstLetter)}
+
+              </div>
+
+              <h3>
+
+                ${escapeHTML(name)}
+
+              </h3>
+
+              <div class="freelancer-role">
+
+                Freelancer
+
+              </div>
+
+              <p class="freelancer-bio">
+
+                ${escapeHTML(bio)}
+
+              </p>
+
+              <div class="skills-list">
+
+                ${skillsHTML}
+
+              </div>
+
+              <button
+
+                class="view-profile-button"
+
+                data-id="${escapeHTML(profile.id)}"
+
+              >
+
+                View Profile
+
+              </button>
+
+            `;
+
+            freelancerList.appendChild(
+
+              card
+
+            );
+
+          }
+
+        );
+
+        document
+
+          .querySelectorAll(".view-profile-button")
+
+          .forEach(
+
+            function(button) {
+
+              button.addEventListener(
+
+                "click",
+
+                function() {
+
+                  const id =
+
+                    button.dataset.id;
+
+                  showFreelancerProfile(
+
+                    id,
+
+                    data
+
+                  );
+
+                }
+
+              );
+
+            }
+
+          );
+
+      } catch (error) {
+
+        console.error(error);
+
+        freelancerList.innerHTML = `
+
+          <p class="empty-text">
+
+            Could not load freelancers.
+
+            Please try again later.
+
+          </p>
+
+        `;
+
+      }
+
+    }
+
+    /*
+
+      Small security helper:
+
+      prevents profile text from being
+
+      interpreted as HTML.
+
+    */
+
+    function escapeHTML(value) {
+
+      return String(value)
+
+        .replace(
+
+          /&/g,
+
+          "&amp;"
+
+        )
+
+        .replace(
+
+          /</g,
+
+          "&lt;"
+
+        )
+
+        .replace(
+
+          />/g,
+
+          "&gt;"
+
+        )
+
+        .replace(
+
+          /"/g,
+
+          "&quot;"
+
+        )
+
+        .replace(
+
+          /'/g,
+
+          "&#039;"
+
+        );
+
+    }
+
+    function showFreelancerProfile(
+
+      id,
+
+      profiles
+
+    ) {
+
+      const profile =
+
+        profiles.find(
+
+          item => item.id === id
+
+        );
+
+      if (!profile) {
+
+        return;
+
+      }
+
+      const skills =
+
+        profile.skills ||
+
+        "No skills added yet.";
+
+      alert(
+
+        "Name: " +
+
+        (profile.name || "Unnamed") +
+
+        "\n\n" +
+
+        "Role: Freelancer" +
+
+        "\n\n" +
+
+        "Bio: " +
+
+        (profile.bio || "No bio added yet.") +
+
+        "\n\n" +
+
+        "Skills: " +
+
+        skills
+
+      );
+
+    }
+
+    /* =========================
+
        LOGOUT
-    --------------------------- */
+
+    ========================= */
 
     async function logout() {
 
       const {
-        error
-      } =
-        await supabaseClient.auth.signOut();
 
+        error
+
+      } =
+
+        await supabaseClient.auth.signOut();
 
       if (error) {
 
         alert(
+
           "Logout failed: " +
+
           error.message
+
         );
 
         return;
+
       }
 
-
       showLoggedOut();
+
     }
 
+    /* =========================
 
-    /* ---------------------------
        EVENTS
-    --------------------------- */
+
+    ========================= */
 
     loginBtn.addEventListener(
+
       "click",
+
       openLogin
+
     );
 
     signupBtn.addEventListener(
+
       "click",
+
       openSignup
+
     );
 
     profileBtn.addEventListener(
+
       "click",
+
       openProfile
+
     );
 
     logoutBtn.addEventListener(
+
       "click",
+
       logout
+
     );
 
-
     document
+
       .getElementById("heroStartBtn")
+
       .addEventListener(
+
         "click",
+
         openSignup
+
       );
 
-
     document
+
       .getElementById("ctaSignupBtn")
+
       .addEventListener(
+
         "click",
+
         openSignup
+
       );
 
-
     document
+
       .getElementById("heroFreelancerBtn")
+
       .addEventListener(
+
         "click",
+
         function() {
 
           document
-            .getElementById("features")
+
+            .getElementById("freelancers")
+
             .scrollIntoView({
+
               behavior: "smooth"
+
             });
 
         }
+
       );
 
-
     switchAuthBtn.addEventListener(
+
       "click",
+
       function() {
 
         if (authMode === "login") {
@@ -1589,65 +3203,92 @@
         }
 
       }
-    );
 
+    );
 
     closeAuthBtn.addEventListener(
+
       "click",
+
       closeAuth
+
     );
 
-
     closeProfileBtn.addEventListener(
+
       "click",
+
       function() {
 
         profileModal.style.display =
+
           "none";
 
       }
-    );
 
+    );
 
     saveProfileBtn.addEventListener(
+
       "click",
+
       saveProfile
+
     );
 
-
     window.addEventListener(
+
       "click",
+
       function(event) {
 
-        if (event.target === authModal) {
+        if (
+
+          event.target ===
+
+          authModal
+
+        ) {
 
           closeAuth();
 
         }
 
-        if (event.target === profileModal) {
+        if (
+
+          event.target ===
+
+          profileModal
+
+        ) {
 
           profileModal.style.display =
+
             "none";
 
         }
 
       }
+
     );
 
+    /* =========================
 
-    /* ---------------------------
        CHECK CURRENT SESSION
-    --------------------------- */
+
+    ========================= */
 
     async function checkUser() {
 
       const {
-        data,
-        error
-      } =
-        await supabaseClient.auth.getSession();
 
+        data,
+
+        error
+
+      } =
+
+        await supabaseClient.auth.getSession();
 
       if (error) {
 
@@ -1656,13 +3297,15 @@
         showLoggedOut();
 
         return;
-      }
 
+      }
 
       if (data.session) {
 
         showLoggedIn(
+
           data.session.user
+
         );
 
       } else {
@@ -1673,18 +3316,28 @@
 
     }
 
+    /* =========================
 
-    /* ---------------------------
        AUTH STATE CHANGE
-    --------------------------- */
+
+    ========================= */
 
     supabaseClient.auth.onAuthStateChange(
-      function(event, session) {
+
+      function(
+
+        event,
+
+        session
+
+      ) {
 
         if (session) {
 
           showLoggedIn(
+
             session.user
+
           );
 
         } else {
@@ -1694,14 +3347,21 @@
         }
 
       }
+
     );
 
+    /* =========================
 
-    /* START */
+       START
+
+    ========================= */
 
     checkUser();
+
+    loadFreelancers();
 
   </script>
 
 </body>
+
 </html>
