@@ -26,11 +26,19 @@
 
       font-family: Arial, Helvetica, sans-serif;
 
-      background: #f8fafc;
-
       color: #172033;
 
+      background: #ffffff;
+
       line-height: 1.6;
+
+    }
+
+    button {
+
+      font-family: inherit;
+
+      cursor: pointer;
 
     }
 
@@ -42,27 +50,23 @@
 
     }
 
-    /* =========================
+    /* NAVBAR */
 
-       NAVBAR
+    nav {
 
-    ========================= */
-
-    .navbar {
-
-      width: 100%;
-
-      background: #ffffff;
-
-      border-bottom: 1px solid #e5e7eb;
-
-      padding: 18px 7%;
+      height: 72px;
 
       display: flex;
 
       align-items: center;
 
       justify-content: space-between;
+
+      padding: 0 7%;
+
+      border-bottom: 1px solid #eeeeee;
+
+      background: #ffffff;
 
       position: sticky;
 
@@ -74,17 +78,11 @@
 
     .logo {
 
-      font-size: 25px;
+      font-size: 24px;
 
-      font-weight: 800;
+      font-weight: 700;
 
       color: #4f46e5;
-
-    }
-
-    .logo span {
-
-      color: #111827;
 
     }
 
@@ -92,13 +90,17 @@
 
       display: flex;
 
-      gap: 28px;
+      gap: 30px;
 
       align-items: center;
 
-      font-size: 15px;
+    }
 
-      color: #4b5563;
+    .nav-links a {
+
+      color: #555;
+
+      font-size: 15px;
 
     }
 
@@ -112,113 +114,147 @@
 
       display: flex;
 
+      align-items: center;
+
       gap: 10px;
 
     }
 
-    .btn {
-
-      padding: 11px 20px;
-
-      border-radius: 10px;
+    .login-btn {
 
       border: none;
 
-      cursor: pointer;
-
-      font-size: 14px;
-
-      font-weight: 700;
-
-    }
-
-    .btn-login {
-
       background: transparent;
 
-      color: #374151;
+      color: #4f46e5;
+
+      font-weight: 600;
+
+      padding: 10px 16px;
 
     }
 
-    .btn-primary {
+    .signup-btn,
+
+    .primary-btn {
+
+      border: none;
 
       background: #4f46e5;
 
       color: white;
 
+      padding: 11px 18px;
+
+      border-radius: 8px;
+
+      font-weight: 600;
+
     }
 
-    .btn-primary:hover {
+    .signup-btn:hover,
+
+    .primary-btn:hover {
 
       background: #4338ca;
 
     }
 
-    /* =========================
+    .user-menu {
 
-       HERO
-
-    ========================= */
-
-    .hero {
-
-      min-height: 650px;
-
-      padding: 90px 7%;
-
-      display: flex;
+      display: none;
 
       align-items: center;
 
-      justify-content: space-between;
+      gap: 10px;
+
+    }
+
+    .user-name {
+
+      font-weight: 600;
+
+      color: #333;
+
+      max-width: 130px;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+
+    }
+
+    .profile-btn {
+
+      border: 1px solid #ddd;
+
+      background: white;
+
+      color: #333;
+
+      padding: 9px 14px;
+
+      border-radius: 8px;
+
+      font-weight: 600;
+
+    }
+
+    .logout-btn {
+
+      border: none;
+
+      background: #f3f4f6;
+
+      color: #555;
+
+      padding: 9px 14px;
+
+      border-radius: 8px;
+
+      font-weight: 600;
+
+    }
+
+    /* HERO */
+
+    .hero {
+
+      padding: 90px 7%;
+
+      display: grid;
+
+      grid-template-columns: 1.2fr 0.8fr;
 
       gap: 60px;
 
-      background: linear-gradient(135deg, #eef2ff, #ffffff);
+      align-items: center;
+
+      background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
 
     }
 
-    .hero-content {
+    .hero-tag {
 
-      max-width: 650px;
-
-    }
-
-    .badge {
-
-      display: inline-block;
-
-      background: #e0e7ff;
-
-      color: #4338ca;
-
-      padding: 7px 13px;
-
-      border-radius: 20px;
-
-      font-size: 13px;
+      color: #4f46e5;
 
       font-weight: 700;
 
-      margin-bottom: 20px;
+      margin-bottom: 15px;
 
     }
 
     .hero h1 {
 
-      font-size: clamp(42px, 6vw, 70px);
+      font-size: 56px;
 
-      line-height: 1.05;
+      line-height: 1.1;
 
-      margin-bottom: 25px;
+      margin-bottom: 22px;
 
-      letter-spacing: -2px;
-
-    }
-
-    .hero h1 span {
-
-      color: #4f46e5;
+      max-width: 650px;
 
     }
 
@@ -226,11 +262,11 @@
 
       font-size: 19px;
 
-      color: #64748b;
+      color: #666;
 
-      max-width: 580px;
+      max-width: 600px;
 
-      margin-bottom: 32px;
+      margin-bottom: 30px;
 
     }
 
@@ -238,133 +274,69 @@
 
       display: flex;
 
-      gap: 14px;
+      gap: 12px;
 
       flex-wrap: wrap;
 
     }
 
-    .hero-btn {
+    .secondary-btn {
 
-      padding: 15px 25px;
-
-      border-radius: 12px;
-
-      font-weight: 700;
-
-      font-size: 15px;
-
-      display: inline-block;
-
-      cursor: pointer;
-
-      border: none;
-
-    }
-
-    .hero-btn-primary {
-
-      background: #4f46e5;
-
-      color: white;
-
-    }
-
-    .hero-btn-primary:hover {
-
-      background: #4338ca;
-
-    }
-
-    .hero-btn-secondary {
+      border: 1px solid #ddd;
 
       background: white;
 
-      color: #374151;
+      color: #333;
 
-      border: 1px solid #d1d5db;
+      padding: 11px 18px;
 
-    }
+      border-radius: 8px;
 
-    .hero-btn-secondary:hover {
-
-      background: #f8fafc;
+      font-weight: 600;
 
     }
 
-    /* =========================
+    .secondary-btn:hover {
 
-       HERO CARD
+      background: #f5f5f5;
 
-    ========================= */
+    }
 
-    .hero-card {
-
-      width: 360px;
-
-      min-width: 300px;
+    .project-card {
 
       background: white;
 
-      border-radius: 24px;
-
-      padding: 30px;
-
-      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
-
-    }
-
-    .hero-card-icon {
-
-      width: 65px;
-
-      height: 65px;
+      border: 1px solid #e7e7e7;
 
       border-radius: 18px;
 
-      background: #eef2ff;
+      padding: 30px;
 
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      font-size: 32px;
-
-      margin-bottom: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
 
     }
 
-    .hero-card h3 {
+    .project-card h3 {
+
+      margin-bottom: 20px;
 
       font-size: 22px;
 
-      margin-bottom: 10px;
-
     }
 
-    .hero-card p {
+    .project-item {
 
-      font-size: 14px;
+      padding: 18px;
 
-      margin-bottom: 20px;
-
-    }
-
-    .mini-project {
-
-      padding: 15px;
-
-      background: #f8fafc;
+      border: 1px solid #eeeeee;
 
       border-radius: 12px;
 
-      margin-top: 10px;
+      margin-bottom: 12px;
 
     }
 
-    .mini-project strong {
+    .project-item strong {
 
       display: block;
 
@@ -372,155 +344,75 @@
 
     }
 
-    .mini-project small {
+    .project-item span {
 
-      color: #64748b;
+      color: #777;
 
-    }
-
-    /* =========================
-
-       FEATURES
-
-    ========================= */
-
-    .section {
-
-      padding: 90px 7%;
+      font-size: 14px;
 
     }
 
-    .section-header {
+    /* SECTIONS */
+
+    section {
+
+      padding: 80px 7%;
+
+    }
+
+    .section-title {
 
       text-align: center;
 
-      max-width: 700px;
-
-      margin: 0 auto 50px;
+      margin-bottom: 50px;
 
     }
 
-    .section-header h2 {
+    .section-title h2 {
 
       font-size: 38px;
 
-      margin-bottom: 15px;
+      margin-bottom: 12px;
 
     }
 
-    .section-header p {
+    .section-title p {
 
-      color: #64748b;
+      color: #777;
 
-      font-size: 17px;
+      max-width: 600px;
+
+      margin: auto;
 
     }
 
-    .features {
+    .features-grid {
 
       display: grid;
 
       grid-template-columns: repeat(3, 1fr);
 
-      gap: 25px;
+      gap: 20px;
 
     }
 
     .feature-card {
 
+      border: 1px solid #eeeeee;
+
+      border-radius: 14px;
+
+      padding: 28px;
+
       background: white;
-
-      padding: 30px;
-
-      border-radius: 18px;
-
-      border: 1px solid #e5e7eb;
-
-      transition: 0.2s;
-
-    }
-
-    .feature-card:hover {
-
-      transform: translateY(-5px);
-
-      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
 
     }
 
     .feature-icon {
 
-      font-size: 30px;
+      width: 45px;
 
-      margin-bottom: 18px;
-
-    }
-
-    .feature-card h3 {
-
-      margin-bottom: 10px;
-
-      font-size: 20px;
-
-    }
-
-    .feature-card p {
-
-      color: #64748b;
-
-      font-size: 15px;
-
-    }
-
-    /* =========================
-
-       HOW IT WORKS
-
-    ========================= */
-
-    .how-section {
-
-      background: #111827;
-
-      color: white;
-
-    }
-
-    .how-section .section-header p {
-
-      color: #9ca3af;
-
-    }
-
-    .steps {
-
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 25px;
-
-    }
-
-    .step {
-
-      padding: 30px;
-
-      background: #1f2937;
-
-      border-radius: 18px;
-
-    }
-
-    .step-number {
-
-      width: 42px;
-
-      height: 42px;
-
-      background: #4f46e5;
-
-      border-radius: 50%;
+      height: 45px;
 
       display: flex;
 
@@ -528,39 +420,101 @@
 
       justify-content: center;
 
-      font-weight: 800;
+      background: #eef2ff;
 
-      margin-bottom: 20px;
+      color: #4f46e5;
+
+      border-radius: 10px;
+
+      font-size: 21px;
+
+      margin-bottom: 18px;
 
     }
 
-    .step h3 {
+    .feature-card h3 {
 
-      margin-bottom: 10px;
+      margin-bottom: 8px;
 
     }
 
-    .step p {
+    .feature-card p {
 
-      color: #9ca3af;
+      color: #777;
 
       font-size: 15px;
 
     }
 
-    /* =========================
+    /* HOW IT WORKS */
 
-       CTA
+    .steps {
 
-    ========================= */
+      display: grid;
 
-    .cta {
+      grid-template-columns: repeat(3, 1fr);
 
-      padding: 90px 7%;
+      gap: 30px;
+
+    }
+
+    .step {
 
       text-align: center;
 
-      background: #eef2ff;
+      padding: 25px;
+
+    }
+
+    .step-number {
+
+      width: 55px;
+
+      height: 55px;
+
+      margin: 0 auto 18px;
+
+      border-radius: 50%;
+
+      background: #4f46e5;
+
+      color: white;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 20px;
+
+      font-weight: bold;
+
+    }
+
+    .step p {
+
+      color: #777;
+
+      margin-top: 8px;
+
+    }
+
+    /* CTA */
+
+    .cta {
+
+      margin: 20px 7% 80px;
+
+      border-radius: 20px;
+
+      padding: 70px 30px;
+
+      text-align: center;
+
+      background: #4f46e5;
+
+      color: white;
 
     }
 
@@ -574,59 +528,39 @@
 
     .cta p {
 
-      color: #64748b;
+      margin-bottom: 25px;
 
-      margin-bottom: 28px;
-
-    }
-
-    /* =========================
-
-       FOOTER
-
-    ========================= */
-
-    footer {
-
-      background: #ffffff;
-
-      border-top: 1px solid #e5e7eb;
-
-      padding: 30px 7%;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      gap: 20px;
+      opacity: 0.9;
 
     }
 
-    footer p {
+    .cta .primary-btn {
 
-      color: #64748b;
-
-      font-size: 14px;
-
-    }
-
-    .footer-logo {
-
-      font-weight: 800;
+      background: white;
 
       color: #4f46e5;
 
     }
 
-    /* =========================
+    /* FOOTER */
 
-       AUTH MODAL
+    footer {
 
-    ========================= */
+      border-top: 1px solid #eeeeee;
 
-    .auth-modal {
+      padding: 35px 7%;
+
+      color: #777;
+
+      text-align: center;
+
+      font-size: 14px;
+
+    }
+
+    /* MODAL */
+
+    .modal {
 
       display: none;
 
@@ -646,73 +580,119 @@
 
     }
 
-    .auth-box {
+    .modal-content {
 
       background: white;
 
       width: 100%;
 
-      max-width: 420px;
+      max-width: 430px;
+
+      border-radius: 16px;
 
       padding: 30px;
 
-      border-radius: 20px;
+      position: relative;
 
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      max-height: 90vh;
+
+      overflow-y: auto;
 
     }
 
-    .auth-box h2 {
+    .modal-content h2 {
 
       margin-bottom: 8px;
 
-      text-align: center;
-
-      font-size: 25px;
-
     }
 
-    .auth-subtitle {
+    .modal-description {
 
-      text-align: center;
-
-      color: #64748b;
-
-      font-size: 14px;
+      color: #777;
 
       margin-bottom: 22px;
 
+      font-size: 14px;
+
     }
 
-    .auth-input,
+    .close-btn {
 
-    .auth-select {
+      position: absolute;
+
+      right: 18px;
+
+      top: 15px;
+
+      border: none;
+
+      background: none;
+
+      font-size: 25px;
+
+      color: #777;
+
+    }
+
+    .form-group {
+
+      margin-bottom: 16px;
+
+    }
+
+    .form-group label {
+
+      display: block;
+
+      margin-bottom: 6px;
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+    }
+
+    .form-group input,
+
+    .form-group select,
+
+    .form-group textarea {
 
       width: 100%;
 
-      padding: 13px;
+      padding: 12px;
 
-      margin-bottom: 12px;
+      border: 1px solid #ddd;
 
-      border: 1px solid #d1d5db;
-
-      border-radius: 10px;
+      border-radius: 8px;
 
       font-size: 15px;
+
+      font-family: inherit;
 
       outline: none;
 
     }
 
-    .auth-input:focus,
+    .form-group textarea {
 
-    .auth-select:focus {
+      min-height: 90px;
+
+      resize: vertical;
+
+    }
+
+    .form-group input:focus,
+
+    .form-group select:focus,
+
+    .form-group textarea:focus {
 
       border-color: #4f46e5;
 
     }
 
-    .auth-submit {
+    .form-submit {
 
       width: 100%;
 
@@ -720,31 +700,19 @@
 
     }
 
-    .auth-message {
-
-      margin-top: 15px;
+    .switch-auth {
 
       text-align: center;
-
-      font-size: 14px;
-
-      min-height: 20px;
-
-    }
-
-    .auth-switch {
 
       margin-top: 18px;
 
-      text-align: center;
-
       font-size: 14px;
 
-      color: #64748b;
+      color: #777;
 
     }
 
-    .auth-link {
+    .switch-auth button {
 
       border: none;
 
@@ -752,39 +720,91 @@
 
       color: #4f46e5;
 
-      cursor: pointer;
+      font-weight: 600;
 
-      font-weight: 700;
+    }
+
+    .message {
+
+      margin-top: 15px;
+
+      padding: 10px;
+
+      border-radius: 8px;
+
+      display: none;
 
       font-size: 14px;
 
     }
 
-    .auth-close {
+    .message.success {
 
       display: block;
 
-      margin: 15px auto 0;
+      background: #ecfdf5;
 
-      border: none;
-
-      background: none;
-
-      color: #64748b;
-
-      cursor: pointer;
-
-      font-size: 14px;
+      color: #047857;
 
     }
 
-    /* =========================
+    .message.error {
 
-       MOBILE
+      display: block;
 
-    ========================= */
+      background: #fef2f2;
+
+      color: #b91c1c;
+
+    }
+
+    /* PROFILE */
+
+    .profile-row {
+
+      margin-bottom: 18px;
+
+    }
+
+    .profile-label {
+
+      font-size: 13px;
+
+      color: #888;
+
+      margin-bottom: 3px;
+
+    }
+
+    .profile-value {
+
+      font-size: 16px;
+
+      font-weight: 600;
+
+      word-break: break-word;
+
+    }
+
+    .profile-bio {
+
+      font-weight: normal;
+
+      color: #555;
+
+      white-space: pre-wrap;
+
+    }
+
+    /* MOBILE */
 
     @media (max-width: 850px) {
+
+      nav {
+
+        padding: 0 5%;
+
+      }
 
       .nav-links {
 
@@ -794,37 +814,25 @@
 
       .hero {
 
-        flex-direction: column;
+        grid-template-columns: 1fr;
 
-        text-align: center;
-
-        padding-top: 60px;
+        padding: 60px 5%;
 
       }
 
-      .hero p {
+      .hero h1 {
 
-        margin-left: auto;
-
-        margin-right: auto;
+        font-size: 42px;
 
       }
 
-      .hero-buttons {
+      section {
 
-        justify-content: center;
-
-      }
-
-      .hero-card {
-
-        width: 100%;
-
-        max-width: 380px;
+        padding: 60px 5%;
 
       }
 
-      .features,
+      .features-grid,
 
       .steps {
 
@@ -832,17 +840,21 @@
 
       }
 
-      .section-header h2 {
+      .cta {
+
+        margin: 10px 5% 60px;
+
+      }
+
+      .cta h2 {
 
         font-size: 32px;
 
       }
 
-      footer {
+      .user-name {
 
-        flex-direction: column;
-
-        text-align: center;
+        display: none;
 
       }
 
@@ -854,63 +866,33 @@
 
 <body>
 
-  <!-- =========================
+  <!-- NAVBAR -->
 
-       NAVIGATION
+  <nav>
 
-  ========================= -->
-
-  <nav class="navbar">
-
-    <div class="logo">
-
-      Build<span>Mate</span>
-
-    </div>
+    <div class="logo">BuildMate</div>
 
     <div class="nav-links">
 
-      <a href="#features">
+      <a href="#features">Features</a>
 
-        Features
+      <a href="#how-it-works">How It Works</a>
 
-      </a>
-
-      <a href="#how">
-
-        How It Works
-
-      </a>
-
-      <a href="#about">
-
-        About
-
-      </a>
+      <a href="#about">About</a>
 
     </div>
 
-    <div class="nav-buttons">
+    <!-- Logged Out -->
 
-      <button
+    <div class="nav-buttons" id="loggedOutMenu">
 
-        id="loginBtn"
-
-        class="btn btn-login"
-
-        type="button">
+      <button class="login-btn" id="loginBtn">
 
         Log In
 
       </button>
 
-      <button
-
-        id="signupBtn"
-
-        class="btn btn-primary"
-
-        type="button">
+      <button class="signup-btn" id="signupBtn">
 
         Get Started
 
@@ -918,33 +900,47 @@
 
     </div>
 
+    <!-- Logged In -->
+
+    <div class="user-menu" id="userMenu">
+
+      <span class="user-name" id="userName">
+
+        User
+
+      </span>
+
+      <button class="profile-btn" id="profileBtn">
+
+        Profile
+
+      </button>
+
+      <button class="logout-btn" id="logoutBtn">
+
+        Logout
+
+      </button>
+
+    </div>
+
   </nav>
 
-  <!-- =========================
-
-       HERO
-
-  ========================= -->
+  <!-- HERO -->
 
   <section class="hero">
 
-    <div class="hero-content">
+    <div>
 
-      <div class="badge">
+      <div class="hero-tag">
 
-        ✨ Build. Connect. Grow.
+        BUILD YOUR FUTURE
 
       </div>
 
       <h1>
 
-        Find the right people to
-
-        <span>
-
-          build your project.
-
-        </span>
+        Find the right people to build your project.
 
       </h1>
 
@@ -952,31 +948,19 @@
 
         BuildMate connects clients with talented freelancers
 
-        to turn ideas into real websites, apps, and digital projects.
+        to turn ideas into real projects.
 
       </p>
 
       <div class="hero-buttons">
 
-        <button
+        <button class="primary-btn" id="heroStartBtn">
 
-          id="startProjectBtn"
-
-          class="hero-btn hero-btn-primary"
-
-          type="button">
-
-          Start a Project →
+          Start a Project
 
         </button>
 
-        <button
-
-          id="findFreelancersBtn"
-
-          class="hero-btn hero-btn-secondary"
-
-          type="button">
+        <button class="secondary-btn" id="heroFreelancerBtn">
 
           Find Freelancers
 
@@ -986,73 +970,35 @@
 
     </div>
 
-    <div class="hero-card">
-
-      <div class="hero-card-icon">
-
-        💻
-
-      </div>
+    <div class="project-card">
 
       <h3>
 
-        Build your next project
+        Popular Projects
 
       </h3>
 
-      <p>
+      <div class="project-item">
 
-        Post your project and connect with freelancers
+        <strong>Website Design</strong>
 
-        who have the skills you need.
-
-      </p>
-
-      <div class="mini-project">
-
-        <strong>
-
-          Website Design
-
-        </strong>
-
-        <small>
-
-          Find a designer for your new website
-
-        </small>
+        <span>UI/UX • Design</span>
 
       </div>
 
-      <div class="mini-project">
+      <div class="project-item">
 
-        <strong>
+        <strong>Mobile App</strong>
 
-          Mobile App
-
-        </strong>
-
-        <small>
-
-          Build your next mobile application
-
-        </small>
+        <span>iOS • Android</span>
 
       </div>
 
-      <div class="mini-project">
+      <div class="project-item">
 
-        <strong>
+        <strong>Development</strong>
 
-          Development
-
-        </strong>
-
-        <small>
-
-          Find developers for your project
-
-        </small>
+        <span>Web • Software</span>
 
       </div>
 
@@ -1060,19 +1006,11 @@
 
   </section>
 
-  <!-- =========================
+  <!-- FEATURES -->
 
-       FEATURES
+  <section id="features">
 
-  ========================= -->
-
-  <section
-
-    class="section"
-
-    id="features">
-
-    <div class="section-header">
+    <div class="section-title">
 
       <h2>
 
@@ -1082,23 +1020,19 @@
 
       <p>
 
-        A simple platform for clients and freelancers
+        BuildMate gives clients and freelancers the tools
 
-        to work together.
+        they need to work together.
 
       </p>
 
     </div>
 
-    <div class="features">
+    <div class="features-grid">
 
       <div class="feature-card">
 
-        <div class="feature-icon">
-
-          📁
-
-        </div>
+        <div class="feature-icon">+</div>
 
         <h3>
 
@@ -1108,9 +1042,7 @@
 
         <p>
 
-          Clients can create projects,
-
-          describe their needs and find the right freelancer.
+          Create projects and describe exactly what you need.
 
         </p>
 
@@ -1118,11 +1050,7 @@
 
       <div class="feature-card">
 
-        <div class="feature-icon">
-
-          👨‍💻
-
-        </div>
+        <div class="feature-icon">✓</div>
 
         <h3>
 
@@ -1132,9 +1060,7 @@
 
         <p>
 
-          Discover freelancers with different
-
-          skills and experience.
+          Discover freelancers with the skills your project requires.
 
         </p>
 
@@ -1142,11 +1068,7 @@
 
       <div class="feature-card">
 
-        <div class="feature-icon">
-
-          💬
-
-        </div>
+        <div class="feature-icon">💬</div>
 
         <h3>
 
@@ -1156,9 +1078,7 @@
 
         <p>
 
-          Communicate directly with clients
-
-          and freelancers throughout the project.
+          Communicate with clients and freelancers directly.
 
         </p>
 
@@ -1166,11 +1086,7 @@
 
       <div class="feature-card">
 
-        <div class="feature-icon">
-
-          ⭐
-
-        </div>
+        <div class="feature-icon">★</div>
 
         <h3>
 
@@ -1180,9 +1096,7 @@
 
         <p>
 
-          Build trust through reviews and
-
-          ratings after completing projects.
+          Build trust through ratings and reviews.
 
         </p>
 
@@ -1190,11 +1104,7 @@
 
       <div class="feature-card">
 
-        <div class="feature-icon">
-
-          🔔
-
-        </div>
+        <div class="feature-icon">🔔</div>
 
         <h3>
 
@@ -1204,9 +1114,7 @@
 
         <p>
 
-          Stay updated about applications,
-
-          messages and project activity.
+          Stay updated about your projects and applications.
 
         </p>
 
@@ -1214,11 +1122,7 @@
 
       <div class="feature-card">
 
-        <div class="feature-icon">
-
-          🔐
-
-        </div>
+        <div class="feature-icon">🔒</div>
 
         <h3>
 
@@ -1228,9 +1132,7 @@
 
         <p>
 
-          User accounts and permissions will
-
-          be connected to secure authentication.
+          Your account and personal information are protected.
 
         </p>
 
@@ -1240,19 +1142,11 @@
 
   </section>
 
-  <!-- =========================
+  <!-- HOW IT WORKS -->
 
-       HOW IT WORKS
+  <section id="how-it-works">
 
-  ========================= -->
-
-  <section
-
-    class="section how-section"
-
-    id="how">
-
-    <div class="section-header">
+    <div class="section-title">
 
       <h2>
 
@@ -1262,7 +1156,7 @@
 
       <p>
 
-        Simple steps to connect clients and freelancers.
+        Start working together in three simple steps.
 
       </p>
 
@@ -1286,9 +1180,7 @@
 
         <p>
 
-          Sign up as a client or freelancer
-
-          and create your profile.
+          Sign up as a client or freelancer.
 
         </p>
 
@@ -1310,9 +1202,7 @@
 
         <p>
 
-          Clients post projects and freelancers
-
-          can submit applications.
+          Find projects or discover talented freelancers.
 
         </p>
 
@@ -1328,15 +1218,13 @@
 
         <h3>
 
-          Work Together
+          Build Together
 
         </h3>
 
         <p>
 
-          Chat, manage the project and complete
-
-          the work together.
+          Communicate, collaborate and complete projects.
 
         </p>
 
@@ -1346,17 +1234,35 @@
 
   </section>
 
-  <!-- =========================
+  <!-- ABOUT -->
 
-       CTA
+  <section id="about">
 
-  ========================= -->
+    <div class="section-title">
 
-  <section
+      <h2>
 
-    class="cta"
+        About BuildMate
 
-    id="about">
+      </h2>
+
+      <p>
+
+        BuildMate is a platform designed to make it easier
+
+        for people with ideas to connect with people who
+
+        have the skills to build them.
+
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <div class="cta">
 
     <h2>
 
@@ -1366,223 +1272,365 @@
 
     <p>
 
-      Join BuildMate and turn your ideas into real projects.
+      Create your BuildMate account and get started.
 
     </p>
 
-    <button
+    <button class="primary-btn" id="ctaSignupBtn">
 
-      id="ctaSignupBtn"
-
-      class="hero-btn hero-btn-primary"
-
-      type="button">
-
-      Get Started →
+      Get Started
 
     </button>
 
-  </section>
+  </div>
 
-  <!-- =========================
+  <!-- AUTH MODAL -->
 
-       AUTH MODAL
+  <div class="modal" id="authModal">
 
-  ========================= -->
+    <div class="modal-content">
 
-  <div
+      <button class="close-btn" id="closeAuthBtn">
 
-    id="authModal"
-
-    class="auth-modal">
-
-    <div class="auth-box">
-
-      <h2 id="authTitle">
-
-        Login to BuildMate
-
-      </h2>
-
-      <p class="auth-subtitle">
-
-        Connect with clients and freelancers.
-
-      </p>
-
-      <!-- SIGN UP FIELDS -->
-
-      <div
-
-        id="signupFields"
-
-        style="display: none;">
-
-        <input
-
-          id="authName"
-
-          class="auth-input"
-
-          type="text"
-
-          placeholder="Full Name">
-
-        <select
-
-          id="authRole"
-
-          class="auth-select">
-
-          <option value="client">
-
-            Client
-
-          </option>
-
-          <option value="freelancer">
-
-            Freelancer
-
-          </option>
-
-        </select>
-
-      </div>
-
-      <!-- EMAIL -->
-
-      <input
-
-        id="authEmail"
-
-        class="auth-input"
-
-        type="email"
-
-        placeholder="Email">
-
-      <!-- PASSWORD -->
-
-      <input
-
-        id="authPassword"
-
-        class="auth-input"
-
-        type="password"
-
-        placeholder="Password">
-
-      <!-- SUBMIT -->
-
-      <button
-
-        id="authSubmit"
-
-        class="btn btn-primary auth-submit"
-
-        type="button">
-
-        Login
+        ×
 
       </button>
 
-      <!-- MESSAGE -->
+      <h2 id="authTitle">
 
-      <p
+        Create your account
 
-        id="authMessage"
+      </h2>
 
-        class="auth-message">
+      <p class="modal-description" id="authDescription">
+
+        Join BuildMate today.
 
       </p>
 
-      <!-- SWITCH -->
+      <form id="authForm">
 
-      <div class="auth-switch">
+        <!-- Name only for signup -->
 
-        <span id="authSwitchText">
+        <div class="form-group" id="nameGroup">
 
-          Don't have an account?
+          <label for="name">
 
-        </span>
+            Name
+
+          </label>
+
+          <input
+
+            type="text"
+
+            id="name"
+
+            placeholder="Your name"
+
+          >
+
+        </div>
+
+        <!-- Role only for signup -->
+
+        <div class="form-group" id="roleGroup">
+
+          <label for="role">
+
+            I want to join as
+
+          </label>
+
+          <select id="role">
+
+            <option value="client">
+
+              Client
+
+            </option>
+
+            <option value="freelancer">
+
+              Freelancer
+
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="email">
+
+            Email
+
+          </label>
+
+          <input
+
+            type="email"
+
+            id="email"
+
+            placeholder="you@example.com"
+
+            required
+
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="password">
+
+            Password
+
+          </label>
+
+          <input
+
+            type="password"
+
+            id="password"
+
+            placeholder="At least 6 characters"
+
+            required
+
+            minlength="6"
+
+          >
+
+        </div>
 
         <button
 
-          id="switchAuth"
+          type="submit"
 
-          class="auth-link"
+          class="primary-btn form-submit"
 
-          type="button">
+          id="authSubmitBtn"
 
-          Create an account
+        >
+
+          Create Account
+
+        </button>
+
+        <div
+
+          class="message"
+
+          id="authMessage"
+
+        ></div>
+
+      </form>
+
+      <div class="switch-auth">
+
+        <span id="switchText">
+
+          Already have an account?
+
+        </span>
+
+        <button id="switchAuthBtn">
+
+          Log In
 
         </button>
 
       </div>
 
-      <!-- CLOSE -->
+    </div>
 
-      <button
+  </div>
 
-        id="closeAuth"
+  <!-- PROFILE MODAL -->
 
-        class="auth-close"
+  <div class="modal" id="profileModal">
 
-        type="button">
+    <div class="modal-content">
 
-        Close
+      <button class="close-btn" id="closeProfileBtn">
+
+        ×
 
       </button>
+
+      <h2>
+
+        My Profile
+
+      </h2>
+
+      <p class="modal-description">
+
+        Your BuildMate account information.
+
+      </p>
+
+      <div class="profile-row">
+
+        <div class="profile-label">
+
+          Name
+
+        </div>
+
+        <div
+
+          class="profile-value"
+
+          id="profileName"
+
+        >
+
+          Loading...
+
+        </div>
+
+      </div>
+
+      <div class="profile-row">
+
+        <div class="profile-label">
+
+          Email
+
+        </div>
+
+        <div
+
+          class="profile-value"
+
+          id="profileEmail"
+
+        >
+
+          Loading...
+
+        </div>
+
+      </div>
+
+      <div class="profile-row">
+
+        <div class="profile-label">
+
+          Role
+
+        </div>
+
+        <div
+
+          class="profile-value"
+
+          id="profileRole"
+
+        >
+
+          Loading...
+
+        </div>
+
+      </div>
+
+      <div class="profile-row">
+
+        <div class="profile-label">
+
+          Bio
+
+        </div>
+
+        <div
+
+          class="profile-value profile-bio"
+
+          id="profileBio"
+
+        >
+
+          Not set yet
+
+        </div>
+
+      </div>
+
+      <div class="profile-row">
+
+        <div class="profile-label">
+
+          Skills
+
+        </div>
+
+        <div
+
+          class="profile-value profile-bio"
+
+          id="profileSkills"
+
+        >
+
+          Not set yet
+
+        </div>
+
+      </div>
+
+      <div
+
+        class="message"
+
+        id="profileMessage"
+
+      ></div>
 
     </div>
 
   </div>
 
-  <!-- =========================
-
-       FOOTER
-
-  ========================= -->
+  <!-- FOOTER -->
 
   <footer>
 
-    <div class="footer-logo">
-
-      BuildMate
-
-    </div>
-
-    <p>
-
-      © 2026 BuildMate. All rights reserved.
-
-    </p>
+    © 2026 BuildMate. All rights reserved.
 
   </footer>
 
-  <!-- =========================
-
-       SUPABASE
-
-  ========================= -->
+  <!-- SUPABASE -->
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script src="supabase.js"></script>
 
-  <!-- =========================
-
-       AUTH JAVASCRIPT
-
-  ========================= -->
+  <!-- BUILD MATE JAVASCRIPT -->
 
   <script>
 
-    const authModal =
+    /* =========================
 
-      document.getElementById("authModal");
+       ELEMENTS
+
+    ========================= */
+
+    const loggedOutMenu =
+
+      document.getElementById("loggedOutMenu");
+
+    const userMenu =
+
+      document.getElementById("userMenu");
+
+    const userName =
+
+      document.getElementById("userName");
 
     const loginBtn =
 
@@ -1592,47 +1640,155 @@
 
       document.getElementById("signupBtn");
 
+    const heroStartBtn =
+
+      document.getElementById("heroStartBtn");
+
+    const heroFreelancerBtn =
+
+      document.getElementById("heroFreelancerBtn");
+
     const ctaSignupBtn =
 
       document.getElementById("ctaSignupBtn");
 
-    const startProjectBtn =
+    const logoutBtn =
 
-      document.getElementById("startProjectBtn");
+      document.getElementById("logoutBtn");
 
-    const findFreelancersBtn =
+    const profileBtn =
 
-      document.getElementById("findFreelancersBtn");
+      document.getElementById("profileBtn");
 
-    const closeAuth =
+    /* AUTH MODAL */
 
-      document.getElementById("closeAuth");
+    const authModal =
 
-    const switchAuth =
+      document.getElementById("authModal");
 
-      document.getElementById("switchAuth");
+    const closeAuthBtn =
 
-    const authSubmit =
+      document.getElementById("closeAuthBtn");
 
-      document.getElementById("authSubmit");
+    const authForm =
+
+      document.getElementById("authForm");
 
     const authTitle =
 
       document.getElementById("authTitle");
 
-    const authSwitchText =
+    const authDescription =
 
-      document.getElementById("authSwitchText");
+      document.getElementById("authDescription");
 
-    const signupFields =
+    const authSubmitBtn =
 
-      document.getElementById("signupFields");
+      document.getElementById("authSubmitBtn");
+
+    const switchAuthBtn =
+
+      document.getElementById("switchAuthBtn");
+
+    const switchText =
+
+      document.getElementById("switchText");
+
+    const nameGroup =
+
+      document.getElementById("nameGroup");
+
+    const roleGroup =
+
+      document.getElementById("roleGroup");
+
+    const nameInput =
+
+      document.getElementById("name");
+
+    const roleInput =
+
+      document.getElementById("role");
+
+    const emailInput =
+
+      document.getElementById("email");
+
+    const passwordInput =
+
+      document.getElementById("password");
 
     const authMessage =
 
       document.getElementById("authMessage");
 
-    let authMode = "login";
+    /* PROFILE MODAL */
+
+    const profileModal =
+
+      document.getElementById("profileModal");
+
+    const closeProfileBtn =
+
+      document.getElementById("closeProfileBtn");
+
+    const profileName =
+
+      document.getElementById("profileName");
+
+    const profileEmail =
+
+      document.getElementById("profileEmail");
+
+    const profileRole =
+
+      document.getElementById("profileRole");
+
+    const profileBio =
+
+      document.getElementById("profileBio");
+
+    const profileSkills =
+
+      document.getElementById("profileSkills");
+
+    const profileMessage =
+
+      document.getElementById("profileMessage");
+
+    /* =========================
+
+       AUTH MODE
+
+    ========================= */
+
+    let isLoginMode = false;
+
+    /* =========================
+
+       MESSAGE
+
+    ========================= */
+
+    function showAuthMessage(message, type) {
+
+      authMessage.textContent = message;
+
+      authMessage.className =
+
+        "message " + type;
+
+    }
+
+    function clearAuthMessage() {
+
+      authMessage.textContent = "";
+
+      authMessage.className =
+
+        "message";
+
+    }
 
     /* =========================
 
@@ -1642,93 +1798,841 @@
 
     function openLogin() {
 
-      authMode = "login";
-
-      authModal.style.display = "flex";
+      isLoginMode = true;
 
       authTitle.textContent =
 
-        "Login to BuildMate";
+        "Welcome back";
 
-      authSubmit.textContent =
+      authDescription.textContent =
 
-        "Login";
+        "Log in to your BuildMate account.";
 
-      authSwitchText.textContent =
+      authSubmitBtn.textContent =
 
-        "Don't have an account?";
+        "Log In";
 
-      switchAuth.textContent =
-
-        "Create an account";
-
-      signupFields.style.display =
+      nameGroup.style.display =
 
         "none";
 
-      authMessage.textContent =
+      roleGroup.style.display =
 
-        "";
+        "none";
 
-    }
+      switchText.textContent =
 
-    /* =========================
+        "Don't have an account?";
 
-       OPEN SIGN UP
+      switchAuthBtn.textContent =
 
-    ========================= */
+        "Create Account";
 
-    function openSignup() {
+      clearAuthMessage();
 
-      authMode = "signup";
+      passwordInput.value = "";
 
       authModal.style.display =
 
         "flex";
 
+    }
+
+    /* =========================
+
+       OPEN SIGNUP
+
+    ========================= */
+
+    function openSignup() {
+
+      isLoginMode = false;
+
       authTitle.textContent =
 
-        "Create your BuildMate account";
+        "Create your account";
 
-      authSubmit.textContent =
+      authDescription.textContent =
+
+        "Join BuildMate today.";
+
+      authSubmitBtn.textContent =
 
         "Create Account";
 
-      authSwitchText.textContent =
-
-        "Already have an account?";
-
-      switchAuth.textContent =
-
-        "Login";
-
-      signupFields.style.display =
+      nameGroup.style.display =
 
         "block";
 
-      authMessage.textContent =
+      roleGroup.style.display =
 
-        "";
+        "block";
+
+      switchText.textContent =
+
+        "Already have an account?";
+
+      switchAuthBtn.textContent =
+
+        "Log In";
+
+      clearAuthMessage();
+
+      authModal.style.display =
+
+        "flex";
 
     }
 
     /* =========================
 
-       CLOSE MODAL
+       CLOSE AUTH
 
     ========================= */
 
-    function closeModal() {
+    function closeAuth() {
 
       authModal.style.display =
 
         "none";
 
-      authMessage.textContent =
+      authForm.reset();
 
-        "";
+      clearAuthMessage();
 
     }
+
+    /* =========================
+
+       SHOW LOGGED OUT
+
+    ========================= */
+
+    function showLoggedOut() {
+
+      loggedOutMenu.style.display =
+
+        "flex";
+
+      userMenu.style.display =
+
+        "none";
+
+      userName.textContent =
+
+        "User";
+
+    }
+
+    /* =========================
+
+       SHOW LOGGED IN
+
+    ========================= */
+
+    function showLoggedIn(user) {
+
+      loggedOutMenu.style.display =
+
+        "none";
+
+      userMenu.style.display =
+
+        "flex";
+
+      let displayName =
+
+        user.user_metadata?.name;
+
+      if (!displayName) {
+
+        displayName =
+
+          user.email?.split("@")[0];
+
+      }
+
+      userName.textContent =
+
+        displayName || "User";
+
+    }
+
+    /* =========================
+
+       LOAD PROFILE NAME
+
+    ========================= */
+
+    async function loadProfileForMenu() {
+
+      try {
+
+        const {
+
+          data: {
+
+            user
+
+          }
+
+        } =
+
+          await supabaseClient.auth.getUser();
+
+        if (!user) {
+
+          showLoggedOut();
+
+          return;
+
+        }
+
+        const {
+
+          data,
+
+          error
+
+        } =
+
+          await supabaseClient
+
+            .from("profiles")
+
+            .select("name, role")
+
+            .eq("id", user.id)
+
+            .maybeSingle();
+
+        if (error) {
+
+          console.error(
+
+            "Profile error:",
+
+            error
+
+          );
+
+          showLoggedIn(user);
+
+          return;
+
+        }
+
+        if (data && data.name) {
+
+          userName.textContent =
+
+            data.name;
+
+        } else {
+
+          showLoggedIn(user);
+
+        }
+
+      } catch (error) {
+
+        console.error(error);
+
+      }
+
+    }
+
+    /* =========================
+
+       LOAD CURRENT SESSION
+
+    ========================= */
+
+    async function checkUser() {
+
+      try {
+
+        const {
+
+          data,
+
+          error
+
+        } =
+
+          await supabaseClient.auth.getSession();
+
+        if (error) {
+
+          console.error(
+
+            "Session error:",
+
+            error
+
+          );
+
+          showLoggedOut();
+
+          return;
+
+        }
+
+        const session =
+
+          data.session;
+
+        if (session) {
+
+          showLoggedIn(
+
+            session.user
+
+          );
+
+          loadProfileForMenu();
+
+        } else {
+
+          showLoggedOut();
+
+        }
+
+      } catch (error) {
+
+        console.error(error);
+
+        showLoggedOut();
+
+      }
+
+    }
+
+    /* =========================
+
+       LOGIN / SIGNUP
+
+    ========================= */
+
+    authForm.addEventListener(
+
+      "submit",
+
+      async function(event) {
+
+        event.preventDefault();
+
+        clearAuthMessage();
+
+        authSubmitBtn.disabled =
+
+          true;
+
+        authSubmitBtn.textContent =
+
+          "Please wait...";
+
+        try {
+
+          const email =
+
+            emailInput.value.trim();
+
+          const password =
+
+            passwordInput.value;
+
+          /* LOGIN */
+
+          if (isLoginMode) {
+
+            const {
+
+              data,
+
+              error
+
+            } =
+
+              await supabaseClient.auth
+
+                .signInWithPassword({
+
+                  email: email,
+
+                  password: password
+
+                });
+
+            if (error) {
+
+              showAuthMessage(
+
+                error.message,
+
+                "error"
+
+              );
+
+              return;
+
+            }
+
+            if (data.session) {
+
+              closeAuth();
+
+              showLoggedIn(
+
+                data.user
+
+              );
+
+              loadProfileForMenu();
+
+            }
+
+          }
+
+          /* SIGN UP */
+
+          else {
+
+            const name =
+
+              nameInput.value.trim();
+
+            const role =
+
+              roleInput.value;
+
+            if (!name) {
+
+              showAuthMessage(
+
+                "Please enter your name.",
+
+                "error"
+
+              );
+
+              return;
+
+            }
+
+            const {
+
+              data,
+
+              error
+
+            } =
+
+              await supabaseClient.auth
+
+                .signUp({
+
+                  email: email,
+
+                  password: password,
+
+                  options: {
+
+                    data: {
+
+                      name: name,
+
+                      role: role
+
+                    }
+
+                  }
+
+                });
+
+            if (error) {
+
+              showAuthMessage(
+
+                error.message,
+
+                "error"
+
+              );
+
+              return;
+
+            }
+
+            /*
+
+              If email confirmation is enabled,
+
+              Supabase may not create a session
+
+              until the user confirms the email.
+
+            */
+
+            if (
+
+              data.user &&
+
+              !data.session
+
+            ) {
+
+              showAuthMessage(
+
+                "Account created. Please check your email to confirm your account.",
+
+                "success"
+
+              );
+
+              authForm.reset();
+
+            } else {
+
+              showAuthMessage(
+
+                "Account created successfully!",
+
+                "success"
+
+              );
+
+              setTimeout(
+
+                function() {
+
+                  closeAuth();
+
+                  if (data.user) {
+
+                    showLoggedIn(
+
+                      data.user
+
+                    );
+
+                    loadProfileForMenu();
+
+                  }
+
+                },
+
+                800
+
+              );
+
+            }
+
+          }
+
+        } catch (error) {
+
+          console.error(error);
+
+          showAuthMessage(
+
+            "Something went wrong. Please try again.",
+
+            "error"
+
+          );
+
+        } finally {
+
+          authSubmitBtn.disabled =
+
+            false;
+
+          authSubmitBtn.textContent =
+
+            isLoginMode
+
+              ? "Log In"
+
+              : "Create Account";
+
+        }
+
+      }
+
+    );
+
+    /* =========================
+
+       LOGOUT
+
+    ========================= */
+
+    logoutBtn.addEventListener(
+
+      "click",
+
+      async function() {
+
+        logoutBtn.disabled =
+
+          true;
+
+        logoutBtn.textContent =
+
+          "Logging out...";
+
+        try {
+
+          const {
+
+            error
+
+          } =
+
+            await supabaseClient.auth
+
+              .signOut();
+
+          if (error) {
+
+            alert(
+
+              error.message
+
+            );
+
+            return;
+
+          }
+
+          showLoggedOut();
+
+        } catch (error) {
+
+          console.error(error);
+
+          alert(
+
+            "Logout failed. Please try again."
+
+          );
+
+        } finally {
+
+          logoutBtn.disabled =
+
+            false;
+
+          logoutBtn.textContent =
+
+            "Logout";
+
+        }
+
+      }
+
+    );
+
+    /* =========================
+
+       PROFILE
+
+    ========================= */
+
+    profileBtn.addEventListener(
+
+      "click",
+
+      async function() {
+
+        profileModal.style.display =
+
+          "flex";
+
+        profileMessage.textContent =
+
+          "";
+
+        profileMessage.className =
+
+          "message";
+
+        profileName.textContent =
+
+          "Loading...";
+
+        profileEmail.textContent =
+
+          "Loading...";
+
+        profileRole.textContent =
+
+          "Loading...";
+
+        profileBio.textContent =
+
+          "Loading...";
+
+        profileSkills.textContent =
+
+          "Loading...";
+
+        try {
+
+          const {
+
+            data: {
+
+              user
+
+            }
+
+          } =
+
+            await supabaseClient.auth
+
+              .getUser();
+
+          if (!user) {
+
+            profileModal.style.display =
+
+              "none";
+
+            openLogin();
+
+            return;
+
+          }
+
+          profileEmail.textContent =
+
+            user.email || "Not available";
+
+          const {
+
+            data,
+
+            error
+
+          } =
+
+            await supabaseClient
+
+              .from("profiles")
+
+              .select(
+
+                "name, role, bio, skills"
+
+              )
+
+              .eq("id", user.id)
+
+              .maybeSingle();
+
+          if (error) {
+
+            console.error(
+
+              "Profile loading error:",
+
+              error
+
+            );
+
+            profileName.textContent =
+
+              user.user_metadata?.name ||
+
+              "Not set";
+
+            profileRole.textContent =
+
+              user.user_metadata?.role ||
+
+              "Not set";
+
+            profileBio.textContent =
+
+              "Not set yet";
+
+            profileSkills.textContent =
+
+              "Not set yet";
+
+            profileMessage.textContent =
+
+              "Your account is connected, but some profile information could not be loaded.";
+
+            profileMessage.className =
+
+              "message error";
+
+            return;
+
+          }
+
+          if (data) {
+
+            profileName.textContent =
+
+              data.name || "Not set";
+
+            profileRole.textContent =
+
+              data.role || "Not set";
+
+            profileBio.textContent =
+
+              data.bio || "Not set yet";
+
+            profileSkills.textContent =
+
+              data.skills || "Not set yet";
+
+          } else {
+
+            profileName.textContent =
+
+              user.user_metadata?.name ||
+
+              "Not set";
+
+            profileRole.textContent =
+
+              user.user_metadata?.role ||
+
+              "Not set";
+
+            profileBio.textContent =
+
+              "Not set yet";
+
+            profileSkills.textContent =
+
+              "Not set yet";
+
+          }
+
+        } catch (error) {
+
+          console.error(error);
+
+          profileMessage.textContent =
+
+            "Unable to load profile.";
+
+          profileMessage.className =
+
+            "message error";
+
+        }
+
+      }
+
+    );
 
     /* =========================
 
@@ -1760,37 +2664,67 @@
 
     );
 
-    startProjectBtn.addEventListener(
-
-      "click",
-
-      openSignup
-
-    );
-
-    findFreelancersBtn.addEventListener(
-
-      "click",
-
-      openSignup
-
-    );
-
-    closeAuth.addEventListener(
-
-      "click",
-
-      closeModal
-
-    );
-
-    switchAuth.addEventListener(
+    heroStartBtn.addEventListener(
 
       "click",
 
       function() {
 
-        if (authMode === "login") {
+        openSignup();
+
+      }
+
+    );
+
+    heroFreelancerBtn.addEventListener(
+
+      "click",
+
+      function() {
+
+        document
+
+          .getElementById("features")
+
+          .scrollIntoView({
+
+            behavior: "smooth"
+
+          });
+
+      }
+
+    );
+
+    closeAuthBtn.addEventListener(
+
+      "click",
+
+      closeAuth
+
+    );
+
+    closeProfileBtn.addEventListener(
+
+      "click",
+
+      function() {
+
+        profileModal.style.display =
+
+          "none";
+
+      }
+
+    );
+
+    switchAuthBtn.addEventListener(
+
+      "click",
+
+      function() {
+
+        if (isLoginMode) {
 
           openSignup();
 
@@ -1806,7 +2740,7 @@
 
     /* =========================
 
-       CLOSE OUTSIDE MODAL
+       CLICK OUTSIDE MODAL
 
     ========================= */
 
@@ -1816,9 +2750,13 @@
 
       function(event) {
 
-        if (event.target === authModal) {
+        if (
 
-          closeModal();
+          event.target === authModal
+
+        ) {
+
+          closeAuth();
 
         }
 
@@ -1826,241 +2764,23 @@
 
     );
 
-    /* =========================
-
-       LOGIN / SIGN UP
-
-    ========================= */
-
-    authSubmit.addEventListener(
+    profileModal.addEventListener(
 
       "click",
 
-      async function() {
+      function(event) {
 
-        const email =
+        if (
 
-          document
+          event.target === profileModal
 
-            .getElementById("authEmail")
+        ) {
 
-            .value
+          profileModal.style.display =
 
-            .trim();
-
-        const password =
-
-          document
-
-            .getElementById("authPassword")
-
-            .value;
-
-        const name =
-
-          document
-
-            .getElementById("authName")
-
-            .value
-
-            .trim();
-
-        const role =
-
-          document
-
-            .getElementById("authRole")
-
-            .value;
-
-        authMessage.style.color =
-
-          "#64748b";
-
-        /* CHECK EMAIL AND PASSWORD */
-
-        if (!email || !password) {
-
-          authMessage.textContent =
-
-            "Please enter your email and password.";
-
-          authMessage.style.color =
-
-            "#dc2626";
-
-          return;
+            "none";
 
         }
-
-        /* CHECK NAME */
-
-        if (authMode === "signup" && !name) {
-
-          authMessage.textContent =
-
-            "Please enter your name.";
-
-          authMessage.style.color =
-
-            "#dc2626";
-
-          return;
-
-        }
-
-        authSubmit.disabled =
-
-          true;
-
-        authSubmit.textContent =
-
-          "Please wait...";
-
-        try {
-
-          /* =========================
-
-             SIGN UP
-
-          ========================= */
-
-          if (authMode === "signup") {
-
-            const result =
-
-              await supabaseClient.auth.signUp({
-
-                email: email,
-
-                password: password,
-
-                options: {
-
-                  data: {
-
-                    name: name,
-
-                    role: role
-
-                  }
-
-                }
-
-              });
-
-            if (result.error) {
-
-              throw result.error;
-
-            }
-
-            authMessage.style.color =
-
-              "#16a34a";
-
-            authMessage.textContent =
-
-              "Account created. Please check your email if confirmation is required.";
-
-            console.log(
-
-              "Signup result:",
-
-              result.data
-
-            );
-
-          }
-
-          /* =========================
-
-             LOGIN
-
-          ========================= */
-
-          else {
-
-            const result =
-
-              await supabaseClient.auth.signInWithPassword({
-
-                email: email,
-
-                password: password
-
-              });
-
-            if (result.error) {
-
-              throw result.error;
-
-            }
-
-            authMessage.style.color =
-
-              "#16a34a";
-
-            authMessage.textContent =
-
-              "Login successful!";
-
-            console.log(
-
-              "Login result:",
-
-              result.data
-
-            );
-
-            setTimeout(
-
-              function() {
-
-                closeModal();
-
-              },
-
-              1000
-
-            );
-
-          }
-
-        }
-
-        /* =========================
-
-           ERROR
-
-        ========================= */
-
-        catch (error) {
-
-          authMessage.style.color =
-
-            "#dc2626";
-
-          authMessage.textContent =
-
-            error.message;
-
-          console.error(error);
-
-        }
-
-        authSubmit.disabled =
-
-          false;
-
-        authSubmit.textContent =
-
-          authMode === "login"
-
-            ? "Login"
-
-            : "Create Account";
 
       }
 
@@ -2068,7 +2788,7 @@
 
     /* =========================
 
-       AUTH STATE
+       SUPABASE AUTH STATE
 
     ========================= */
 
@@ -2076,19 +2796,51 @@
 
       function(event, session) {
 
-        console.log(
+        if (session) {
 
-          "Auth event:",
+          showLoggedIn(
 
-          event,
+            session.user
 
-          session
+          );
 
-        );
+          /*
+
+            Wait a moment before querying
+
+            the profiles table.
+
+          */
+
+          setTimeout(
+
+            function() {
+
+              loadProfileForMenu();
+
+            },
+
+            0
+
+          );
+
+        } else {
+
+          showLoggedOut();
+
+        }
 
       }
 
     );
+
+    /* =========================
+
+       START
+
+    ========================= */
+
+    checkUser();
 
   </script>
 
