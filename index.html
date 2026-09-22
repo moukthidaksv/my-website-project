@@ -1,1447 +1,733 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>BuildMate — Find the Right Freelancer</title>
 
   <style>
-
     * {
-
       box-sizing: border-box;
-
       margin: 0;
-
       padding: 0;
-
     }
 
     body {
-
       font-family: Arial, Helvetica, sans-serif;
-
-      color: #172033;
-
-      background: #ffffff;
-
+      background: #f7f8fc;
+      color: #1f2937;
       line-height: 1.6;
-
-    }
-
-    button {
-
-      font-family: inherit;
-
-      cursor: pointer;
-
     }
 
     a {
-
       text-decoration: none;
-
       color: inherit;
+    }
 
+    button {
+      cursor: pointer;
+      font-family: inherit;
     }
 
     /* NAVBAR */
-
     nav {
-
-      height: 72px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      padding: 0 7%;
-
-      border-bottom: 1px solid #eeeeee;
-
+      width: 100%;
       background: #ffffff;
-
+      border-bottom: 1px solid #e5e7eb;
       position: sticky;
-
       top: 0;
-
       z-index: 100;
+    }
 
+    .nav-container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .logo {
-
       font-size: 24px;
-
-      font-weight: 700;
-
-      color: #4f46e5;
-
+      font-weight: bold;
+      color: #2563eb;
     }
 
     .nav-links {
-
       display: flex;
-
-      gap: 30px;
-
       align-items: center;
-
+      gap: 20px;
     }
 
     .nav-links a {
-
-      color: #555;
-
+      color: #4b5563;
       font-size: 15px;
-
     }
 
     .nav-links a:hover {
-
-      color: #4f46e5;
-
+      color: #2563eb;
     }
 
-    .nav-buttons {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-    }
-
-    .login-btn {
-
+    .nav-button {
       border: none;
-
       background: transparent;
-
-      color: #4f46e5;
-
+      color: #2563eb;
       font-weight: 600;
-
-      padding: 10px 16px;
-
-    }
-
-    .signup-btn,
-
-    .primary-btn {
-
-      border: none;
-
-      background: #4f46e5;
-
-      color: white;
-
-      padding: 11px 18px;
-
+      padding: 9px 14px;
       border-radius: 8px;
-
-      font-weight: 600;
-
     }
 
-    .signup-btn:hover,
+    .nav-button:hover {
+      background: #eff6ff;
+    }
 
-    .primary-btn:hover {
+    .primary-button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 11px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
 
-      background: #4338ca;
-
+    .primary-button:hover {
+      background: #1d4ed8;
     }
 
     .user-menu {
-
       display: none;
-
       align-items: center;
-
-      gap: 10px;
-
+      gap: 8px;
     }
 
     .user-name {
-
       font-weight: 600;
-
-      color: #333;
-
-      max-width: 130px;
-
-      overflow: hidden;
-
-      text-overflow: ellipsis;
-
-      white-space: nowrap;
-
-    }
-
-    .profile-btn {
-
-      border: 1px solid #ddd;
-
-      background: white;
-
-      color: #333;
-
-      padding: 9px 14px;
-
-      border-radius: 8px;
-
-      font-weight: 600;
-
-    }
-
-    .logout-btn {
-
-      border: none;
-
-      background: #f3f4f6;
-
-      color: #555;
-
-      padding: 9px 14px;
-
-      border-radius: 8px;
-
-      font-weight: 600;
-
+      color: #111827;
+      margin-right: 5px;
     }
 
     /* HERO */
-
     .hero {
-
-      padding: 90px 7%;
-
-      display: grid;
-
-      grid-template-columns: 1.2fr 0.8fr;
-
-      gap: 60px;
-
-      align-items: center;
-
-      background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
-
-    }
-
-    .hero-tag {
-
-      color: #4f46e5;
-
-      font-weight: 700;
-
-      margin-bottom: 15px;
-
+      max-width: 1150px;
+      margin: auto;
+      padding: 90px 20px;
+      text-align: center;
     }
 
     .hero h1 {
+      font-size: 52px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: #111827;
+    }
 
-      font-size: 56px;
-
-      line-height: 1.1;
-
-      margin-bottom: 22px;
-
-      max-width: 650px;
-
+    .hero h1 span {
+      color: #2563eb;
     }
 
     .hero p {
-
-      font-size: 19px;
-
-      color: #666;
-
-      max-width: 600px;
-
-      margin-bottom: 30px;
-
+      max-width: 700px;
+      margin: auto;
+      color: #6b7280;
+      font-size: 18px;
     }
 
     .hero-buttons {
-
+      margin-top: 30px;
       display: flex;
-
+      justify-content: center;
       gap: 12px;
-
       flex-wrap: wrap;
-
     }
 
-    .secondary-btn {
-
-      border: 1px solid #ddd;
-
+    .secondary-button {
       background: white;
-
-      color: #333;
-
+      color: #2563eb;
+      border: 1px solid #2563eb;
       padding: 11px 18px;
-
       border-radius: 8px;
-
       font-weight: 600;
-
     }
 
-    .secondary-btn:hover {
-
-      background: #f5f5f5;
-
-    }
-
-    .project-card {
-
-      background: white;
-
-      border: 1px solid #e7e7e7;
-
-      border-radius: 18px;
-
-      padding: 30px;
-
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-
-    }
-
-    .project-card h3 {
-
-      margin-bottom: 20px;
-
-      font-size: 22px;
-
-    }
-
-    .project-item {
-
-      padding: 18px;
-
-      border: 1px solid #eeeeee;
-
-      border-radius: 12px;
-
-      margin-bottom: 12px;
-
-    }
-
-    .project-item strong {
-
-      display: block;
-
-      margin-bottom: 4px;
-
-    }
-
-    .project-item span {
-
-      color: #777;
-
-      font-size: 14px;
-
+    .secondary-button:hover {
+      background: #eff6ff;
     }
 
     /* SECTIONS */
-
     section {
-
-      padding: 80px 7%;
-
+      max-width: 1150px;
+      margin: auto;
+      padding: 70px 20px;
     }
 
     .section-title {
-
       text-align: center;
-
-      margin-bottom: 50px;
-
-    }
-
-    .section-title h2 {
-
-      font-size: 38px;
-
+      font-size: 34px;
       margin-bottom: 12px;
-
+      color: #111827;
     }
 
-    .section-title p {
-
-      color: #777;
-
-      max-width: 600px;
-
-      margin: auto;
-
+    .section-description {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 40px;
+      color: #6b7280;
     }
 
-    .features-grid {
-
+    /* FEATURES */
+    .features {
       display: grid;
-
       grid-template-columns: repeat(3, 1fr);
-
       gap: 20px;
-
     }
 
     .feature-card {
-
-      border: 1px solid #eeeeee;
-
-      border-radius: 14px;
-
-      padding: 28px;
-
       background: white;
-
+      padding: 30px;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      text-align: center;
     }
 
-    .feature-icon {
-
-      width: 45px;
-
-      height: 45px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      background: #eef2ff;
-
-      color: #4f46e5;
-
-      border-radius: 10px;
-
-      font-size: 21px;
-
-      margin-bottom: 18px;
-
+    .feature-card .icon {
+      font-size: 38px;
+      margin-bottom: 15px;
     }
 
     .feature-card h3 {
-
-      margin-bottom: 8px;
-
+      margin-bottom: 10px;
+      color: #111827;
     }
 
     .feature-card p {
-
-      color: #777;
-
+      color: #6b7280;
       font-size: 15px;
-
     }
 
     /* HOW IT WORKS */
-
     .steps {
-
       display: grid;
-
       grid-template-columns: repeat(3, 1fr);
-
-      gap: 30px;
-
+      gap: 20px;
     }
 
     .step {
-
-      text-align: center;
-
-      padding: 25px;
-
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 30px;
     }
 
     .step-number {
-
-      width: 55px;
-
-      height: 55px;
-
-      margin: 0 auto 18px;
-
-      border-radius: 50%;
-
-      background: #4f46e5;
-
+      width: 40px;
+      height: 40px;
+      background: #2563eb;
       color: white;
-
+      border-radius: 50%;
       display: flex;
-
-      align-items: center;
-
       justify-content: center;
-
-      font-size: 20px;
-
+      align-items: center;
       font-weight: bold;
+      margin-bottom: 15px;
+    }
 
+    .step h3 {
+      margin-bottom: 8px;
     }
 
     .step p {
+      color: #6b7280;
+    }
 
-      color: #777;
+    /* ABOUT */
+    .about-box {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 40px;
+      text-align: center;
+    }
 
-      margin-top: 8px;
-
+    .about-box p {
+      max-width: 750px;
+      margin: auto;
+      color: #6b7280;
     }
 
     /* CTA */
-
     .cta {
-
-      margin: 20px 7% 80px;
-
-      border-radius: 20px;
-
-      padding: 70px 30px;
-
       text-align: center;
-
-      background: #4f46e5;
-
-      color: white;
-
+      background: #eff6ff;
+      border-radius: 18px;
+      margin-bottom: 60px;
     }
 
     .cta h2 {
-
-      font-size: 40px;
-
+      font-size: 34px;
       margin-bottom: 15px;
-
     }
 
     .cta p {
-
+      color: #6b7280;
       margin-bottom: 25px;
-
-      opacity: 0.9;
-
-    }
-
-    .cta .primary-btn {
-
-      background: white;
-
-      color: #4f46e5;
-
     }
 
     /* FOOTER */
-
     footer {
-
-      border-top: 1px solid #eeeeee;
-
-      padding: 35px 7%;
-
-      color: #777;
-
+      background: #111827;
+      color: white;
       text-align: center;
-
-      font-size: 14px;
-
+      padding: 30px 20px;
     }
 
-    /* MODAL */
+    footer p {
+      color: #9ca3af;
+      font-size: 14px;
+    }
 
+    /* MODALS */
     .modal {
-
       display: none;
-
       position: fixed;
-
       inset: 0;
-
       background: rgba(0, 0, 0, 0.55);
-
       z-index: 1000;
-
-      align-items: center;
-
       justify-content: center;
-
+      align-items: center;
       padding: 20px;
-
     }
 
     .modal-content {
-
       background: white;
-
       width: 100%;
-
-      max-width: 430px;
-
+      max-width: 480px;
       border-radius: 16px;
-
       padding: 30px;
-
       position: relative;
-
       max-height: 90vh;
-
       overflow-y: auto;
-
     }
 
     .modal-content h2 {
-
       margin-bottom: 8px;
-
+      color: #111827;
     }
 
     .modal-description {
-
-      color: #777;
-
+      color: #6b7280;
       margin-bottom: 22px;
-
       font-size: 14px;
-
     }
 
-    .close-btn {
-
+    .close-button {
       position: absolute;
-
       right: 18px;
-
       top: 15px;
-
-      border: none;
-
       background: none;
-
+      border: none;
       font-size: 25px;
-
-      color: #777;
-
+      color: #6b7280;
     }
 
     .form-group {
-
       margin-bottom: 16px;
-
     }
 
     .form-group label {
-
       display: block;
-
-      margin-bottom: 6px;
-
-      font-size: 14px;
-
       font-weight: 600;
-
+      margin-bottom: 6px;
+      font-size: 14px;
     }
 
     .form-group input,
-
-    .form-group select,
-
-    .form-group textarea {
-
+    .form-group textarea,
+    .form-group select {
       width: 100%;
-
-      padding: 12px;
-
-      border: 1px solid #ddd;
-
+      padding: 11px 12px;
+      border: 1px solid #d1d5db;
       border-radius: 8px;
-
-      font-size: 15px;
-
       font-family: inherit;
-
-      outline: none;
-
+      font-size: 15px;
     }
 
     .form-group textarea {
-
-      min-height: 90px;
-
+      min-height: 100px;
       resize: vertical;
-
     }
 
     .form-group input:focus,
-
-    .form-group select:focus,
-
-    .form-group textarea:focus {
-
-      border-color: #4f46e5;
-
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #2563eb;
     }
 
-    .form-submit {
-
+    .full-button {
       width: 100%;
-
       margin-top: 5px;
-
     }
 
     .switch-auth {
-
       text-align: center;
-
       margin-top: 18px;
-
+      color: #6b7280;
       font-size: 14px;
-
-      color: #777;
-
     }
 
     .switch-auth button {
-
       border: none;
-
       background: none;
-
-      color: #4f46e5;
-
+      color: #2563eb;
       font-weight: 600;
-
     }
 
     .message {
-
-      margin-top: 15px;
-
+      margin-top: 14px;
       padding: 10px;
-
       border-radius: 8px;
-
       display: none;
-
       font-size: 14px;
-
     }
 
     .message.success {
-
       display: block;
-
       background: #ecfdf5;
-
       color: #047857;
-
     }
 
     .message.error {
-
       display: block;
-
       background: #fef2f2;
-
       color: #b91c1c;
-
     }
 
-    /* PROFILE */
-
-    .profile-row {
-
-      margin-bottom: 18px;
-
+    .profile-email {
+      background: #f3f4f6;
     }
 
-    .profile-label {
-
-      font-size: 13px;
-
-      color: #888;
-
-      margin-bottom: 3px;
-
+    .profile-role {
+      background: #f3f4f6;
     }
 
-    .profile-value {
-
-      font-size: 16px;
-
-      font-weight: 600;
-
-      word-break: break-word;
-
-    }
-
-    .profile-bio {
-
-      font-weight: normal;
-
-      color: #555;
-
-      white-space: pre-wrap;
-
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 850px) {
-
-      nav {
-
-        padding: 0 5%;
-
-      }
-
+    @media (max-width: 800px) {
       .nav-links {
-
         display: none;
-
-      }
-
-      .hero {
-
-        grid-template-columns: 1fr;
-
-        padding: 60px 5%;
-
       }
 
       .hero h1 {
-
-        font-size: 42px;
-
+        font-size: 38px;
       }
 
-      section {
-
-        padding: 60px 5%;
-
-      }
-
-      .features-grid,
-
+      .features,
       .steps {
-
         grid-template-columns: 1fr;
-
       }
 
-      .cta {
-
-        margin: 10px 5% 60px;
-
-      }
-
-      .cta h2 {
-
-        font-size: 32px;
-
+      .user-menu {
+        gap: 3px;
       }
 
       .user-name {
-
-        display: none;
-
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
-
     }
-
   </style>
-
 </head>
 
 <body>
 
   <!-- NAVBAR -->
-
   <nav>
+    <div class="nav-container">
 
-    <div class="logo">BuildMate</div>
+      <div class="logo">BuildMate</div>
 
-    <div class="nav-links">
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#about">About</a>
+      </div>
 
-      <a href="#features">Features</a>
+      <!-- LOGGED OUT -->
+      <div id="loggedOutMenu">
+        <button class="nav-button" id="loginBtn">Log In</button>
+        <button class="primary-button" id="signupBtn">Get Started</button>
+      </div>
 
-      <a href="#how-it-works">How It Works</a>
-
-      <a href="#about">About</a>
-
-    </div>
-
-    <!-- Logged Out -->
-
-    <div class="nav-buttons" id="loggedOutMenu">
-
-      <button class="login-btn" id="loginBtn">
-
-        Log In
-
-      </button>
-
-      <button class="signup-btn" id="signupBtn">
-
-        Get Started
-
-      </button>
+      <!-- LOGGED IN -->
+      <div class="user-menu" id="userMenu">
+        <span class="user-name" id="userName">User</span>
+        <button class="nav-button" id="profileBtn">Profile</button>
+        <button class="nav-button" id="logoutBtn">Logout</button>
+      </div>
 
     </div>
-
-    <!-- Logged In -->
-
-    <div class="user-menu" id="userMenu">
-
-      <span class="user-name" id="userName">
-
-        User
-
-      </span>
-
-      <button class="profile-btn" id="profileBtn">
-
-        Profile
-
-      </button>
-
-      <button class="logout-btn" id="logoutBtn">
-
-        Logout
-
-      </button>
-
-    </div>
-
   </nav>
 
+
   <!-- HERO -->
+  <div class="hero">
 
-  <section class="hero">
+    <h1>
+      Find the Right
+      <span>Freelancer</span>
+      for Your Project
+    </h1>
 
-    <div>
+    <p>
+      BuildMate connects clients with talented freelancers
+      to help turn ideas into real projects.
+    </p>
 
-      <div class="hero-tag">
+    <div class="hero-buttons">
+      <button class="primary-button" id="heroStartBtn">
+        Get Started
+      </button>
 
-        BUILD YOUR FUTURE
-
-      </div>
-
-      <h1>
-
-        Find the right people to build your project.
-
-      </h1>
-
-      <p>
-
-        BuildMate connects clients with talented freelancers
-
-        to turn ideas into real projects.
-
-      </p>
-
-      <div class="hero-buttons">
-
-        <button class="primary-btn" id="heroStartBtn">
-
-          Start a Project
-
-        </button>
-
-        <button class="secondary-btn" id="heroFreelancerBtn">
-
-          Find Freelancers
-
-        </button>
-
-      </div>
-
+      <button class="secondary-button" id="heroFreelancerBtn">
+        Explore Features
+      </button>
     </div>
 
-    <div class="project-card">
+  </div>
 
-      <h3>
-
-        Popular Projects
-
-      </h3>
-
-      <div class="project-item">
-
-        <strong>Website Design</strong>
-
-        <span>UI/UX • Design</span>
-
-      </div>
-
-      <div class="project-item">
-
-        <strong>Mobile App</strong>
-
-        <span>iOS • Android</span>
-
-      </div>
-
-      <div class="project-item">
-
-        <strong>Development</strong>
-
-        <span>Web • Software</span>
-
-      </div>
-
-    </div>
-
-  </section>
 
   <!-- FEATURES -->
-
   <section id="features">
 
-    <div class="section-title">
+    <h2 class="section-title">
+      Why BuildMate?
+    </h2>
 
-      <h2>
+    <p class="section-description">
+      A simple platform designed to make finding and working
+      with freelancers easier.
+    </p>
 
-        Everything you need
-
-      </h2>
-
-      <p>
-
-        BuildMate gives clients and freelancers the tools
-
-        they need to work together.
-
-      </p>
-
-    </div>
-
-    <div class="features-grid">
+    <div class="features">
 
       <div class="feature-card">
-
-        <div class="feature-icon">+</div>
-
-        <h3>
-
-          Create Projects
-
-        </h3>
-
+        <div class="icon">🔎</div>
+        <h3>Find Talent</h3>
         <p>
-
-          Create projects and describe exactly what you need.
-
+          Discover freelancers with skills that match
+          your project requirements.
         </p>
-
       </div>
 
       <div class="feature-card">
-
-        <div class="feature-icon">✓</div>
-
-        <h3>
-
-          Find Freelancers
-
-        </h3>
-
+        <div class="icon">💬</div>
+        <h3>Easy Communication</h3>
         <p>
-
-          Discover freelancers with the skills your project requires.
-
+          Communicate clearly with freelancers about
+          your project and requirements.
         </p>
-
       </div>
 
       <div class="feature-card">
-
-        <div class="feature-icon">💬</div>
-
-        <h3>
-
-          Real-Time Chat
-
-        </h3>
-
+        <div class="icon">🚀</div>
+        <h3>Build Projects</h3>
         <p>
-
-          Communicate with clients and freelancers directly.
-
+          Turn your ideas into real projects with
+          talented people around the world.
         </p>
-
-      </div>
-
-      <div class="feature-card">
-
-        <div class="feature-icon">★</div>
-
-        <h3>
-
-          Reviews
-
-        </h3>
-
-        <p>
-
-          Build trust through ratings and reviews.
-
-        </p>
-
-      </div>
-
-      <div class="feature-card">
-
-        <div class="feature-icon">🔔</div>
-
-        <h3>
-
-          Notifications
-
-        </h3>
-
-        <p>
-
-          Stay updated about your projects and applications.
-
-        </p>
-
-      </div>
-
-      <div class="feature-card">
-
-        <div class="feature-icon">🔒</div>
-
-        <h3>
-
-          Secure Accounts
-
-        </h3>
-
-        <p>
-
-          Your account and personal information are protected.
-
-        </p>
-
       </div>
 
     </div>
 
   </section>
 
-  <!-- HOW IT WORKS -->
 
+  <!-- HOW IT WORKS -->
   <section id="how-it-works">
 
-    <div class="section-title">
+    <h2 class="section-title">
+      How BuildMate Works
+    </h2>
 
-      <h2>
-
-        How BuildMate Works
-
-      </h2>
-
-      <p>
-
-        Start working together in three simple steps.
-
-      </p>
-
-    </div>
+    <p class="section-description">
+      Start your journey in just a few simple steps.
+    </p>
 
     <div class="steps">
 
       <div class="step">
-
-        <div class="step-number">
-
-          1
-
-        </div>
-
-        <h3>
-
-          Create an Account
-
-        </h3>
-
+        <div class="step-number">1</div>
+        <h3>Create Your Profile</h3>
         <p>
-
-          Sign up as a client or freelancer.
-
+          Tell the BuildMate community about yourself,
+          your skills and what you can offer.
         </p>
-
       </div>
 
       <div class="step">
-
-        <div class="step-number">
-
-          2
-
-        </div>
-
-        <h3>
-
-          Connect
-
-        </h3>
-
+        <div class="step-number">2</div>
+        <h3>Find Opportunities</h3>
         <p>
-
-          Find projects or discover talented freelancers.
-
+          Find projects and people that match
+          your goals and skills.
         </p>
-
       </div>
 
       <div class="step">
-
-        <div class="step-number">
-
-          3
-
-        </div>
-
-        <h3>
-
-          Build Together
-
-        </h3>
-
+        <div class="step-number">3</div>
+        <h3>Build Together</h3>
         <p>
-
-          Communicate, collaborate and complete projects.
-
+          Work together and turn ideas into
+          successful projects.
         </p>
-
       </div>
 
     </div>
 
   </section>
 
-  <!-- ABOUT -->
 
+  <!-- ABOUT -->
   <section id="about">
 
-    <div class="section-title">
+    <h2 class="section-title">
+      About BuildMate
+    </h2>
 
-      <h2>
-
-        About BuildMate
-
-      </h2>
+    <div class="about-box">
 
       <p>
-
-        BuildMate is a platform designed to make it easier
-
-        for people with ideas to connect with people who
-
-        have the skills to build them.
-
+        BuildMate is designed to make freelance collaboration
+        simpler. Whether you are looking for someone to help
+        with a project or you want to offer your skills,
+        BuildMate gives you a place to connect.
       </p>
 
     </div>
 
   </section>
 
+
   <!-- CTA -->
+  <section>
 
-  <div class="cta">
+    <div class="cta">
 
-    <h2>
+      <h2>
+        Ready to Build Something?
+      </h2>
 
-      Ready to build something?
+      <p>
+        Create your BuildMate account and start building
+        your profile.
+      </p>
 
-    </h2>
+      <button class="primary-button" id="ctaSignupBtn">
+        Create Account
+      </button>
 
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
     <p>
-
-      Create your BuildMate account and get started.
-
+      © 2026 BuildMate. All rights reserved.
     </p>
+  </footer>
 
-    <button class="primary-btn" id="ctaSignupBtn">
-
-      Get Started
-
-    </button>
-
-  </div>
 
   <!-- AUTH MODAL -->
-
   <div class="modal" id="authModal">
 
     <div class="modal-content">
 
-      <button class="close-btn" id="closeAuthBtn">
-
+      <button class="close-button" id="closeAuthBtn">
         ×
-
       </button>
 
       <h2 id="authTitle">
-
-        Create your account
-
+        Log In
       </h2>
 
       <p class="modal-description" id="authDescription">
-
-        Join BuildMate today.
-
+        Log in to your BuildMate account.
       </p>
 
       <form id="authForm">
 
-        <!-- Name only for signup -->
-
-        <div class="form-group" id="nameGroup">
-
-          <label for="name">
-
-            Name
-
-          </label>
-
+        <div class="form-group" id="nameGroup" style="display:none;">
+          <label for="name">Name</label>
           <input
-
             type="text"
-
             id="name"
-
             placeholder="Your name"
-
           >
-
         </div>
 
-        <!-- Role only for signup -->
-
-        <div class="form-group" id="roleGroup">
-
-          <label for="role">
-
-            I want to join as
-
-          </label>
+        <div class="form-group" id="roleGroup" style="display:none;">
+          <label for="role">Role</label>
 
           <select id="role">
-
             <option value="client">
-
               Client
-
             </option>
 
             <option value="freelancer">
-
               Freelancer
-
             </option>
-
           </select>
-
         </div>
 
         <div class="form-group">
-
-          <label for="email">
-
-            Email
-
-          </label>
+          <label for="email">Email</label>
 
           <input
-
             type="email"
-
             id="email"
-
             placeholder="you@example.com"
-
             required
-
           >
-
         </div>
 
         <div class="form-group">
-
-          <label for="password">
-
-            Password
-
-          </label>
+          <label for="password">Password</label>
 
           <input
-
             type="password"
-
             id="password"
-
-            placeholder="At least 6 characters"
-
+            placeholder="Your password"
             required
-
-            minlength="6"
-
           >
-
         </div>
 
         <button
-
           type="submit"
-
-          class="primary-btn form-submit"
-
+          class="primary-button full-button"
           id="authSubmitBtn"
-
         >
-
-          Create Account
-
+          Log In
         </button>
 
-        <div
-
-          class="message"
-
-          id="authMessage"
-
-        ></div>
-
       </form>
+
+      <div
+        class="message"
+        id="authMessage"
+      ></div>
 
       <div class="switch-auth">
 
         <span id="switchText">
-
-          Already have an account?
-
+          Don't have an account?
         </span>
 
         <button id="switchAuthBtn">
-
-          Log In
-
+          Get Started
         </button>
 
       </div>
@@ -1450,1281 +736,849 @@
 
   </div>
 
-  <!-- PROFILE MODAL -->
 
+  <!-- PROFILE MODAL -->
   <div class="modal" id="profileModal">
 
     <div class="modal-content">
 
-      <button class="close-btn" id="closeProfileBtn">
-
+      <button class="close-button" id="closeProfileBtn">
         ×
-
       </button>
 
       <h2>
-
         My Profile
-
       </h2>
 
       <p class="modal-description">
-
-        Your BuildMate account information.
-
+        Update your BuildMate profile.
       </p>
 
-      <div class="profile-row">
+      <div class="form-group">
 
-        <div class="profile-label">
-
+        <label for="profileName">
           Name
+        </label>
 
-        </div>
-
-        <div
-
-          class="profile-value"
-
+        <input
+          type="text"
           id="profileName"
-
+          placeholder="Your name"
         >
-
-          Loading...
-
-        </div>
 
       </div>
 
-      <div class="profile-row">
 
-        <div class="profile-label">
+      <div class="form-group">
 
+        <label for="profileEmail">
           Email
+        </label>
 
-        </div>
-
-        <div
-
-          class="profile-value"
-
+        <input
+          type="email"
           id="profileEmail"
-
+          class="profile-email"
+          readonly
         >
-
-          Loading...
-
-        </div>
 
       </div>
 
-      <div class="profile-row">
 
-        <div class="profile-label">
+      <div class="form-group">
 
+        <label for="profileRole">
           Role
+        </label>
 
-        </div>
-
-        <div
-
-          class="profile-value"
-
+        <input
+          type="text"
           id="profileRole"
-
+          class="profile-role"
+          readonly
         >
-
-          Loading...
-
-        </div>
 
       </div>
 
-      <div class="profile-row">
 
-        <div class="profile-label">
+      <div class="form-group">
 
+        <label for="profileBio">
           Bio
+        </label>
 
-        </div>
-
-        <div
-
-          class="profile-value profile-bio"
-
+        <textarea
           id="profileBio"
-
-        >
-
-          Not set yet
-
-        </div>
+          placeholder="Tell people about yourself..."
+        ></textarea>
 
       </div>
 
-      <div class="profile-row">
 
-        <div class="profile-label">
+      <div class="form-group">
 
+        <label for="profileSkills">
           Skills
+        </label>
 
-        </div>
-
-        <div
-
-          class="profile-value profile-bio"
-
+        <textarea
           id="profileSkills"
-
-        >
-
-          Not set yet
-
-        </div>
+          placeholder="Example: Web Design, HTML, CSS, JavaScript"
+        ></textarea>
 
       </div>
+
+
+      <button
+        class="primary-button full-button"
+        id="saveProfileBtn"
+      >
+        Save Profile
+      </button>
+
 
       <div
-
         class="message"
-
         id="profileMessage"
-
       ></div>
 
     </div>
 
   </div>
 
-  <!-- FOOTER -->
-
-  <footer>
-
-    © 2026 BuildMate. All rights reserved.
-
-  </footer>
 
   <!-- SUPABASE -->
-
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script src="supabase.js"></script>
 
-  <!-- BUILD MATE JAVASCRIPT -->
 
+  <!-- APP SCRIPT -->
   <script>
 
-    /* =========================
+    let currentUser = null;
 
+
+    /* ---------------------------
        ELEMENTS
-
-    ========================= */
+    --------------------------- */
 
     const loggedOutMenu =
-
       document.getElementById("loggedOutMenu");
 
     const userMenu =
-
       document.getElementById("userMenu");
 
     const userName =
-
       document.getElementById("userName");
 
     const loginBtn =
-
       document.getElementById("loginBtn");
 
     const signupBtn =
-
       document.getElementById("signupBtn");
 
-    const heroStartBtn =
-
-      document.getElementById("heroStartBtn");
-
-    const heroFreelancerBtn =
-
-      document.getElementById("heroFreelancerBtn");
-
-    const ctaSignupBtn =
-
-      document.getElementById("ctaSignupBtn");
-
-    const logoutBtn =
-
-      document.getElementById("logoutBtn");
-
     const profileBtn =
-
       document.getElementById("profileBtn");
 
-    /* AUTH MODAL */
+    const logoutBtn =
+      document.getElementById("logoutBtn");
+
 
     const authModal =
-
       document.getElementById("authModal");
 
     const closeAuthBtn =
-
       document.getElementById("closeAuthBtn");
 
     const authForm =
-
       document.getElementById("authForm");
 
     const authTitle =
-
       document.getElementById("authTitle");
 
     const authDescription =
-
       document.getElementById("authDescription");
 
     const authSubmitBtn =
-
       document.getElementById("authSubmitBtn");
 
     const switchAuthBtn =
-
       document.getElementById("switchAuthBtn");
 
     const switchText =
-
       document.getElementById("switchText");
 
     const nameGroup =
-
       document.getElementById("nameGroup");
 
     const roleGroup =
-
       document.getElementById("roleGroup");
 
     const nameInput =
-
       document.getElementById("name");
 
     const roleInput =
-
       document.getElementById("role");
 
     const emailInput =
-
       document.getElementById("email");
 
     const passwordInput =
-
       document.getElementById("password");
 
     const authMessage =
-
       document.getElementById("authMessage");
 
-    /* PROFILE MODAL */
 
     const profileModal =
-
       document.getElementById("profileModal");
 
     const closeProfileBtn =
-
       document.getElementById("closeProfileBtn");
 
     const profileName =
-
       document.getElementById("profileName");
 
     const profileEmail =
-
       document.getElementById("profileEmail");
 
     const profileRole =
-
       document.getElementById("profileRole");
 
     const profileBio =
-
       document.getElementById("profileBio");
 
     const profileSkills =
-
       document.getElementById("profileSkills");
 
-    const profileMessage =
+    const saveProfileBtn =
+      document.getElementById("saveProfileBtn");
 
+    const profileMessage =
       document.getElementById("profileMessage");
 
-    /* =========================
 
-       AUTH MODE
+    let authMode = "login";
 
-    ========================= */
 
-    let isLoginMode = false;
+    /* ---------------------------
+       UI
+    --------------------------- */
 
-    /* =========================
+    function showLoggedOut() {
 
-       MESSAGE
+      loggedOutMenu.style.display = "block";
 
-    ========================= */
+      userMenu.style.display = "none";
 
-    function showAuthMessage(message, type) {
-
-      authMessage.textContent = message;
-
-      authMessage.className =
-
-        "message " + type;
-
+      currentUser = null;
     }
+
+
+    function showLoggedIn(user) {
+
+      loggedOutMenu.style.display = "none";
+
+      userMenu.style.display = "flex";
+
+      currentUser = user;
+
+      const fallbackName =
+        user.email
+          ? user.email.split("@")[0]
+          : "User";
+
+      userName.textContent =
+        user.user_metadata?.name ||
+        fallbackName;
+    }
+
+
+    /* ---------------------------
+       AUTH MODAL
+    --------------------------- */
+
+    function openLogin() {
+
+      authMode = "login";
+
+      authTitle.textContent =
+        "Log In";
+
+      authDescription.textContent =
+        "Log in to your BuildMate account.";
+
+      authSubmitBtn.textContent =
+        "Log In";
+
+      switchText.textContent =
+        "Don't have an account?";
+
+      switchAuthBtn.textContent =
+        "Get Started";
+
+      nameGroup.style.display =
+        "none";
+
+      roleGroup.style.display =
+        "none";
+
+      clearAuthMessage();
+
+      authModal.style.display =
+        "flex";
+    }
+
+
+    function openSignup() {
+
+      authMode = "signup";
+
+      authTitle.textContent =
+        "Create Your Account";
+
+      authDescription.textContent =
+        "Create a BuildMate account.";
+
+      authSubmitBtn.textContent =
+        "Create Account";
+
+      switchText.textContent =
+        "Already have an account?";
+
+      switchAuthBtn.textContent =
+        "Log In";
+
+      nameGroup.style.display =
+        "block";
+
+      roleGroup.style.display =
+        "block";
+
+      clearAuthMessage();
+
+      authModal.style.display =
+        "flex";
+    }
+
+
+    function closeAuth() {
+
+      authModal.style.display =
+        "none";
+
+      authForm.reset();
+
+      clearAuthMessage();
+    }
+
 
     function clearAuthMessage() {
 
       authMessage.textContent = "";
 
       authMessage.className =
-
         "message";
-
     }
 
-    /* =========================
 
-       OPEN LOGIN
+    function showAuthMessage(
+      message,
+      type
+    ) {
 
-    ========================= */
+      authMessage.textContent =
+        message;
 
-    function openLogin() {
-
-      isLoginMode = true;
-
-      authTitle.textContent =
-
-        "Welcome back";
-
-      authDescription.textContent =
-
-        "Log in to your BuildMate account.";
-
-      authSubmitBtn.textContent =
-
-        "Log In";
-
-      nameGroup.style.display =
-
-        "none";
-
-      roleGroup.style.display =
-
-        "none";
-
-      switchText.textContent =
-
-        "Don't have an account?";
-
-      switchAuthBtn.textContent =
-
-        "Create Account";
-
-      clearAuthMessage();
-
-      passwordInput.value = "";
-
-      authModal.style.display =
-
-        "flex";
-
+      authMessage.className =
+        "message " + type;
     }
 
-    /* =========================
 
-       OPEN SIGNUP
-
-    ========================= */
-
-    function openSignup() {
-
-      isLoginMode = false;
-
-      authTitle.textContent =
-
-        "Create your account";
-
-      authDescription.textContent =
-
-        "Join BuildMate today.";
-
-      authSubmitBtn.textContent =
-
-        "Create Account";
-
-      nameGroup.style.display =
-
-        "block";
-
-      roleGroup.style.display =
-
-        "block";
-
-      switchText.textContent =
-
-        "Already have an account?";
-
-      switchAuthBtn.textContent =
-
-        "Log In";
-
-      clearAuthMessage();
-
-      authModal.style.display =
-
-        "flex";
-
-    }
-
-    /* =========================
-
-       CLOSE AUTH
-
-    ========================= */
-
-    function closeAuth() {
-
-      authModal.style.display =
-
-        "none";
-
-      authForm.reset();
-
-      clearAuthMessage();
-
-    }
-
-    /* =========================
-
-       SHOW LOGGED OUT
-
-    ========================= */
-
-    function showLoggedOut() {
-
-      loggedOutMenu.style.display =
-
-        "flex";
-
-      userMenu.style.display =
-
-        "none";
-
-      userName.textContent =
-
-        "User";
-
-    }
-
-    /* =========================
-
-       SHOW LOGGED IN
-
-    ========================= */
-
-    function showLoggedIn(user) {
-
-      loggedOutMenu.style.display =
-
-        "none";
-
-      userMenu.style.display =
-
-        "flex";
-
-      let displayName =
-
-        user.user_metadata?.name;
-
-      if (!displayName) {
-
-        displayName =
-
-          user.email?.split("@")[0];
-
-      }
-
-      userName.textContent =
-
-        displayName || "User";
-
-    }
-
-    /* =========================
-
-       LOAD PROFILE NAME
-
-    ========================= */
-
-    async function loadProfileForMenu() {
-
-      try {
-
-        const {
-
-          data: {
-
-            user
-
-          }
-
-        } =
-
-          await supabaseClient.auth.getUser();
-
-        if (!user) {
-
-          showLoggedOut();
-
-          return;
-
-        }
-
-        const {
-
-          data,
-
-          error
-
-        } =
-
-          await supabaseClient
-
-            .from("profiles")
-
-            .select("name, role")
-
-            .eq("id", user.id)
-
-            .maybeSingle();
-
-        if (error) {
-
-          console.error(
-
-            "Profile error:",
-
-            error
-
-          );
-
-          showLoggedIn(user);
-
-          return;
-
-        }
-
-        if (data && data.name) {
-
-          userName.textContent =
-
-            data.name;
-
-        } else {
-
-          showLoggedIn(user);
-
-        }
-
-      } catch (error) {
-
-        console.error(error);
-
-      }
-
-    }
-
-    /* =========================
-
-       LOAD CURRENT SESSION
-
-    ========================= */
-
-    async function checkUser() {
-
-      try {
-
-        const {
-
-          data,
-
-          error
-
-        } =
-
-          await supabaseClient.auth.getSession();
-
-        if (error) {
-
-          console.error(
-
-            "Session error:",
-
-            error
-
-          );
-
-          showLoggedOut();
-
-          return;
-
-        }
-
-        const session =
-
-          data.session;
-
-        if (session) {
-
-          showLoggedIn(
-
-            session.user
-
-          );
-
-          loadProfileForMenu();
-
-        } else {
-
-          showLoggedOut();
-
-        }
-
-      } catch (error) {
-
-        console.error(error);
-
-        showLoggedOut();
-
-      }
-
-    }
-
-    /* =========================
-
+    /* ---------------------------
        LOGIN / SIGNUP
-
-    ========================= */
+    --------------------------- */
 
     authForm.addEventListener(
-
       "submit",
-
       async function(event) {
 
         event.preventDefault();
 
         clearAuthMessage();
 
-        authSubmitBtn.disabled =
+        const email =
+          emailInput.value.trim();
 
-          true;
+        const password =
+          passwordInput.value;
 
-        authSubmitBtn.textContent =
+        if (!email || !password) {
 
-          "Please wait...";
+          showAuthMessage(
+            "Please enter your email and password.",
+            "error"
+          );
+
+          return;
+        }
+
+
+        authSubmitBtn.disabled = true;
+
 
         try {
 
-          const email =
-
-            emailInput.value.trim();
-
-          const password =
-
-            passwordInput.value;
-
-          /* LOGIN */
-
-          if (isLoginMode) {
-
-            const {
-
-              data,
-
-              error
-
-            } =
-
-              await supabaseClient.auth
-
-                .signInWithPassword({
-
-                  email: email,
-
-                  password: password
-
-                });
-
-            if (error) {
-
-              showAuthMessage(
-
-                error.message,
-
-                "error"
-
-              );
-
-              return;
-
-            }
-
-            if (data.session) {
-
-              closeAuth();
-
-              showLoggedIn(
-
-                data.user
-
-              );
-
-              loadProfileForMenu();
-
-            }
-
-          }
-
-          /* SIGN UP */
-
-          else {
+          if (authMode === "signup") {
 
             const name =
-
               nameInput.value.trim();
 
             const role =
-
               roleInput.value;
+
 
             if (!name) {
 
               showAuthMessage(
-
                 "Please enter your name.",
-
                 "error"
-
               );
 
-              return;
+              authSubmitBtn.disabled = false;
 
+              return;
             }
 
+
             const {
-
               data,
-
               error
-
             } =
+              await supabaseClient.auth.signUp({
 
-              await supabaseClient.auth
+                email: email,
 
-                .signUp({
+                password: password,
 
-                  email: email,
+                options: {
 
-                  password: password,
+                  data: {
 
-                  options: {
+                    name: name,
 
-                    data: {
-
-                      name: name,
-
-                      role: role
-
-                    }
+                    role: role
 
                   }
 
-                });
+                }
+
+              });
+
 
             if (error) {
-
-              showAuthMessage(
-
-                error.message,
-
-                "error"
-
-              );
-
-              return;
-
+              throw error;
             }
 
-            /*
 
-              If email confirmation is enabled,
-
-              Supabase may not create a session
-
-              until the user confirms the email.
-
-            */
-
-            if (
-
-              data.user &&
-
-              !data.session
-
-            ) {
+            if (!data.session) {
 
               showAuthMessage(
-
-                "Account created. Please check your email to confirm your account.",
-
+                "Account created. Please check your email to confirm your account, then log in.",
                 "success"
-
               );
-
-              authForm.reset();
 
             } else {
 
               showAuthMessage(
-
                 "Account created successfully!",
-
                 "success"
-
               );
 
               setTimeout(
-
-                function() {
-
-                  closeAuth();
-
-                  if (data.user) {
-
-                    showLoggedIn(
-
-                      data.user
-
-                    );
-
-                    loadProfileForMenu();
-
-                  }
-
-                },
-
-                800
-
+                closeAuth,
+                1000
               );
 
             }
 
+
+          } else {
+
+            const {
+              data,
+              error
+            } =
+              await supabaseClient.auth.signInWithPassword({
+
+                email: email,
+
+                password: password
+
+              });
+
+
+            if (error) {
+              throw error;
+            }
+
+
+            showAuthMessage(
+              "Login successful!",
+              "success"
+            );
+
+
+            setTimeout(
+              closeAuth,
+              700
+            );
+
           }
+
 
         } catch (error) {
 
           console.error(error);
 
           showAuthMessage(
-
-            "Something went wrong. Please try again.",
-
+            error.message ||
+            "Something went wrong.",
             "error"
-
           );
 
         } finally {
 
-          authSubmitBtn.disabled =
-
-            false;
-
-          authSubmitBtn.textContent =
-
-            isLoginMode
-
-              ? "Log In"
-
-              : "Create Account";
+          authSubmitBtn.disabled = false;
 
         }
 
       }
-
     );
 
-    /* =========================
 
-       LOGOUT
-
-    ========================= */
-
-    logoutBtn.addEventListener(
-
-      "click",
-
-      async function() {
-
-        logoutBtn.disabled =
-
-          true;
-
-        logoutBtn.textContent =
-
-          "Logging out...";
-
-        try {
-
-          const {
-
-            error
-
-          } =
-
-            await supabaseClient.auth
-
-              .signOut();
-
-          if (error) {
-
-            alert(
-
-              error.message
-
-            );
-
-            return;
-
-          }
-
-          showLoggedOut();
-
-        } catch (error) {
-
-          console.error(error);
-
-          alert(
-
-            "Logout failed. Please try again."
-
-          );
-
-        } finally {
-
-          logoutBtn.disabled =
-
-            false;
-
-          logoutBtn.textContent =
-
-            "Logout";
-
-        }
-
-      }
-
-    );
-
-    /* =========================
-
+    /* ---------------------------
        PROFILE
+    --------------------------- */
 
-    ========================= */
+    async function openProfile() {
 
-    profileBtn.addEventListener(
+      profileMessage.textContent = "";
 
-      "click",
+      profileMessage.className =
+        "message";
 
-      async function() {
+      profileModal.style.display =
+        "flex";
 
-        profileModal.style.display =
 
-          "flex";
+      try {
 
-        profileMessage.textContent =
+        const {
+          data: {
+            user
+          },
+          error: userError
+        } =
+          await supabaseClient.auth.getUser();
 
-          "";
 
-        profileMessage.className =
-
-          "message";
-
-        profileName.textContent =
-
-          "Loading...";
-
-        profileEmail.textContent =
-
-          "Loading...";
-
-        profileRole.textContent =
-
-          "Loading...";
-
-        profileBio.textContent =
-
-          "Loading...";
-
-        profileSkills.textContent =
-
-          "Loading...";
-
-        try {
-
-          const {
-
-            data: {
-
-              user
-
-            }
-
-          } =
-
-            await supabaseClient.auth
-
-              .getUser();
-
-          if (!user) {
-
-            profileModal.style.display =
-
-              "none";
-
-            openLogin();
-
-            return;
-
-          }
-
-          profileEmail.textContent =
-
-            user.email || "Not available";
-
-          const {
-
-            data,
-
-            error
-
-          } =
-
-            await supabaseClient
-
-              .from("profiles")
-
-              .select(
-
-                "name, role, bio, skills"
-
-              )
-
-              .eq("id", user.id)
-
-              .maybeSingle();
-
-          if (error) {
-
-            console.error(
-
-              "Profile loading error:",
-
-              error
-
-            );
-
-            profileName.textContent =
-
-              user.user_metadata?.name ||
-
-              "Not set";
-
-            profileRole.textContent =
-
-              user.user_metadata?.role ||
-
-              "Not set";
-
-            profileBio.textContent =
-
-              "Not set yet";
-
-            profileSkills.textContent =
-
-              "Not set yet";
-
-            profileMessage.textContent =
-
-              "Your account is connected, but some profile information could not be loaded.";
-
-            profileMessage.className =
-
-              "message error";
-
-            return;
-
-          }
-
-          if (data) {
-
-            profileName.textContent =
-
-              data.name || "Not set";
-
-            profileRole.textContent =
-
-              data.role || "Not set";
-
-            profileBio.textContent =
-
-              data.bio || "Not set yet";
-
-            profileSkills.textContent =
-
-              data.skills || "Not set yet";
-
-          } else {
-
-            profileName.textContent =
-
-              user.user_metadata?.name ||
-
-              "Not set";
-
-            profileRole.textContent =
-
-              user.user_metadata?.role ||
-
-              "Not set";
-
-            profileBio.textContent =
-
-              "Not set yet";
-
-            profileSkills.textContent =
-
-              "Not set yet";
-
-          }
-
-        } catch (error) {
-
-          console.error(error);
-
-          profileMessage.textContent =
-
-            "Unable to load profile.";
-
-          profileMessage.className =
-
-            "message error";
-
+        if (userError) {
+          throw userError;
         }
+
+
+        if (!user) {
+
+          profileModal.style.display =
+            "none";
+
+          openLogin();
+
+          return;
+        }
+
+
+        currentUser = user;
+
+
+        profileEmail.value =
+          user.email || "";
+
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from("profiles")
+            .select(
+              "name, role, bio, skills"
+            )
+            .eq(
+              "id",
+              user.id
+            )
+            .maybeSingle();
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        if (data) {
+
+          profileName.value =
+            data.name || "";
+
+          profileRole.value =
+            data.role || "";
+
+          profileBio.value =
+            data.bio || "";
+
+          profileSkills.value =
+            data.skills || "";
+
+          userName.textContent =
+            data.name ||
+            user.user_metadata?.name ||
+            user.email.split("@")[0];
+
+        } else {
+
+          profileName.value =
+            user.user_metadata?.name || "";
+
+          profileRole.value =
+            user.user_metadata?.role || "";
+
+          profileBio.value = "";
+
+          profileSkills.value = "";
+        }
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        showProfileMessage(
+          "Could not load your profile: " +
+          error.message,
+          "error"
+        );
 
       }
 
-    );
+    }
 
-    /* =========================
 
-       BUTTON EVENTS
+    async function saveProfile() {
 
-    ========================= */
+      if (!currentUser) {
+
+        showProfileMessage(
+          "Please log in first.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      const name =
+        profileName.value.trim();
+
+      const bio =
+        profileBio.value.trim();
+
+      const skills =
+        profileSkills.value.trim();
+
+
+      if (!name) {
+
+        showProfileMessage(
+          "Name cannot be empty.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      saveProfileBtn.disabled =
+        true;
+
+      saveProfileBtn.textContent =
+        "Saving...";
+
+
+      try {
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .from("profiles")
+            .update({
+
+              name: name,
+
+              bio: bio,
+
+              skills: skills
+
+            })
+            .eq(
+              "id",
+              currentUser.id
+            );
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        userName.textContent =
+          name;
+
+
+        showProfileMessage(
+          "Profile saved successfully!",
+          "success"
+        );
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        showProfileMessage(
+          "Could not save profile: " +
+          error.message,
+          "error"
+        );
+
+      } finally {
+
+        saveProfileBtn.disabled =
+          false;
+
+        saveProfileBtn.textContent =
+          "Save Profile";
+
+      }
+
+    }
+
+
+    function showProfileMessage(
+      message,
+      type
+    ) {
+
+      profileMessage.textContent =
+        message;
+
+      profileMessage.className =
+        "message " + type;
+    }
+
+
+    /* ---------------------------
+       LOGOUT
+    --------------------------- */
+
+    async function logout() {
+
+      const {
+        error
+      } =
+        await supabaseClient.auth.signOut();
+
+
+      if (error) {
+
+        alert(
+          "Logout failed: " +
+          error.message
+        );
+
+        return;
+      }
+
+
+      showLoggedOut();
+    }
+
+
+    /* ---------------------------
+       EVENTS
+    --------------------------- */
 
     loginBtn.addEventListener(
-
       "click",
-
       openLogin
-
     );
 
     signupBtn.addEventListener(
-
       "click",
-
       openSignup
-
     );
 
-    ctaSignupBtn.addEventListener(
-
+    profileBtn.addEventListener(
       "click",
-
-      openSignup
-
+      openProfile
     );
 
-    heroStartBtn.addEventListener(
-
+    logoutBtn.addEventListener(
       "click",
-
-      function() {
-
-        openSignup();
-
-      }
-
+      logout
     );
 
-    heroFreelancerBtn.addEventListener(
 
-      "click",
+    document
+      .getElementById("heroStartBtn")
+      .addEventListener(
+        "click",
+        openSignup
+      );
 
-      function() {
 
-        document
+    document
+      .getElementById("ctaSignupBtn")
+      .addEventListener(
+        "click",
+        openSignup
+      );
 
-          .getElementById("features")
 
-          .scrollIntoView({
+    document
+      .getElementById("heroFreelancerBtn")
+      .addEventListener(
+        "click",
+        function() {
 
-            behavior: "smooth"
+          document
+            .getElementById("features")
+            .scrollIntoView({
+              behavior: "smooth"
+            });
 
-          });
+        }
+      );
 
-      }
-
-    );
-
-    closeAuthBtn.addEventListener(
-
-      "click",
-
-      closeAuth
-
-    );
-
-    closeProfileBtn.addEventListener(
-
-      "click",
-
-      function() {
-
-        profileModal.style.display =
-
-          "none";
-
-      }
-
-    );
 
     switchAuthBtn.addEventListener(
-
       "click",
-
       function() {
 
-        if (isLoginMode) {
+        if (authMode === "login") {
 
           openSignup();
 
@@ -2735,93 +1589,102 @@
         }
 
       }
-
     );
 
-    /* =========================
 
-       CLICK OUTSIDE MODAL
-
-    ========================= */
-
-    authModal.addEventListener(
-
+    closeAuthBtn.addEventListener(
       "click",
+      closeAuth
+    );
 
+
+    closeProfileBtn.addEventListener(
+      "click",
+      function() {
+
+        profileModal.style.display =
+          "none";
+
+      }
+    );
+
+
+    saveProfileBtn.addEventListener(
+      "click",
+      saveProfile
+    );
+
+
+    window.addEventListener(
+      "click",
       function(event) {
 
-        if (
-
-          event.target === authModal
-
-        ) {
+        if (event.target === authModal) {
 
           closeAuth();
 
         }
 
-      }
-
-    );
-
-    profileModal.addEventListener(
-
-      "click",
-
-      function(event) {
-
-        if (
-
-          event.target === profileModal
-
-        ) {
+        if (event.target === profileModal) {
 
           profileModal.style.display =
-
             "none";
 
         }
 
       }
-
     );
 
-    /* =========================
 
-       SUPABASE AUTH STATE
+    /* ---------------------------
+       CHECK CURRENT SESSION
+    --------------------------- */
 
-    ========================= */
+    async function checkUser() {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.auth.getSession();
+
+
+      if (error) {
+
+        console.error(error);
+
+        showLoggedOut();
+
+        return;
+      }
+
+
+      if (data.session) {
+
+        showLoggedIn(
+          data.session.user
+        );
+
+      } else {
+
+        showLoggedOut();
+
+      }
+
+    }
+
+
+    /* ---------------------------
+       AUTH STATE CHANGE
+    --------------------------- */
 
     supabaseClient.auth.onAuthStateChange(
-
       function(event, session) {
 
         if (session) {
 
           showLoggedIn(
-
             session.user
-
-          );
-
-          /*
-
-            Wait a moment before querying
-
-            the profiles table.
-
-          */
-
-          setTimeout(
-
-            function() {
-
-              loadProfileForMenu();
-
-            },
-
-            0
-
           );
 
         } else {
@@ -2831,19 +1694,14 @@
         }
 
       }
-
     );
 
-    /* =========================
 
-       START
-
-    ========================= */
+    /* START */
 
     checkUser();
 
   </script>
 
 </body>
-
 </html>
