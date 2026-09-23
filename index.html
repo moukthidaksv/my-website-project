@@ -1,1283 +1,816 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>BuildMate — Find the Right Freelancer</title>
 
   <style>
-
     * {
-
       box-sizing: border-box;
-
       margin: 0;
-
       padding: 0;
+    }
 
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-
       font-family: Arial, Helvetica, sans-serif;
-
-      background: #f7f9fc;
-
-      color: #1f2937;
-
+      background: #f8fafc;
+      color: #1e293b;
       line-height: 1.6;
-
     }
 
-    button,
-
-    input,
-
-    textarea,
-
-    select {
-
-      font-family: inherit;
-
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
     button {
-
+      font-family: inherit;
       cursor: pointer;
-
     }
 
+    /* NAVBAR */
+
     nav {
-
-      background: white;
-
-      border-bottom: 1px solid #e5e7eb;
-
-      padding: 16px 6%;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
       position: sticky;
-
       top: 0;
+      z-index: 1000;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 16px 6%;
+    }
 
-      z-index: 100;
-
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .logo {
-
       font-size: 24px;
-
-      font-weight: bold;
-
+      font-weight: 800;
       color: #2563eb;
-
+      white-space: nowrap;
     }
 
     .nav-links {
-
       display: flex;
-
       align-items: center;
-
       gap: 24px;
-
+      flex: 1;
+      justify-content: center;
     }
 
     .nav-links a {
-
-      text-decoration: none;
-
-      color: #374151;
-
+      color: #475569;
       font-size: 14px;
-
+      font-weight: 600;
     }
 
     .nav-links a:hover {
-
       color: #2563eb;
-
     }
 
-    .nav-button {
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
+    .btn {
       border: none;
-
-      background: #2563eb;
-
-      color: white;
-
-      padding: 10px 18px;
-
-      border-radius: 8px;
-
-      font-weight: bold;
-
+      border-radius: 9px;
+      padding: 11px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.2s;
     }
 
-    .nav-button:hover {
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
 
+    .btn-primary:hover {
       background: #1d4ed8;
+    }
 
+    .btn-secondary {
+      background: #eff6ff;
+      color: #2563eb;
+    }
+
+    .btn-secondary:hover {
+      background: #dbeafe;
+    }
+
+    .btn-outline {
+      background: white;
+      color: #2563eb;
+      border: 1px solid #2563eb;
+    }
+
+    .btn-outline:hover {
+      background: #eff6ff;
     }
 
     .user-menu {
-
-      display: flex;
-
+      display: none;
       align-items: center;
-
-      gap: 12px;
-
+      gap: 10px;
     }
 
     .user-name {
-
-      font-weight: bold;
-
-      color: #374151;
-
+      font-weight: 700;
+      color: #334155;
+      font-size: 14px;
     }
 
-    .logout-button {
-
-      border: 1px solid #d1d5db;
-
-      background: white;
-
-      color: #374151;
-
-      padding: 8px 14px;
-
-      border-radius: 8px;
-
-    }
-
-    .logout-button:hover {
-
-      background: #f3f4f6;
-
-    }
+    /* HERO */
 
     .hero {
-
-      padding: 90px 6%;
-
-      text-align: center;
-
       background: linear-gradient(135deg, #eff6ff, #ffffff);
+      padding: 100px 6%;
+      text-align: center;
+    }
 
+    .hero-content {
+      max-width: 850px;
+      margin: auto;
     }
 
     .hero h1 {
+      font-size: clamp(38px, 6vw, 64px);
+      line-height: 1.1;
+      color: #0f172a;
+      margin-bottom: 22px;
+    }
 
-      font-size: 48px;
-
-      max-width: 800px;
-
-      margin: auto;
-
-      color: #111827;
-
+    .hero h1 span {
+      color: #2563eb;
     }
 
     .hero p {
-
-      max-width: 650px;
-
-      margin: 20px auto;
-
-      color: #6b7280;
-
+      max-width: 680px;
+      margin: 0 auto 32px;
+      color: #64748b;
       font-size: 18px;
-
     }
 
     .hero-buttons {
-
-      margin-top: 30px;
-
       display: flex;
-
       justify-content: center;
-
-      gap: 14px;
-
+      gap: 12px;
       flex-wrap: wrap;
-
     }
 
-    .primary-button {
-
-      border: none;
-
-      background: #2563eb;
-
-      color: white;
-
-      padding: 13px 24px;
-
-      border-radius: 9px;
-
-      font-weight: bold;
-
-    }
-
-    .primary-button:hover {
-
-      background: #1d4ed8;
-
-    }
-
-    .secondary-button {
-
-      border: 1px solid #d1d5db;
-
-      background: white;
-
-      color: #374151;
-
-      padding: 13px 24px;
-
-      border-radius: 9px;
-
-      font-weight: bold;
-
-    }
-
-    .secondary-button:hover {
-
-      background: #f3f4f6;
-
-    }
+    /* GENERAL SECTIONS */
 
     section {
-
-      padding: 75px 6%;
-
+      padding: 80px 6%;
     }
 
     .section-title {
-
+      max-width: 750px;
+      margin: 0 auto 45px;
       text-align: center;
-
-      margin-bottom: 45px;
-
     }
 
     .section-title h2 {
-
-      font-size: 32px;
-
-      color: #111827;
-
+      font-size: 36px;
+      color: #0f172a;
+      margin-bottom: 10px;
     }
 
     .section-title p {
-
-      margin-top: 8px;
-
-      color: #6b7280;
-
+      color: #64748b;
     }
 
+    /* FEATURES */
+
     .features {
+      background: white;
+    }
 
+    .feature-grid {
+      max-width: 1100px;
+      margin: auto;
       display: grid;
-
       grid-template-columns: repeat(3, 1fr);
-
       gap: 24px;
-
     }
 
     .feature-card {
-
-      background: white;
-
-      padding: 30px;
-
-      border-radius: 14px;
-
+      background: #f8fafc;
       border: 1px solid #e5e7eb;
-
-      text-align: center;
-
+      border-radius: 16px;
+      padding: 30px;
     }
 
     .feature-icon {
-
-      font-size: 35px;
-
-      margin-bottom: 15px;
-
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: #dbeafe;
+      color: #2563eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 18px;
     }
 
     .feature-card h3 {
-
       margin-bottom: 10px;
-
+      color: #0f172a;
     }
 
     .feature-card p {
+      color: #64748b;
+      font-size: 15px;
+    }
 
-      color: #6b7280;
+    /* FREELANCERS */
 
-      font-size: 14px;
-
+    .freelancers-section {
+      background: #f8fafc;
     }
 
     #freelancerList {
-
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 24px;
-
-      max-width: 1200px;
-
+      max-width: 1100px;
       margin: auto;
+    }
 
+    .freelancer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
 
     .freelancer-card {
-
       background: white;
-
       border: 1px solid #e5e7eb;
-
       border-radius: 16px;
-
-      padding: 24px;
-
-      transition: 0.2s ease;
-
+      padding: 25px;
+      transition: 0.2s;
     }
 
     .freelancer-card:hover {
-
-      transform: translateY(-4px);
-
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
     }
 
     .freelancer-avatar {
-
-      width: 70px;
-
-      height: 70px;
-
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
-
       background: #2563eb;
-
       color: white;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
-      font-size: 27px;
-
-      font-weight: bold;
-
-      margin-bottom: 16px;
-
+      font-size: 25px;
+      font-weight: 800;
+      margin-bottom: 15px;
     }
 
     .freelancer-card h3 {
-
-      font-size: 20px;
-
+      color: #0f172a;
       margin-bottom: 4px;
-
     }
 
     .freelancer-role {
-
       color: #2563eb;
-
-      font-size: 13px;
-
-      font-weight: bold;
-
+      font-size: 14px;
+      font-weight: 700;
       margin-bottom: 12px;
-
     }
 
     .freelancer-bio {
-
-      color: #6b7280;
-
+      color: #64748b;
       font-size: 14px;
-
+      min-height: 48px;
       margin-bottom: 15px;
-
-      min-height: 45px;
-
     }
 
     .skills {
-
       display: flex;
-
       flex-wrap: wrap;
-
       gap: 7px;
-
       margin-bottom: 18px;
-
     }
 
     .skill-tag {
-
       background: #eff6ff;
-
       color: #2563eb;
-
-      padding: 5px 9px;
-
       border-radius: 20px;
-
+      padding: 5px 10px;
       font-size: 12px;
-
-    }
-
-    .view-profile-button {
-
-      width: 100%;
-
-      border: none;
-
-      background: #111827;
-
-      color: white;
-
-      padding: 11px;
-
-      border-radius: 8px;
-
-      font-weight: bold;
-
-    }
-
-    .view-profile-button:hover {
-
-      background: #374151;
-
+      font-weight: 600;
     }
 
     .empty-message {
-
-      grid-column: 1 / -1;
-
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 30px;
       text-align: center;
-
-      color: #6b7280;
-
-      padding: 40px;
-
+      color: #64748b;
     }
 
+    /* HOW IT WORKS */
+
     .steps {
-
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 24px;
-
       max-width: 1000px;
-
       margin: auto;
-
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
     }
 
     .step {
-
       text-align: center;
-
-      background: white;
-
-      border: 1px solid #e5e7eb;
-
-      border-radius: 14px;
-
-      padding: 30px;
-
+      padding: 25px;
     }
 
     .step-number {
-
-      width: 45px;
-
-      height: 45px;
-
-      margin: 0 auto 15px;
-
+      width: 55px;
+      height: 55px;
+      margin: 0 auto 18px;
       background: #2563eb;
-
       color: white;
-
       border-radius: 50%;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
-      font-weight: bold;
-
+      font-size: 20px;
+      font-weight: 800;
     }
+
+    .step h3 {
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    /* ABOUT */
 
     .about {
+      background: white;
+    }
 
+    .about-content {
       max-width: 850px;
-
       margin: auto;
-
       text-align: center;
-
     }
 
-    .about p {
-
-      color: #6b7280;
-
-      font-size: 16px;
-
+    .about-content p {
+      color: #64748b;
+      margin-bottom: 15px;
     }
+
+    /* CTA */
 
     .cta {
-
-      background: #111827;
-
+      background: #2563eb;
       color: white;
-
       text-align: center;
-
     }
 
     .cta h2 {
-
-      font-size: 32px;
-
+      font-size: 36px;
       margin-bottom: 12px;
-
     }
 
     .cta p {
-
-      color: #d1d5db;
-
-      margin-bottom: 25px;
-
+      max-width: 650px;
+      margin: 0 auto 25px;
+      color: #dbeafe;
     }
+
+    .cta .btn {
+      background: white;
+      color: #2563eb;
+    }
+
+    /* FOOTER */
 
     footer {
-
-      background: white;
-
-      border-top: 1px solid #e5e7eb;
-
-      padding: 25px 6%;
-
+      background: #0f172a;
+      color: #94a3b8;
       text-align: center;
-
-      color: #6b7280;
-
-      font-size: 13px;
-
+      padding: 28px 6%;
+      font-size: 14px;
     }
 
+    /* MODAL */
+
     .modal {
-
       display: none;
-
       position: fixed;
-
       inset: 0;
-
       background: rgba(15, 23, 42, 0.6);
-
-      backdrop-filter: blur(5px);
-
-      z-index: 1000;
-
-      align-items: center;
-
-      justify-content: center;
-
+      z-index: 2000;
       padding: 20px;
+      overflow-y: auto;
+    }
 
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .modal-content {
-
-      background: white;
-
       width: 100%;
-
       max-width: 480px;
-
-      max-height: 90vh;
-
-      overflow-y: auto;
-
+      background: white;
       border-radius: 18px;
-
       padding: 30px;
-
       position: relative;
-
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
-
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
     }
 
-    .close-button {
+    .modal-content.large {
+      max-width: 600px;
+    }
 
+    .close-btn {
       position: absolute;
-
       top: 15px;
-
       right: 18px;
-
       border: none;
-
-      background: transparent;
-
-      font-size: 26px;
-
-      color: #6b7280;
-
-    }
-
-    .close-button:hover {
-
-      color: #111827;
-
-    }
-
-    .modal-title {
-
-      margin-bottom: 20px;
-
+      background: none;
       font-size: 25px;
+      color: #64748b;
+    }
 
+    .modal-content h2 {
+      margin-bottom: 22px;
+      color: #0f172a;
     }
 
     .form-group {
-
       margin-bottom: 16px;
-
     }
 
     .form-group label {
-
       display: block;
-
       margin-bottom: 6px;
-
       font-size: 14px;
-
-      font-weight: bold;
-
+      font-weight: 700;
+      color: #334155;
     }
 
     .form-group input,
-
     .form-group textarea,
-
     .form-group select {
-
       width: 100%;
-
-      border: 1px solid #d1d5db;
-
-      border-radius: 8px;
-
-      padding: 11px;
-
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 9px;
       outline: none;
-
-    }
-
-    .form-group textarea {
-
-      min-height: 100px;
-
-      resize: vertical;
-
+      font-family: inherit;
+      font-size: 14px;
     }
 
     .form-group input:focus,
-
     .form-group textarea:focus,
-
     .form-group select:focus {
-
       border-color: #2563eb;
-
     }
 
-    .modal-button {
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
 
-      width: 100%;
-
-      border: none;
-
-      background: #2563eb;
-
-      color: white;
-
-      padding: 12px;
-
+    .form-error {
+      background: #fef2f2;
+      color: #dc2626;
+      padding: 10px;
       border-radius: 8px;
-
-      font-weight: bold;
-
-      margin-top: 8px;
-
-    }
-
-    .modal-button:hover {
-
-      background: #1d4ed8;
-
-    }
-
-    .switch-text {
-
-      text-align: center;
-
-      margin-top: 15px;
-
-      color: #6b7280;
-
+      margin-bottom: 15px;
       font-size: 14px;
-
+      display: none;
     }
 
-    .switch-text button {
+    .form-success {
+      background: #f0fdf4;
+      color: #16a34a;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      display: none;
+    }
 
+    .auth-switch {
+      text-align: center;
+      margin-top: 18px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .auth-switch button {
       border: none;
-
       background: none;
-
       color: #2563eb;
-
-      font-weight: bold;
-
+      font-weight: 700;
     }
 
-    .message-text {
+    /* PROFILE */
 
-      margin-top: 15px;
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 25px;
+    }
 
-      text-align: center;
+    .profile-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 800;
+    }
 
+    .profile-header h3 {
+      font-size: 22px;
+    }
+
+    .profile-header p {
+      color: #64748b;
       font-size: 14px;
-
     }
 
-    .freelancer-detail-content {
+    /* DETAIL MODAL */
 
-      max-width: 700px;
-
-      padding: 0;
-
-      overflow: hidden;
-
+    .detail-avatar {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 800;
+      margin: 0 auto 15px;
     }
 
     .detail-header {
-
-      background: linear-gradient(135deg, #eff6ff, #ffffff);
-
-      padding: 40px 35px 30px;
-
       text-align: center;
-
-      position: relative;
-
-      border-bottom: 1px solid #e5e7eb;
-
+      margin-bottom: 25px;
     }
 
-    .detail-avatar {
-
-      width: 100px;
-
-      height: 100px;
-
-      border-radius: 50%;
-
-      background: #2563eb;
-
-      color: white;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      font-size: 38px;
-
-      font-weight: bold;
-
-      margin: 0 auto 16px;
-
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
-
-    }
-
-    .detail-name {
-
-      font-size: 30px;
-
-      color: #111827;
-
+    .detail-header h2 {
       margin-bottom: 4px;
-
     }
 
     .detail-role {
-
       color: #2563eb;
-
-      font-weight: bold;
-
-      font-size: 14px;
-
-    }
-
-    .detail-body {
-
-      padding: 30px 35px 35px;
-
+      font-weight: 700;
     }
 
     .detail-section {
-
-      margin-bottom: 25px;
-
-    }
-
-    .detail-section:last-child {
-
-      margin-bottom: 0;
-
+      margin-bottom: 20px;
     }
 
     .detail-section h4 {
-
-      font-size: 16px;
-
-      color: #111827;
-
-      margin-bottom: 10px;
-
+      margin-bottom: 7px;
+      color: #0f172a;
     }
 
-    .detail-bio {
-
-      color: #6b7280;
-
-      line-height: 1.8;
-
-      white-space: pre-line;
-
-    }
-
-    .detail-skills {
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 8px;
-
-    }
-
-    .detail-skill {
-
-      background: #eff6ff;
-
-      color: #2563eb;
-
-      padding: 7px 12px;
-
-      border-radius: 20px;
-
-      font-size: 13px;
-
-      font-weight: 500;
-
+    .detail-section p {
+      color: #64748b;
+      font-size: 14px;
+      white-space: pre-wrap;
     }
 
     .detail-actions {
-
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 12px;
-
+      display: flex;
+      gap: 10px;
       margin-top: 25px;
-
     }
 
-    .detail-message-button,
-
-    .detail-hire-button {
-
-      padding: 13px;
-
-      border-radius: 9px;
-
-      font-weight: bold;
-
-      border: none;
-
+    .detail-actions .btn {
+      flex: 1;
     }
 
-    .detail-message-button {
+    /* RESPONSIVE */
 
-      background: #2563eb;
-
-      color: white;
-
-    }
-
-    .detail-message-button:hover {
-
-      background: #1d4ed8;
-
-    }
-
-    .detail-hire-button {
-
-      background: #111827;
-
-      color: white;
-
-    }
-
-    .detail-hire-button:hover {
-
-      background: #374151;
-
-    }
-
-    .detail-action-message {
-
-      margin-top: 15px;
-
-      text-align: center;
-
-      color: #6b7280;
-
-      font-size: 14px;
-
-      display: none;
-
-    }
-
-    @media (max-width: 900px) {
-
-      .features,
-
-      .steps,
-
-      #freelancerList {
-
-        grid-template-columns: 1fr 1fr;
-
-      }
-
-      .hero h1 {
-
-        font-size: 38px;
-
-      }
-
-    }
-
-    @media (max-width: 650px) {
-
-      nav {
-
-        padding: 14px 5%;
-
-      }
-
+    @media (max-width: 850px) {
       .nav-links {
-
         display: none;
+      }
 
+      .feature-grid,
+      .freelancer-grid,
+      .steps {
+        grid-template-columns: 1fr;
       }
 
       .hero {
-
-        padding: 65px 5%;
-
-      }
-
-      .hero h1 {
-
-        font-size: 32px;
-
-      }
-
-      .hero p {
-
-        font-size: 16px;
-
+        padding: 75px 6%;
       }
 
       section {
-
-        padding: 55px 5%;
-
+        padding: 65px 6%;
       }
-
-      .features,
-
-      .steps,
-
-      #freelancerList {
-
-        grid-template-columns: 1fr;
-
-      }
-
-      .detail-header {
-
-        padding: 35px 22px 25px;
-
-      }
-
-      .detail-body {
-
-        padding: 25px 22px 30px;
-
-      }
-
-      .detail-name {
-
-        font-size: 25px;
-
-      }
-
-      .detail-actions {
-
-        grid-template-columns: 1fr;
-
-      }
-
     }
 
-  </style>
+    @media (max-width: 500px) {
+      nav {
+        padding: 14px 4%;
+      }
 
+      .logo {
+        font-size: 21px;
+      }
+
+      .nav-actions .btn {
+        padding: 9px 12px;
+        font-size: 12px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .modal-content {
+        padding: 24px 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
+  <!-- NAVBAR -->
+
   <nav>
+    <div class="nav-container">
 
-    <div class="logo">BuildMate</div>
+      <a href="#" class="logo">BuildMate</a>
 
-    <div class="nav-links">
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#freelancers">Freelancers</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#about">About</a>
+      </div>
 
-      <a href="#features">Features</a>
+      <div class="nav-actions">
 
-      <a href="#freelancers">Freelancers</a>
+        <div id="loggedOutMenu">
+          <button class="btn btn-outline" onclick="openAuth('login')">
+            Log In
+          </button>
 
-      <a href="#how-it-works">How It Works</a>
+          <button class="btn btn-primary" onclick="openAuth('signup')">
+            Get Started
+          </button>
+        </div>
 
-      <a href="#about">About</a>
+        <div id="loggedInMenu" class="user-menu">
+          <span id="navUserName" class="user-name">
+            User
+          </span>
 
+          <button class="btn btn-secondary" onclick="openProfile()">
+            Profile
+          </button>
+
+          <button class="btn btn-outline" onclick="logout()">
+            Logout
+          </button>
+        </div>
+
+      </div>
     </div>
-
-    <div id="loggedOutMenu">
-
-      <button class="nav-button" onclick="openAuth('login')">
-
-        Log In
-
-      </button>
-
-      <button
-
-        class="nav-button"
-
-        onclick="openAuth('signup')"
-
-        style="margin-left: 6px;"
-
-      >
-
-        Get Started
-
-      </button>
-
-    </div>
-
-    <div
-
-      id="loggedInMenu"
-
-      class="user-menu"
-
-      style="display: none;"
-
-    >
-
-      <span id="navUserName" class="user-name"></span>
-
-      <button
-
-        class="logout-button"
-
-        onclick="openProfile()"
-
-      >
-
-        Profile
-
-      </button>
-
-      <button
-
-        class="logout-button"
-
-        onclick="logout()"
-
-      >
-
-        Logout
-
-      </button>
-
-    </div>
-
   </nav>
+
+
+  <!-- HERO -->
 
   <section class="hero">
 
-    <h1>Find the Right Freelancer for Your Project</h1>
+    <div class="hero-content">
 
-    <p>
+      <h1>
+        Find the Right
+        <span>Freelancer</span>
+        for Your Project
+      </h1>
 
-      BuildMate helps clients connect with talented freelancers
+      <p>
+        BuildMate connects clients with talented freelancers
+        so great ideas can become real projects.
+      </p>
 
-      and turn ideas into real projects.
+      <div class="hero-buttons">
 
-    </p>
+        <button
+          class="btn btn-primary"
+          onclick="openAuth('signup')">
+          Get Started
+        </button>
 
-    <div class="hero-buttons">
+        <a
+          href="#freelancers"
+          class="btn btn-secondary">
+          Explore Freelancers
+        </a>
 
-      <button
-
-        class="primary-button"
-
-        onclick="openAuth('signup')"
-
-      >
-
-        Get Started
-
-      </button>
-
-      <button
-
-        class="secondary-button"
-
-        onclick="document.getElementById('freelancers').scrollIntoView({behavior:'smooth'})"
-
-      >
-
-        Explore Freelancers
-
-      </button>
+      </div>
 
     </div>
 
   </section>
 
-  <section id="features">
+
+  <!-- FEATURES -->
+
+  <section id="features" class="features">
 
     <div class="section-title">
-
       <h2>Why BuildMate?</h2>
 
-      <p>Everything you need to start building your project.</p>
-
+      <p>
+        Everything you need to connect with the right people
+        and build great projects.
+      </p>
     </div>
 
-    <div class="features">
+    <div class="feature-grid">
 
       <div class="feature-card">
 
-        <div class="feature-icon">👨‍💻</div>
+        <div class="feature-icon">
+          👤
+        </div>
 
         <h3>Find Talent</h3>
 
         <p>
-
-          Discover freelancers with different skills
-
-          and experience.
-
+          Discover freelancers with different skills,
+          experience and creative abilities.
         </p>
 
       </div>
 
+
       <div class="feature-card">
 
-        <div class="feature-icon">💬</div>
+        <div class="feature-icon">
+          💬
+        </div>
 
         <h3>Easy Communication</h3>
 
         <p>
-
-          Connect with freelancers and discuss
-
-          your project requirements.
-
+          Connect with freelancers and discuss your
+          project requirements clearly.
         </p>
 
       </div>
 
+
       <div class="feature-card">
 
-        <div class="feature-icon">🚀</div>
+        <div class="feature-icon">
+          🚀
+        </div>
 
         <h3>Build Projects</h3>
 
         <p>
-
-          Turn your ideas into real projects
-
-          with the right people.
-
+          Turn your ideas into real projects by working
+          together with the right people.
         </p>
 
       </div>
@@ -1286,16 +819,17 @@
 
   </section>
 
-  <section id="freelancers">
+
+  <!-- FREELANCERS -->
+
+  <section id="freelancers" class="freelancers-section">
 
     <div class="section-title">
 
       <h2>Find Freelancers</h2>
 
       <p>
-
         Explore freelancers registered on BuildMate.
-
       </p>
 
     </div>
@@ -1303,14 +837,15 @@
     <div id="freelancerList">
 
       <div class="empty-message">
-
         Loading freelancers...
-
       </div>
 
     </div>
 
   </section>
+
+
+  <!-- HOW IT WORKS -->
 
   <section id="how-it-works">
 
@@ -1319,9 +854,7 @@
       <h2>How It Works</h2>
 
       <p>
-
-        Start your project in three simple steps.
-
+        Getting started with BuildMate is simple.
       </p>
 
     </div>
@@ -1331,53 +864,46 @@
       <div class="step">
 
         <div class="step-number">
-
           1
-
         </div>
 
-        <h3>Create an Account</h3>
+        <h3>Create Your Account</h3>
 
         <p>
-
-          Sign up as a client or freelancer.
-
+          Sign up as a client or freelancer and
+          create your profile.
         </p>
 
       </div>
 
+
       <div class="step">
 
         <div class="step-number">
-
           2
-
         </div>
 
         <h3>Find the Right Person</h3>
 
         <p>
-
-          Browse freelancer profiles and skills.
-
+          Explore freelancer profiles and discover
+          skills that match your project.
         </p>
 
       </div>
 
+
       <div class="step">
 
         <div class="step-number">
-
           3
-
         </div>
 
-        <h3>Build Your Project</h3>
+        <h3>Build Together</h3>
 
         <p>
-
-          Connect and start working together.
-
+          Connect and work together to turn your
+          ideas into reality.
         </p>
 
       </div>
@@ -1386,7 +912,10 @@
 
   </section>
 
-  <section id="about">
+
+  <!-- ABOUT -->
+
+  <section id="about" class="about">
 
     <div class="section-title">
 
@@ -1394,219 +923,170 @@
 
     </div>
 
-    <div class="about">
+    <div class="about-content">
 
       <p>
+        BuildMate is a freelancer marketplace designed
+        to make it easier for clients and freelancers
+        to find each other.
+      </p>
 
-        BuildMate is a platform designed to help clients
-
-        and freelancers connect, communicate, and build
-
-        meaningful projects together.
-
+      <p>
+        Whether you need someone to design, develop,
+        write, edit or create, BuildMate helps you
+        discover people with the skills you need.
       </p>
 
     </div>
 
   </section>
 
+
+  <!-- CTA -->
+
   <section class="cta">
 
     <h2>Ready to Build Something?</h2>
 
     <p>
-
-      Join BuildMate and start your journey today.
-
+      Create your BuildMate account and start connecting
+      with people who can help bring your ideas to life.
     </p>
 
     <button
-
-      class="primary-button"
-
-      onclick="openAuth('signup')"
-
-    >
-
-      Create Account
-
+      class="btn"
+      onclick="openAuth('signup')">
+      Join BuildMate
     </button>
 
   </section>
 
+
+  <!-- FOOTER -->
+
   <footer>
-
     © 2026 BuildMate. All rights reserved.
-
   </footer>
 
-  <div
 
-    id="authModal"
+  <!-- AUTH MODAL -->
 
-    class="modal"
-
-  >
+  <div id="authModal" class="modal">
 
     <div class="modal-content">
 
       <button
-
-        class="close-button"
-
-        onclick="closeAuth()"
-
-      >
-
+        class="close-btn"
+        onclick="closeAuth()">
         ×
-
       </button>
 
-      <h2
-
-        id="authTitle"
-
-        class="modal-title"
-
-      >
-
+      <h2 id="authTitle">
         Log In
-
       </h2>
 
+      <div id="authError" class="form-error"></div>
+
+      <div id="authSuccess" class="form-success"></div>
+
+
+      <!-- NAME -->
+
       <div
+        id="nameGroup"
+        class="form-group"
+        style="display:none;">
 
-        id="signupFields"
+        <label for="authName">
+          Name
+        </label>
 
-        style="display: none;"
-
-      >
-
-        <div class="form-group">
-
-          <label>
-
-            Name
-
-          </label>
-
-          <input
-
-            id="signupName"
-
-            type="text"
-
-            placeholder="Your name"
-
-          >
-
-        </div>
-
-        <div class="form-group">
-
-          <label>
-
-            Account Type
-
-          </label>
-
-          <select id="signupRole">
-
-            <option value="client">
-
-              Client
-
-            </option>
-
-            <option value="freelancer">
-
-              Freelancer
-
-            </option>
-
-          </select>
-
-        </div>
+        <input
+          type="text"
+          id="authName"
+          placeholder="Enter your name">
 
       </div>
 
+
+      <!-- ROLE -->
+
+      <div
+        id="roleGroup"
+        class="form-group"
+        style="display:none;">
+
+        <label for="authRole">
+          Account Type
+        </label>
+
+        <select id="authRole">
+
+          <option value="client">
+            Client
+          </option>
+
+          <option value="freelancer">
+            Freelancer
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- EMAIL -->
+
       <div class="form-group">
 
-        <label>
-
+        <label for="authEmail">
           Email
-
         </label>
 
         <input
-
-          id="authEmail"
-
           type="email"
-
-          placeholder="you@example.com"
-
-        >
+          id="authEmail"
+          placeholder="Enter your email">
 
       </div>
+
+
+      <!-- PASSWORD -->
 
       <div class="form-group">
 
-        <label>
-
+        <label for="authPassword">
           Password
-
         </label>
 
         <input
-
-          id="authPassword"
-
           type="password"
-
-          placeholder="Password"
-
-        >
+          id="authPassword"
+          placeholder="Enter your password">
 
       </div>
+
 
       <button
-
         id="authSubmitButton"
-
-        class="modal-button"
-
-        onclick="submitAuth()"
-
-      >
+        class="btn btn-primary"
+        style="width:100%;"
+        onclick="submitAuth()">
 
         Log In
 
       </button>
 
-      <div
 
-        id="authMessage"
+      <div class="auth-switch">
 
-        class="message-text"
-
-      ></div>
-
-      <div class="switch-text">
-
-        <span id="switchText">
-
+        <span id="authSwitchText">
           Don't have an account?
-
         </span>
 
         <button
-
-          id="switchButton"
-
           onclick="toggleAuthMode()"
-
-        >
+          id="authSwitchButton">
 
           Sign Up
 
@@ -1618,1203 +1098,1108 @@
 
   </div>
 
-  <div
 
-    id="profileModal"
+  <!-- PROFILE MODAL -->
 
-    class="modal"
+  <div id="profileModal" class="modal">
 
-  >
-
-    <div class="modal-content">
+    <div class="modal-content large">
 
       <button
-
-        class="close-button"
-
-        onclick="closeProfile()"
-
-      >
-
+        class="close-btn"
+        onclick="closeProfile()">
         ×
-
       </button>
 
-      <h2 class="modal-title">
-
+      <h2>
         My Profile
-
       </h2>
 
+
+      <div class="profile-header">
+
+        <div
+          id="profileAvatar"
+          class="profile-avatar">
+          U
+        </div>
+
+        <div>
+
+          <h3 id="profileHeaderName">
+            User
+          </h3>
+
+          <p id="profileHeaderRole">
+            User
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div id="profileError" class="form-error"></div>
+
+      <div id="profileSuccess" class="form-success"></div>
+
+
       <div class="form-group">
 
-        <label>
-
+        <label for="profileName">
           Name
-
         </label>
 
         <input
-
-          id="profileName"
-
           type="text"
-
-        >
+          id="profileName">
 
       </div>
 
+
       <div class="form-group">
 
-        <label>
-
+        <label for="profileEmail">
           Email
-
         </label>
 
         <input
-
-          id="profileEmail"
-
           type="email"
-
-          readonly
-
-        >
+          id="profileEmail"
+          readonly>
 
       </div>
 
+
       <div class="form-group">
 
-        <label>
-
+        <label for="profileRole">
           Role
-
         </label>
 
         <input
-
-          id="profileRole"
-
           type="text"
-
-          readonly
-
-        >
+          id="profileRole"
+          readonly>
 
       </div>
 
+
       <div class="form-group">
 
-        <label>
-
+        <label for="profileBio">
           Bio
-
         </label>
 
         <textarea
-
           id="profileBio"
-
-          placeholder="Tell people about yourself..."
-
-        ></textarea>
+          placeholder="Tell people about yourself..."></textarea>
 
       </div>
+
 
       <div class="form-group">
 
-        <label>
-
+        <label for="profileSkills">
           Skills
-
         </label>
 
         <input
-
-          id="profileSkills"
-
           type="text"
-
-          placeholder="Example: Web Design, HTML, CSS"
-
-        >
+          id="profileSkills"
+          placeholder="Example: Web Design, JavaScript, Canva">
 
       </div>
 
+
       <button
-
-        class="modal-button"
-
-        onclick="saveProfile()"
-
-      >
+        class="btn btn-primary"
+        style="width:100%;"
+        onclick="saveProfile()">
 
         Save Profile
 
       </button>
 
-      <div
-
-        id="profileMessage"
-
-        class="message-text"
-
-      ></div>
-
     </div>
 
   </div>
 
-  <div
 
-    id="freelancerDetailModal"
+  <!-- FREELANCER DETAIL MODAL -->
 
-    class="modal"
+  <div id="freelancerModal" class="modal">
 
-  >
+    <div class="modal-content large">
 
-    <div class="modal-content freelancer-detail-content">
+      <button
+        class="close-btn"
+        onclick="closeFreelancerProfile()">
+        ×
+      </button>
 
       <div class="detail-header">
 
-        <button
-
-          class="close-button"
-
-          onclick="closeFreelancerProfile()"
-
-        >
-
-          ×
-
-        </button>
-
         <div
-
           id="detailAvatar"
-
-          class="detail-avatar"
-
-        >
-
-          ?
-
+          class="detail-avatar">
+          F
         </div>
 
-        <h2
-
-          id="detailName"
-
-          class="detail-name"
-
-        >
-
+        <h2 id="detailName">
           Freelancer
-
         </h2>
 
         <div
-
           id="detailRole"
-
-          class="detail-role"
-
-        >
-
+          class="detail-role">
           Freelancer
-
         </div>
 
       </div>
 
-      <div class="detail-body">
 
-        <div class="detail-section">
+      <div class="detail-section">
 
-          <h4>
+        <h4>
+          About
+        </h4>
 
-            About
+        <p id="detailBio">
+          No bio available.
+        </p>
 
-          </h4>
+      </div>
 
-          <div
 
-            id="detailBio"
+      <div class="detail-section">
 
-            class="detail-bio"
-
-          >
-
-            No bio added yet.
-
-          </div>
-
-        </div>
-
-        <div class="detail-section">
-
-          <h4>
-
-            Skills
-
-          </h4>
-
-          <div
-
-            id="detailSkills"
-
-            class="detail-skills"
-
-          >
-
-          </div>
-
-        </div>
-
-        <div class="detail-actions">
-
-          <button
-
-            class="detail-message-button"
-
-            onclick="handleFreelancerMessage()"
-
-          >
-
-            💬 Message
-
-          </button>
-
-          <button
-
-            class="detail-hire-button"
-
-            onclick="handleFreelancerHire()"
-
-          >
-
-            🤝 Hire
-
-          </button>
-
-        </div>
+        <h4>
+          Skills
+        </h4>
 
         <div
+          id="detailSkills"
+          class="skills">
+        </div>
 
-          id="detailActionMessage"
+      </div>
 
-          class="detail-action-message"
 
-        ></div>
+      <div class="detail-actions">
+
+        <button
+          class="btn btn-secondary"
+          onclick="handleFreelancerMessage()">
+          Message
+        </button>
+
+        <button
+          class="btn btn-primary"
+          onclick="handleFreelancerHire()">
+          Hire
+        </button>
 
       </div>
 
     </div>
 
   </div>
+
+
+  <!-- SUPABASE -->
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script src="supabase.js"></script>
 
+
   <script>
 
     let currentUser = null;
-
     let currentAuthMode = "login";
+    let currentFreelancer = null;
 
-    let selectedFreelancer = null;
+
+    /* SECURITY */
 
     function escapeHTML(value) {
 
-      if (value === null || value === undefined) {
-
-        return "";
-
-      }
-
-      return String(value)
-
+      return String(value ?? "")
         .replace(/&/g, "&amp;")
-
         .replace(/</g, "&lt;")
-
         .replace(/>/g, "&gt;")
-
         .replace(/"/g, "&quot;")
-
         .replace(/'/g, "&#039;");
 
     }
+
+
+    /* AUTH MODAL */
 
     function openAuth(mode) {
 
       currentAuthMode = mode;
 
-      document.getElementById("authModal").style.display = "flex";
+      document
+        .getElementById("authModal")
+        .classList.add("active");
 
-      document.getElementById("authMessage").textContent = "";
+      document.getElementById("authError").style.display = "none";
+      document.getElementById("authSuccess").style.display = "none";
 
-      if (mode === "signup") {
-
-        document.getElementById("authTitle").textContent =
-
-          "Create Account";
-
-        document.getElementById("signupFields").style.display =
-
-          "block";
-
-        document.getElementById("authSubmitButton").textContent =
-
-          "Sign Up";
-
-        document.getElementById("switchText").textContent =
-
-          "Already have an account?";
-
-        document.getElementById("switchButton").textContent =
-
-          "Log In";
-
-      } else {
-
-        document.getElementById("authTitle").textContent =
-
-          "Log In";
-
-        document.getElementById("signupFields").style.display =
-
-          "none";
-
-        document.getElementById("authSubmitButton").textContent =
-
-          "Log In";
-
-        document.getElementById("switchText").textContent =
-
-          "Don't have an account?";
-
-        document.getElementById("switchButton").textContent =
-
-          "Sign Up";
-
-      }
+      updateAuthModal();
 
     }
+
 
     function closeAuth() {
 
-      document.getElementById("authModal").style.display =
-
-        "none";
+      document
+        .getElementById("authModal")
+        .classList.remove("active");
 
     }
+
 
     function toggleAuthMode() {
 
       if (currentAuthMode === "login") {
 
-        openAuth("signup");
+        currentAuthMode = "signup";
 
       } else {
 
-        openAuth("login");
+        currentAuthMode = "login";
 
       }
 
+      document.getElementById("authError").style.display = "none";
+      document.getElementById("authSuccess").style.display = "none";
+
+      updateAuthModal();
+
     }
+
+
+    function updateAuthModal() {
+
+      const signup =
+        currentAuthMode === "signup";
+
+
+      document.getElementById("authTitle").textContent =
+        signup ? "Create Your Account" : "Log In";
+
+
+      document.getElementById("authSubmitButton").textContent =
+        signup ? "Create Account" : "Log In";
+
+
+      document.getElementById("nameGroup").style.display =
+        signup ? "block" : "none";
+
+
+      document.getElementById("roleGroup").style.display =
+        signup ? "block" : "none";
+
+
+      document.getElementById("authSwitchText").textContent =
+        signup
+          ? "Already have an account?"
+          : "Don't have an account?";
+
+
+      document.getElementById("authSwitchButton").textContent =
+        signup
+          ? "Log In"
+          : "Sign Up";
+
+    }
+
+
+    /* SUBMIT AUTH */
 
     async function submitAuth() {
 
       const email =
-
         document.getElementById("authEmail").value.trim();
 
       const password =
-
         document.getElementById("authPassword").value;
 
-      const message =
+      const errorBox =
+        document.getElementById("authError");
 
-        document.getElementById("authMessage");
+      const successBox =
+        document.getElementById("authSuccess");
 
-      message.textContent = "";
+
+      errorBox.style.display = "none";
+      successBox.style.display = "none";
+
 
       if (!email || !password) {
 
-        message.textContent =
-
+        errorBox.textContent =
           "Please enter your email and password.";
+
+        errorBox.style.display = "block";
 
         return;
 
       }
 
-      if (currentAuthMode === "signup") {
 
-        const name =
+      try {
 
-          document.getElementById("signupName").value.trim();
+        if (currentAuthMode === "signup") {
 
-        const role =
+          const name =
+            document.getElementById("authName")
+              .value
+              .trim();
 
-          document.getElementById("signupRole").value;
+          const role =
+            document.getElementById("authRole")
+              .value;
 
-        if (!name) {
 
-          message.textContent =
+          if (!name) {
 
-            "Please enter your name.";
+            errorBox.textContent =
+              "Please enter your name.";
 
-          return;
+            errorBox.style.display = "block";
 
-        }
-
-        const {
-
-          data,
-
-          error
-
-        } = await supabaseClient.auth.signUp({
-
-          email: email,
-
-          password: password,
-
-          options: {
-
-            data: {
-
-              name: name,
-
-              role: role
-
-            }
+            return;
 
           }
 
-        });
 
-        if (error) {
+          const { data, error } =
+            await supabaseClient.auth.signUp({
 
-          message.textContent =
+              email: email,
 
-            error.message;
+              password: password,
 
-          return;
+              options: {
 
-        }
+                data: {
+                  name: name,
+                  role: role
+                }
 
-        if (data.user) {
+              }
 
-          message.textContent =
+            });
 
-            "Account created successfully. Please check your email if confirmation is required.";
 
-        }
+          if (error) {
+            throw error;
+          }
 
-      } else {
 
-        const {
+          if (data.user && !data.session) {
 
-          data,
+            successBox.textContent =
+              "Account created. Please check your email to confirm your account.";
 
-          error
+            successBox.style.display =
+              "block";
 
-        } = await supabaseClient.auth.signInWithPassword({
+            return;
 
-          email: email,
+          }
 
-          password: password
 
-        });
+          successBox.textContent =
+            "Account created successfully!";
 
-        if (error) {
+          successBox.style.display =
+            "block";
 
-          message.textContent =
 
-            error.message;
+          setTimeout(() => {
 
-          return;
+            closeAuth();
 
-        }
+          }, 1000);
 
-        if (data.user) {
+
+        } else {
+
+
+          const { data, error } =
+            await supabaseClient.auth.signInWithPassword({
+
+              email: email,
+
+              password: password
+
+            });
+
+
+          if (error) {
+            throw error;
+          }
+
+
+          currentUser = data.user;
 
           closeAuth();
 
-          await checkUser();
+          await updateNavigation();
+
+          await loadFreelancers();
+
+
+          alert("Login successful!");
+
 
         }
+
+      } catch (error) {
+
+        console.error(error);
+
+        errorBox.textContent =
+          error.message || "Something went wrong.";
+
+        errorBox.style.display =
+          "block";
 
       }
 
     }
 
+
+    /* CHECK USER */
+
     async function checkUser() {
 
-      const {
+      try {
 
-        data,
+        const {
+          data,
+          error
+        } =
+          await supabaseClient.auth.getSession();
 
-        error
 
-      } = await supabaseClient.auth.getSession();
+        if (error) {
+          console.error(error);
+          return;
+        }
 
-      if (error) {
 
-        console.error(error);
+        currentUser =
+          data.session
+            ? data.session.user
+            : null;
+
+
+        await updateNavigation();
+
+      } catch (error) {
+
+        console.error(
+          "Session error:",
+          error
+        );
+
+      }
+
+    }
+
+
+    /* NAVIGATION */
+
+    async function updateNavigation() {
+
+      const loggedOutMenu =
+        document.getElementById("loggedOutMenu");
+
+      const loggedInMenu =
+        document.getElementById("loggedInMenu");
+
+      const navUserName =
+        document.getElementById("navUserName");
+
+
+      if (!currentUser) {
+
+        loggedOutMenu.style.display =
+          "flex";
+
+        loggedInMenu.style.display =
+          "none";
 
         return;
 
       }
 
-      currentUser =
 
-        data.session
+      loggedOutMenu.style.display =
+        "none";
 
-          ? data.session.user
+      loggedInMenu.style.display =
+        "flex";
 
-          : null;
 
-      updateNavigation();
+      let displayName =
+        currentUser.user_metadata?.name ||
+        currentUser.email ||
+        "User";
+
+
+      try {
+
+        const {
+          data
+        } =
+          await supabaseClient
+            .from("profiles")
+            .select("name")
+            .eq("id", currentUser.id)
+            .maybeSingle();
+
+
+        if (data?.name) {
+
+          displayName =
+            data.name;
+
+        }
+
+      } catch (error) {
+
+        console.error(
+          "Navigation profile error:",
+          error
+        );
+
+      }
+
+
+      navUserName.textContent =
+        displayName;
 
     }
 
-    function updateNavigation() {
 
-      const loggedOutMenu =
+    /* LOGOUT */
 
-        document.getElementById("loggedOutMenu");
+    async function logout() {
 
-      const loggedInMenu =
+      try {
 
-        document.getElementById("loggedInMenu");
+        const { error } =
+          await supabaseClient.auth.signOut();
 
-      const navUserName =
 
-        document.getElementById("navUserName");
+        if (error) {
+          throw error;
+        }
 
-      if (currentUser) {
 
-        loggedOutMenu.style.display =
+        currentUser = null;
 
-          "none";
+        await updateNavigation();
 
-        loggedInMenu.style.display =
+        await loadFreelancers();
 
-          "flex";
+        alert("You have been logged out.");
 
-        const name =
+      } catch (error) {
 
-          currentUser.user_metadata?.name ||
+        console.error(error);
 
-          currentUser.email ||
-
-          "User";
-
-        navUserName.textContent =
-
-          name;
-
-      } else {
-
-        loggedOutMenu.style.display =
-
-          "block";
-
-        loggedInMenu.style.display =
-
-          "none";
+        alert(
+          error.message ||
+          "Could not log out."
+        );
 
       }
 
     }
 
-    async function logout() {
 
-      await supabaseClient.auth.signOut();
-
-      currentUser = null;
-
-      updateNavigation();
-
-    }
-
-    /* =========================
-
-       LOAD FREELANCERS
-
-       UPDATED VERSION
-
-    ========================= */
+    /* LOAD FREELANCERS */
 
     async function loadFreelancers() {
 
       const container =
+        document.getElementById(
+          "freelancerList"
+        );
 
-        document.getElementById("freelancerList");
 
       container.innerHTML =
-
         '<div class="empty-message">Loading freelancers...</div>';
 
-      const {
 
-        data,
+      try {
 
-        error
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from("profiles")
+            .select(
+              "id, name, role, bio, skills"
+            )
+            .eq("role", "freelancer")
+            .order(
+              "name",
+              {
+                ascending: true
+              }
+            );
 
-      } = await supabaseClient
 
-        .from("profiles")
+        if (error) {
 
-        .select("id, name, role, bio, skills")
+          console.error(
+            "Profiles error:",
+            error
+          );
 
-        .order("name", {
+          container.innerHTML = `
+            <div class="empty-message">
+              Could not load freelancers.
+              <br><br>
+              ${escapeHTML(error.message)}
+            </div>
+          `;
 
-          ascending: true
+          return;
 
-        });
+        }
 
-      if (error) {
 
-        console.error("Profiles error:", error);
+        console.log(
+          "Freelancers:",
+          data
+        );
 
-        container.innerHTML =
 
-          '<div class="empty-message">Could not load freelancers: ' +
+        if (!data || data.length === 0) {
 
-          escapeHTML(error.message) +
+          container.innerHTML = `
+            <div class="empty-message">
+              No freelancers found yet.
+            </div>
+          `;
 
-          '</div>';
+          return;
 
-        return;
+        }
 
-      }
 
-      console.log("All profiles:", data);
+        container.innerHTML = `
 
-      const freelancers =
+          <div class="freelancer-grid">
 
-        (data || []).filter(profile => {
+            ${data.map(profile => {
 
-          const role =
+              const name =
+                profile.name ||
+                "Unnamed Freelancer";
 
-            String(profile.role || "")
 
-              .trim()
+              const initial =
+                name
+                  .charAt(0)
+                  .toUpperCase();
 
-              .toLowerCase();
 
-          return role === "freelancer";
+              const bio =
+                profile.bio ||
+                "No bio available yet.";
 
-        });
 
-      console.log(
+              const skills =
+                profile.skills ||
+                "";
 
-        "Freelancers found:",
 
-        freelancers
+              const skillList =
+                skills
+                  .split(",")
+                  .map(skill => skill.trim())
+                  .filter(Boolean);
 
-      );
-
-      if (freelancers.length === 0) {
-
-        container.innerHTML =
-
-          '<div class="empty-message">No freelancers found yet.</div>';
-
-        return;
-
-      }
-
-      container.innerHTML = "";
-
-      freelancers.forEach(profile => {
-
-        const card =
-
-          document.createElement("div");
-
-        card.className =
-
-          "freelancer-card";
-
-        const name =
-
-          profile.name ||
-
-          "Unnamed Freelancer";
-
-        const initial =
-
-          name.charAt(0).toUpperCase();
-
-        const bio =
-
-          profile.bio ||
-
-          "No bio added yet.";
-
-        let skillsHTML = "";
-
-        if (profile.skills) {
-
-          const skills =
-
-            String(profile.skills)
-
-              .split(",")
-
-              .map(skill => skill.trim())
-
-              .filter(skill => skill);
-
-          skillsHTML =
-
-            skills.map(skill => {
 
               return `
 
-                <span class="skill-tag">
+                <div class="freelancer-card">
 
-                  ${escapeHTML(skill)}
+                  <div class="freelancer-avatar">
+                    ${escapeHTML(initial)}
+                  </div>
 
-                </span>
+                  <h3>
+                    ${escapeHTML(name)}
+                  </h3>
+
+                  <div class="freelancer-role">
+                    Freelancer
+                  </div>
+
+                  <div class="freelancer-bio">
+                    ${escapeHTML(bio)}
+                  </div>
+
+                  <div class="skills">
+
+                    ${
+                      skillList.length > 0
+
+                      ?
+
+                      skillList
+                        .map(skill => `
+                          <span class="skill-tag">
+                            ${escapeHTML(skill)}
+                          </span>
+                        `)
+                        .join("")
+
+                      :
+
+                      `
+                        <span class="skill-tag">
+                          No skills added
+                        </span>
+                      `
+                    }
+
+                  </div>
+
+                  <button
+                    class="btn btn-primary"
+                    style="width:100%;"
+                    onclick='showFreelancerProfile(${JSON.stringify(profile).replace(/'/g, "&#039;")})'>
+
+                    View Profile
+
+                  </button>
+
+                </div>
 
               `;
 
-            }).join("");
-
-        }
-
-        if (!skillsHTML) {
-
-          skillsHTML =
-
-            '<span class="skill-tag">No skills added</span>';
-
-        }
-
-        card.innerHTML = `
-
-          <div class="freelancer-avatar">
-
-            ${escapeHTML(initial)}
+            }).join("")}
 
           </div>
-
-          <h3>
-
-            ${escapeHTML(name)}
-
-          </h3>
-
-          <div class="freelancer-role">
-
-            Freelancer
-
-          </div>
-
-          <div class="freelancer-bio">
-
-            ${escapeHTML(bio)}
-
-          </div>
-
-          <div class="skills">
-
-            ${skillsHTML}
-
-          </div>
-
-          <button
-
-            class="view-profile-button"
-
-          >
-
-            View Profile
-
-          </button>
 
         `;
 
-        const button =
+      } catch (error) {
 
-          card.querySelector(
+        console.error(error);
 
-            ".view-profile-button"
+        container.innerHTML = `
+          <div class="empty-message">
+            Something went wrong while loading freelancers.
+          </div>
+        `;
 
-          );
-
-        button.addEventListener(
-
-          "click",
-
-          function() {
-
-            showFreelancerProfile(
-
-              profile
-
-            );
-
-          }
-
-        );
-
-        container.appendChild(card);
-
-      });
+      }
 
     }
+
+
+    /* SHOW FREELANCER PROFILE */
 
     function showFreelancerProfile(profile) {
 
-      if (!profile) {
-
-        return;
-
-      }
-
-      selectedFreelancer =
-
+      currentFreelancer =
         profile;
 
+
       const name =
-
         profile.name ||
-
-        "Unnamed Freelancer";
-
-      const initial =
-
-        name.charAt(0).toUpperCase();
-
-      document.getElementById(
-
-        "detailAvatar"
-
-      ).textContent =
-
-        initial;
-
-      document.getElementById(
-
-        "detailName"
-
-      ).textContent =
-
-        name;
-
-      document.getElementById(
-
-        "detailRole"
-
-      ).textContent =
-
         "Freelancer";
 
+
       document.getElementById(
-
-        "detailBio"
-
+        "detailAvatar"
       ).textContent =
+        name
+          .charAt(0)
+          .toUpperCase();
 
+
+      document.getElementById(
+        "detailName"
+      ).textContent =
+        name;
+
+
+      document.getElementById(
+        "detailRole"
+      ).textContent =
+        "Freelancer";
+
+
+      document.getElementById(
+        "detailBio"
+      ).textContent =
         profile.bio ||
+        "No bio available.";
 
-        "No bio added yet.";
 
       const skillsContainer =
-
         document.getElementById(
-
           "detailSkills"
-
         );
 
-      skillsContainer.innerHTML =
 
-        "";
+      const skills =
+        String(
+          profile.skills || ""
+        )
+          .split(",")
+          .map(skill => skill.trim())
+          .filter(Boolean);
 
-      if (profile.skills) {
 
-        const skills =
+      if (skills.length === 0) {
 
-          String(profile.skills)
+        skillsContainer.innerHTML =
+          '<span class="skill-tag">No skills added</span>';
 
-            .split(",")
+      } else {
 
-            .map(skill => skill.trim())
-
-            .filter(skill => skill);
-
-        skills.forEach(skill => {
-
-          const tag =
-
-            document.createElement("span");
-
-          tag.className =
-
-            "detail-skill";
-
-          tag.textContent =
-
-            skill;
-
-          skillsContainer.appendChild(tag);
-
-        });
+        skillsContainer.innerHTML =
+          skills
+            .map(skill => `
+              <span class="skill-tag">
+                ${escapeHTML(skill)}
+              </span>
+            `)
+            .join("");
 
       }
 
-      if (
 
-        skillsContainer.children.length === 0
-
-      ) {
-
-        const tag =
-
-          document.createElement("span");
-
-        tag.className =
-
-          "detail-skill";
-
-        tag.textContent =
-
-          "No skills added yet";
-
-        skillsContainer.appendChild(tag);
-
-      }
-
-      document.getElementById(
-
-        "detailActionMessage"
-
-      ).style.display =
-
-        "none";
-
-      document.getElementById(
-
-        "detailActionMessage"
-
-      ).textContent =
-
-        "";
-
-      document.getElementById(
-
-        "freelancerDetailModal"
-
-      ).style.display =
-
-        "flex";
+      document
+        .getElementById(
+          "freelancerModal"
+        )
+        .classList.add("active");
 
     }
 
+
     function closeFreelancerProfile() {
 
-      document.getElementById(
+      document
+        .getElementById(
+          "freelancerModal"
+        )
+        .classList.remove("active");
 
-        "freelancerDetailModal"
-
-      ).style.display =
-
-        "none";
-
-      selectedFreelancer =
-
+      currentFreelancer =
         null;
 
     }
 
+
+    /* MESSAGE */
+
     function handleFreelancerMessage() {
-
-      const message =
-
-        document.getElementById(
-
-          "detailActionMessage"
-
-        );
-
-      message.style.display =
-
-        "block";
 
       if (!currentUser) {
 
-        message.textContent =
+        closeFreelancerProfile();
 
-          "Please log in first. The messaging system will be connected next.";
+        openAuth("login");
 
         return;
 
       }
 
-      message.textContent =
 
-        "Messaging is not connected yet. We will build the real messaging system next.";
+      alert(
+        "Messaging will be connected to BuildMate in the next step."
+      );
 
     }
+
+
+    /* HIRE */
 
     function handleFreelancerHire() {
 
-      const message =
-
-        document.getElementById(
-
-          "detailActionMessage"
-
-        );
-
-      message.style.display =
-
-        "block";
-
       if (!currentUser) {
 
-        message.textContent =
+        closeFreelancerProfile();
 
-          "Please log in first. The hiring system will be connected next.";
+        openAuth("login");
 
         return;
 
       }
 
-      message.textContent =
 
-        "The hiring workflow is not connected yet. We will build the real project and application system next.";
+      alert(
+        "The hiring system will be connected to BuildMate in the next step."
+      );
 
     }
+
+
+    /* PROFILE */
 
     async function openProfile() {
 
       if (!currentUser) {
 
+        openAuth("login");
+
         return;
 
       }
 
-      const {
 
-        data,
-
-        error
-
-      } = await supabaseClient
-
-        .from("profiles")
-
-        .select(
-
-          "id, name, role, bio, skills"
-
+      document
+        .getElementById(
+          "profileModal"
         )
+        .classList.add("active");
 
-        .eq(
 
-          "id",
+      document.getElementById(
+        "profileError"
+      ).style.display = "none";
 
-          currentUser.id
 
-        )
+      document.getElementById(
+        "profileSuccess"
+      ).style.display = "none";
 
-        .maybeSingle();
 
-      if (error) {
+      document.getElementById(
+        "profileEmail"
+      ).value =
+        currentUser.email || "";
+
+
+      try {
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from("profiles")
+            .select(
+              "id, name, role, bio, skills"
+            )
+            .eq(
+              "id",
+              currentUser.id
+            )
+            .maybeSingle();
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        const profile =
+          data || {};
+
+
+        document.getElementById(
+          "profileName"
+        ).value =
+          profile.name || "";
+
+
+        document.getElementById(
+          "profileRole"
+        ).value =
+          profile.role || "";
+
+
+        document.getElementById(
+          "profileBio"
+        ).value =
+          profile.bio || "";
+
+
+        document.getElementById(
+          "profileSkills"
+        ).value =
+          profile.skills || "";
+
+
+        const displayName =
+          profile.name ||
+          currentUser.email ||
+          "User";
+
+
+        document.getElementById(
+          "profileHeaderName"
+        ).textContent =
+          displayName;
+
+
+        document.getElementById(
+          "profileHeaderRole"
+        ).textContent =
+          profile.role ||
+          "User";
+
+
+        document.getElementById(
+          "profileAvatar"
+        ).textContent =
+          displayName
+            .charAt(0)
+            .toUpperCase();
+
+
+      } catch (error) {
 
         console.error(error);
 
-        return;
+        document.getElementById(
+          "profileError"
+        ).textContent =
+          error.message ||
+          "Could not load profile.";
+
+        document.getElementById(
+          "profileError"
+        ).style.display =
+          "block";
 
       }
-
-      if (!data) {
-
-        return;
-
-      }
-
-      document.getElementById(
-
-        "profileName"
-
-      ).value =
-
-        data.name || "";
-
-      document.getElementById(
-
-        "profileEmail"
-
-      ).value =
-
-        currentUser.email || "";
-
-      document.getElementById(
-
-        "profileRole"
-
-      ).value =
-
-        data.role || "";
-
-      document.getElementById(
-
-        "profileBio"
-
-      ).value =
-
-        data.bio || "";
-
-      document.getElementById(
-
-        "profileSkills"
-
-      ).value =
-
-        data.skills || "";
-
-      document.getElementById(
-
-        "profileMessage"
-
-      ).textContent =
-
-        "";
-
-      document.getElementById(
-
-        "profileModal"
-
-      ).style.display =
-
-        "flex";
 
     }
+
 
     function closeProfile() {
 
-      document.getElementById(
-
-        "profileModal"
-
-      ).style.display =
-
-        "none";
+      document
+        .getElementById(
+          "profileModal"
+        )
+        .classList.remove("active");
 
     }
+
+
+    /* SAVE PROFILE */
 
     async function saveProfile() {
 
@@ -2824,169 +2209,186 @@
 
       }
 
+
       const name =
-
         document.getElementById(
-
           "profileName"
-
         ).value.trim();
+
 
       const bio =
-
         document.getElementById(
-
           "profileBio"
-
         ).value.trim();
+
 
       const skills =
-
         document.getElementById(
-
           "profileSkills"
-
         ).value.trim();
 
-      const message =
 
+      const errorBox =
         document.getElementById(
-
-          "profileMessage"
-
+          "profileError"
         );
 
-      message.textContent =
 
-        "Saving...";
-
-      const {
-
-        error
-
-      } = await supabaseClient
-
-        .from("profiles")
-
-        .update({
-
-          name: name,
-
-          bio: bio,
-
-          skills: skills
-
-        })
-
-        .eq(
-
-          "id",
-
-          currentUser.id
-
+      const successBox =
+        document.getElementById(
+          "profileSuccess"
         );
 
-      if (error) {
 
-        console.error(error);
+      errorBox.style.display =
+        "none";
 
-        message.textContent =
+      successBox.style.display =
+        "none";
 
-          error.message;
+
+      if (!name) {
+
+        errorBox.textContent =
+          "Name cannot be empty.";
+
+        errorBox.style.display =
+          "block";
 
         return;
 
       }
 
-      message.textContent =
 
-        "Profile saved successfully.";
+      try {
 
-      document.getElementById(
+        const {
+          error
+        } =
+          await supabaseClient
+            .from("profiles")
+            .update({
 
-        "navUserName"
+              name: name,
 
-      ).textContent =
+              bio: bio,
 
-        name ||
+              skills: skills
 
-        currentUser.email ||
+            })
+            .eq(
+              "id",
+              currentUser.id
+            );
 
-        "User";
 
-      await loadFreelancers();
+        if (error) {
+          throw error;
+        }
+
+
+        successBox.textContent =
+          "Profile saved successfully!";
+
+
+        successBox.style.display =
+          "block";
+
+
+        await updateNavigation();
+
+        await loadFreelancers();
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        errorBox.textContent =
+          error.message ||
+          "Could not save profile.";
+
+
+        errorBox.style.display =
+          "block";
+
+      }
 
     }
 
+
+    /* CLOSE MODALS WHEN CLICKING OUTSIDE */
+
     window.addEventListener(
-
       "click",
-
       function(event) {
 
         const authModal =
-
           document.getElementById(
-
             "authModal"
-
           );
 
         const profileModal =
-
           document.getElementById(
-
             "profileModal"
-
           );
 
-        const detailModal =
-
+        const freelancerModal =
           document.getElementById(
-
-            "freelancerDetailModal"
-
+            "freelancerModal"
           );
 
-        if (event.target === authModal) {
+
+        if (
+          event.target === authModal
+        ) {
 
           closeAuth();
 
         }
 
-        if (event.target === profileModal) {
+
+        if (
+          event.target === profileModal
+        ) {
 
           closeProfile();
 
         }
 
-        if (event.target === detailModal) {
+
+        if (
+          event.target === freelancerModal
+        ) {
 
           closeFreelancerProfile();
 
         }
 
       }
-
     );
+
+
+    /* AUTH STATE */
 
     supabaseClient.auth.onAuthStateChange(
-
-      function(event, session) {
+      async function(event, session) {
 
         currentUser =
-
           session
-
             ? session.user
-
             : null;
 
-        updateNavigation();
+
+        await updateNavigation();
+
+        await loadFreelancers();
 
       }
-
     );
+
+
+    /* INITIALIZE */
 
     async function initializeApp() {
 
@@ -2996,10 +2398,10 @@
 
     }
 
+
     initializeApp();
 
   </script>
 
 </body>
-
 </html>
