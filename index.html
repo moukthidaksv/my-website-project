@@ -13,1037 +13,649 @@
   <style>
 
     * {
-
       box-sizing: border-box;
-
       margin: 0;
-
       padding: 0;
-
     }
 
     html {
-
       scroll-behavior: smooth;
-
     }
 
     body {
-
       font-family: Arial, Helvetica, sans-serif;
-
       background: #f8fafc;
-
       color: #1e293b;
-
       line-height: 1.6;
-
     }
 
     button,
-
     input,
-
     textarea,
-
     select {
-
       font: inherit;
-
     }
 
     button {
-
       cursor: pointer;
-
     }
 
     a {
-
       text-decoration: none;
-
       color: inherit;
-
     }
 
     nav {
-
       position: sticky;
-
       top: 0;
-
       z-index: 1000;
-
       background: white;
-
       border-bottom: 1px solid #e2e8f0;
-
       padding: 15px 6%;
-
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
       gap: 20px;
-
     }
 
     .logo {
-
       font-size: 25px;
-
       font-weight: 800;
-
       color: #2563eb;
-
       white-space: nowrap;
-
     }
 
     .nav-links {
-
       display: flex;
-
       align-items: center;
-
       gap: 25px;
-
     }
 
     .nav-links a {
-
       color: #475569;
-
       font-weight: 600;
-
       font-size: 14px;
-
     }
 
     .nav-links a:hover {
-
       color: #2563eb;
-
     }
 
     .nav-actions {
-
       display: flex;
-
       align-items: center;
-
       gap: 10px;
-
     }
 
     .btn {
-
       border: none;
-
       border-radius: 9px;
-
       padding: 11px 18px;
-
       font-weight: 700;
-
       transition: 0.2s;
-
     }
 
     .btn:hover {
-
       transform: translateY(-1px);
-
     }
 
     .btn-primary {
-
       background: #2563eb;
-
       color: white;
-
     }
 
     .btn-primary:hover {
-
       background: #1d4ed8;
-
     }
 
     .btn-secondary {
-
       background: white;
-
       color: #2563eb;
-
       border: 1px solid #2563eb;
-
     }
 
     .btn-secondary:hover {
-
       background: #eff6ff;
-
     }
 
     .btn-light {
-
       background: #eff6ff;
-
       color: #2563eb;
-
     }
 
     .btn-danger {
-
       background: #fee2e2;
-
       color: #dc2626;
-
     }
 
     .user-menu {
-
       display: none;
-
       align-items: center;
-
       gap: 8px;
-
     }
 
     .user-name {
-
       color: #1e293b;
-
       font-weight: 700;
-
       margin-right: 5px;
-
     }
 
     .hero {
-
       background: linear-gradient(135deg, #eff6ff, #ffffff);
-
       padding: 90px 6%;
-
       text-align: center;
-
     }
 
     .hero h1 {
-
       max-width: 850px;
-
       margin: auto;
-
       font-size: clamp(38px, 6vw, 65px);
-
       line-height: 1.1;
-
       color: #0f172a;
-
       margin-bottom: 25px;
-
     }
 
     .hero h1 span {
-
       color: #2563eb;
-
     }
 
     .hero p {
-
       max-width: 680px;
-
       margin: 0 auto 30px;
-
       font-size: 18px;
-
       color: #64748b;
-
     }
 
     .hero-buttons {
-
       display: flex;
-
       justify-content: center;
-
       gap: 12px;
-
       flex-wrap: wrap;
-
     }
 
     section {
-
       padding: 80px 6%;
-
     }
 
     .section-title {
-
       text-align: center;
-
       margin-bottom: 45px;
-
     }
 
     .section-title h2 {
-
       font-size: 36px;
-
       color: #0f172a;
-
       margin-bottom: 10px;
-
     }
 
     .section-title p {
-
       color: #64748b;
-
     }
 
     .feature-grid {
-
       max-width: 1100px;
-
       margin: auto;
-
       display: grid;
-
       grid-template-columns: repeat(3, 1fr);
-
       gap: 22px;
-
     }
 
     .feature-card {
-
       background: white;
-
       border: 1px solid #e2e8f0;
-
       border-radius: 16px;
-
       padding: 30px;
-
       text-align: center;
-
       box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
-
     }
 
     .feature-icon {
-
       width: 58px;
-
       height: 58px;
-
       border-radius: 14px;
-
       background: #eff6ff;
-
       color: #2563eb;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       font-size: 28px;
-
       margin: 0 auto 18px;
-
     }
 
     .feature-card h3 {
-
       margin-bottom: 10px;
-
       color: #0f172a;
-
     }
 
     .feature-card p {
-
       color: #64748b;
-
     }
 
     #freelancers {
-
       background: #f1f5f9;
+    }
 
+    /* SEARCH */
+
+    .search-box {
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 15px 18px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      background: white;
+      color: #1e293b;
+      outline: none;
+      font-size: 16px;
+      box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+      transition: 0.2s;
+    }
+
+    .search-box input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .search-box input::placeholder {
+      color: #94a3b8;
     }
 
     .freelancer-header {
-
       max-width: 1150px;
-
       margin: 0 auto 25px;
-
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
       gap: 15px;
-
       flex-wrap: wrap;
-
     }
 
     .freelancer-count {
-
       color: #64748b;
-
       font-weight: 600;
-
     }
 
     .freelancer-list {
-
       max-width: 1150px;
-
       margin: auto;
-
       display: grid;
-
       grid-template-columns: repeat(3, 1fr);
-
       gap: 22px;
-
     }
 
     .freelancer-card {
-
       background: white;
-
       border: 1px solid #e2e8f0;
-
       border-radius: 16px;
-
       padding: 25px;
-
       box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
-
       transition: 0.2s;
-
     }
 
     .freelancer-card:hover {
-
       transform: translateY(-3px);
-
       box-shadow: 0 12px 30px rgba(15, 23, 42, 0.09);
-
     }
 
     .freelancer-avatar {
-
       width: 65px;
-
       height: 65px;
-
       border-radius: 50%;
-
       background: #dbeafe;
-
       color: #2563eb;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       font-size: 25px;
-
       font-weight: 800;
-
       margin-bottom: 15px;
-
     }
 
     .freelancer-card h3 {
-
       color: #0f172a;
-
       margin-bottom: 4px;
-
     }
 
     .role-label {
-
       display: inline-block;
-
       background: #dbeafe;
-
       color: #1d4ed8;
-
       border-radius: 20px;
-
       padding: 4px 10px;
-
       font-size: 12px;
-
       font-weight: 700;
-
       margin-bottom: 12px;
-
     }
 
     .freelancer-bio {
-
       color: #64748b;
-
       font-size: 14px;
-
       margin-bottom: 14px;
-
       min-height: 45px;
-
     }
 
     .skills {
-
       display: flex;
-
       flex-wrap: wrap;
-
       gap: 6px;
-
       margin-bottom: 18px;
-
     }
 
     .skill {
-
       background: #f1f5f9;
-
       color: #475569;
-
       border-radius: 7px;
-
       padding: 5px 9px;
-
       font-size: 12px;
-
       font-weight: 600;
-
     }
 
     .card-actions {
-
       display: flex;
-
       gap: 8px;
-
     }
 
     .card-actions .btn {
-
       flex: 1;
-
       padding: 9px 10px;
-
       font-size: 13px;
-
     }
 
     .loading-box,
-
     .empty-box,
-
     .error-box {
-
       grid-column: 1 / -1;
-
       background: white;
-
       border-radius: 15px;
-
       padding: 35px;
-
       text-align: center;
-
       border: 1px solid #e2e8f0;
-
     }
 
     .loading-box {
-
       color: #64748b;
-
     }
 
     .empty-box {
-
       color: #64748b;
-
     }
 
     .error-box {
-
       color: #dc2626;
-
     }
 
     .debug-box {
-
       grid-column: 1 / -1;
-
       background: #fff7ed;
-
       border: 1px solid #fed7aa;
-
       color: #9a3412;
-
       border-radius: 15px;
-
       padding: 20px;
-
       font-size: 14px;
-
     }
 
     .steps {
-
       max-width: 1050px;
-
       margin: auto;
-
       display: grid;
-
       grid-template-columns: repeat(3, 1fr);
-
       gap: 25px;
-
     }
 
     .step {
-
       text-align: center;
-
       padding: 25px;
-
     }
 
     .step-number {
-
       width: 50px;
-
       height: 50px;
-
       border-radius: 50%;
-
       background: #2563eb;
-
       color: white;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       margin: 0 auto 15px;
-
       font-weight: 800;
-
       font-size: 20px;
-
     }
 
     .step h3 {
-
       margin-bottom: 8px;
-
       color: #0f172a;
-
     }
 
     .step p {
-
       color: #64748b;
-
     }
 
     .about {
-
       background: #f8fafc;
-
     }
 
     .about-content {
-
       max-width: 850px;
-
       margin: auto;
-
       text-align: center;
-
     }
 
     .about-content p {
-
       color: #64748b;
-
       font-size: 17px;
-
       margin-bottom: 15px;
-
     }
 
     .cta {
-
       background: #2563eb;
-
       color: white;
-
       text-align: center;
-
     }
 
     .cta h2 {
-
       font-size: 38px;
-
       margin-bottom: 12px;
-
     }
 
     .cta p {
-
       max-width: 650px;
-
       margin: 0 auto 25px;
-
       opacity: 0.9;
-
     }
 
     .cta .btn {
-
       background: white;
-
       color: #2563eb;
-
     }
 
     footer {
-
       background: #0f172a;
-
       color: #94a3b8;
-
       text-align: center;
-
       padding: 25px;
-
       font-size: 14px;
-
     }
 
     .modal {
-
       display: none;
-
       position: fixed;
-
       inset: 0;
-
       background: rgba(15, 23, 42, 0.65);
-
       z-index: 2000;
-
       padding: 20px;
-
       overflow-y: auto;
-
     }
 
     .modal-box {
-
       width: 100%;
-
       max-width: 480px;
-
       margin: 50px auto;
-
       background: white;
-
       border-radius: 18px;
-
       padding: 30px;
-
       position: relative;
-
     }
 
     .modal-box.large {
-
       max-width: 600px;
-
     }
 
     .close-btn {
-
       position: absolute;
-
       top: 15px;
-
       right: 18px;
-
       background: none;
-
       border: none;
-
       font-size: 27px;
-
       color: #64748b;
-
     }
 
     .modal-box h2 {
-
       color: #0f172a;
-
       margin-bottom: 20px;
-
     }
 
     .form-group {
-
       margin-bottom: 15px;
-
     }
 
     .form-group label {
-
       display: block;
-
       margin-bottom: 6px;
-
       color: #334155;
-
       font-weight: 700;
-
       font-size: 14px;
-
     }
 
     .form-group input,
-
     .form-group textarea,
-
     .form-group select {
-
       width: 100%;
-
       padding: 12px;
-
       border: 1px solid #cbd5e1;
-
       border-radius: 9px;
-
       outline: none;
-
     }
 
     .form-group input:focus,
-
     .form-group textarea:focus,
-
     .form-group select:focus {
-
       border-color: #2563eb;
-
     }
 
     .form-group textarea {
-
       min-height: 100px;
-
       resize: vertical;
-
     }
 
     .modal-submit {
-
       width: 100%;
-
       margin-top: 5px;
-
     }
 
     .auth-switch {
-
       text-align: center;
-
       margin-top: 18px;
-
       color: #64748b;
-
       font-size: 14px;
-
     }
 
     .auth-switch button {
-
       border: none;
-
       background: none;
-
       color: #2563eb;
-
       font-weight: 700;
-
     }
 
     .message-box {
-
       margin-bottom: 15px;
-
       padding: 10px;
-
       border-radius: 8px;
-
       display: none;
-
       font-size: 14px;
-
     }
 
     .message-success {
-
       display: block;
-
       background: #dcfce7;
-
       color: #166534;
-
     }
 
     .message-error {
-
       display: block;
-
       background: #fee2e2;
-
       color: #991b1b;
-
     }
 
     .detail-avatar {
-
       width: 80px;
-
       height: 80px;
-
       border-radius: 50%;
-
       background: #dbeafe;
-
       color: #2563eb;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       font-size: 32px;
-
       font-weight: 800;
-
       margin-bottom: 15px;
-
     }
 
     .detail-bio {
-
       color: #64748b;
-
       margin: 15px 0;
-
     }
 
     .detail-skills {
-
       display: flex;
-
       flex-wrap: wrap;
-
       gap: 7px;
-
       margin-bottom: 20px;
-
     }
 
     @media (max-width: 850px) {
 
       .nav-links {
-
         display: none;
-
       }
 
       .feature-grid,
-
       .freelancer-list,
-
       .steps {
-
         grid-template-columns: 1fr;
-
       }
 
       nav {
-
         padding: 13px 4%;
-
       }
 
       .hero {
-
         padding: 70px 5%;
-
       }
 
       section {
-
         padding: 60px 5%;
-
       }
 
       .nav-actions {
-
         gap: 5px;
-
       }
 
       .nav-actions .btn {
-
         padding: 9px 11px;
-
         font-size: 12px;
-
       }
 
       .user-name {
-
         display: none;
+      }
 
+      .search-box {
+        margin-bottom: 25px;
       }
 
     }
@@ -1059,9 +671,7 @@
   <nav>
 
     <a href="#home" class="logo">
-
       BuildMate
-
     </a>
 
     <div class="nav-links">
@@ -1081,27 +691,17 @@
       <div id="loggedOutMenu">
 
         <button
-
           class="btn btn-secondary"
-
           onclick="openAuth('login')"
-
         >
-
           Log In
-
         </button>
 
         <button
-
           class="btn btn-primary"
-
           onclick="openAuth('signup')"
-
         >
-
           Get Started
-
         </button>
 
       </div>
@@ -1111,27 +711,17 @@
         <span id="navUserName" class="user-name"></span>
 
         <button
-
           class="btn btn-light"
-
           onclick="openProfile()"
-
         >
-
           Profile
-
         </button>
 
         <button
-
           class="btn btn-danger"
-
           onclick="logout()"
-
         >
-
           Logout
-
         </button>
 
       </div>
@@ -1145,47 +735,30 @@
   <section class="hero" id="home">
 
     <h1>
-
       Find the Right
-
       <span>Freelancer</span>
-
       for Your Project
-
     </h1>
 
     <p>
-
       BuildMate helps clients find talented freelancers
-
       and helps freelancers discover meaningful projects.
-
     </p>
 
     <div class="hero-buttons">
 
       <button
-
         class="btn btn-primary"
-
         onclick="openAuth('signup')"
-
       >
-
         Get Started
-
       </button>
 
       <a
-
         href="#freelancers"
-
         class="btn btn-secondary"
-
       >
-
         Explore Freelancers
-
       </a>
 
     </div>
@@ -1199,15 +772,11 @@
     <div class="section-title">
 
       <h2>
-
         Why BuildMate?
-
       </h2>
 
       <p>
-
         Everything you need to connect and build together.
-
       </p>
 
     </div>
@@ -1217,23 +786,16 @@
       <div class="feature-card">
 
         <div class="feature-icon">
-
           🔎
-
         </div>
 
         <h3>
-
           Find Talent
-
         </h3>
 
         <p>
-
           Discover freelancers with different skills
-
           and experience for your projects.
-
         </p>
 
       </div>
@@ -1241,23 +803,16 @@
       <div class="feature-card">
 
         <div class="feature-icon">
-
           💬
-
         </div>
 
         <h3>
-
           Easy Communication
-
         </h3>
 
         <p>
-
           Connect with the right people and discuss
-
           your project requirements.
-
         </p>
 
       </div>
@@ -1265,23 +820,16 @@
       <div class="feature-card">
 
         <div class="feature-icon">
-
           🚀
-
         </div>
 
         <h3>
-
           Build Projects
-
         </h3>
 
         <p>
-
           Turn ideas into real projects by working
-
           together with talented people.
-
         </p>
 
       </div>
@@ -1297,59 +845,54 @@
     <div class="section-title">
 
       <h2>
-
         Find Freelancers
-
       </h2>
 
       <p>
-
         Explore freelancers who have created profiles on BuildMate.
-
       </p>
+
+    </div>
+
+    <!-- SEARCH BOX -->
+
+    <div class="search-box">
+
+      <input
+        type="search"
+        id="freelancerSearch"
+        placeholder="Search freelancers by name, bio, or skills..."
+        oninput="searchFreelancers()"
+        autocomplete="off"
+      >
 
     </div>
 
     <div class="freelancer-header">
 
       <div
-
         id="freelancerCount"
-
         class="freelancer-count"
-
       >
-
         Loading freelancers...
-
       </div>
 
       <button
-
         class="btn btn-secondary"
-
         onclick="loadFreelancers()"
-
       >
-
         ↻ Refresh Freelancers
-
       </button>
 
     </div>
 
     <div
-
       id="freelancerList"
-
       class="freelancer-list"
-
     >
 
       <div class="loading-box">
-
         Loading freelancers...
-
       </div>
 
     </div>
@@ -1363,15 +906,11 @@
     <div class="section-title">
 
       <h2>
-
         How It Works
-
       </h2>
 
       <p>
-
         Simple steps to get started.
-
       </p>
 
     </div>
@@ -1381,23 +920,16 @@
       <div class="step">
 
         <div class="step-number">
-
           1
-
         </div>
 
         <h3>
-
           Create Your Profile
-
         </h3>
 
         <p>
-
           Sign up and create a profile with your
-
           skills and experience.
-
         </p>
 
       </div>
@@ -1405,23 +937,16 @@
       <div class="step">
 
         <div class="step-number">
-
           2
-
         </div>
 
         <h3>
-
           Find the Right Match
-
         </h3>
 
         <p>
-
           Explore freelancers and projects that
-
           match your needs.
-
         </p>
 
       </div>
@@ -1429,23 +954,16 @@
       <div class="step">
 
         <div class="step-number">
-
           3
-
         </div>
 
         <h3>
-
           Build Together
-
         </h3>
 
         <p>
-
           Connect and work together to turn ideas
-
           into real projects.
-
         </p>
 
       </div>
@@ -1457,19 +975,14 @@
   <!-- ABOUT -->
 
   <section
-
     id="about"
-
     class="about"
-
   >
 
     <div class="section-title">
 
       <h2>
-
         About BuildMate
-
       </h2>
 
     </div>
@@ -1477,23 +990,15 @@
     <div class="about-content">
 
       <p>
-
         BuildMate is a freelancer marketplace designed
-
         to make it easier for clients and freelancers to
-
         discover each other.
-
       </p>
 
       <p>
-
         Our goal is to create a simple place where people
-
         can share their skills, discover opportunities,
-
         and build projects together.
-
       </p>
 
     </div>
@@ -1505,29 +1010,19 @@
   <section class="cta">
 
     <h2>
-
       Ready to Build Something?
-
     </h2>
 
     <p>
-
       Create your BuildMate profile and start connecting
-
       with people who can help bring your ideas to life.
-
     </p>
 
     <button
-
       class="btn"
-
       onclick="openAuth('signup')"
-
     >
-
       Get Started
-
     </button>
 
   </section>
@@ -1535,81 +1030,53 @@
   <!-- FOOTER -->
 
   <footer>
-
     © 2026 BuildMate. All rights reserved.
-
   </footer>
 
   <!-- AUTH MODAL -->
 
   <div
-
     id="authModal"
-
     class="modal"
-
   >
 
     <div class="modal-box">
 
       <button
-
         class="close-btn"
-
         onclick="closeModal('authModal')"
-
       >
-
         ×
-
       </button>
 
       <h2 id="authTitle">
-
         Log In
-
       </h2>
 
       <div
-
         id="authMessage"
-
         class="message-box"
-
       ></div>
 
       <form
-
         id="authForm"
-
         onsubmit="handleAuth(event)"
-
       >
 
         <div
-
           id="nameGroup"
-
           class="form-group"
-
           style="display:none;"
-
         >
 
           <label for="authName">
-
             Name
-
           </label>
 
           <input
-
             type="text"
-
             id="authName"
-
             placeholder="Your name"
-
           >
 
         </div>
@@ -1617,21 +1084,14 @@
         <div class="form-group">
 
           <label for="authEmail">
-
             Email
-
           </label>
 
           <input
-
             type="email"
-
             id="authEmail"
-
             placeholder="you@example.com"
-
             required
-
           >
 
         </div>
@@ -1639,53 +1099,36 @@
         <div class="form-group">
 
           <label for="authPassword">
-
             Password
-
           </label>
 
           <input
-
             type="password"
-
             id="authPassword"
-
             placeholder="Password"
-
             required
-
           >
 
         </div>
 
         <div
-
           id="roleGroup"
-
           class="form-group"
-
           style="display:none;"
-
         >
 
           <label for="authRole">
-
             I am a
-
           </label>
 
           <select id="authRole">
 
             <option value="freelancer">
-
               Freelancer
-
             </option>
 
             <option value="client">
-
               Client
-
             </option>
 
           </select>
@@ -1693,17 +1136,11 @@
         </div>
 
         <button
-
           type="submit"
-
           id="authSubmit"
-
           class="btn btn-primary modal-submit"
-
         >
-
           Log In
-
         </button>
 
       </form>
@@ -1711,21 +1148,14 @@
       <div class="auth-switch">
 
         <span id="authSwitchText">
-
           Don't have an account?
-
         </span>
 
         <button
-
           id="authSwitchButton"
-
           onclick="switchAuthMode()"
-
         >
-
           Get Started
-
         </button>
 
       </div>
@@ -1737,39 +1167,26 @@
   <!-- PROFILE MODAL -->
 
   <div
-
     id="profileModal"
-
     class="modal"
-
   >
 
     <div class="modal-box">
 
       <button
-
         class="close-btn"
-
         onclick="closeModal('profileModal')"
-
       >
-
         ×
-
       </button>
 
       <h2>
-
         My Profile
-
       </h2>
 
       <div
-
         id="profileMessage"
-
         class="message-box"
-
       ></div>
 
       <form onsubmit="saveProfile(event)">
@@ -1777,21 +1194,14 @@
         <div class="form-group">
 
           <label for="profileName">
-
             Name
-
           </label>
 
           <input
-
             type="text"
-
             id="profileName"
-
             placeholder="Your name"
-
             required
-
           >
 
         </div>
@@ -1799,19 +1209,13 @@
         <div class="form-group">
 
           <label for="profileEmail">
-
             Email
-
           </label>
 
           <input
-
             type="email"
-
             id="profileEmail"
-
             readonly
-
           >
 
         </div>
@@ -1819,19 +1223,13 @@
         <div class="form-group">
 
           <label for="profileRole">
-
             Role
-
           </label>
 
           <input
-
             type="text"
-
             id="profileRole"
-
             readonly
-
           >
 
         </div>
@@ -1839,17 +1237,12 @@
         <div class="form-group">
 
           <label for="profileBio">
-
             Bio
-
           </label>
 
           <textarea
-
             id="profileBio"
-
             placeholder="Tell people about yourself..."
-
           ></textarea>
 
         </div>
@@ -1857,31 +1250,21 @@
         <div class="form-group">
 
           <label for="profileSkills">
-
             Skills
-
           </label>
 
           <textarea
-
             id="profileSkills"
-
             placeholder="Example: Web Design, HTML, CSS, JavaScript"
-
           ></textarea>
 
         </div>
 
         <button
-
           type="submit"
-
           class="btn btn-primary modal-submit"
-
         >
-
           Save Profile
-
         </button>
 
       </form>
@@ -1893,25 +1276,17 @@
   <!-- FREELANCER DETAIL MODAL -->
 
   <div
-
     id="freelancerModal"
-
     class="modal"
-
   >
 
     <div class="modal-box large">
 
       <button
-
         class="close-btn"
-
         onclick="closeModal('freelancerModal')"
-
       >
-
         ×
-
       </button>
 
       <div id="freelancerDetail"></div>
@@ -1933,6 +1308,10 @@
     let currentUser = null;
 
     let authMode = "login";
+
+    /* STORE ALL FREELANCERS FOR SEARCH */
+
+    let allFreelancers = [];
 
     /* SAFE HTML */
 
@@ -1983,31 +1362,24 @@
       authMode = mode;
 
       const title =
-
         document.getElementById("authTitle");
 
       const nameGroup =
-
         document.getElementById("nameGroup");
 
       const roleGroup =
-
         document.getElementById("roleGroup");
 
       const submit =
-
         document.getElementById("authSubmit");
 
       const switchText =
-
         document.getElementById("authSwitchText");
 
       const switchButton =
-
         document.getElementById("authSwitchButton");
 
       const message =
-
         document.getElementById("authMessage");
 
       message.className = "message-box";
@@ -2017,53 +1389,41 @@
       if (mode === "signup") {
 
         title.textContent =
-
           "Create Your Account";
 
         nameGroup.style.display =
-
           "block";
 
         roleGroup.style.display =
-
           "block";
 
         submit.textContent =
-
           "Create Account";
 
         switchText.textContent =
-
           "Already have an account?";
 
         switchButton.textContent =
-
           "Log In";
 
       } else {
 
         title.textContent =
-
           "Log In";
 
         nameGroup.style.display =
-
           "none";
 
         roleGroup.style.display =
-
           "none";
 
         submit.textContent =
-
           "Log In";
 
         switchText.textContent =
-
           "Don't have an account?";
 
         switchButton.textContent =
-
           "Get Started";
 
       }
@@ -2091,19 +1451,14 @@
     function showAuthMessage(message, type) {
 
       const box =
-
         document.getElementById("authMessage");
 
       box.textContent =
-
         message;
 
       box.className =
-
         type === "error"
-
           ? "message-box message-error"
-
           : "message-box message-success";
 
     }
@@ -2115,19 +1470,13 @@
       event.preventDefault();
 
       if (
-
         !window.supabase ||
-
         !window.supabase.createClient
-
       ) {
 
         showAuthMessage(
-
           "Supabase library is not loaded.",
-
           "error"
-
         );
 
         return;
@@ -2135,41 +1484,29 @@
       }
 
       const email =
-
         document.getElementById("authEmail")
-
           .value
-
           .trim();
 
       const password =
-
         document.getElementById("authPassword")
-
           .value;
 
       const name =
-
         document.getElementById("authName")
-
           .value
-
           .trim();
 
       const role =
-
         document.getElementById("authRole")
-
           .value;
 
       const submit =
-
         document.getElementById("authSubmit");
 
       submit.disabled = true;
 
       submit.textContent =
-
         "Please wait...";
 
       try {
@@ -2179,11 +1516,8 @@
           if (!name) {
 
             showAuthMessage(
-
               "Please enter your name.",
-
               "error"
-
             );
 
             return;
@@ -2191,7 +1525,6 @@
           }
 
           const { data, error } =
-
             await supabaseClient.auth.signUp({
 
               email: email,
@@ -2201,11 +1534,8 @@
               options: {
 
                 data: {
-
                   name: name,
-
                   role: role
-
                 }
 
               }
@@ -2213,19 +1543,14 @@
             });
 
           if (error) {
-
             throw error;
-
           }
 
           if (!data.user) {
 
             showAuthMessage(
-
               "Account could not be created.",
-
               "error"
-
             );
 
             return;
@@ -2233,11 +1558,8 @@
           }
 
           showAuthMessage(
-
             "Account created successfully!",
-
             "success"
-
           );
 
           setTimeout(function() {
@@ -2251,9 +1573,7 @@
         } else {
 
           const { data, error } =
-
             await supabaseClient.auth
-
               .signInWithPassword({
 
                 email: email,
@@ -2263,23 +1583,17 @@
               });
 
           if (error) {
-
             throw error;
-
           }
 
           currentUser =
-
             data.user;
 
           updateNavigation();
 
           showAuthMessage(
-
             "Login successful!",
-
             "success"
-
           );
 
           setTimeout(function() {
@@ -2295,35 +1609,24 @@
       } catch (error) {
 
         console.error(
-
           "Auth error:",
-
           error
-
         );
 
         showAuthMessage(
-
           error.message ||
-
           "Something went wrong.",
-
           "error"
-
         );
 
       } finally {
 
         submit.disabled =
-
           false;
 
         submit.textContent =
-
           authMode === "signup"
-
             ? "Create Account"
-
             : "Log In";
 
       }
@@ -2337,27 +1640,21 @@
       try {
 
         const { data, error } =
-
           await supabaseClient.auth.getUser();
 
         if (error) {
 
           console.log(
-
             "No active user:",
-
             error.message
-
           );
 
           currentUser =
-
             null;
 
         } else {
 
           currentUser =
-
             data.user || null;
 
         }
@@ -2365,15 +1662,11 @@
       } catch (error) {
 
         console.error(
-
           "checkUser error:",
-
           error
-
         );
 
         currentUser =
-
           null;
 
       }
@@ -2387,67 +1680,48 @@
     function updateNavigation() {
 
       const loggedOut =
-
         document.getElementById(
-
           "loggedOutMenu"
-
         );
 
       const loggedIn =
-
         document.getElementById(
-
           "loggedInMenu"
-
         );
 
       const userName =
-
         document.getElementById(
-
           "navUserName"
-
         );
 
       if (currentUser) {
 
         loggedOut.style.display =
-
           "none";
 
         loggedIn.style.display =
-
           "flex";
 
         const metadata =
-
           currentUser.user_metadata || {};
 
         const name =
-
           metadata.name ||
-
           currentUser.email ||
-
           "User";
 
         userName.textContent =
-
           name;
 
       } else {
 
         loggedOut.style.display =
-
           "block";
 
         loggedIn.style.display =
-
           "none";
 
         userName.textContent =
-
           "";
 
       }
@@ -2461,51 +1735,35 @@
       try {
 
         const { error } =
-
           await supabaseClient.auth
-
             .signOut();
 
         if (error) {
-
           throw error;
-
         }
 
         currentUser =
-
           null;
 
         updateNavigation();
 
         alert(
-
           "You have been logged out."
-
         );
 
       } catch (error) {
 
         console.error(
-
           "Logout error:",
-
           error
-
         );
 
         alert(
-
           "Logout failed: " +
-
           (
-
             error.message ||
-
             "Unknown error"
-
           )
-
         );
 
       }
@@ -2517,117 +1775,79 @@
     async function loadFreelancers() {
 
       const list =
-
         document.getElementById(
-
           "freelancerList"
-
         );
 
       const count =
-
         document.getElementById(
-
           "freelancerCount"
-
         );
 
       if (!list || !count) {
-
         return;
-
       }
 
       list.innerHTML = `
-
         <div class="loading-box">
-
           Loading freelancers...
-
         </div>
-
       `;
 
       count.textContent =
-
         "Connecting to BuildMate database...";
 
       console.log(
-
         "BuildMate: Loading profiles..."
-
       );
 
       try {
 
         const result =
-
           await supabaseClient
-
             .from("profiles")
-
             .select(
-
               "id, name, role, bio, skills"
-
             );
 
         console.log(
-
           "BuildMate: RAW profiles result:",
-
           result
-
         );
 
         if (result.error) {
 
           console.error(
-
             "BuildMate profiles error:",
-
             result.error
-
           );
 
           count.textContent =
-
             "Database error";
 
           list.innerHTML = `
-
             <div class="error-box">
 
               <strong>
-
                 Unable to load profiles.
-
               </strong>
 
               <br><br>
 
               Error:
-
               ${escapeHTML(
-
                 result.error.message
-
               )}
 
               <br><br>
 
               Code:
-
               ${escapeHTML(
-
                 result.error.code ||
-
                 "No error code"
-
               )}
 
             </div>
-
           `;
 
           return;
@@ -2635,63 +1855,47 @@
         }
 
         const profiles =
-
           Array.isArray(result.data)
-
             ? result.data
-
             : [];
 
         console.log(
-
           "BuildMate: Number of profiles:",
-
           profiles.length
-
         );
-
-        /* IMPORTANT DEBUG INFORMATION */
 
         if (profiles.length === 0) {
 
-          count.textContent =
+          allFreelancers = [];
 
+          count.textContent =
             "0 profiles found";
 
           list.innerHTML = `
-
             <div class="empty-box">
 
               <strong>
-
                 Supabase returned 0 profiles.
-
               </strong>
 
               <br><br>
 
               The website can connect to Supabase,
-
               but the Data API is returning no rows
-
               from public.profiles.
 
               <br><br>
 
               <strong>
-
                 Database rows expected: 2
-
               </strong>
 
               <br>
 
               Please check the Data API exposure
-
               and database permissions.
 
             </div>
-
           `;
 
           return;
@@ -2700,20 +1904,14 @@
 
         /* FILTER FREELANCERS */
 
-        const freelancers =
-
+        allFreelancers =
           profiles.filter(function(profile) {
 
             const role =
-
               String(
-
                 profile.role || ""
-
               )
-
               .trim()
-
               .toLowerCase();
 
             return role === "freelancer";
@@ -2721,322 +1919,337 @@
           });
 
         console.log(
-
           "BuildMate: Freelancers:",
-
-          freelancers
-
+          allFreelancers
         );
 
-        if (freelancers.length === 0) {
+        if (allFreelancers.length === 0) {
 
           const roles =
-
             profiles
-
               .map(function(profile) {
 
                 return String(
-
                   profile.role ||
-
                   "empty"
-
                 );
 
               })
-
               .join(", ");
 
           count.textContent =
-
             "0 freelancers found";
 
           list.innerHTML = `
-
             <div class="empty-box">
 
               <strong>
-
                 Profiles are visible,
-
                 but no freelancer role was found.
-
               </strong>
 
               <br><br>
 
               Profiles:
-
               ${profiles.length}
 
               <br>
 
               Roles:
-
               ${escapeHTML(roles)}
 
             </div>
-
           `;
 
           return;
 
         }
 
-        count.textContent =
+        /* CLEAR SEARCH WHEN DATA IS RELOADED */
 
-          freelancers.length +
-
-          (
-
-            freelancers.length === 1
-
-              ? " freelancer found"
-
-              : " freelancers found"
-
+        const searchInput =
+          document.getElementById(
+            "freelancerSearch"
           );
 
-        list.innerHTML =
-
-          freelancers
-
-            .map(function(profile) {
-
-              const name =
-
-                String(
-
-                  profile.name ||
-
-                  "Unnamed Freelancer"
-
-                )
-
-                .trim();
-
-              const bio =
-
-                String(
-
-                  profile.bio ||
-
-                  "No bio added yet."
-
-                )
-
-                .trim();
-
-              const skillsText =
-
-                String(
-
-                  profile.skills ||
-
-                  ""
-
-                )
-
-                .trim();
-
-              const skills =
-
-                skillsText
-
-                  ? skillsText
-
-                      .split(/[,|]/)
-
-                      .map(function(skill) {
-
-                        return skill.trim();
-
-                      })
-
-                      .filter(Boolean)
-
-                  : [];
-
-              const firstLetter =
-
-                name.charAt(0)
-
-                  .toUpperCase() ||
-
-                "?";
-
-              const profileData =
-
-                JSON.stringify({
-
-                  id: profile.id,
-
-                  name: name,
-
-                  role: profile.role,
-
-                  bio: bio,
-
-                  skills: skillsText
-
-                })
-
-                .replace(
-
-                  /"/g,
-
-                  "&quot;"
-
-                );
-
-              const skillsHTML =
-
-                skills.length > 0
-
-                  ? skills
-
-                      .slice(0, 6)
-
-                      .map(function(skill) {
-
-                        return `
-
-                          <span class="skill">
-
-                            ${escapeHTML(skill)}
-
-                          </span>
-
-                        `;
-
-                      })
-
-                      .join("")
-
-                  : `
-
-                      <span class="skill">
-
-                        No skills listed
-
-                      </span>
-
-                    `;
-
-              return `
-
-                <div class="freelancer-card">
-
-                  <div class="freelancer-avatar">
-
-                    ${escapeHTML(firstLetter)}
-
-                  </div>
-
-                  <h3>
-
-                    ${escapeHTML(name)}
-
-                  </h3>
-
-                  <span class="role-label">
-
-                    Freelancer
-
-                  </span>
-
-                  <p class="freelancer-bio">
-
-                    ${escapeHTML(bio)}
-
-                  </p>
-
-                  <div class="skills">
-
-                    ${skillsHTML}
-
-                  </div>
-
-                  <div class="card-actions">
-
-                    <button
-
-                      class="btn btn-secondary"
-
-                      data-profile="${profileData}"
-
-                      onclick="openFreelancerFromButton(this)"
-
-                    >
-
-                      View Profile
-
-                    </button>
-
-                    <button
-
-                      class="btn btn-primary"
-
-                      data-profile="${profileData}"
-
-                      onclick="messageFreelancerFromButton(this)"
-
-                    >
-
-                      Message
-
-                    </button>
-
-                  </div>
-
-                </div>
-
-              `;
-
-            })
-
-            .join("");
+        if (searchInput) {
+          searchInput.value = "";
+        }
+
+        renderFreelancers(allFreelancers);
 
       } catch (error) {
 
         console.error(
-
           "BuildMate loadFreelancers exception:",
-
           error
-
         );
 
         count.textContent =
-
           "Error loading freelancers";
 
         list.innerHTML = `
-
           <div class="error-box">
 
             <strong>
-
               Something went wrong.
-
             </strong>
 
             <br><br>
 
             ${escapeHTML(
-
               error.message ||
-
               "Unknown error"
-
             )}
 
           </div>
-
         `;
 
       }
+
+    }
+
+    /* RENDER FREELANCERS */
+
+    function renderFreelancers(freelancers) {
+
+      const list =
+        document.getElementById(
+          "freelancerList"
+        );
+
+      const count =
+        document.getElementById(
+          "freelancerCount"
+        );
+
+      if (!list || !count) {
+        return;
+      }
+
+      if (!freelancers.length) {
+
+        count.textContent =
+          "0 freelancers found";
+
+        list.innerHTML = `
+          <div class="empty-box">
+
+            <strong>
+              No freelancers found.
+            </strong>
+
+            <br><br>
+
+            Try another name,
+            bio, or skill.
+
+          </div>
+        `;
+
+        return;
+
+      }
+
+      count.textContent =
+        freelancers.length +
+        (
+          freelancers.length === 1
+            ? " freelancer found"
+            : " freelancers found"
+        );
+
+      list.innerHTML =
+        freelancers
+          .map(function(profile) {
+
+            const name =
+              String(
+                profile.name ||
+                "Unnamed Freelancer"
+              )
+              .trim();
+
+            const bio =
+              String(
+                profile.bio ||
+                "No bio added yet."
+              )
+              .trim();
+
+            const skillsText =
+              String(
+                profile.skills ||
+                ""
+              )
+              .trim();
+
+            const skills =
+              skillsText
+                ? skillsText
+                    .split(/[,|]/)
+                    .map(function(skill) {
+                      return skill.trim();
+                    })
+                    .filter(Boolean)
+                : [];
+
+            const firstLetter =
+              name.charAt(0)
+                .toUpperCase() ||
+              "?";
+
+            const profileData =
+              JSON.stringify({
+
+                id: profile.id,
+
+                name: name,
+
+                role: profile.role,
+
+                bio: bio,
+
+                skills: skillsText
+
+              })
+              .replace(
+                /"/g,
+                "&quot;"
+              );
+
+            const skillsHTML =
+              skills.length > 0
+
+                ? skills
+                    .slice(0, 6)
+                    .map(function(skill) {
+
+                      return `
+                        <span class="skill">
+                          ${escapeHTML(skill)}
+                        </span>
+                      `;
+
+                    })
+                    .join("")
+
+                : `
+                    <span class="skill">
+                      No skills listed
+                    </span>
+                  `;
+
+            return `
+
+              <div class="freelancer-card">
+
+                <div class="freelancer-avatar">
+                  ${escapeHTML(firstLetter)}
+                </div>
+
+                <h3>
+                  ${escapeHTML(name)}
+                </h3>
+
+                <span class="role-label">
+                  Freelancer
+                </span>
+
+                <p class="freelancer-bio">
+                  ${escapeHTML(bio)}
+                </p>
+
+                <div class="skills">
+                  ${skillsHTML}
+                </div>
+
+                <div class="card-actions">
+
+                  <button
+                    class="btn btn-secondary"
+                    data-profile="${profileData}"
+                    onclick="openFreelancerFromButton(this)"
+                  >
+                    View Profile
+                  </button>
+
+                  <button
+                    class="btn btn-primary"
+                    data-profile="${profileData}"
+                    onclick="messageFreelancerFromButton(this)"
+                  >
+                    Message
+                  </button>
+
+                </div>
+
+              </div>
+
+            `;
+
+          })
+          .join("");
+
+    }
+
+    /* SEARCH FREELANCERS */
+
+    function searchFreelancers() {
+
+      const input =
+        document.getElementById(
+          "freelancerSearch"
+        );
+
+      if (!input) {
+        return;
+      }
+
+      const searchTerm =
+        input.value
+          .trim()
+          .toLowerCase();
+
+      if (!searchTerm) {
+
+        renderFreelancers(
+          allFreelancers
+        );
+
+        return;
+
+      }
+
+      const filtered =
+        allFreelancers.filter(
+          function(profile) {
+
+            const name =
+              String(
+                profile.name || ""
+              ).toLowerCase();
+
+            const bio =
+              String(
+                profile.bio || ""
+              ).toLowerCase();
+
+            const skills =
+              String(
+                profile.skills || ""
+              ).toLowerCase();
+
+            return (
+              name.includes(searchTerm) ||
+              bio.includes(searchTerm) ||
+              skills.includes(searchTerm)
+            );
+
+          }
+        );
+
+      renderFreelancers(filtered);
 
     }
 
@@ -3047,25 +2260,16 @@
       try {
 
         const raw =
-
           button.getAttribute(
-
             "data-profile"
-
           );
 
         const profile =
-
           JSON.parse(
-
             raw.replace(
-
               /&quot;/g,
-
               '"'
-
             )
-
           );
 
         openFreelancer(profile);
@@ -3073,17 +2277,12 @@
       } catch (error) {
 
         console.error(
-
           "Profile open error:",
-
           error
-
         );
 
         alert(
-
           "Unable to open this freelancer profile."
-
         );
 
       }
@@ -3093,165 +2292,105 @@
     function openFreelancer(profile) {
 
       const detail =
-
         document.getElementById(
-
           "freelancerDetail"
-
         );
 
       const name =
-
         String(
-
           profile.name ||
-
           "Freelancer"
-
         )
-
         .trim();
 
       const bio =
-
         String(
-
           profile.bio ||
-
           "No bio added yet."
-
         )
-
         .trim();
 
       const skillsText =
-
         String(
-
           profile.skills ||
-
           ""
-
         )
-
         .trim();
 
       const skills =
-
         skillsText
-
           ? skillsText
-
               .split(/[,|]/)
-
               .map(function(skill) {
-
                 return skill.trim();
-
               })
-
               .filter(Boolean)
-
           : [];
 
       const firstLetter =
-
         name.charAt(0)
-
           .toUpperCase() ||
-
         "?";
 
       const skillsHTML =
-
         skills.length > 0
 
           ? skills
-
               .map(function(skill) {
 
                 return `
-
                   <span class="skill">
-
                     ${escapeHTML(skill)}
-
                   </span>
-
                 `;
 
               })
-
               .join("")
 
           : `
-
               <span class="skill">
-
                 No skills listed
-
               </span>
-
             `;
 
       detail.innerHTML = `
 
         <div class="detail-avatar">
-
           ${escapeHTML(firstLetter)}
-
         </div>
 
         <h2>
-
           ${escapeHTML(name)}
-
         </h2>
 
         <span class="role-label">
-
           Freelancer
-
         </span>
 
         <p class="detail-bio">
-
           ${escapeHTML(bio)}
-
         </p>
 
         <h3 style="margin-bottom:10px;">
-
           Skills
-
         </h3>
 
         <div class="detail-skills">
-
           ${skillsHTML}
-
         </div>
 
         <button
-
           class="btn btn-primary"
-
           style="width:100%;"
-
           onclick="alert('Messaging will be connected in the next BuildMate update.')"
-
         >
-
           Message ${escapeHTML(name)}
-
         </button>
 
       `;
 
       openModal(
-
         "freelancerModal"
-
       );
 
     }
@@ -3263,33 +2402,22 @@
       try {
 
         const raw =
-
           button.getAttribute(
-
             "data-profile"
-
           );
 
         const profile =
-
           JSON.parse(
-
             raw.replace(
-
               /&quot;/g,
-
               '"'
-
             )
-
           );
 
         if (!currentUser) {
 
           alert(
-
             "Please log in first to message a freelancer."
-
           );
 
           openAuth("login");
@@ -3299,23 +2427,16 @@
         }
 
         alert(
-
           "Messaging system for " +
-
           profile.name +
-
           " will be connected in the next BuildMate update."
-
         );
 
       } catch (error) {
 
         console.error(
-
           "Message button error:",
-
           error
-
         );
 
       }
@@ -3335,169 +2456,111 @@
       }
 
       const message =
-
         document.getElementById(
-
           "profileMessage"
-
         );
 
       message.className =
-
         "message-box";
 
       message.textContent =
-
         "";
 
       document.getElementById(
-
         "profileEmail"
-
       ).value =
-
         currentUser.email || "";
 
       try {
 
         const { data, error } =
-
           await supabaseClient
-
             .from("profiles")
-
             .select(
-
               "id, name, role, bio, skills"
-
             )
-
             .eq(
-
               "id",
-
               currentUser.id
-
             )
-
             .maybeSingle();
 
         if (error) {
-
           throw error;
-
         }
 
         if (data) {
 
           document.getElementById(
-
             "profileName"
-
           ).value =
-
             data.name || "";
 
           document.getElementById(
-
             "profileRole"
-
           ).value =
-
             data.role || "";
 
           document.getElementById(
-
             "profileBio"
-
           ).value =
-
             data.bio || "";
 
           document.getElementById(
-
             "profileSkills"
-
           ).value =
-
             data.skills || "";
 
         } else {
 
           const metadata =
-
             currentUser.user_metadata || {};
 
           document.getElementById(
-
             "profileName"
-
           ).value =
-
             metadata.name || "";
 
           document.getElementById(
-
             "profileRole"
-
           ).value =
-
             metadata.role || "";
 
           document.getElementById(
-
             "profileBio"
-
           ).value =
-
             metadata.bio || "";
 
           document.getElementById(
-
             "profileSkills"
-
           ).value =
-
             metadata.skills || "";
 
         }
 
         openModal(
-
           "profileModal"
-
         );
 
       } catch (error) {
 
         console.error(
-
           "Open profile error:",
-
           error
-
         );
 
         message.textContent =
-
           "Unable to load profile: " +
-
           (
-
             error.message ||
-
             "Unknown error"
-
           );
 
         message.className =
-
           "message-box message-error";
 
         openModal(
-
           "profileModal"
-
         );
 
       }
@@ -3511,63 +2574,41 @@
       event.preventDefault();
 
       if (!currentUser) {
-
         return;
-
       }
 
       const message =
-
         document.getElementById(
-
           "profileMessage"
-
         );
 
       const name =
-
         document.getElementById(
-
           "profileName"
-
         )
-
         .value
-
         .trim();
 
       const bio =
-
         document.getElementById(
-
           "profileBio"
-
         )
-
         .value
-
         .trim();
 
       const skills =
-
         document.getElementById(
-
           "profileSkills"
-
         )
-
         .value
-
         .trim();
 
       if (!name) {
 
         message.textContent =
-
           "Please enter your name.";
 
         message.className =
-
           "message-box message-error";
 
         return;
@@ -3577,11 +2618,8 @@
       try {
 
         const { error } =
-
           await supabaseClient
-
             .from("profiles")
-
             .update({
 
               name: name,
@@ -3591,35 +2629,24 @@
               skills: skills
 
             })
-
             .eq(
-
               "id",
-
               currentUser.id
-
             );
 
         if (error) {
-
           throw error;
-
         }
 
         message.textContent =
-
           "Profile saved successfully!";
 
         message.className =
-
           "message-box message-success";
 
         document.getElementById(
-
           "navUserName"
-
         ).textContent =
-
           name;
 
         await loadFreelancers();
@@ -3627,9 +2654,7 @@
         setTimeout(function() {
 
           closeModal(
-
             "profileModal"
-
           );
 
         }, 1000);
@@ -3637,27 +2662,18 @@
       } catch (error) {
 
         console.error(
-
           "Save profile error:",
-
           error
-
         );
 
         message.textContent =
-
           "Unable to save profile: " +
-
           (
-
             error.message ||
-
             "Unknown error"
-
           );
 
         message.className =
-
           "message-box message-error";
 
       }
@@ -3671,19 +2687,13 @@
       function(event, session) {
 
         console.log(
-
           "BuildMate auth event:",
-
           event
-
         );
 
         currentUser =
-
           session
-
             ? session.user
-
             : null;
 
         updateNavigation();
@@ -3703,9 +2713,7 @@
     async function initializeApp() {
 
       console.log(
-
         "BuildMate: Initializing app..."
-
       );
 
       await checkUser();
