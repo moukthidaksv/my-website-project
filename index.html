@@ -180,10 +180,14 @@
 
     }
 
+    .btn-danger:hover {
+
+      background: #fecaca;
+
+    }
+
     /* =========================
-
        MESSAGE NAVIGATION
-
     ========================= */
 
     .messages-nav-btn {
@@ -591,9 +595,7 @@
     }
 
     /* =========================
-
        MODALS
-
     ========================= */
 
     .modal {
@@ -811,9 +813,27 @@
     }
 
     /* =========================
+       PROFILE LOGOUT
+    ========================= */
 
+    .profile-logout {
+
+      margin-top: 24px;
+
+      padding-top: 20px;
+
+      border-top: 1px solid #e2e8f0;
+
+    }
+
+    .profile-logout button {
+
+      width: 100%;
+
+    }
+
+    /* =========================
        MESSAGES LIST
-
     ========================= */
 
     #messagesModal .modal-content {
@@ -1023,9 +1043,7 @@
     }
 
     /* =========================
-
        CHAT
-
     ========================= */
 
     #chatModal .modal-content {
@@ -1243,9 +1261,7 @@
     }
 
     /* =========================
-
        RESPONSIVE
-
     ========================= */
 
     @media (max-width: 850px) {
@@ -1477,20 +1493,6 @@
         >
 
           Profile
-
-        </button>
-
-        <button
-
-          type="button"
-
-          class="btn btn-danger"
-
-          onclick="logout()"
-
-        >
-
-          Logout
 
         </button>
 
@@ -2140,6 +2142,26 @@
 
       ></div>
 
+      <!-- LOGOUT -->
+
+      <div class="profile-logout">
+
+        <button
+
+          type="button"
+
+          class="btn btn-danger"
+
+          onclick="logout()"
+
+        >
+
+          Logout
+
+        </button>
+
+      </div>
+
     </div>
 
   </div>
@@ -2331,9 +2353,7 @@
     let freelancerMap = new Map();
 
     /* =========================
-
        INITIALIZE
-
     ========================= */
 
     document.addEventListener(
@@ -2391,9 +2411,7 @@
     );
 
     /* =========================
-
        AUTH STATE
-
     ========================= */
 
     async function checkCurrentUser() {
@@ -2501,9 +2519,7 @@
     );
 
     /* =========================
-
        NAVIGATION
-
     ========================= */
 
     function updateNavigation() {
@@ -2571,9 +2587,7 @@
     }
 
     /* =========================
-
        AUTH MODAL
-
     ========================= */
 
     function openAuth(mode) {
@@ -2942,6 +2956,8 @@
 
         closeModal("messagesModal");
 
+        closeModal("profileModal");
+
         const {
 
           error
@@ -2981,9 +2997,7 @@
     }
 
     /* =========================
-
        PROFILE
-
     ========================= */
 
     async function loadCurrentProfile() {
@@ -3303,9 +3317,7 @@
     }
 
     /* =========================
-
        FREELANCERS
-
     ========================= */
 
     async function loadFreelancers() {
@@ -3947,9 +3959,7 @@
     }
 
     /* =========================================================
-
        MESSAGES / UNREAD SYSTEM
-
     ========================================================= */
 
     function updateUnreadBadge(
@@ -5041,9 +5051,7 @@
     }
 
     /* =========================
-
        CHAT
-
     ========================= */
 
     async function openChat(
@@ -5953,9 +5961,7 @@
     }
 
     /* =========================
-
        GENERAL MODAL FUNCTIONS
-
     ========================= */
 
     function closeModal(
@@ -6023,9 +6029,7 @@
     );
 
     /* =========================
-
        SECURITY HELPER
-
     ========================= */
 
     function escapeHTML(
