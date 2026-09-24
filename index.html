@@ -114,6 +114,14 @@
 
     }
 
+    button:disabled {
+
+      opacity: 0.6;
+
+      cursor: not-allowed;
+
+    }
+
     .btn {
 
       padding: 10px 18px;
@@ -518,8 +526,6 @@
 
     }
 
-    /* Logged-in menu */
-
     #loggedInMenu {
 
       display: none;
@@ -539,8 +545,6 @@
       margin-right: 5px;
 
     }
-
-    /* Modal */
 
     .modal {
 
@@ -718,8 +722,6 @@
 
     }
 
-    /* Freelancer detail */
-
     .detail-header {
 
       border-bottom: 1px solid #e2e8f0;
@@ -757,8 +759,6 @@
       white-space: pre-wrap;
 
     }
-
-    /* Chat */
 
     #chatModal .modal-content {
 
@@ -1078,13 +1078,29 @@
 
       <div id="loggedOutMenu">
 
-        <button class="btn btn-secondary" onclick="openAuth('login')">
+        <button
+
+          type="button"
+
+          class="btn btn-secondary"
+
+          onclick="openAuth('login')"
+
+        >
 
           Log In
 
         </button>
 
-        <button class="btn btn-primary" onclick="openAuth('signup')">
+        <button
+
+          type="button"
+
+          class="btn btn-primary"
+
+          onclick="openAuth('signup')"
+
+        >
 
           Get Started
 
@@ -1096,13 +1112,29 @@
 
         <span id="navUserName"></span>
 
-        <button class="btn btn-secondary" onclick="openProfile()">
+        <button
+
+          type="button"
+
+          class="btn btn-secondary"
+
+          onclick="openProfile()"
+
+        >
 
           Profile
 
         </button>
 
-        <button class="btn btn-danger" onclick="logout()">
+        <button
+
+          type="button"
+
+          class="btn btn-danger"
+
+          onclick="logout()"
+
+        >
 
           Logout
 
@@ -1130,13 +1162,29 @@
 
     <div class="hero-buttons">
 
-      <button class="btn btn-primary" onclick="openAuth('signup')">
+      <button
+
+        type="button"
+
+        class="btn btn-primary"
+
+        onclick="openAuth('signup')"
+
+      >
 
         Get Started
 
       </button>
 
-      <button class="btn btn-outline" onclick="scrollToFreelancers()">
+      <button
+
+        type="button"
+
+        class="btn btn-outline"
+
+        onclick="scrollToFreelancers()"
+
+      >
 
         Explore Freelancers
 
@@ -1154,7 +1202,11 @@
 
       <h2>Why BuildMate?</h2>
 
-      <p>Everything you need to connect and collaborate.</p>
+      <p>
+
+        Everything you need to connect and collaborate.
+
+      </p>
 
     </div>
 
@@ -1226,15 +1278,19 @@
 
         placeholder="Search freelancers by name, bio, or skills..."
 
-        oninput="searchFreelancers()"
-
         autocomplete="off"
 
       >
 
     </div>
 
-    <div id="freelancerList" class="freelancer-grid">
+    <div
+
+      id="freelancerList"
+
+      class="freelancer-grid"
+
+    >
 
       <div class="empty-message">
 
@@ -1254,7 +1310,11 @@
 
       <h2>How It Works</h2>
 
-      <p>Getting started with BuildMate is simple.</p>
+      <p>
+
+        Getting started with BuildMate is simple.
+
+      </p>
 
     </div>
 
@@ -1338,7 +1398,15 @@
 
     </p>
 
-    <button class="btn" onclick="openAuth('signup')">
+    <button
+
+      type="button"
+
+      class="btn"
+
+      onclick="openAuth('signup')"
+
+    >
 
       Get Started
 
@@ -1360,7 +1428,15 @@
 
     <div class="modal-content">
 
-      <button class="close-btn" onclick="closeModal('authModal')">
+      <button
+
+        type="button"
+
+        class="close-btn"
+
+        onclick="closeModal('authModal')"
+
+      >
 
         ×
 
@@ -1368,7 +1444,15 @@
 
       <h2 id="authTitle">Log In</h2>
 
-      <div id="signupNameGroup" class="form-group" style="display:none;">
+      <div
+
+        id="signupNameGroup"
+
+        class="form-group"
+
+        style="display:none;"
+
+      >
 
         <label for="authName">Name</label>
 
@@ -1384,7 +1468,15 @@
 
       </div>
 
-      <div id="signupRoleGroup" class="form-group" style="display:none;">
+      <div
+
+        id="signupRoleGroup"
+
+        class="form-group"
+
+        style="display:none;"
+
+      >
 
         <label for="authRole">I am a</label>
 
@@ -1442,6 +1534,8 @@
 
         <button
 
+          type="button"
+
           id="authSubmitButton"
 
           class="btn btn-primary"
@@ -1456,7 +1550,13 @@
 
       </div>
 
-      <div id="authStatus" class="status-message"></div>
+      <div
+
+        id="authStatus"
+
+        class="status-message"
+
+      ></div>
 
       <div class="auth-switch">
 
@@ -1466,7 +1566,13 @@
 
         </span>
 
-        <button onclick="switchAuthMode()">
+        <button
+
+          type="button"
+
+          onclick="switchAuthMode()"
+
+        >
 
           <span id="authSwitchButton">
 
@@ -1488,7 +1594,15 @@
 
     <div class="modal-content">
 
-      <button class="close-btn" onclick="closeModal('profileModal')">
+      <button
+
+        type="button"
+
+        class="close-btn"
+
+        onclick="closeModal('profileModal')"
+
+      >
 
         ×
 
@@ -1584,6 +1698,8 @@
 
         <button
 
+          type="button"
+
           class="btn btn-primary"
 
           onclick="saveProfile()"
@@ -1595,6 +1711,8 @@
         </button>
 
         <button
+
+          type="button"
 
           class="btn btn-secondary"
 
@@ -1608,7 +1726,13 @@
 
       </div>
 
-      <div id="profileStatus" class="status-message"></div>
+      <div
+
+        id="profileStatus"
+
+        class="status-message"
+
+      ></div>
 
     </div>
 
@@ -1620,7 +1744,15 @@
 
     <div class="modal-content large">
 
-      <button class="close-btn" onclick="closeModal('detailModal')">
+      <button
+
+        type="button"
+
+        class="close-btn"
+
+        onclick="closeModal('detailModal')"
+
+      >
 
         ×
 
@@ -1656,7 +1788,15 @@
 
         </div>
 
-        <button class="close-btn" onclick="closeChat()">
+        <button
+
+          type="button"
+
+          class="close-btn"
+
+          onclick="closeChat()"
+
+        >
 
           ×
 
@@ -1684,11 +1824,11 @@
 
           rows="1"
 
-          onkeydown="handleChatKeydown(event)"
-
         ></textarea>
 
         <button
+
+          type="button"
 
           id="sendMessageBtn"
 
@@ -1730,19 +1870,71 @@
 
     let renderedMessageIds = new Set();
 
+    /*
+
+      IMPORTANT:
+
+      Store profiles here by ID.
+
+      This avoids putting JSON data directly
+
+      inside onclick attributes.
+
+    */
+
+    let freelancerMap = new Map();
+
     /* =========================
 
        INITIALIZE
 
     ========================= */
 
-    document.addEventListener("DOMContentLoaded", async function () {
+    document.addEventListener(
 
-      await checkCurrentUser();
+      "DOMContentLoaded",
 
-      await loadFreelancers();
+      async function () {
 
-    });
+        const searchInput =
+
+          document.getElementById("freelancerSearch");
+
+        if (searchInput) {
+
+          searchInput.addEventListener(
+
+            "input",
+
+            searchFreelancers
+
+          );
+
+        }
+
+        const chatInput =
+
+          document.getElementById("chatInput");
+
+        if (chatInput) {
+
+          chatInput.addEventListener(
+
+            "keydown",
+
+            handleChatKeydown
+
+          );
+
+        }
+
+        await checkCurrentUser();
+
+        await loadFreelancers();
+
+      }
+
+    );
 
     /* =========================
 
@@ -1764,17 +1956,25 @@
 
         if (error) {
 
-          console.error(error);
+          console.error(
+
+            "Session error:",
+
+            error
+
+          );
 
           return;
 
         }
 
-        currentUser = data.session
+        currentUser =
 
-          ? data.session.user
+          data.session
 
-          : null;
+            ? data.session.user
+
+            : null;
 
         if (currentUser) {
 
@@ -1802,11 +2002,13 @@
 
       async function (event, session) {
 
-        currentUser = session
+        currentUser =
 
-          ? session.user
+          session
 
-          : null;
+            ? session.user
+
+            : null;
 
         if (currentUser) {
 
@@ -1815,6 +2017,8 @@
         } else {
 
           currentProfile = null;
+
+          await closeChat();
 
         }
 
@@ -1836,25 +2040,43 @@
 
       const loggedOutMenu =
 
-        document.getElementById("loggedOutMenu");
+        document.getElementById(
+
+          "loggedOutMenu"
+
+        );
 
       const loggedInMenu =
 
-        document.getElementById("loggedInMenu");
+        document.getElementById(
+
+          "loggedInMenu"
+
+        );
 
       const navUserName =
 
-        document.getElementById("navUserName");
+        document.getElementById(
+
+          "navUserName"
+
+        );
 
       if (currentUser) {
 
-        loggedOutMenu.style.display = "none";
+        loggedOutMenu.style.display =
 
-        loggedInMenu.style.display = "flex";
+          "none";
+
+        loggedInMenu.style.display =
+
+          "flex";
 
         navUserName.textContent =
 
-          currentProfile && currentProfile.name
+          currentProfile &&
+
+          currentProfile.name
 
             ? currentProfile.name
 
@@ -1862,9 +2084,15 @@
 
       } else {
 
-        loggedOutMenu.style.display = "block";
+        loggedOutMenu.style.display =
 
-        loggedInMenu.style.display = "none";
+          "flex";
+
+        loggedInMenu.style.display =
+
+          "none";
+
+        navUserName.textContent = "";
 
       }
 
@@ -1880,7 +2108,11 @@
 
       authMode = mode;
 
-      document.getElementById("authModal").style.display = "flex";
+      document.getElementById(
+
+        "authModal"
+
+      ).style.display = "flex";
 
       updateAuthModal();
 
@@ -1890,63 +2122,111 @@
 
       const title =
 
-        document.getElementById("authTitle");
+        document.getElementById(
+
+          "authTitle"
+
+        );
 
       const nameGroup =
 
-        document.getElementById("signupNameGroup");
+        document.getElementById(
+
+          "signupNameGroup"
+
+        );
 
       const roleGroup =
 
-        document.getElementById("signupRoleGroup");
+        document.getElementById(
+
+          "signupRoleGroup"
+
+        );
 
       const submitButton =
 
-        document.getElementById("authSubmitButton");
+        document.getElementById(
+
+          "authSubmitButton"
+
+        );
 
       const switchText =
 
-        document.getElementById("authSwitchText");
+        document.getElementById(
+
+          "authSwitchText"
+
+        );
 
       const switchButton =
 
-        document.getElementById("authSwitchButton");
+        document.getElementById(
+
+          "authSwitchButton"
+
+        );
 
       if (authMode === "signup") {
 
-        title.textContent = "Create Your Account";
+        title.textContent =
 
-        nameGroup.style.display = "block";
+          "Create Your Account";
 
-        roleGroup.style.display = "block";
+        nameGroup.style.display =
 
-        submitButton.textContent = "Sign Up";
+          "block";
+
+        roleGroup.style.display =
+
+          "block";
+
+        submitButton.textContent =
+
+          "Sign Up";
 
         switchText.textContent =
 
           "Already have an account?";
 
-        switchButton.textContent = "Log In";
+        switchButton.textContent =
+
+          "Log In";
 
       } else {
 
-        title.textContent = "Log In";
+        title.textContent =
 
-        nameGroup.style.display = "none";
+          "Log In";
 
-        roleGroup.style.display = "none";
+        nameGroup.style.display =
 
-        submitButton.textContent = "Log In";
+          "none";
+
+        roleGroup.style.display =
+
+          "none";
+
+        submitButton.textContent =
+
+          "Log In";
 
         switchText.textContent =
 
           "Don't have an account?";
 
-        switchButton.textContent = "Sign Up";
+        switchButton.textContent =
+
+          "Sign Up";
 
       }
 
-      document.getElementById("authStatus").textContent = "";
+      document.getElementById(
+
+        "authStatus"
+
+      ).textContent = "";
 
     }
 
@@ -1968,19 +2248,33 @@
 
       const email =
 
-        document.getElementById("authEmail").value.trim();
+        document.getElementById(
+
+          "authEmail"
+
+        ).value.trim();
 
       const password =
 
-        document.getElementById("authPassword").value;
+        document.getElementById(
+
+          "authPassword"
+
+        ).value;
 
       const status =
 
-        document.getElementById("authStatus");
+        document.getElementById(
+
+          "authStatus"
+
+        );
 
       if (!email || !password) {
 
-        status.style.color = "#dc2626";
+        status.style.color =
+
+          "#dc2626";
 
         status.textContent =
 
@@ -1990,9 +2284,13 @@
 
       }
 
-      status.style.color = "#2563eb";
+      status.style.color =
 
-      status.textContent = "Please wait...";
+        "#2563eb";
+
+      status.textContent =
+
+        "Please wait...";
 
       try {
 
@@ -2000,15 +2298,25 @@
 
           const name =
 
-            document.getElementById("authName").value.trim();
+            document.getElementById(
+
+              "authName"
+
+            ).value.trim();
 
           const role =
 
-            document.getElementById("authRole").value;
+            document.getElementById(
+
+              "authRole"
+
+            ).value;
 
           if (!name) {
 
-            status.style.color = "#dc2626";
+            status.style.color =
+
+              "#dc2626";
 
             status.textContent =
 
@@ -2024,25 +2332,27 @@
 
             error
 
-          } = await supabaseClient.auth.signUp({
+          } =
 
-            email: email,
+            await supabaseClient.auth.signUp({
 
-            password: password,
+              email: email,
 
-            options: {
+              password: password,
 
-              data: {
+              options: {
 
-                name: name,
+                data: {
 
-                role: role
+                  name: name,
+
+                  role: role
+
+                }
 
               }
 
-            }
-
-          });
+            });
 
           if (error) {
 
@@ -2052,7 +2362,9 @@
 
           if (data.user) {
 
-            status.style.color = "#16a34a";
+            status.style.color =
+
+              "#16a34a";
 
             status.textContent =
 
@@ -2068,13 +2380,15 @@
 
             error
 
-          } = await supabaseClient.auth.signInWithPassword({
+          } =
 
-            email: email,
+            await supabaseClient.auth.signInWithPassword({
 
-            password: password
+              email: email,
 
-          });
+              password: password
+
+            });
 
           if (error) {
 
@@ -2082,35 +2396,61 @@
 
           }
 
-          currentUser = data.user;
+          currentUser =
+
+            data.user;
 
           await loadCurrentProfile();
 
           updateNavigation();
 
-          status.style.color = "#16a34a";
+          status.style.color =
+
+            "#16a34a";
 
           status.textContent =
 
             "Login successful.";
 
-          setTimeout(function () {
+          await loadFreelancers();
 
-            closeModal("authModal");
+          setTimeout(
 
-          }, 700);
+            function () {
+
+              closeModal(
+
+                "authModal"
+
+              );
+
+            },
+
+            700
+
+          );
 
         }
 
       } catch (error) {
 
-        console.error(error);
+        console.error(
 
-        status.style.color = "#dc2626";
+          "Authentication error:",
+
+          error
+
+        );
+
+        status.style.color =
+
+          "#dc2626";
 
         status.textContent =
 
-          error.message || "Something went wrong.";
+          error.message ||
+
+          "Something went wrong.";
 
       }
 
@@ -2126,7 +2466,9 @@
 
           error
 
-        } = await supabaseClient.auth.signOut();
+        } =
+
+          await supabaseClient.auth.signOut();
 
         if (error) {
 
@@ -2139,6 +2481,8 @@
         currentProfile = null;
 
         updateNavigation();
+
+        await loadFreelancers();
 
       } catch (error) {
 
@@ -2178,19 +2522,27 @@
 
           error
 
-        } = await supabaseClient
+        } =
 
-          .from("profiles")
+          await supabaseClient
 
-          .select(
+            .from("profiles")
 
-            "id, name, role, bio, skills"
+            .select(
 
-          )
+              "id, name, role, bio, skills"
 
-          .eq("id", currentUser.id)
+            )
 
-          .maybeSingle();
+            .eq(
+
+              "id",
+
+              currentUser.id
+
+            )
+
+            .maybeSingle();
 
         if (error) {
 
@@ -2206,7 +2558,9 @@
 
         }
 
-        currentProfile = data;
+        currentProfile =
+
+          data;
 
       } catch (error) {
 
@@ -2228,31 +2582,57 @@
 
       await loadCurrentProfile();
 
-      document.getElementById("profileName").value =
+      document.getElementById(
+
+        "profileName"
+
+      ).value =
 
         currentProfile?.name || "";
 
-      document.getElementById("profileEmail").value =
+      document.getElementById(
+
+        "profileEmail"
+
+      ).value =
 
         currentUser.email || "";
 
-      document.getElementById("profileRole").value =
+      document.getElementById(
+
+        "profileRole"
+
+      ).value =
 
         currentProfile?.role || "client";
 
-      document.getElementById("profileBio").value =
+      document.getElementById(
+
+        "profileBio"
+
+      ).value =
 
         currentProfile?.bio || "";
 
-      document.getElementById("profileSkills").value =
+      document.getElementById(
+
+        "profileSkills"
+
+      ).value =
 
         currentProfile?.skills || "";
 
-      document.getElementById("profileStatus").textContent = "";
+      document.getElementById(
 
-      document.getElementById("profileModal").style.display =
+        "profileStatus"
 
-        "flex";
+      ).textContent = "";
+
+      document.getElementById(
+
+        "profileModal"
+
+      ).style.display = "flex";
 
     }
 
@@ -2268,27 +2648,49 @@
 
       const name =
 
-        document.getElementById("profileName").value.trim();
+        document.getElementById(
+
+          "profileName"
+
+        ).value.trim();
 
       const role =
 
-        document.getElementById("profileRole").value;
+        document.getElementById(
+
+          "profileRole"
+
+        ).value;
 
       const bio =
 
-        document.getElementById("profileBio").value.trim();
+        document.getElementById(
+
+          "profileBio"
+
+        ).value.trim();
 
       const skills =
 
-        document.getElementById("profileSkills").value.trim();
+        document.getElementById(
+
+          "profileSkills"
+
+        ).value.trim();
 
       const status =
 
-        document.getElementById("profileStatus");
+        document.getElementById(
+
+          "profileStatus"
+
+        );
 
       if (!name) {
 
-        status.style.color = "#dc2626";
+        status.style.color =
+
+          "#dc2626";
 
         status.textContent =
 
@@ -2298,9 +2700,13 @@
 
       }
 
-      status.style.color = "#2563eb";
+      status.style.color =
 
-      status.textContent = "Saving...";
+        "#2563eb";
+
+      status.textContent =
+
+        "Saving...";
 
       try {
 
@@ -2310,35 +2716,13 @@
 
           error
 
-        } = await supabaseClient
+        } =
 
-          .from("profiles")
+          await supabaseClient
 
-          .upsert({
+            .from("profiles")
 
-            id: currentUser.id,
-
-            name: name,
-
-            role: role,
-
-            bio: bio,
-
-            skills: skills
-
-          });
-
-        if (error) {
-
-          throw error;
-
-        }
-
-        currentProfile = data && data[0]
-
-          ? data[0]
-
-          : {
+            .upsert({
 
               id: currentUser.id,
 
@@ -2350,9 +2734,31 @@
 
               skills: skills
 
-            };
+            });
 
-        status.style.color = "#16a34a";
+        if (error) {
+
+          throw error;
+
+        }
+
+        currentProfile = {
+
+          id: currentUser.id,
+
+          name: name,
+
+          role: role,
+
+          bio: bio,
+
+          skills: skills
+
+        };
+
+        status.style.color =
+
+          "#16a34a";
 
         status.textContent =
 
@@ -2362,17 +2768,29 @@
 
         await loadFreelancers();
 
-        setTimeout(function () {
+        setTimeout(
 
-          closeModal("profileModal");
+          function () {
 
-        }, 700);
+            closeModal(
+
+              "profileModal"
+
+            );
+
+          },
+
+          700
+
+        );
 
       } catch (error) {
 
         console.error(error);
 
-        status.style.color = "#dc2626";
+        status.style.color =
+
+          "#dc2626";
 
         status.textContent =
 
@@ -2394,7 +2812,11 @@
 
       const container =
 
-        document.getElementById("freelancerList");
+        document.getElementById(
+
+          "freelancerList"
+
+        );
 
       if (!container) {
 
@@ -2414,15 +2836,17 @@
 
           error
 
-        } = await supabaseClient
+        } =
 
-          .from("profiles")
+          await supabaseClient
 
-          .select(
+            .from("profiles")
 
-            "id, name, role, bio, skills"
+            .select(
 
-          );
+              "id, name, role, bio, skills"
+
+            );
 
         if (error) {
 
@@ -2432,25 +2856,59 @@
 
         allFreelancers =
 
-          (data || []).filter(function (profile) {
+          (data || []).filter(
 
-            return (
+            function (profile) {
 
-              profile.role &&
+              return (
 
-              profile.role.toLowerCase() ===
+                profile.role &&
 
-              "freelancer"
+                profile.role.toLowerCase() ===
+
+                "freelancer"
+
+              );
+
+            }
+
+          );
+
+        freelancerMap =
+
+          new Map();
+
+        allFreelancers.forEach(
+
+          function (profile) {
+
+            freelancerMap.set(
+
+              profile.id,
+
+              profile
 
             );
 
-          });
+          }
 
-        renderFreelancers(allFreelancers);
+        );
+
+        renderFreelancers(
+
+          allFreelancers
+
+        );
 
       } catch (error) {
 
-        console.error(error);
+        console.error(
+
+          "Loading freelancers error:",
+
+          error
+
+        );
 
         container.innerHTML =
 
@@ -2464,11 +2922,33 @@
 
     }
 
-    function renderFreelancers(freelancers) {
+    /*
+
+      FIXED VERSION
+
+      No JSON profile data is inserted
+
+      into onclick="..."
+
+      Buttons use data-profile-id
+
+      and JavaScript event listeners.
+
+    */
+
+    function renderFreelancers(
+
+      freelancers
+
+    ) {
 
       const container =
 
-        document.getElementById("freelancerList");
+        document.getElementById(
+
+          "freelancerList"
+
+        );
 
       if (!freelancers.length) {
 
@@ -2486,121 +2966,275 @@
 
       container.innerHTML = "";
 
-      freelancers.forEach(function (profile) {
+      freelancers.forEach(
 
-        const card =
+        function (profile) {
 
-          document.createElement("div");
+          const card =
 
-        card.className = "freelancer-card";
+            document.createElement(
 
-        const name =
+              "div"
 
-          profile.name || "Unnamed Freelancer";
+            );
 
-        const firstLetter =
+          card.className =
 
-          escapeHTML(
+            "freelancer-card";
 
-            name.charAt(0).toUpperCase()
+          const name =
+
+            profile.name ||
+
+            "Unnamed Freelancer";
+
+          const firstLetter =
+
+            escapeHTML(
+
+              name
+
+                .charAt(0)
+
+                .toUpperCase()
+
+            );
+
+          const bio =
+
+            profile.bio &&
+
+            profile.bio.trim()
+
+              ? profile.bio
+
+              : "No bio available.";
+
+          const skills =
+
+            profile.skills &&
+
+            profile.skills.trim()
+
+              ? profile.skills
+
+              : "No skills listed.";
+
+          card.innerHTML = `
+
+            <div class="freelancer-avatar">
+
+              ${firstLetter}
+
+            </div>
+
+            <h3>
+
+              ${escapeHTML(name)}
+
+            </h3>
+
+            <span class="role">
+
+              Freelancer
+
+            </span>
+
+            <p>
+
+              ${escapeHTML(bio)}
+
+            </p>
+
+            <div class="skills">
+
+              <strong>Skills:</strong>
+
+              ${escapeHTML(skills)}
+
+            </div>
+
+            <div class="card-buttons">
+
+              <button
+
+                type="button"
+
+                class="btn btn-secondary view-profile-btn"
+
+                data-profile-id="${escapeHTML(profile.id)}"
+
+              >
+
+                View Profile
+
+              </button>
+
+              <button
+
+                type="button"
+
+                class="btn btn-primary message-profile-btn"
+
+                data-profile-id="${escapeHTML(profile.id)}"
+
+              >
+
+                Message
+
+              </button>
+
+            </div>
+
+          `;
+
+          /*
+
+            VIEW PROFILE BUTTON
+
+          */
+
+          const viewButton =
+
+            card.querySelector(
+
+              ".view-profile-btn"
+
+            );
+
+          viewButton.addEventListener(
+
+            "click",
+
+            function () {
+
+              const profileId =
+
+                this.getAttribute(
+
+                  "data-profile-id"
+
+                );
+
+              const selectedProfile =
+
+                freelancerMap.get(
+
+                  profileId
+
+                );
+
+              if (selectedProfile) {
+
+                viewFreelancer(
+
+                  selectedProfile
+
+                );
+
+              }
+
+            }
 
           );
 
-        const bio =
+          /*
 
-          profile.bio &&
+            MESSAGE BUTTON
 
-          profile.bio.trim()
+          */
 
-            ? profile.bio
+          const messageButton =
 
-            : "No bio available.";
+            card.querySelector(
 
-        const skills =
+              ".message-profile-btn"
 
-          profile.skills &&
+            );
 
-          profile.skills.trim()
+          messageButton.addEventListener(
 
-            ? profile.skills
+            "click",
 
-            : "No skills listed.";
+            function () {
 
-        card.innerHTML = `
+              const profileId =
 
-          <div class="freelancer-avatar">
+                this.getAttribute(
 
-            ${firstLetter}
+                  "data-profile-id"
 
-          </div>
+                );
 
-          <h3>${escapeHTML(name)}</h3>
+              const selectedProfile =
 
-          <span class="role">
+                freelancerMap.get(
 
-            Freelancer
+                  profileId
 
-          </span>
+                );
 
-          <p>
+              console.log(
 
-            ${escapeHTML(bio)}
+                "BuildMate Message button clicked:",
 
-          </p>
+                selectedProfile
 
-          <div class="skills">
+              );
 
-            <strong>Skills:</strong>
+              if (!selectedProfile) {
 
-            ${escapeHTML(skills)}
+                alert(
 
-          </div>
+                  "Freelancer profile could not be found."
 
-          <div class="card-buttons">
+                );
 
-            <button
+                return;
 
-              class="btn btn-secondary"
+              }
 
-              onclick='viewFreelancer(${JSON.stringify(profile)})'
+              openChat(
 
-            >
+                selectedProfile
 
-              View Profile
+              );
 
-            </button>
+            }
 
-            <button
+          );
 
-              class="btn btn-primary"
+          container.appendChild(
 
-              onclick='openChat(${JSON.stringify(profile)})'
+            card
 
-            >
+          );
 
-              Message
+        }
 
-            </button>
-
-          </div>
-
-        `;
-
-        container.appendChild(card);
-
-      });
+      );
 
     }
 
     function searchFreelancers() {
 
+      const input =
+
+        document.getElementById(
+
+          "freelancerSearch"
+
+        );
+
+      if (!input) {
+
+        return;
+
+      }
+
       const search =
 
-        document
-
-          .getElementById("freelancerSearch")
-
-          .value
+        input.value
 
           .trim()
 
@@ -2608,7 +3242,11 @@
 
       if (!search) {
 
-        renderFreelancers(allFreelancers);
+        renderFreelancers(
+
+          allFreelancers
+
+        );
 
         return;
 
@@ -2616,53 +3254,91 @@
 
       const filtered =
 
-        allFreelancers.filter(function (profile) {
+        allFreelancers.filter(
 
-          const name =
+          function (profile) {
 
-            profile.name || "";
+            const name =
 
-          const bio =
+              profile.name || "";
 
-            profile.bio || "";
+            const bio =
 
-          const skills =
+              profile.bio || "";
 
-            profile.skills || "";
+            const skills =
 
-          return (
+              profile.skills || "";
 
-            name.toLowerCase().includes(search) ||
+            return (
 
-            bio.toLowerCase().includes(search) ||
+              name
 
-            skills.toLowerCase().includes(search)
+                .toLowerCase()
 
-          );
+                .includes(search)
 
-        });
+              ||
 
-      renderFreelancers(filtered);
+              bio
+
+                .toLowerCase()
+
+                .includes(search)
+
+              ||
+
+              skills
+
+                .toLowerCase()
+
+                .includes(search)
+
+            );
+
+          }
+
+        );
+
+      renderFreelancers(
+
+        filtered
+
+      );
 
     }
 
-    function viewFreelancer(profile) {
+    function viewFreelancer(
+
+      profile
+
+    ) {
 
       const detail =
 
-        document.getElementById("freelancerDetail");
+        document.getElementById(
+
+          "freelancerDetail"
+
+        );
 
       const name =
 
-        profile.name || "Unnamed Freelancer";
+        profile.name ||
+
+        "Unnamed Freelancer";
 
       const bio =
 
-        profile.bio || "No bio available.";
+        profile.bio ||
+
+        "No bio available.";
 
       const skills =
 
-        profile.skills || "No skills listed.";
+        profile.skills ||
+
+        "No skills listed.";
 
       detail.innerHTML = `
 
@@ -2684,7 +3360,11 @@
 
         <div class="detail-section">
 
-          <h4>About</h4>
+          <h4>
+
+            About
+
+          </h4>
 
           <p>
 
@@ -2696,7 +3376,11 @@
 
         <div class="detail-section">
 
-          <h4>Skills</h4>
+          <h4>
+
+            Skills
+
+          </h4>
 
           <p>
 
@@ -2710,9 +3394,11 @@
 
           <button
 
-            class="btn btn-primary"
+            type="button"
 
-            onclick='openChat(${JSON.stringify(profile)}); closeModal("detailModal");'
+            id="detailMessageButton"
+
+            class="btn btn-primary"
 
           >
 
@@ -2721,6 +3407,8 @@
           </button>
 
           <button
+
+            type="button"
 
             class="btn btn-secondary"
 
@@ -2736,9 +3424,47 @@
 
       `;
 
-      document.getElementById("detailModal").style.display =
+      /*
 
-        "flex";
+        Detail modal Message button
+
+      */
+
+      const detailMessageButton =
+
+        document.getElementById(
+
+          "detailMessageButton"
+
+        );
+
+      detailMessageButton.addEventListener(
+
+        "click",
+
+        function () {
+
+          closeModal(
+
+            "detailModal"
+
+          );
+
+          openChat(
+
+            profile
+
+          );
+
+        }
+
+      );
+
+      document.getElementById(
+
+        "detailModal"
+
+      ).style.display = "flex";
 
     }
 
@@ -2746,7 +3472,11 @@
 
       document
 
-        .getElementById("freelancers")
+        .getElementById(
+
+          "freelancers"
+
+        )
 
         .scrollIntoView({
 
@@ -2762,7 +3492,19 @@
 
     ========================= */
 
-    async function openChat(profile) {
+    async function openChat(
+
+      profile
+
+    ) {
+
+      console.log(
+
+        "BuildMate openChat:",
+
+        profile
+
+      );
 
       if (!currentUser) {
 
@@ -2784,7 +3526,13 @@
 
       }
 
-      if (profile.id === currentUser.id) {
+      if (
+
+        profile.id ===
+
+        currentUser.id
+
+      ) {
 
         alert(
 
@@ -2796,23 +3544,45 @@
 
       }
 
-      currentChatUser = profile;
+      currentChatUser =
 
-      renderedMessageIds = new Set();
+        profile;
 
-      document.getElementById("chatUserName").textContent =
+      renderedMessageIds =
 
-        profile.name || "Freelancer";
+        new Set();
 
-      document.getElementById("chatUserRole").textContent =
+      document.getElementById(
+
+        "chatUserName"
+
+      ).textContent =
+
+        profile.name ||
 
         "Freelancer";
 
-      document.getElementById("chatModal").style.display =
+      document.getElementById(
+
+        "chatUserRole"
+
+      ).textContent =
+
+        "Freelancer";
+
+      document.getElementById(
+
+        "chatModal"
+
+      ).style.display =
 
         "flex";
 
-      document.getElementById("chatMessages").innerHTML =
+      document.getElementById(
+
+        "chatMessages"
+
+      ).innerHTML =
 
         '<div class="chat-empty">Loading messages...</div>';
 
@@ -2822,11 +3592,29 @@
 
       subscribeToChat();
 
-      setTimeout(function () {
+      setTimeout(
 
-        document.getElementById("chatInput").focus();
+        function () {
 
-      }, 100);
+          const input =
+
+            document.getElementById(
+
+              "chatInput"
+
+            );
+
+          if (input) {
+
+            input.focus();
+
+          }
+
+        },
+
+        100
+
+      );
 
     }
 
@@ -2850,51 +3638,53 @@
 
         error
 
-      } = await supabaseClient
+      } =
 
-        .from("messages")
+        await supabaseClient
 
-        .select(
+          .from("messages")
 
-          "id, sender_id, receiver_id, message, created_at"
+          .select(
 
-        )
+            "id, sender_id, receiver_id, message, created_at"
 
-        .or(
+          )
 
-          "and(sender_id.eq." +
+          .or(
 
-          currentUser.id +
+            "and(sender_id.eq." +
 
-          ",receiver_id.eq." +
+            currentUser.id +
 
-          currentChatUser.id +
+            ",receiver_id.eq." +
 
-          ")," +
+            currentChatUser.id +
 
-          "and(sender_id.eq." +
+            ")," +
 
-          currentChatUser.id +
+            "and(sender_id.eq." +
 
-          ",receiver_id.eq." +
+            currentChatUser.id +
 
-          currentUser.id +
+            ",receiver_id.eq." +
 
-          ")"
+            currentUser.id +
 
-        )
+            ")"
 
-        .order(
+          )
 
-          "created_at",
+          .order(
 
-          {
+            "created_at",
 
-            ascending: true
+            {
 
-          }
+              ascending: true
 
-        );
+            }
+
+          );
 
       if (error) {
 
@@ -2914,7 +3704,11 @@
 
           '<div class="chat-empty">' +
 
-          escapeHTML(error.message) +
+          escapeHTML(
+
+            error.message
+
+          ) +
 
           '</div>';
 
@@ -2924,13 +3718,25 @@
 
       const container =
 
-        document.getElementById("chatMessages");
+        document.getElementById(
+
+          "chatMessages"
+
+        );
 
       container.innerHTML = "";
 
-      renderedMessageIds = new Set();
+      renderedMessageIds =
 
-      if (!data || data.length === 0) {
+        new Set();
+
+      if (
+
+        !data ||
+
+        data.length === 0
+
+      ) {
 
         container.innerHTML =
 
@@ -2944,17 +3750,21 @@
 
       }
 
-      data.forEach(function (message) {
+      data.forEach(
 
-        appendChatMessage(
+        function (message) {
 
-          message,
+          appendChatMessage(
 
-          false
+            message,
 
-        );
+            false
 
-      });
+          );
+
+        }
+
+      );
 
       scrollChatToBottom();
 
@@ -3016,7 +3826,7 @@
 
               }
 
-              const isThisConversation = (
+              const isThisConversation =
 
                 (
 
@@ -3042,9 +3852,7 @@
 
                   currentUser.id
 
-                )
-
-              );
+                );
 
               if (
 
@@ -3066,17 +3874,21 @@
 
           )
 
-          .subscribe(function (status) {
+          .subscribe(
 
-            console.log(
+            function (status) {
 
-              "Chat realtime status:",
+              console.log(
 
-              status
+                "Chat realtime status:",
 
-            );
+                status
 
-          });
+              );
+
+            }
+
+          );
 
     }
 
@@ -3088,15 +3900,11 @@
 
     ) {
 
-      if (!message || !message.id) {
-
-        return;
-
-      }
-
       if (
 
-        renderedMessageIds.has(message.id)
+        !message ||
+
+        !message.id
 
       ) {
 
@@ -3104,15 +3912,41 @@
 
       }
 
-      renderedMessageIds.add(message.id);
+      if (
+
+        renderedMessageIds.has(
+
+          message.id
+
+        )
+
+      ) {
+
+        return;
+
+      }
+
+      renderedMessageIds.add(
+
+        message.id
+
+      );
 
       const container =
 
-        document.getElementById("chatMessages");
+        document.getElementById(
+
+          "chatMessages"
+
+        );
 
       const empty =
 
-        container.querySelector(".chat-empty");
+        container.querySelector(
+
+          ".chat-empty"
+
+        );
 
       if (empty) {
 
@@ -3128,17 +3962,33 @@
 
       const wrapper =
 
-        document.createElement("div");
+        document.createElement(
+
+          "div"
+
+        );
 
       wrapper.className =
 
         "chat-message " +
 
-        (mine ? "mine" : "theirs");
+        (
+
+          mine
+
+            ? "mine"
+
+            : "theirs"
+
+        );
 
       const bubble =
 
-        document.createElement("div");
+        document.createElement(
+
+          "div"
+
+        );
 
       bubble.className =
 
@@ -3146,7 +3996,11 @@
 
       const messageText =
 
-        document.createElement("div");
+        document.createElement(
+
+          "div"
+
+        );
 
       messageText.textContent =
 
@@ -3154,7 +4008,11 @@
 
       const time =
 
-        document.createElement("div");
+        document.createElement(
+
+          "div"
+
+        );
 
       time.className =
 
@@ -3168,13 +4026,29 @@
 
         );
 
-      bubble.appendChild(messageText);
+      bubble.appendChild(
 
-      bubble.appendChild(time);
+        messageText
 
-      wrapper.appendChild(bubble);
+      );
 
-      container.appendChild(wrapper);
+      bubble.appendChild(
+
+        time
+
+      );
+
+      wrapper.appendChild(
+
+        bubble
+
+      );
+
+      container.appendChild(
+
+        wrapper
+
+      );
 
       if (scroll) {
 
@@ -3200,7 +4074,11 @@
 
       const input =
 
-        document.getElementById("chatInput");
+        document.getElementById(
+
+          "chatInput"
+
+        );
 
       const text =
 
@@ -3214,11 +4092,17 @@
 
       const button =
 
-        document.getElementById("sendMessageBtn");
+        document.getElementById(
+
+          "sendMessageBtn"
+
+        );
 
       button.disabled = true;
 
-      button.textContent = "Sending...";
+      button.textContent =
+
+        "Sending...";
 
       try {
 
@@ -3228,29 +4112,35 @@
 
           error
 
-        } = await supabaseClient
+        } =
 
-          .from("messages")
+          await supabaseClient
 
-          .insert({
+            .from("messages")
 
-            sender_id:
+            .insert({
 
-              currentUser.id,
+              sender_id:
 
-            receiver_id:
+                currentUser.id,
 
-              currentChatUser.id,
+              receiver_id:
 
-            message:
+                currentChatUser.id,
 
-              text
+              message:
 
-          })
+                text
 
-          .select()
+            })
 
-          .single();
+            .select(
+
+              "id, sender_id, receiver_id, message, created_at"
+
+            )
+
+            .single();
 
         if (error) {
 
@@ -3259,14 +4149,6 @@
         }
 
         input.value = "";
-
-        /*
-
-          Add immediately so the sender sees the
-
-          message even before Realtime arrives.
-
-        */
 
         if (data) {
 
@@ -3302,7 +4184,9 @@
 
         button.disabled = false;
 
-        button.textContent = "Send";
+        button.textContent =
+
+          "Send";
 
         input.focus();
 
@@ -3310,15 +4194,11 @@
 
     }
 
-    function handleChatKeydown(event) {
+    function handleChatKeydown(
 
-      /*
+      event
 
-        Enter = send
-
-        Shift + Enter = new line
-
-      */
+    ) {
 
       if (
 
@@ -3340,15 +4220,25 @@
 
       const container =
 
-        document.getElementById("chatMessages");
+        document.getElementById(
 
-      setTimeout(function () {
+          "chatMessages"
 
-        container.scrollTop =
+        );
 
-          container.scrollHeight;
+      setTimeout(
 
-      }, 50);
+        function () {
+
+          container.scrollTop =
+
+            container.scrollHeight;
+
+        },
+
+        50
+
+      );
 
     }
 
@@ -3406,27 +4296,61 @@
 
       } catch (error) {
 
-        console.error(error);
+        console.error(
+
+          error
+
+        );
 
       }
 
-      currentChatChannel = null;
+      currentChatChannel =
+
+        null;
 
     }
 
     async function closeChat() {
 
-      document.getElementById("chatModal").style.display =
+      const chatModal =
 
-        "none";
+        document.getElementById(
 
-      document.getElementById("chatInput").value = "";
+          "chatModal"
+
+        );
+
+      const chatInput =
+
+        document.getElementById(
+
+          "chatInput"
+
+        );
+
+      if (chatModal) {
+
+        chatModal.style.display =
+
+          "none";
+
+      }
+
+      if (chatInput) {
+
+        chatInput.value = "";
+
+      }
 
       await removeChatChannel();
 
-      currentChatUser = null;
+      currentChatUser =
 
-      renderedMessageIds = new Set();
+        null;
+
+      renderedMessageIds =
+
+        new Set();
 
     }
 
@@ -3438,9 +4362,17 @@
 
     function closeModal(id) {
 
-      document.getElementById(id).style.display =
+      const modal =
 
-        "none";
+        document.getElementById(id);
+
+      if (modal) {
+
+        modal.style.display =
+
+          "none";
+
+      }
 
     }
 
@@ -3452,13 +4384,19 @@
 
         if (
 
-          event.target.classList.contains("modal")
+          event.target.classList.contains(
+
+            "modal"
+
+          )
 
         ) {
 
           if (
 
-            event.target.id === "chatModal"
+            event.target.id ===
+
+            "chatModal"
 
           ) {
 
@@ -3488,15 +4426,45 @@
 
       return String(value || "")
 
-        .replace(/&/g, "&amp;")
+        .replace(
 
-        .replace(/</g, "&lt;")
+          /&/g,
 
-        .replace(/>/g, "&gt;")
+          "&amp;"
 
-        .replace(/"/g, "&quot;")
+        )
 
-        .replace(/'/g, "&#039;");
+        .replace(
+
+          /</g,
+
+          "&lt;"
+
+        )
+
+        .replace(
+
+          />/g,
+
+          "&gt;"
+
+        )
+
+        .replace(
+
+          /"/g,
+
+          "&quot;"
+
+        )
+
+        .replace(
+
+          /'/g,
+
+          "&#039;"
+
+        );
 
     }
 
