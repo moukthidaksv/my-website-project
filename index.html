@@ -187,7 +187,9 @@
     }
 
     /* =========================
+
        MESSAGE NAVIGATION
+
     ========================= */
 
     .messages-nav-btn {
@@ -227,6 +229,12 @@
       line-height: 1;
 
     }
+
+    /* =========================
+
+       HERO
+
+    ========================= */
 
     .hero {
 
@@ -306,6 +314,12 @@
 
     }
 
+    /* =========================
+
+       FEATURES
+
+    ========================= */
+
     .features {
 
       display: grid;
@@ -343,6 +357,12 @@
       color: #64748b;
 
     }
+
+    /* =========================
+
+       FREELANCER SEARCH
+
+    ========================= */
 
     .search-box {
 
@@ -506,6 +526,146 @@
 
     }
 
+    /* =========================
+
+       PROJECTS
+
+    ========================= */
+
+    .projects-section {
+
+      background: #f1f5f9;
+
+    }
+
+    .projects-top {
+
+      max-width: 1100px;
+
+      margin: 0 auto 25px;
+
+      display: flex;
+
+      justify-content: flex-end;
+
+    }
+
+    .project-grid {
+
+      max-width: 1100px;
+
+      margin: 0 auto;
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+
+    }
+
+    .project-card {
+
+      background: white;
+
+      border: 1px solid #e2e8f0;
+
+      border-radius: 14px;
+
+      padding: 24px;
+
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+
+    }
+
+    .project-card h3 {
+
+      color: #0f172a;
+
+      margin-bottom: 8px;
+
+      font-size: 19px;
+
+    }
+
+    .project-description {
+
+      color: #64748b;
+
+      font-size: 14px;
+
+      margin-bottom: 15px;
+
+      white-space: pre-wrap;
+
+      word-break: break-word;
+
+    }
+
+    .project-budget {
+
+      color: #0f172a;
+
+      font-weight: bold;
+
+      margin-bottom: 8px;
+
+    }
+
+    .project-client {
+
+      color: #64748b;
+
+      font-size: 13px;
+
+      margin-bottom: 12px;
+
+    }
+
+    .project-status {
+
+      display: inline-block;
+
+      background: #dcfce7;
+
+      color: #15803d;
+
+      padding: 4px 9px;
+
+      border-radius: 20px;
+
+      font-size: 12px;
+
+      font-weight: bold;
+
+    }
+
+    .project-login-note {
+
+      max-width: 700px;
+
+      margin: 0 auto;
+
+      padding: 16px 20px;
+
+      border-radius: 10px;
+
+      background: #eff6ff;
+
+      color: #475569;
+
+      text-align: center;
+
+      display: none;
+
+    }
+
+    /* =========================
+
+       ABOUT / CTA / FOOTER
+
+    ========================= */
+
     .about-box {
 
       max-width: 800px;
@@ -595,7 +755,9 @@
     }
 
     /* =========================
+
        MODALS
+
     ========================= */
 
     .modal {
@@ -813,7 +975,9 @@
     }
 
     /* =========================
+
        PROFILE LOGOUT
+
     ========================= */
 
     .profile-logout {
@@ -833,7 +997,9 @@
     }
 
     /* =========================
+
        MESSAGES LIST
+
     ========================= */
 
     #messagesModal .modal-content {
@@ -1043,7 +1209,9 @@
     }
 
     /* =========================
+
        CHAT
+
     ========================= */
 
     #chatModal .modal-content {
@@ -1261,7 +1429,9 @@
     }
 
     /* =========================
+
        RESPONSIVE
+
     ========================= */
 
     @media (max-width: 850px) {
@@ -1274,7 +1444,9 @@
 
       .features,
 
-      .freelancer-grid {
+      .freelancer-grid,
+
+      .project-grid {
 
         grid-template-columns: 1fr;
 
@@ -1358,6 +1530,12 @@
 
       }
 
+      .projects-top {
+
+        justify-content: center;
+
+      }
+
     }
 
     @media (max-width: 500px) {
@@ -1405,6 +1583,8 @@
       <a href="#features">Features</a>
 
       <a href="#freelancers">Freelancers</a>
+
+      <a href="#projects">Projects</a>
 
       <a href="#how-it-works">How It Works</a>
 
@@ -1655,6 +1835,80 @@
       <div class="empty-message">
 
         Loading freelancers...
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects" class="projects-section">
+
+    <div class="section-title">
+
+      <h2>Projects</h2>
+
+      <p>
+
+        Discover projects posted by clients on BuildMate.
+
+      </p>
+
+    </div>
+
+    <div
+
+      id="projectsTop"
+
+      class="projects-top"
+
+    >
+
+      <button
+
+        type="button"
+
+        id="postProjectButton"
+
+        class="btn btn-primary"
+
+        onclick="openProjectModal()"
+
+        style="display:none;"
+
+      >
+
+        + Post a Project
+
+      </button>
+
+    </div>
+
+    <div
+
+      id="projectLoginNote"
+
+      class="project-login-note"
+
+    >
+
+      Log in as a client to post a project.
+
+    </div>
+
+    <div
+
+      id="projectList"
+
+      class="project-grid"
+
+    >
+
+      <div class="empty-message">
+
+        Loading projects...
 
       </div>
 
@@ -2166,6 +2420,140 @@
 
   </div>
 
+  <!-- PROJECT MODAL -->
+
+  <div id="projectModal" class="modal">
+
+    <div class="modal-content">
+
+      <button
+
+        type="button"
+
+        class="close-btn"
+
+        onclick="closeModal('projectModal')"
+
+      >
+
+        ×
+
+      </button>
+
+      <h2>
+
+        Post a Project
+
+      </h2>
+
+      <div class="form-group">
+
+        <label for="projectTitle">
+
+          Project Title
+
+        </label>
+
+        <input
+
+          type="text"
+
+          id="projectTitle"
+
+          placeholder="e.g. Build a modern website"
+
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="projectDescription">
+
+          Project Description
+
+        </label>
+
+        <textarea
+
+          id="projectDescription"
+
+          placeholder="Describe what you need..."
+
+        ></textarea>
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="projectBudget">
+
+          Budget
+
+        </label>
+
+        <input
+
+          type="number"
+
+          id="projectBudget"
+
+          placeholder="e.g. 500"
+
+          min="0"
+
+          step="0.01"
+
+        >
+
+      </div>
+
+      <div
+
+        id="projectStatus"
+
+        class="status-message"
+
+      ></div>
+
+      <div class="modal-actions">
+
+        <button
+
+          type="button"
+
+          id="saveProjectButton"
+
+          class="btn btn-primary"
+
+          onclick="createProject()"
+
+        >
+
+          Post Project
+
+        </button>
+
+        <button
+
+          type="button"
+
+          class="btn btn-secondary"
+
+          onclick="closeModal('projectModal')"
+
+        >
+
+          Cancel
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
   <!-- FREELANCER DETAIL MODAL -->
 
   <div id="detailModal" class="modal">
@@ -2353,7 +2741,17 @@
     let freelancerMap = new Map();
 
     /* =========================
+
+       PROJECTS
+
+    ========================= */
+
+    let allProjects = [];
+
+    /* =========================
+
        INITIALIZE
+
     ========================= */
 
     document.addEventListener(
@@ -2406,12 +2804,16 @@
 
         await loadFreelancers();
 
+        await loadProjects();
+
       }
 
     );
 
     /* =========================
+
        AUTH STATE
+
     ========================= */
 
     async function checkCurrentUser() {
@@ -2514,12 +2916,16 @@
 
         await loadFreelancers();
 
+        await loadProjects();
+
       }
 
     );
 
     /* =========================
+
        NAVIGATION
+
     ========================= */
 
     function updateNavigation() {
@@ -2548,6 +2954,22 @@
 
         );
 
+      const postProjectButton =
+
+        document.getElementById(
+
+          "postProjectButton"
+
+        );
+
+      const projectLoginNote =
+
+        document.getElementById(
+
+          "projectLoginNote"
+
+        );
+
       if (currentUser) {
 
         loggedOutMenu.style.display =
@@ -2568,6 +2990,50 @@
 
             : "Account";
 
+        if (
+
+          currentProfile &&
+
+          currentProfile.role === "client"
+
+        ) {
+
+          if (postProjectButton) {
+
+            postProjectButton.style.display =
+
+              "inline-block";
+
+          }
+
+          if (projectLoginNote) {
+
+            projectLoginNote.style.display =
+
+              "none";
+
+          }
+
+        } else {
+
+          if (postProjectButton) {
+
+            postProjectButton.style.display =
+
+              "none";
+
+          }
+
+          if (projectLoginNote) {
+
+            projectLoginNote.style.display =
+
+              "none";
+
+          }
+
+        }
+
       } else {
 
         loggedOutMenu.style.display =
@@ -2582,12 +3048,30 @@
 
         updateUnreadBadge(0);
 
+        if (postProjectButton) {
+
+          postProjectButton.style.display =
+
+            "none";
+
+        }
+
+        if (projectLoginNote) {
+
+          projectLoginNote.style.display =
+
+            "block";
+
+        }
+
       }
 
     }
 
     /* =========================
+
        AUTH MODAL
+
     ========================= */
 
     function openAuth(mode) {
@@ -2904,6 +3388,8 @@
 
           await loadFreelancers();
 
+          await loadProjects();
+
           setTimeout(
 
             function () {
@@ -2946,7 +3432,27 @@
 
     }
 
+    /* =========================
+
+       LOGOUT
+
+    ========================= */
+
     async function logout() {
+
+      const confirmed =
+
+        window.confirm(
+
+          "Are you sure you want to log out?"
+
+        );
+
+      if (!confirmed) {
+
+        return;
+
+      }
 
       try {
 
@@ -2980,6 +3486,8 @@
 
         await loadFreelancers();
 
+        await loadProjects();
+
       } catch (error) {
 
         console.error(error);
@@ -2997,7 +3505,9 @@
     }
 
     /* =========================
+
        PROFILE
+
     ========================= */
 
     async function loadCurrentProfile() {
@@ -3282,6 +3792,8 @@
 
         await loadFreelancers();
 
+        await loadProjects();
+
         setTimeout(
 
           function () {
@@ -3317,7 +3829,9 @@
     }
 
     /* =========================
+
        FREELANCERS
+
     ========================= */
 
     async function loadFreelancers() {
@@ -3959,7 +4473,649 @@
     }
 
     /* =========================================================
+
+       PROJECTS
+
+    ========================================================= */
+
+    async function loadProjects() {
+
+      const container =
+
+        document.getElementById(
+
+          "projectList"
+
+        );
+
+      if (!container) {
+
+        return;
+
+      }
+
+      container.innerHTML =
+
+        '<div class="empty-message">Loading projects...</div>';
+
+      try {
+
+        const {
+
+          data,
+
+          error
+
+        } =
+
+          await supabaseClient
+
+            .from("projects")
+
+            .select(
+
+              "id, client_id, title, description, budget, status, created_at"
+
+            )
+
+            .eq(
+
+              "status",
+
+              "open"
+
+            )
+
+            .order(
+
+              "created_at",
+
+              {
+
+                ascending: false
+
+              }
+
+            );
+
+        if (error) {
+
+          throw error;
+
+        }
+
+        allProjects =
+
+          data || [];
+
+        await renderProjects(
+
+          allProjects
+
+        );
+
+      } catch (error) {
+
+        console.error(
+
+          "Loading projects error:",
+
+          error
+
+        );
+
+        container.innerHTML =
+
+          '<div class="empty-message">' +
+
+          'Could not load projects.' +
+
+          '</div>';
+
+      }
+
+    }
+
+    async function renderProjects(
+
+      projects
+
+    ) {
+
+      const container =
+
+        document.getElementById(
+
+          "projectList"
+
+        );
+
+      if (!container) {
+
+        return;
+
+      }
+
+      if (!projects.length) {
+
+        container.innerHTML =
+
+          '<div class="empty-message">' +
+
+          'No open projects found.' +
+
+          '</div>';
+
+        return;
+
+      }
+
+      const clientIds =
+
+        Array.from(
+
+          new Set(
+
+            projects
+
+              .map(
+
+                function (project) {
+
+                  return project.client_id;
+
+                }
+
+              )
+
+              .filter(Boolean)
+
+          )
+
+        );
+
+      let profileMap =
+
+        new Map();
+
+      if (clientIds.length) {
+
+        const {
+
+          data: profiles,
+
+          error: profilesError
+
+        } =
+
+          await supabaseClient
+
+            .from("profiles")
+
+            .select(
+
+              "id, name"
+
+            )
+
+            .in(
+
+              "id",
+
+              clientIds
+
+            );
+
+        if (profilesError) {
+
+          throw profilesError;
+
+        }
+
+        (profiles || []).forEach(
+
+          function (profile) {
+
+            profileMap.set(
+
+              profile.id,
+
+              profile
+
+            );
+
+          }
+
+        );
+
+      }
+
+      container.innerHTML = "";
+
+      projects.forEach(
+
+        function (project) {
+
+          const card =
+
+            document.createElement(
+
+              "div"
+
+            );
+
+          card.className =
+
+            "project-card";
+
+          const title =
+
+            project.title ||
+
+            "Untitled Project";
+
+          const description =
+
+            project.description ||
+
+            "No description provided.";
+
+          const client =
+
+            profileMap.get(
+
+              project.client_id
+
+            );
+
+          const clientName =
+
+            client && client.name
+
+              ? client.name
+
+              : "Unknown Client";
+
+          const budget =
+
+            project.budget !== null &&
+
+            project.budget !== undefined &&
+
+            project.budget !== ""
+
+              ? project.budget
+
+              : "Not specified";
+
+          card.innerHTML = `
+
+            <h3>
+
+              ${escapeHTML(title)}
+
+            </h3>
+
+            <div class="project-description">
+
+              ${escapeHTML(description)}
+
+            </div>
+
+            <div class="project-budget">
+
+              Budget: ${escapeHTML(budget)}
+
+            </div>
+
+            <div class="project-client">
+
+              Posted by: ${escapeHTML(clientName)}
+
+            </div>
+
+            <span class="project-status">
+
+              Open
+
+            </span>
+
+          `;
+
+          container.appendChild(
+
+            card
+
+          );
+
+        }
+
+      );
+
+    }
+
+    function openProjectModal() {
+
+      if (!currentUser) {
+
+        openAuth("login");
+
+        return;
+
+      }
+
+      if (
+
+        !currentProfile ||
+
+        currentProfile.role !== "client"
+
+      ) {
+
+        alert(
+
+          "Only clients can post projects."
+
+        );
+
+        return;
+
+      }
+
+      document.getElementById(
+
+        "projectTitle"
+
+      ).value = "";
+
+      document.getElementById(
+
+        "projectDescription"
+
+      ).value = "";
+
+      document.getElementById(
+
+        "projectBudget"
+
+      ).value = "";
+
+      document.getElementById(
+
+        "projectStatus"
+
+      ).textContent = "";
+
+      document.getElementById(
+
+        "projectModal"
+
+      ).style.display = "flex";
+
+    }
+
+    async function createProject() {
+
+      if (!currentUser) {
+
+        openAuth("login");
+
+        return;
+
+      }
+
+      if (
+
+        !currentProfile ||
+
+        currentProfile.role !== "client"
+
+      ) {
+
+        alert(
+
+          "Only clients can post projects."
+
+        );
+
+        return;
+
+      }
+
+      const title =
+
+        document.getElementById(
+
+          "projectTitle"
+
+        ).value.trim();
+
+      const description =
+
+        document.getElementById(
+
+          "projectDescription"
+
+        ).value.trim();
+
+      const budgetInput =
+
+        document.getElementById(
+
+          "projectBudget"
+
+        ).value.trim();
+
+      const status =
+
+        document.getElementById(
+
+          "projectStatus"
+
+        );
+
+      const saveButton =
+
+        document.getElementById(
+
+          "saveProjectButton"
+
+        );
+
+      if (!title) {
+
+        status.style.color =
+
+          "#dc2626";
+
+        status.textContent =
+
+          "Please enter a project title.";
+
+        return;
+
+      }
+
+      if (!description) {
+
+        status.style.color =
+
+          "#dc2626";
+
+        status.textContent =
+
+          "Please enter a project description.";
+
+        return;
+
+      }
+
+      if (
+
+        budgetInput === "" ||
+
+        Number.isNaN(
+
+          Number(budgetInput)
+
+        ) ||
+
+        Number(budgetInput) < 0
+
+      ) {
+
+        status.style.color =
+
+          "#dc2626";
+
+        status.textContent =
+
+          "Please enter a valid budget.";
+
+        return;
+
+      }
+
+      const budget =
+
+        Number(budgetInput);
+
+      status.style.color =
+
+        "#2563eb";
+
+      status.textContent =
+
+        "Posting project...";
+
+      saveButton.disabled =
+
+        true;
+
+      try {
+
+        const {
+
+          data,
+
+          error
+
+        } =
+
+          await supabaseClient
+
+            .from("projects")
+
+            .insert({
+
+              client_id:
+
+                currentUser.id,
+
+              title:
+
+                title,
+
+              description:
+
+                description,
+
+              budget:
+
+                budget,
+
+              status:
+
+                "open"
+
+            })
+
+            .select(
+
+              "id, client_id, title, description, budget, status, created_at"
+
+            )
+
+            .single();
+
+        if (error) {
+
+          throw error;
+
+        }
+
+        if (data) {
+
+          allProjects = [
+
+            data,
+
+            ...allProjects
+
+          ];
+
+        }
+
+        status.style.color =
+
+          "#16a34a";
+
+        status.textContent =
+
+          "Project posted successfully.";
+
+        await loadProjects();
+
+        setTimeout(
+
+          function () {
+
+            closeModal(
+
+              "projectModal"
+
+            );
+
+          },
+
+          800
+
+        );
+
+      } catch (error) {
+
+        console.error(
+
+          "Create project error:",
+
+          error
+
+        );
+
+        status.style.color =
+
+          "#dc2626";
+
+        status.textContent =
+
+          error.message ||
+
+          "Could not post project.";
+
+      } finally {
+
+        saveButton.disabled =
+
+          false;
+
+      }
+
+    }
+
+    /* =========================================================
+
        MESSAGES / UNREAD SYSTEM
+
     ========================================================= */
 
     function updateUnreadBadge(
@@ -4680,11 +5836,15 @@
 
         );
 
-      if (Number.isNaN(
+      if (
 
-        date.getTime()
+        Number.isNaN(
 
-      )) {
+          date.getTime()
+
+        )
+
+      ) {
 
         return "";
 
@@ -5051,7 +6211,9 @@
     }
 
     /* =========================
+
        CHAT
+
     ========================= */
 
     async function openChat(
@@ -5961,7 +7123,9 @@
     }
 
     /* =========================
+
        GENERAL MODAL FUNCTIONS
+
     ========================= */
 
     function closeModal(
@@ -6029,7 +7193,9 @@
     );
 
     /* =========================
+
        SECURITY HELPER
+
     ========================= */
 
     function escapeHTML(
