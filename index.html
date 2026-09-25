@@ -576,6 +576,10 @@
 
       box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
 
+      display: flex;
+
+      flex-direction: column;
+
     }
 
     .project-card h3 {
@@ -626,6 +630,8 @@
 
       display: inline-block;
 
+      width: fit-content;
+
       background: #dcfce7;
 
       color: #15803d;
@@ -638,13 +644,79 @@
 
       font-weight: bold;
 
+      margin-bottom: 15px;
+
+    }
+
+    .project-actions {
+
+      display: flex;
+
+      gap: 8px;
+
+      margin-top: auto;
+
+      flex-wrap: wrap;
+
+    }
+
+    .project-actions button {
+
+      flex: 1;
+
+      min-width: 120px;
+
+    }
+
+    .application-badge {
+
+      display: inline-block;
+
+      width: fit-content;
+
+      background: #fef3c7;
+
+      color: #92400e;
+
+      padding: 5px 10px;
+
+      border-radius: 20px;
+
+      font-size: 12px;
+
+      font-weight: bold;
+
+      margin-bottom: 12px;
+
+    }
+
+    .own-project-badge {
+
+      display: inline-block;
+
+      width: fit-content;
+
+      background: #e0e7ff;
+
+      color: #4338ca;
+
+      padding: 5px 10px;
+
+      border-radius: 20px;
+
+      font-size: 12px;
+
+      font-weight: bold;
+
+      margin-bottom: 12px;
+
     }
 
     .project-login-note {
 
       max-width: 700px;
 
-      margin: 0 auto;
+      margin: 0 auto 25px;
 
       padding: 16px 20px;
 
@@ -657,6 +729,92 @@
       text-align: center;
 
       display: none;
+
+    }
+
+    /* =========================
+
+       PROJECT DETAIL
+
+    ========================= */
+
+    .project-detail-title {
+
+      font-size: 28px;
+
+      color: #0f172a;
+
+      margin-bottom: 8px;
+
+    }
+
+    .project-detail-meta {
+
+      color: #64748b;
+
+      font-size: 14px;
+
+      margin-bottom: 20px;
+
+    }
+
+    .project-detail-description {
+
+      color: #475569;
+
+      white-space: pre-wrap;
+
+      word-break: break-word;
+
+      margin-bottom: 20px;
+
+    }
+
+    .project-detail-budget {
+
+      background: #eff6ff;
+
+      border-radius: 10px;
+
+      padding: 14px 16px;
+
+      margin-bottom: 20px;
+
+      color: #1e40af;
+
+      font-weight: bold;
+
+    }
+
+    .project-detail-status {
+
+      display: inline-block;
+
+      background: #dcfce7;
+
+      color: #15803d;
+
+      padding: 5px 10px;
+
+      border-radius: 20px;
+
+      font-size: 12px;
+
+      font-weight: bold;
+
+      margin-bottom: 20px;
+
+    }
+
+    .application-result {
+
+      margin-top: 12px;
+
+      text-align: center;
+
+      font-size: 14px;
+
+      min-height: 20px;
 
     }
 
@@ -1536,6 +1694,12 @@
 
       }
 
+      .project-actions {
+
+        flex-direction: column;
+
+      }
+
     }
 
     @media (max-width: 500px) {
@@ -2396,8 +2560,6 @@
 
       ></div>
 
-      <!-- LOGOUT -->
-
       <div class="profile-logout">
 
         <button
@@ -2420,7 +2582,7 @@
 
   </div>
 
-  <!-- PROJECT MODAL -->
+  <!-- PROJECT CREATE MODAL -->
 
   <div id="projectModal" class="modal">
 
@@ -2547,6 +2709,40 @@
           Cancel
 
         </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PROJECT DETAIL MODAL -->
+
+  <div id="projectDetailModal" class="modal">
+
+    <div class="modal-content large">
+
+      <button
+
+        type="button"
+
+        class="close-btn"
+
+        onclick="closeModal('projectDetailModal')"
+
+      >
+
+        ×
+
+      </button>
+
+      <div id="projectDetailContent">
+
+        <div class="empty-message">
+
+          Loading project...
+
+        </div>
 
       </div>
 
@@ -2748,6 +2944,10 @@
 
     let allProjects = [];
 
+    let myApplicationMap = new Map();
+
+    let currentProjectDetail = null;
+
     /* =========================
 
        INITIALIZE
@@ -2904,11 +3104,15 @@
 
           currentProfile = null;
 
+          myApplicationMap = new Map();
+
           await closeChat();
 
           await closeMessageNotifications();
 
           closeModal("messagesModal");
+
+          closeModal("projectDetailModal");
 
           updateNavigation();
 
@@ -3464,6 +3668,8 @@
 
         closeModal("profileModal");
 
+        closeModal("projectDetailModal");
+
         const {
 
           error
@@ -3481,6 +3687,8 @@
         currentUser = null;
 
         currentProfile = null;
+
+        myApplicationMap = new Map();
 
         updateNavigation();
 
@@ -4478,6 +4686,122 @@
 
     ========================================================= */
 
+    async function loadMyApplications(
+
+      projectIds
+
+    ) {
+
+      myApplicationMap =
+
+        new Map();
+
+      if (
+
+        !currentUser ||
+
+        !currentProfile ||
+
+        currentProfile.role !== "freelancer"
+
+      ) {
+
+        return;
+
+      }
+
+      if (
+
+        !projectIds ||
+
+        !projectIds.length
+
+      ) {
+
+        return;
+
+      }
+
+      try {
+
+        const {
+
+          data,
+
+          error
+
+        } =
+
+          await supabaseClient
+
+            .from("applications")
+
+            .select(
+
+              "id, project_id, freelancer_id, status, created_at"
+
+            )
+
+            .eq(
+
+              "freelancer_id",
+
+              currentUser.id
+
+            )
+
+            .in(
+
+              "project_id",
+
+              projectIds
+
+            );
+
+        if (error) {
+
+          console.error(
+
+            "Loading applications error:",
+
+            error
+
+          );
+
+          return;
+
+        }
+
+        (data || []).forEach(
+
+          function (application) {
+
+            myApplicationMap.set(
+
+              application.project_id,
+
+              application
+
+            );
+
+          }
+
+        );
+
+      } catch (error) {
+
+        console.error(
+
+          "Loading applications exception:",
+
+          error
+
+        );
+
+      }
+
+    }
+
     async function loadProjects() {
 
       const container =
@@ -4547,6 +4871,24 @@
         allProjects =
 
           data || [];
+
+        const projectIds =
+
+          allProjects.map(
+
+            function (project) {
+
+              return project.id;
+
+            }
+
+          );
+
+        await loadMyApplications(
+
+          projectIds
+
+        );
 
         await renderProjects(
 
@@ -4748,6 +5090,212 @@
 
               : "Not specified";
 
+          const isOwnProject =
+
+            currentUser &&
+
+            project.client_id ===
+
+              currentUser.id;
+
+          const application =
+
+            myApplicationMap.get(
+
+              project.id
+
+            );
+
+          let applicationHTML = "";
+
+          let actionHTML = "";
+
+          if (!currentUser) {
+
+            actionHTML = `
+
+              <button
+
+                type="button"
+
+                class="btn btn-primary"
+
+                onclick="openAuth('login')"
+
+              >
+
+                Log In to Apply
+
+              </button>
+
+            `;
+
+          } else if (
+
+            currentProfile &&
+
+            currentProfile.role === "freelancer"
+
+          ) {
+
+            if (isOwnProject) {
+
+              applicationHTML = `
+
+                <span class="own-project-badge">
+
+                  Your Project
+
+                </span>
+
+              `;
+
+              actionHTML = `
+
+                <button
+
+                  type="button"
+
+                  class="btn btn-secondary"
+
+                  onclick="openProjectDetails('${escapeJS(project.id)}')"
+
+                >
+
+                  Open Project
+
+                </button>
+
+              `;
+
+            } else if (application) {
+
+              applicationHTML = `
+
+                <span class="application-badge">
+
+                  Already Applied
+
+                </span>
+
+              `;
+
+              actionHTML = `
+
+                <button
+
+                  type="button"
+
+                  class="btn btn-secondary"
+
+                  onclick="openProjectDetails('${escapeJS(project.id)}')"
+
+                >
+
+                  View Application
+
+                </button>
+
+              `;
+
+            } else {
+
+              actionHTML = `
+
+                <button
+
+                  type="button"
+
+                  class="btn btn-secondary"
+
+                  onclick="openProjectDetails('${escapeJS(project.id)}')"
+
+                >
+
+                  Open Project
+
+                </button>
+
+                <button
+
+                  type="button"
+
+                  class="btn btn-primary"
+
+                  onclick="applyToProject('${escapeJS(project.id)}')"
+
+                >
+
+                  Apply Now
+
+                </button>
+
+              `;
+
+            }
+
+          } else if (
+
+            currentProfile &&
+
+            currentProfile.role === "client"
+
+          ) {
+
+            if (isOwnProject) {
+
+              applicationHTML = `
+
+                <span class="own-project-badge">
+
+                  Your Project
+
+                </span>
+
+              `;
+
+            }
+
+            actionHTML = `
+
+              <button
+
+                type="button"
+
+                class="btn btn-secondary"
+
+                onclick="openProjectDetails('${escapeJS(project.id)}')"
+
+              >
+
+                Open Project
+
+              </button>
+
+            `;
+
+          } else {
+
+            actionHTML = `
+
+              <button
+
+                type="button"
+
+                class="btn btn-secondary"
+
+                onclick="openProjectDetails('${escapeJS(project.id)}')"
+
+              >
+
+                Open Project
+
+              </button>
+
+            `;
+
+          }
+
           card.innerHTML = `
 
             <h3>
@@ -4780,6 +5328,14 @@
 
             </span>
 
+            ${applicationHTML}
+
+            <div class="project-actions">
+
+              ${actionHTML}
+
+            </div>
+
           `;
 
           container.appendChild(
@@ -4791,6 +5347,842 @@
         }
 
       );
+
+    }
+
+    async function openProjectDetails(
+
+      projectId
+
+    ) {
+
+      const project =
+
+        allProjects.find(
+
+          function (item) {
+
+            return item.id === projectId;
+
+          }
+
+        );
+
+      if (!project) {
+
+        alert(
+
+          "Project could not be found."
+
+        );
+
+        return;
+
+      }
+
+      currentProjectDetail =
+
+        project;
+
+      const container =
+
+        document.getElementById(
+
+          "projectDetailContent"
+
+        );
+
+      if (!container) {
+
+        return;
+
+      }
+
+      const clientProfile =
+
+        await getProjectClientProfile(
+
+          project.client_id
+
+        );
+
+      const clientName =
+
+        clientProfile &&
+
+        clientProfile.name
+
+          ? clientProfile.name
+
+          : "Unknown Client";
+
+      const budget =
+
+        project.budget !== null &&
+
+        project.budget !== undefined &&
+
+        project.budget !== ""
+
+          ? project.budget
+
+          : "Not specified";
+
+      const isOwnProject =
+
+        currentUser &&
+
+        project.client_id ===
+
+          currentUser.id;
+
+      let application = null;
+
+      if (
+
+        currentUser &&
+
+        currentProfile &&
+
+        currentProfile.role === "freelancer" &&
+
+        !isOwnProject
+
+      ) {
+
+        application =
+
+          await getMyApplication(
+
+            project.id
+
+          );
+
+        if (application) {
+
+          myApplicationMap.set(
+
+            project.id,
+
+            application
+
+          );
+
+        }
+
+      }
+
+      let actionHTML = "";
+
+      if (!currentUser) {
+
+        actionHTML = `
+
+          <button
+
+            type="button"
+
+            class="btn btn-primary"
+
+            onclick="openAuth('login')"
+
+          >
+
+            Log In to Apply
+
+          </button>
+
+          <button
+
+            type="button"
+
+            class="btn btn-secondary"
+
+            onclick="closeModal('projectDetailModal')"
+
+          >
+
+            Close
+
+          </button>
+
+        `;
+
+      } else if (
+
+        currentProfile &&
+
+        currentProfile.role === "freelancer"
+
+      ) {
+
+        if (isOwnProject) {
+
+          actionHTML = `
+
+            <button
+
+              type="button"
+
+              class="btn btn-secondary"
+
+              onclick="closeModal('projectDetailModal')"
+
+            >
+
+              Close
+
+            </button>
+
+          `;
+
+        } else if (application) {
+
+          actionHTML = `
+
+            <button
+
+              type="button"
+
+              class="btn btn-secondary"
+
+              disabled
+
+            >
+
+              Already Applied
+
+            </button>
+
+            <button
+
+              type="button"
+
+              class="btn btn-secondary"
+
+              onclick="closeModal('projectDetailModal')"
+
+            >
+
+              Close
+
+            </button>
+
+          `;
+
+        } else {
+
+          actionHTML = `
+
+            <button
+
+              type="button"
+
+              id="detailApplyButton"
+
+              class="btn btn-primary"
+
+              onclick="applyToProject('${escapeJS(project.id)}', true)"
+
+            >
+
+              Apply Now
+
+            </button>
+
+            <button
+
+              type="button"
+
+              class="btn btn-secondary"
+
+              onclick="closeModal('projectDetailModal')"
+
+            >
+
+              Close
+
+            </button>
+
+          `;
+
+        }
+
+      } else {
+
+        actionHTML = `
+
+          <button
+
+            type="button"
+
+            class="btn btn-secondary"
+
+            onclick="closeModal('projectDetailModal')"
+
+          >
+
+            Close
+
+          </button>
+
+        `;
+
+      }
+
+      container.innerHTML = `
+
+        <div class="detail-header">
+
+          <h2 class="project-detail-title">
+
+            ${escapeHTML(project.title || "Untitled Project")}
+
+          </h2>
+
+          <div class="project-detail-meta">
+
+            Posted by: ${escapeHTML(clientName)}
+
+          </div>
+
+        </div>
+
+        <div class="project-detail-status">
+
+          Open
+
+        </div>
+
+        <div class="project-detail-budget">
+
+          Budget: ${escapeHTML(budget)}
+
+        </div>
+
+        <div class="detail-section">
+
+          <h4>
+
+            Project Description
+
+          </h4>
+
+          <p class="project-detail-description">
+
+            ${escapeHTML(project.description || "No description provided.")}
+
+          </p>
+
+        </div>
+
+        <div
+
+          id="projectApplicationStatus"
+
+          class="application-result"
+
+        ></div>
+
+        <div class="modal-actions">
+
+          ${actionHTML}
+
+        </div>
+
+      `;
+
+      document.getElementById(
+
+        "projectDetailModal"
+
+      ).style.display = "flex";
+
+    }
+
+    async function getProjectClientProfile(
+
+      clientId
+
+    ) {
+
+      if (!clientId) {
+
+        return null;
+
+      }
+
+      try {
+
+        const {
+
+          data,
+
+          error
+
+        } =
+
+          await supabaseClient
+
+            .from("profiles")
+
+            .select(
+
+              "id, name, role"
+
+            )
+
+            .eq(
+
+              "id",
+
+              clientId
+
+            )
+
+            .maybeSingle();
+
+        if (error) {
+
+          console.error(
+
+            "Project client profile error:",
+
+            error
+
+          );
+
+          return null;
+
+        }
+
+        return data;
+
+      } catch (error) {
+
+        console.error(error);
+
+        return null;
+
+      }
+
+    }
+
+    async function getMyApplication(
+
+      projectId
+
+    ) {
+
+      if (
+
+        !currentUser ||
+
+        !projectId
+
+      ) {
+
+        return null;
+
+      }
+
+      try {
+
+        const {
+
+          data,
+
+          error
+
+        } =
+
+          await supabaseClient
+
+            .from("applications")
+
+            .select(
+
+              "id, project_id, freelancer_id, status, created_at"
+
+            )
+
+            .eq(
+
+              "project_id",
+
+              projectId
+
+            )
+
+            .eq(
+
+              "freelancer_id",
+
+              currentUser.id
+
+            )
+
+            .maybeSingle();
+
+        if (error) {
+
+          console.error(
+
+            "Application check error:",
+
+            error
+
+          );
+
+          return null;
+
+        }
+
+        return data;
+
+      } catch (error) {
+
+        console.error(
+
+          "Application check exception:",
+
+          error
+
+        );
+
+        return null;
+
+      }
+
+    }
+
+    async function applyToProject(
+
+      projectId,
+
+      fromDetail
+
+    ) {
+
+      if (!currentUser) {
+
+        openAuth("login");
+
+        return;
+
+      }
+
+      if (
+
+        !currentProfile ||
+
+        currentProfile.role !== "freelancer"
+
+      ) {
+
+        alert(
+
+          "Only freelancers can apply to projects."
+
+        );
+
+        return;
+
+      }
+
+      const project =
+
+        allProjects.find(
+
+          function (item) {
+
+            return item.id === projectId;
+
+          }
+
+        );
+
+      if (!project) {
+
+        alert(
+
+          "Project could not be found."
+
+        );
+
+        return;
+
+      }
+
+      if (
+
+        project.client_id ===
+
+        currentUser.id
+
+      ) {
+
+        alert(
+
+          "You cannot apply to your own project."
+
+        );
+
+        return;
+
+      }
+
+      let existingApplication =
+
+        myApplicationMap.get(
+
+          projectId
+
+        );
+
+      if (!existingApplication) {
+
+        existingApplication =
+
+          await getMyApplication(
+
+            projectId
+
+          );
+
+      }
+
+      if (existingApplication) {
+
+        myApplicationMap.set(
+
+          projectId,
+
+          existingApplication
+
+        );
+
+        if (fromDetail) {
+
+          const statusElement =
+
+            document.getElementById(
+
+              "projectApplicationStatus"
+
+            );
+
+          if (statusElement) {
+
+            statusElement.style.color =
+
+              "#92400e";
+
+            statusElement.textContent =
+
+              "You have already applied to this project.";
+
+          }
+
+        } else {
+
+          alert(
+
+            "You have already applied to this project."
+
+          );
+
+          await loadProjects();
+
+        }
+
+        return;
+
+      }
+
+      let applyButton = null;
+
+      if (fromDetail) {
+
+        applyButton =
+
+          document.getElementById(
+
+            "detailApplyButton"
+
+          );
+
+      }
+
+      if (applyButton) {
+
+        applyButton.disabled = true;
+
+        applyButton.textContent =
+
+          "Applying...";
+
+      }
+
+      const statusElement =
+
+        document.getElementById(
+
+          "projectApplicationStatus"
+
+        );
+
+      if (statusElement) {
+
+        statusElement.style.color =
+
+          "#2563eb";
+
+        statusElement.textContent =
+
+          "Submitting your application...";
+
+      }
+
+      try {
+
+        const {
+
+          data,
+
+          error
+
+        } =
+
+          await supabaseClient
+
+            .from("applications")
+
+            .insert({
+
+              project_id:
+
+                projectId,
+
+              freelancer_id:
+
+                currentUser.id,
+
+              status:
+
+                "pending"
+
+            })
+
+            .select(
+
+              "id, project_id, freelancer_id, status, created_at"
+
+            )
+
+            .single();
+
+        if (error) {
+
+          throw error;
+
+        }
+
+        if (data) {
+
+          myApplicationMap.set(
+
+            projectId,
+
+            data
+
+          );
+
+        }
+
+        if (statusElement) {
+
+          statusElement.style.color =
+
+            "#16a34a";
+
+          statusElement.textContent =
+
+            "Application submitted successfully.";
+
+        }
+
+        if (fromDetail) {
+
+          setTimeout(
+
+            async function () {
+
+              closeModal(
+
+                "projectDetailModal"
+
+              );
+
+              await loadProjects();
+
+            },
+
+            900
+
+          );
+
+        } else {
+
+          await loadProjects();
+
+        }
+
+      } catch (error) {
+
+        console.error(
+
+          "Apply to project error:",
+
+          error
+
+        );
+
+        if (statusElement) {
+
+          statusElement.style.color =
+
+            "#dc2626";
+
+          statusElement.textContent =
+
+            error.message ||
+
+            "Could not submit application.";
+
+        } else {
+
+          alert(
+
+            error.message ||
+
+            "Could not submit application."
+
+          );
+
+        }
+
+        if (applyButton) {
+
+          applyButton.disabled = false;
+
+          applyButton.textContent =
+
+            "Apply Now";
+
+        }
+
+      }
 
     }
 
@@ -7194,7 +8586,7 @@
 
     /* =========================
 
-       SECURITY HELPER
+       SECURITY HELPERS
 
     ========================= */
 
@@ -7221,6 +8613,26 @@
           : String(value);
 
       return div.innerHTML;
+
+    }
+
+    function escapeJS(
+
+      value
+
+    ) {
+
+      return String(value || "")
+
+        .replace(/\\/g, "\\\\")
+
+        .replace(/'/g, "\\'")
+
+        .replace(/"/g, '\\"')
+
+        .replace(/\n/g, "\\n")
+
+        .replace(/\r/g, "\\r");
 
     }
 
